@@ -1,6 +1,6 @@
 # GH Desktop Plus
 
-> [!WARNNING]
+> [!WARNING]
 > This app is built for my own use (maybe for others too?), but I'd rather you didn't use this fork.
 > All commits are AI-generated, so I can't guarantee it works properly...
 > Check out [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) for a better version.
