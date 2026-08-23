@@ -114,7 +114,7 @@ export const generateRepositoryListContextMenu = (
     },
     { type: 'separator' },
     {
-      label: config.askForConfirmationOnRemoveRepository ? 'Remove…' : 'Remove',
+      label: config.askForConfirmationOnRemoveRepository ? '移除…' : '移除',
       action: () => config.onRemoveRepository(repository),
     },
   ]

@@ -488,13 +488,13 @@ export class CreateBranch extends React.Component<
     if (defaultBranch === null || defaultBranch.name === currentBranchName) {
       return (
         <div>
-           你的新分支将基于你当前检出的分支（
-           <Ref>{currentBranchName}</Ref>){this.renderForkLinkSuffix()}。{' '}
-           {defaultBranch?.name === currentBranchName && (
-             <>
-               <Ref>{currentBranchName}</Ref> 是你的仓库的{defaultBranchLink}。
-             </>
-           )}
+          你的新分支将基于你当前检出的分支（
+          <Ref>{currentBranchName}</Ref>){this.renderForkLinkSuffix()}。{' '}
+          {defaultBranch?.name === currentBranchName && (
+            <>
+              <Ref>{currentBranchName}</Ref> 是你的仓库的{defaultBranchLink}。
+            </>
+          )}
         </div>
       )
     } else {
@@ -543,9 +543,8 @@ export class CreateBranch extends React.Component<
     if (currentBranchName === upstreamDefaultBranch.nameWithoutRemote) {
       return (
         <div>
-          你的新分支将基于{' '}
-          <strong>{upstreamRepositoryFullName}</strong>
-          的{defaultBranchLink}（
+          你的新分支将基于 <strong>{upstreamRepositoryFullName}</strong>的
+          {defaultBranchLink}（
           <Ref>{upstreamDefaultBranch.nameWithoutRemote}</Ref>）
           {this.renderForkLinkSuffix()}。
         </div>
@@ -599,10 +598,11 @@ export class CreateBranch extends React.Component<
     if (isRepositoryWithForkedGitHubRepository(this.props.repository)) {
       return (
         <span>
-           &nbsp;由你的{' '}
-           <LinkButton onClick={this.onForkSettingsClick}>
+          &nbsp;由你的{' '}
+          <LinkButton onClick={this.onForkSettingsClick}>
             复刻行为设置
-           </LinkButton> 决定
+          </LinkButton>{' '}
+          决定
         </span>
       )
     } else {

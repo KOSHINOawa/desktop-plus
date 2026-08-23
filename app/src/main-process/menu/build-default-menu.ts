@@ -142,7 +142,7 @@ export function buildDefaultMenuTemplate({
         click: emit('add-local-repository'),
       },
       {
-        label: __DARWIN__ ? '克隆仓库…' : '克隆&仓库…',
+        label: __DARWIN__ ? '克隆仓库…' : '&克隆仓库…',
         id: 'clone-repository',
         accelerator: 'CmdOrCtrl+Shift+O',
         click: emit('clone-repository'),
@@ -408,7 +408,7 @@ export function buildDefaultMenuTemplate({
       {
         label: __DARWIN__
           ? `在 ${selectedExternalEditor ?? 'External Editor'} 中打开`
-          : `在 ${selectedExternalEditor ?? 'External Editor'} 中&打开`,
+          : `在 ${selectedExternalEditor ?? 'External Editor'} 中打&开`,
         id: 'open-external-editor',
         accelerator: 'CmdOrCtrl+Shift+A',
         click: emit('open-external-editor'),
@@ -523,7 +523,7 @@ export function buildDefaultMenuTemplate({
     {
       label: __DARWIN__
         ? '压缩合并到当前分支…'
-        : '压缩&合并到当前分支…',
+        : '&压缩合并到当前分支…',
       id: 'squash-and-merge-branch',
       accelerator: 'CmdOrCtrl+Shift+H',
       click: emit('squash-and-merge-branch'),
@@ -553,8 +553,8 @@ export function buildDefaultMenuTemplate({
         : `在 ${onGithubLabel(
             gitHubRepositoryType,
             gitHubRepositoryEndpoint
-          )} 上&查看分支`,
-      id: 'branch-on-github',
+          )} 上查看分&支`,
+        id: 'branch-on-github',
       accelerator: 'CmdOrCtrl+Alt+B',
       click: emit('branch-on-github'),
     },

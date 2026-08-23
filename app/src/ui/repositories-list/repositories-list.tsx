@@ -224,7 +224,7 @@ class RepositoryGroupHeader extends React.Component<IRepositoryGroupHeaderProps>
 
   private renderPullAllButton() {
     const { isPulling, label } = this.props
-    const pullLabel = `Pull all repositories in "${label}"`
+    const pullLabel = `拉取 "${label}" 中的所有仓库`
 
     return (
       <Button
@@ -438,11 +438,11 @@ export class RepositoriesList extends React.Component<
     }
 
     return (
-      'The currently checked out branch is' +
-      (behind ? ` ${commitGrammar(behind)} behind ` : '') +
-      (behind && ahead ? 'and' : '') +
-      (ahead ? ` ${commitGrammar(ahead)} ahead of ` : '') +
-      'its tracked branch.'
+      '当前检出的分支' +
+      (behind ? ` 落后 ${commitGrammar(behind)}` : '') +
+      (behind && ahead ? '，' : '') +
+      (ahead ? ` 领先 ${commitGrammar(ahead)}` : '') +
+      ' 于其跟踪分支。'
     )
   }
 
@@ -467,17 +467,17 @@ export class RepositoriesList extends React.Component<
     return (
       <div className="repository-list-item-tooltip list-item-tooltip">
         <div>
-          <div className="label">Full Name: </div>
+          <div className="label">全名：</div>
           {realName}
           {alias && <> ({alias})</>}
         </div>
         <div>
-          <div className="label">Path: </div>
+          <div className="label">路径：</div>
           {repository.path}
         </div>
         {branchName && (
           <div>
-            <div className="label">Branch: </div>
+            <div className="label">分支：</div>
             {branchName}
           </div>
         )}
@@ -512,7 +512,7 @@ export class RepositoriesList extends React.Component<
     if (kind === 'enterprise') {
       return displayName ?? group.host
     } else if (kind === 'other') {
-      return displayName ?? 'Other'
+      return displayName ?? '其他'
     } else if (kind === 'dotcom') {
       const accountLoginSuffix =
         group.login && group.login !== group.owner.login
@@ -521,9 +521,9 @@ export class RepositoriesList extends React.Component<
       const defaultLabel = group.owner.login + accountLoginSuffix
       return displayName ?? defaultLabel
     } else if (kind === 'recent') {
-      return 'Recent'
+      return '最近'
     } else if (kind === 'pins') {
-      return 'Pinned'
+      return '已固定'
     } else {
       assertNever(kind, `Unknown repository group kind ${kind}`)
     }
@@ -602,23 +602,23 @@ export class RepositoriesList extends React.Component<
       {
         label: collapsed
           ? __DARWIN__
-            ? 'Expand Group'
-            : 'Expand group'
+            ? '展开分组'
+            : '展开分组'
           : __DARWIN__
-          ? 'Collapse Group'
-          : 'Collapse group',
+            ? '折叠分组'
+            : '折叠分组',
         action: () => this.onToggleGroupCollapsed(group),
         enabled: canToggle,
       },
       {
-        label: __DARWIN__ ? 'Collapse All Groups' : 'Collapse all groups',
+        label: __DARWIN__ ? '折叠所有分组' : '折叠所有分组',
         action: this.onCollapseAllGroups,
         enabled:
           canToggle &&
           [...this.renderedGroupKeys].some(key => !collapsedGroups.has(key)),
       },
       {
-        label: __DARWIN__ ? 'Expand All Groups' : 'Expand all groups',
+        label: __DARWIN__ ? '展开所有分组' : '展开所有分组',
         action: this.onExpandAllGroups,
         enabled:
           canToggle &&
@@ -627,8 +627,8 @@ export class RepositoriesList extends React.Component<
       { type: 'separator' },
       {
         label: __DARWIN__
-          ? `Pull All Repositories in "${label}"`
-          : `Pull all repositories in "${label}"`,
+          ? `拉取 "${label}" 中的所有仓库`
+          : `拉取 "${label}" 中的所有仓库`,
         action: () => this.onPullAllInGroup(group),
       },
     ]
@@ -639,7 +639,7 @@ export class RepositoriesList extends React.Component<
       ? [
           { type: 'separator' },
           {
-            label: __DARWIN__ ? 'Edit Group' : 'Edit group',
+            label: __DARWIN__ ? '编辑分组' : '编辑分组',
             action: () => this.onEditGroup(group),
           },
         ]
@@ -1001,7 +1001,7 @@ export class RepositoriesList extends React.Component<
         ariaExpanded={this.state.newRepositoryMenuExpanded}
         onKeyDown={this.onNewRepositoryButtonKeyDown}
       >
-        Add
+        添加
         <Octicon symbol={octicons.triangleDown} />
       </Button>
     )
@@ -1014,7 +1014,7 @@ export class RepositoriesList extends React.Component<
         disabled={true}
       >
         <Octicon symbol={syncClockwise} className="spin" />
-        Pulling…
+        拉取中…
       </Button>
     ) : (
       <Button
@@ -1022,7 +1022,7 @@ export class RepositoriesList extends React.Component<
         onClick={this.onPullRepositoriesButtonClick}
       >
         <Octicon symbol={octicons.arrowDown} />
-        {__DARWIN__ ? 'Pull All' : 'Pull all'}
+        {__DARWIN__ ? '拉取全部' : '拉取全部'}
       </Button>
     )
   }
@@ -1039,21 +1039,21 @@ export class RepositoriesList extends React.Component<
     return (
       <div className="no-items no-results-found">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Sorry, I can't find that repository</div>
+        <div className="title">抱歉，我找不到那个仓库</div>
 
         <div className="protip">
-          ProTip! Press{' '}
+          提示：按{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut darwinKeys={['⌘', 'O']} keys={['Ctrl', 'O']} />
           </div>{' '}
-          to quickly add a local repository, and{' '}
+          可快速添加本地仓库，按{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut
               darwinKeys={['⇧', '⌘', 'O']}
               keys={['Ctrl', 'Shift', 'O']}
             />
           </div>{' '}
-          to clone from anywhere within the app
+          可在应用内任意位置克隆
         </div>
       </div>
     )
@@ -1062,22 +1062,22 @@ export class RepositoriesList extends React.Component<
   private onNewRepositoryButtonClick = () => {
     const items: IMenuItem[] = [
       {
-        label: __DARWIN__ ? 'Clone Repository…' : 'Clone repository…',
+        label: __DARWIN__ ? '克隆仓库…' : '克隆仓库…',
         action: this.onCloneRepository,
       },
       {
-        label: __DARWIN__ ? 'Create New Repository…' : 'Create new repository…',
+        label: __DARWIN__ ? '新建仓库…' : '新建仓库…',
         action: this.onCreateNewRepository,
       },
       {
         label: __DARWIN__
-          ? 'Add Existing Repository…'
-          : 'Add existing repository…',
+          ? '添加现有仓库…'
+          : '添加现有仓库…',
         action: this.onAddExistingRepository,
       },
       { type: 'separator' },
       {
-        label: __DARWIN__ ? 'New Group…' : 'New group…',
+        label: __DARWIN__ ? '新建分组…' : '新建分组…',
         action: this.onNewGroup,
       },
     ]

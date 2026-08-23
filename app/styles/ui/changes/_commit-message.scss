@@ -367,8 +367,46 @@
       flex-grow: 0;
       margin-right: var(--spacing-half);
       height: 12px;
-      // In order to center it vertically in the button
+      // In order to center them vertically in the button
       margin-bottom: 1px;
     }
+  }
+
+  .cc-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-half);
+    margin-bottom: var(--spacing-half);
+
+    .checkbox-component {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .cc-type-select {
+      width: auto;
+      min-width: 130px;
+      max-width: 50%;
+      flex-grow: 0;
+      flex-shrink: 1;
+    }
+  }
+
+  .cc-scope-input {
+    margin-bottom: var(--spacing-half);
+  }
+
+  .cc-separator {
+    border-top: var(--base-border);
+    margin-top: var(--spacing);
+  }
+
+  .commit-preview-line {
+    @include ellipsis;
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-half);
   }
 }

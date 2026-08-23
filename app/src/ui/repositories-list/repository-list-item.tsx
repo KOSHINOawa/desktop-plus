@@ -221,11 +221,11 @@ const renderAheadBehindIndicator = (aheadBehind: IAheadBehind) => {
   }
 
   const aheadBehindTooltip =
-    'The currently checked out branch is' +
-    (behind ? ` ${commitGrammar(behind)} behind ` : '') +
-    (behind && ahead ? 'and' : '') +
-    (ahead ? ` ${commitGrammar(ahead)} ahead of ` : '') +
-    'its tracked branch.'
+    '当前检出的分支' +
+    (behind ? ` 落后 ${commitGrammar(behind)}` : '') +
+    (behind && ahead ? '，' : '') +
+    (ahead ? ` 领先 ${commitGrammar(ahead)}` : '') +
+    ' 于其跟踪分支。'
 
   return (
     <TooltippedContent

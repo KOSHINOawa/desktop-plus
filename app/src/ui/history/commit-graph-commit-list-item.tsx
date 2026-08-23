@@ -44,7 +44,7 @@ const commitGraph_DotRadius = 5
 const commitGraph_RecentCommitWeekdayThreshold = 6
 const commitGraph_ShortRefLabelLength = 12
 
-const commitGraph_CommitWeekdayFormatter = new Intl.DateTimeFormat('en-US', {
+const commitGraph_CommitWeekdayFormatter = new Intl.DateTimeFormat('zh-CN', {
   weekday: 'long',
 })
 

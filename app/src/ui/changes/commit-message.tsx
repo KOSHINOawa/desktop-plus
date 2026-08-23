@@ -13,7 +13,10 @@ import {
 } from '../../models/commit-message'
 import { Repository } from '../../models/repository'
 import { Button } from '../lib/button'
+import { Checkbox, CheckboxValue } from '../lib/checkbox'
 import { Loading } from '../lib/loading'
+import { Select } from '../lib/select'
+import { TextBox } from '../lib/text-box'
 import { AuthorInput } from '../lib/author-input/author-input'
 import { FocusContainer } from '../lib/focus-container'
 import { Octicon, OcticonSymbolVariant } from '../octicons'
@@ -48,6 +51,12 @@ import {
 import { Popup, PopupType } from '../../models/popup'
 import { RepositorySettingsTab } from '../repository-settings/repository-settings'
 import { IdealSummaryLength } from '../../lib/wrap-rich-text-commit-message'
+import {
+  canonicalizeConventionalCommitType,
+  composeConventionalCommitHeader,
+  conventionalCommitTypeOptions,
+  parseConventionalCommit,
+} from '../../lib/conventional-commits'
 import { isEmptyOrWhitespace } from '../../lib/is-empty-or-whitespace'
 import { TooltipDirection } from '../lib/tooltip'
 import { ToggledtippedContent } from '../lib/toggletipped-content'
@@ -127,9 +136,9 @@ function formatConfigOriginTooltip(
       )}
       <span className="config-origin-tooltip-label">{fieldName}:</span>
       <span>{origin.value}</span>
-       <span className="config-origin-tooltip-label">作用域：</span>
+      <span className="config-origin-tooltip-label">作用域：</span>
       {renderScopeValue(origin)}
-       <span className="config-origin-tooltip-label">文件：</span>
+      <span className="config-origin-tooltip-label">文件：</span>
       <LinkButton onClick={onRevealFile}>
         {formatConfigPath(origin, repositoryPath)}
       </LinkButton>
@@ -312,6 +321,12 @@ interface ICommitMessageProps {
 interface ICommitMessageState {
   readonly commitMessage: ICommitMessage
 
+  readonly ccType: string
+
+  readonly ccScope: string
+
+  readonly ccBreaking: boolean
+
   readonly commitMessageAutocompletionProviders: ReadonlyArray<
     IAutocompletionProvider<any>
   >
@@ -355,6 +370,36 @@ function findCoAuthorAutoCompleteProvider(
   return null
 }
 
+interface IStructuredCommitSummary {
+  readonly type: string
+  readonly scope: string
+  readonly breaking: boolean
+  readonly remainder: string
+}
+
+function parseStructuredSummary(
+  summary: string
+): IStructuredCommitSummary | null {
+  const parsed = parseConventionalCommit(summary)
+
+  if (parsed === null) {
+    return null
+  }
+
+  const type = canonicalizeConventionalCommitType(parsed.rawType)
+
+  if (type === null) {
+    return null
+  }
+
+  return {
+    type,
+    scope: parsed.scope ?? '',
+    breaking: parsed.label.endsWith('!'),
+    remainder: parsed.rightSideText,
+  }
+}
+
 export class CommitMessage extends React.Component<
   ICommitMessageProps,
   ICommitMessageState
@@ -375,9 +420,17 @@ export class CommitMessage extends React.Component<
   public constructor(props: ICommitMessageProps) {
     super(props)
     const { commitMessage } = this.props
+    const incoming = commitMessage ?? DefaultCommitMessage
+    const structured = parseStructuredSummary(incoming.summary)
 
     this.state = {
-      commitMessage: commitMessage ?? DefaultCommitMessage,
+      commitMessage:
+        structured === null
+          ? incoming
+          : { ...incoming, summary: structured.remainder },
+      ccType: structured?.type ?? conventionalCommitTypeOptions[0].type,
+      ccScope: structured?.scope ?? '',
+      ccBreaking: structured?.breaking ?? false,
       commitMessageAutocompletionProviders:
         findCommitMessageAutoCompleteProvider(props.autocompletionProviders),
       coAuthorAutocompletionProvider: findCoAuthorAutoCompleteProvider(
@@ -422,9 +475,20 @@ export class CommitMessage extends React.Component<
     }
 
     if (commitMessage.timestamp > this.state.commitMessage.timestamp) {
-      this.setState({
-        commitMessage,
-      })
+      const structured = parseStructuredSummary(commitMessage.summary)
+
+      if (structured === null) {
+        this.setState({
+          commitMessage,
+        })
+      } else {
+        this.setState({
+          commitMessage: { ...commitMessage, summary: structured.remainder },
+          ccType: structured.type,
+          ccScope: structured.scope,
+          ccBreaking: structured.breaking,
+        })
+      }
     }
   }
 
@@ -524,6 +588,9 @@ export class CommitMessage extends React.Component<
       prevState?.commitMessage.summary !== this.state.commitMessage.summary ||
       prevState?.commitMessage.description !==
         this.state.commitMessage.description ||
+      prevState?.ccType !== this.state.ccType ||
+      prevState?.ccScope !== this.state.ccScope ||
+      prevState?.ccBreaking !== this.state.ccBreaking ||
       prevProps?.coAuthors !== this.props.coAuthors ||
       prevProps?.commitToAmend !== this.props.commitToAmend ||
       prevProps?.repository !== this.props.repository ||
@@ -536,7 +603,12 @@ export class CommitMessage extends React.Component<
       }
 
       const context: ICommitContext = {
-        summary,
+        summary: composeConventionalCommitHeader(
+          this.state.ccType,
+          this.state.ccScope,
+          this.state.ccBreaking,
+          summary
+        ),
         description: this.state.commitMessage.description,
         trailers: this.getCoAuthorTrailers(),
         amend: this.props.commitToAmend !== null,
@@ -639,6 +711,18 @@ export class CommitMessage extends React.Component<
     })
   }
 
+  private onCcTypeChanged = (event: React.FormEvent<HTMLSelectElement>) => {
+    this.setState({ ccType: event.currentTarget.value })
+  }
+
+  private onCcScopeChanged = (scope: string) => {
+    this.setState({ ccScope: scope })
+  }
+
+  private onCcBreakingChanged = (event: React.FormEvent<HTMLInputElement>) => {
+    this.setState({ ccBreaking: event.currentTarget.checked })
+  }
+
   private onSubmit = () => {
     this.createCommit()
   }
@@ -686,7 +770,12 @@ export class CommitMessage extends React.Component<
     const trailers = this.getCoAuthorTrailers()
 
     const commitContext: ICommitContext = {
-      summary: this.summaryOrPlaceholder,
+      summary: composeConventionalCommitHeader(
+        this.state.ccType,
+        this.state.ccScope,
+        this.state.ccBreaking,
+        this.summaryOrPlaceholder
+      ),
       description,
       trailers,
       amend: this.props.commitToAmend !== null,
@@ -1471,8 +1560,7 @@ export class CommitMessage extends React.Component<
     if (showNoWriteAccess) {
       return (
         <CommitWarning icon={CommitWarningIcon.Warning}>
-          您没有对 <strong>{repository.name}</strong>{' '}
-          的写入权限。想要{' '}
+          您没有对 <strong>{repository.name}</strong> 的写入权限。想要{' '}
           <LinkButton onClick={this.props.onShowCreateForkDialog}>
             创建复刻
           </LinkButton>
@@ -1664,7 +1752,7 @@ export class CommitMessage extends React.Component<
 
     const pluralizedFile = `${filesToBeCommittedCount} 个文件`
 
-    return `${filesToBeCommittedCount} ${pluralizedFile} `
+    return `${pluralizedFile} `
   }
 
   private getCommittingButtonTitle() {
@@ -1844,9 +1932,33 @@ export class CommitMessage extends React.Component<
       <div className={cn}>
         <div className="description">{text}</div>
         {onShowCommitProgress && (
-           <Button tooltip="显示提交进度" onClick={onShowCommitProgress}>
+          <Button tooltip="显示提交进度" onClick={onShowCommitProgress}>
             <Octicon symbol={octicons.terminal} />
           </Button>
+        )}
+      </div>
+    )
+  }
+
+  private renderCommitPreview() {
+    const summary = this.state.commitMessage.summary
+
+    if (
+      summary.length === 0 ||
+      this.props.isCommitting === true ||
+      this.props.isGeneratingCommitMessage === true
+    ) {
+      return null
+    }
+
+    return (
+      <div className="commit-preview-line">
+        将提交：
+        {composeConventionalCommitHeader(
+          this.state.ccType,
+          this.state.ccScope,
+          this.state.ccBreaking,
+          summary
         )}
       </div>
     )
@@ -1902,8 +2014,41 @@ export class CommitMessage extends React.Component<
             row as part of the identity block. Otherwise, inline in summary. */}
         {this.props.showCommitAuthorInfo && this.renderAvatar()}
 
-        <div className={summaryClassName} ref={this.summaryGroupRef}>
+        <div className="cc-header-row">
           {!this.props.showCommitAuthorInfo && this.renderAvatar()}
+          <Checkbox
+            label="破坏性更改"
+            value={this.state.ccBreaking ? CheckboxValue.On : CheckboxValue.Off}
+            onChange={this.onCcBreakingChanged}
+            disabled={
+              isCommitting === true || isGeneratingCommitMessage === true
+            }
+          />
+          <Select
+            className="cc-type-select"
+            value={this.state.ccType}
+            onChange={this.onCcTypeChanged}
+            disabled={
+              isCommitting === true || isGeneratingCommitMessage === true
+            }
+          >
+            {conventionalCommitTypeOptions.map(option => (
+              <option key={option.type} value={option.type}>
+                {option.label}
+              </option>
+            ))}
+          </Select>
+        </div>
+
+        <TextBox
+          className="cc-scope-input"
+          placeholder="影响范围（可选）"
+          value={this.state.ccScope}
+          onValueChanged={this.onCcScopeChanged}
+          disabled={isCommitting === true || isGeneratingCommitMessage === true}
+        />
+
+        <div className={summaryClassName} ref={this.summaryGroupRef}>
           <AutocompletingInput
             required={true}
             label={this.props.showInputLabels === true ? '摘要' : undefined}
@@ -1927,6 +2072,8 @@ export class CommitMessage extends React.Component<
             this.renderRepoRuleCommitMessageFailureHint()}
           {showSummaryLengthHint && this.renderSummaryLengthHint()}
         </div>
+
+        <div className="cc-separator" />
 
         {this.state.isRuleFailurePopoverOpen && this.renderRuleFailurePopover()}
 
@@ -1967,6 +2114,7 @@ export class CommitMessage extends React.Component<
         {this.renderBranchProtectionsRepoRulesCommitWarning()}
 
         {this.renderSubmitButton()}
+        {this.renderCommitPreview()}
         {this.renderCommitProgress()}
         <span className="sr-only" aria-live="polite" aria-atomic="true">
           {this.state.isCommittingStatusMessage}
