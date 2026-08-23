@@ -316,12 +316,12 @@ export class BranchList extends React.Component<IBranchListProps> {
     return (
       <div className="branches-list-item-tooltip list-item-tooltip">
         <div>
-          <div className="label">Full Name: </div>
+          <div className="label">全名： </div>
           {name}
         </div>
         {absoluteDate && (
           <div>
-            <div className="label">Last Modified: </div>
+            <div className="label">上一次修改于： </div>
             {absoluteDate}
           </div>
         )}
@@ -361,13 +361,13 @@ export class BranchList extends React.Component<IBranchListProps> {
 
   private getGroupLabel(identifier: BranchGroupIdentifier) {
     if (identifier === 'default') {
-      return __DARWIN__ ? 'Default Branch' : 'Default branch'
+      return '默认分支'
     } else if (identifier === 'recent') {
-      return __DARWIN__ ? 'Recent Branches' : 'Recent branches'
+      return '最近使用的分支'
     } else if (identifier === 'other') {
-      return __DARWIN__ ? 'Other Branches' : 'Other branches'
+      return '其他分支'
     } else {
-      return assertNever(identifier, `Unknown identifier: ${identifier}`)
+      return assertNever(identifier, `未知标识符: ${identifier}`)
     }
   }
 
@@ -388,7 +388,7 @@ export class BranchList extends React.Component<IBranchListProps> {
         onClick={this.onCreateNewBranch}
       >
         <Octicon symbol={octicons.plus} className="mr" />
-        {__DARWIN__ ? 'New Branch' : 'New branch'}
+        新建分支
       </Button>
     ) : null
   }

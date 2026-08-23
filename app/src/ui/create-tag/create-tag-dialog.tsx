@@ -66,7 +66,7 @@ export class CreateTag extends React.Component<
 
         <DialogContent>
           <RefNameTextBox
-            label="Name"
+            label="名称"
             initialValue={this.props.initialName}
             onValueChange={this.updateTagName}
           />

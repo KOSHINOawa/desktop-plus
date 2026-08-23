@@ -52,20 +52,20 @@ export class Remote extends React.Component<IRemoteProps, {}> {
       <DialogContent>
         <div className="config-row">
           <TextBox
-            placeholder="Remote URL"
+            placeholder="远程 URL"
             label={
               __DARWIN__
-                ? `Primary Remote Repository (${remote.name}) URL`
-                : `Primary remote repository (${remote.name}) URL`
+                ? `主远程仓库（${remote.name}）URL`
+                : `主远程仓库（${remote.name}）URL`
             }
             value={remote.url}
             onValueChanged={this.props.onRemoteUrlChanged}
           />
         </div>
         <div className="config-row">
-          <p>Override the remote's default branch</p>
+          <p>覆盖远程的默认分支</p>
           <TextBox
-            placeholder="Default branch"
+            placeholder="默认分支"
             value={defaultBranch}
             onValueChanged={this.props.onDefaultBranchChanged}
           />
@@ -80,9 +80,9 @@ export class Remote extends React.Component<IRemoteProps, {}> {
         </div>
         <div className="config-row">
           <TextBox
-            placeholder="Endpoint"
+            placeholder="端点"
             readOnly={true}
-            label="API Endpoint"
+            label="API 端点"
             value={endpoint}
           />
         </div>

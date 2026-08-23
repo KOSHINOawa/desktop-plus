@@ -46,7 +46,7 @@ export class GenericGitAuthentication extends React.Component<
     return (
       <Dialog
         id="generic-git-auth"
-        title={__DARWIN__ ? `Authentication Failed` : `Authentication failed`}
+        title={__DARWIN__ ? `身份验证失败` : `身份验证失败`}
         onDismissed={this.props.onDismiss}
         onSubmit={this.save}
         role="alertdialog"
@@ -54,22 +54,22 @@ export class GenericGitAuthentication extends React.Component<
       >
         <DialogContent>
           <p id="generic-git-auth-error">
-            We were unable to authenticate with{' '}
-            <Ref>{this.props.remoteUrl}</Ref>. Please enter{' '}
+            我们无法使用{' '}
+            <Ref>{this.props.remoteUrl}</Ref> 进行身份验证。请输入{' '}
             {this.props.username ? (
               <>
-                the password for the user <Ref>{this.props.username}</Ref>
+                用户 <Ref>{this.props.username}</Ref> 的密码
               </>
             ) : (
-              'your username and password'
+              '您的用户名和密码'
             )}{' '}
-            to try again.
+            后重试。
           </p>
 
           {this.props.username === undefined && (
             <Row>
               <TextBox
-                label="Username"
+                label="用户名"
                 autoFocus={true}
                 value={this.state.username}
                 onValueChanged={this.onUsernameChange}
@@ -79,7 +79,7 @@ export class GenericGitAuthentication extends React.Component<
 
           <Row>
             <PasswordTextBox
-              label="Password"
+              label="密码"
               value={this.state.password}
               onValueChanged={this.onPasswordChange}
               ariaDescribedBy="generic-git-auth-password-description"
@@ -88,13 +88,11 @@ export class GenericGitAuthentication extends React.Component<
 
           <Row>
             <div id="generic-git-auth-password-description">
-              Depending on your repository's hosting service, you might need to
-              use a Personal Access Token (PAT) as your password. Learn more
-              about creating a PAT in our{' '}
+              根据您仓库的托管服务，您可能需要使用个人访问令牌（PAT）作为密码。在我们的{' '}
               <LinkButton uri="https://github.com/desktop/desktop/tree/development/docs/integrations">
-                integration docs
+                集成文档
               </LinkButton>
-              .
+              中了解更多关于创建 PAT 的信息。
             </div>
           </Row>
         </DialogContent>

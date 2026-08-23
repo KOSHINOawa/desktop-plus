@@ -90,11 +90,11 @@ export class MergeChooseBranchDialog extends React.Component<
     )
     const squashPrefix =
       this.props.operation === MultiCommitOperationKind.Squash
-        ? 'Squash and '
-        : null
+      ? '压缩并 '
+      : null
     return (
       <>
-        {squashPrefix}Merge into <strong>{truncatedName}</strong>
+        {squashPrefix}合并到 <strong>{truncatedName}</strong>
       </>
     )
   }
@@ -172,7 +172,7 @@ export class MergeChooseBranchDialog extends React.Component<
   }
 
   private renderLoadingMergeMessage() {
-    return <>Checking for ability to merge automatically...</>
+    return <>正在检查能否自动合并...</>
   }
 
   private renderCleanMergeMessage(
@@ -184,20 +184,21 @@ export class MergeChooseBranchDialog extends React.Component<
       return (
         <React.Fragment>
           <strong>{currentBranch.name}</strong>
-          {` `}
-          is already up to date with <strong>{branch.name}</strong>
+          {' 已与 '}
+          <strong>{branch.name}</strong>
+          {' 保持最新'}
         </React.Fragment>
       )
     }
 
-    const pluralized = commitCount === 1 ? 'commit' : 'commits'
+    const pluralized = '个提交'
     return (
       <React.Fragment>
-        This will merge
+        这将合并
         <strong>{` ${formatNumber(commitCount)} ${pluralized}`}</strong>
-        {` from `}
+        {' 从 '}
         <strong>{branch.name}</strong>
-        {` into `}
+        {' 到 '}
         <strong>{currentBranch.name}</strong>
       </React.Fragment>
     )
@@ -206,7 +207,7 @@ export class MergeChooseBranchDialog extends React.Component<
   private renderInvalidMergeMessage() {
     return (
       <React.Fragment>
-        Unable to merge unrelated histories in this repository
+        无法合并此仓库中无关联的历史记录
       </React.Fragment>
     )
   }
@@ -216,15 +217,15 @@ export class MergeChooseBranchDialog extends React.Component<
     currentBranch: Branch,
     count: number
   ) {
-    const pluralized = count === 1 ? 'file' : 'files'
+    const pluralized = '文件'
     return (
       <React.Fragment>
-        There will be
-        <strong>{` ${formatNumber(count)} conflicted ${pluralized}`}</strong>
-        {` when merging `}
+        合并
         <strong>{branch.name}</strong>
-        {` into `}
+        {' 到 '}
         <strong>{currentBranch.name}</strong>
+        {' 时将产生 '}
+        <strong>{` ${formatNumber(count)} 冲突${pluralized}`}</strong>
       </React.Fragment>
     )
   }

@@ -94,7 +94,13 @@ export class WindowControls extends React.Component<{}, IWindowControlState> {
     path: string
   ) {
     const className = classNames('window-control', name)
-    const title = name[0].toUpperCase() + name.substring(1)
+    const windowControlTitle: { [key: string]: string } = {
+      minimize: '最小化',
+      maximize: '最大化',
+      restore: '还原',
+      close: '关闭',
+    }
+    const title = windowControlTitle[name] ?? name[0].toUpperCase() + name.substring(1)
 
     return (
       <Button

@@ -572,10 +572,7 @@ export abstract class AutocompletingTextInput<
 
     const autoCompleteItems = this.state.autocompletionState?.items ?? []
 
-    const suggestionsMessage =
-      autoCompleteItems.length === 1
-        ? '1 suggestion'
-        : `${autoCompleteItems.length} suggestions`
+    const suggestionsMessage = `${autoCompleteItems.length} 个建议`
 
     return (
       <div className={className}>

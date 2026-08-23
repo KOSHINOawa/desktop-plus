@@ -180,7 +180,7 @@ export class AuthorInput extends React.Component<
         </div>
         <div className="shadow-input" ref={this.shadowInputRef} />
         <label id="author-input-label" className="label" htmlFor="author-input">
-          Co-Authors&nbsp;
+          共同作者&nbsp;
         </label>
         {this.renderAuthors()}
         <AutocompletingInput<UserHit>
@@ -292,9 +292,9 @@ export class AuthorInput extends React.Component<
       }
     }
 
-    let actionDescription = `Removed ${authorToRemove.username}`
+    let actionDescription = `已移除 ${authorToRemove.username}`
     if (isKnownAuthor(authorToRemove)) {
-      actionDescription += ` (${authorToRemove.name})`
+      actionDescription += `（${authorToRemove.name}）`
     }
 
     this.setState({
@@ -395,11 +395,11 @@ export class AuthorInput extends React.Component<
     const newAuthors = [...this.props.authors, authorToAdd]
     this.emitAuthorsUpdated(newAuthors)
 
-    let actionDescription = `Added ${authorToAdd.username}`
+    let actionDescription = `已添加 ${authorToAdd.username}`
     if (!isKnownAuthor(authorToAdd)) {
       this.attemptUnknownAuthorSearch(authorToAdd)
     } else {
-      actionDescription += ` (${authorToAdd.name})`
+      actionDescription += `（${authorToAdd.name}）`
     }
 
     this.setState({ lastActionDescription: actionDescription })
@@ -432,7 +432,7 @@ export class AuthorInput extends React.Component<
 
       this.updateUnknownAuthor(erroredUnknownAuthor)
       this.setState({
-        lastActionDescription: `Error: user ${author.username} not found`,
+        lastActionDescription: `错误：未找到用户 ${author.username}`,
       })
       return
     }

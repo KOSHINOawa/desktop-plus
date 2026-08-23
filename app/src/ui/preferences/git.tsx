@@ -86,19 +86,15 @@ export class Git extends React.Component<IGitProps> {
         {__FLATPAK__ && (
           <div className="git-hooks-flatpak-warning">
             <span className="warning-icon">⚠️</span>
-            You're running the Flatpak version. Git hooks run inside the Flatpak
-            sandbox and cannot access programs installed on your system (such as
-            version managers, linters, or other tools your hooks rely on). If
-            your hooks depend on such programs, install a native package
-            instead. See the{' '}
+            你正在运行 Flatpak 版本。Git 钩子在 Flatpak 沙箱中运行，无法访问系统上安装的程序（例如版本管理器、代码检查工具或钩子所依赖的其他工具）。如果你的钩子依赖这些程序，请改而安装原生包。请参阅{' '}
             <LinkButton uri="https://github.com/desktop-plus/desktop-plus#download-and-installation-">
-              installation instructions
+              安装说明
             </LinkButton>
-            .
+            。
           </div>
         )}
         <Checkbox
-          label="Load Git hook environment variables from shell"
+          label="从 shell 加载 Git 钩子环境变量"
           ariaDescribedBy="git-hooks-env-description"
           value={
             this.props.enableGitHookEnv ? CheckboxValue.On : CheckboxValue.Off
@@ -106,18 +102,14 @@ export class Git extends React.Component<IGitProps> {
           onChange={this.onEnableGitHookEnvChanged}
         />
         <p id="git-hooks-env-description" className="settings-description">
-          When enabled, Desktop Plus will attempt to load environment variables
-          from your shell when executing Git hooks. This is useful if your Git
-          hooks depend on environment variables set in your shell configuration
-          files, a common practice for version managers such as nvm, rbenv,
-          asdf, etc.
+          启用后，Desktop Plus 将在执行 Git 钩子时尝试从你的 shell 加载环境变量。如果你的 Git 钩子依赖 shell 配置文件中设置的环境变量（nvm、rbenv、asdf 等版本管理器的常见做法），这将很有用。
         </p>
 
         {this.props.enableGitHookEnv && __WIN32__ && (
           <>
             <Select
               className="git-hook-shell-select"
-              label={'Shell to use when loading environment'}
+              label={'加载环境时使用的 shell'}
               value={this.props.selectedShell}
               onChange={this.onSelectedShellChanged}
             >
@@ -135,7 +127,7 @@ export class Git extends React.Component<IGitProps> {
         {this.props.enableGitHookEnv && (
           <>
             <Checkbox
-              label="Cache Git hook environment variables"
+              label="缓存 Git 钩子环境变量"
               ariaDescribedBy="git-hooks-cache-description"
               onChange={this.onCacheGitHookEnvChanged}
               value={
@@ -149,8 +141,7 @@ export class Git extends React.Component<IGitProps> {
               id="git-hooks-cache-description"
               className="settings-description"
             >
-              Cache hook environment variables to improve performance. Disable
-              if your hooks rely on frequently changing environment variables.
+              缓存钩子环境变量以提升性能。如果你的钩子依赖频繁变化的环境变量，请禁用。
             </div>
           </>
         )}
@@ -165,9 +156,9 @@ export class Git extends React.Component<IGitProps> {
           selectedIndex={this.selectedTabIndex}
           onTabClicked={this.onTabClicked}
         >
-          <span>Author</span>
-          <span>Default branch</span>
-          <span>Hooks</span>
+          <span>作者</span>
+          <span>默认分支</span>
+          <span>钩子</span>
         </TabBar>
         <div className="git-preferences-content">{this.renderCurrentTab()}</div>
       </DialogContent>
@@ -201,9 +192,9 @@ export class Git extends React.Component<IGitProps> {
   private renderGitConfigAuthorInfo() {
     return (
       <>
-        <h2>Global Author</h2>
-        <Checkbox
-          label="Store author identity in global Git config"
+         <h2>全局作者</h2>
+         <Checkbox
+           label="将作者身份存储在全局 Git 配置中"
           value={
             this.props.setGlobalAuthor ? CheckboxValue.On : CheckboxValue.Off
           }
@@ -212,9 +203,7 @@ export class Git extends React.Component<IGitProps> {
         {!this.props.setGlobalAuthor && this.props.globalAuthorWasSet && (
           <div className="git-email-not-found-warning">
             <span className="warning-icon">⚠️</span>
-            Saving will remove user.name and user.email from your global Git
-            config. Make sure your repositories have local config or includeIf
-            rules set up, otherwise commits may fail.
+            保存将从你的全局 Git 配置中移除 user.name 和 user.email。请确保你的仓库已设置本地配置或 includeIf 规则，否则提交可能失败。
           </div>
         )}
         <GitConfigUserForm
@@ -227,9 +216,9 @@ export class Git extends React.Component<IGitProps> {
           disabled={!this.props.setGlobalAuthor}
         />
         {this.renderEditGlobalGitConfigInfo()}
-        <h2>Commit Identity Display</h2>
-        <Checkbox
-          label="Show effective identity and config scope above commit message"
+         <h2>提交身份显示</h2>
+         <Checkbox
+           label="在提交信息上方显示有效身份与配置作用域"
           value={
             this.props.showCommitAuthorInfo
               ? CheckboxValue.On
@@ -238,12 +227,11 @@ export class Git extends React.Component<IGitProps> {
           onChange={this.onShowCommitAuthorInfoChanged}
         />
         <p className="git-settings-description">
-          Git resolves author identity from multiple config files with different
-          priorities.{' '}
+          Git 会从多个具有不同优先级的配置文件中解析作者身份。{' '}
           <LinkButton uri="https://git-scm.com/docs/git-config#SCOPES">
-            Learn more about config scopes
+            了解有关配置作用域的更多信息
           </LinkButton>
-          .
+          。
         </p>
       </>
     )
@@ -253,7 +241,7 @@ export class Git extends React.Component<IGitProps> {
     return (
       <div className="default-branch-component">
         <h2 id="default-branch-heading">
-          Default branch name for new repositories
+          新仓库的默认分支名
         </h2>
 
         <RefNameTextBox
@@ -265,9 +253,7 @@ export class Git extends React.Component<IGitProps> {
         />
 
         <p id="default-branch-description" className="settings-description">
-          GitHub's default branch name is <Ref>main</Ref>. You may want to
-          change it due to different workflows, or because your integrations
-          still require the historical default branch name of <Ref>master</Ref>.
+          GitHub 的默认分支名是 <Ref>main</Ref>。你可能因为不同的工作流，或你的集成仍需要历史上的默认分支名 <Ref>master</Ref>，而想要更改它。
         </p>
 
         {this.renderEditGlobalGitConfigInfo()}
@@ -278,11 +264,11 @@ export class Git extends React.Component<IGitProps> {
   private renderEditGlobalGitConfigInfo() {
     return (
       <p className="settings-description">
-        These preferences will{' '}
-        <LinkButton onClick={this.props.onEditGlobalGitConfig}>
-          edit your global Git config file
-        </LinkButton>
-        .
+         这些偏好设置将{' '}
+         <LinkButton onClick={this.props.onEditGlobalGitConfig}>
+           编辑你的全局 Git 配置文件
+         </LinkButton>
+         。
       </p>
     )
   }

@@ -379,14 +379,14 @@ export class TextBox extends React.Component<ITextBoxProps, ITextBoxState> {
           this.state.value !== '' && (
             <button
               className="clear-button"
-              aria-label="Clear"
+              aria-label="清除"
               onClick={this.clearSearchText}
             >
               <Octicon symbol={octicons.x} />
             </button>
           )}
         {this.state.valueCleared && (
-          <AriaLiveContainer message="Input cleared" />
+          <AriaLiveContainer message="输入已清除" />
         )}
       </div>
     )

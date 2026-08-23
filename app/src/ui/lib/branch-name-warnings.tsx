@@ -12,8 +12,7 @@ export function renderBranchHasRemoteWarning(branch: Branch) {
       <Row className="warning-helper-text">
         <Octicon symbol={octicons.alert} />
         <p>
-          This branch is tracking <Ref>{branch.upstream}</Ref> and renaming this
-          branch will not change the branch name on the remote.
+          该分支正在跟踪 <Ref>{branch.upstream}</Ref>，重命名此分支不会更改远程上的分支名称。
         </p>
       </Row>
     )
@@ -38,9 +37,9 @@ export function renderBranchNameExistsOnRemoteWarning(
   return (
     <Row className="warning-helper-text">
       <Octicon symbol={octicons.alert} />
-      <p>
-        A branch named <Ref>{sanitizedName}</Ref> already exists on the remote.
-      </p>
+        <p>
+          名为 <Ref>{sanitizedName}</Ref> 的分支已存在于远程。
+        </p>
     </Row>
   )
 }

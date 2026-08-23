@@ -686,7 +686,7 @@ export class SideBySideDiff extends React.Component<
       this.ariaLiveChangeSignal = !this.ariaLiveChangeSignal
       this.setState({
         diff: updatedDiff,
-        ariaLiveMessage: prevProps === undefined ? '' : 'Expanded',
+        ariaLiveMessage: prevProps === undefined ? '' : '已展开',
       })
       return
     }
@@ -700,7 +700,7 @@ export class SideBySideDiff extends React.Component<
     this.ariaLiveChangeSignal = !this.ariaLiveChangeSignal
     this.setState({
       diff: diffToRestore,
-      ariaLiveMessage: prevProps === undefined ? '' : 'Collapsed',
+      ariaLiveMessage: prevProps === undefined ? '' : '已折叠',
     })
   }
 
@@ -976,7 +976,7 @@ export class SideBySideDiff extends React.Component<
                   className="diff-minimap-resize-handle"
                   role="separator"
                   aria-orientation="vertical"
-                  aria-label="Resize minimap"
+                  aria-label="调整缩略图大小"
                   onMouseDown={this.onMinimapResizeStart}
                 />
                 <DiffMinimap
@@ -1807,7 +1807,7 @@ export class SideBySideDiff extends React.Component<
     this.expandHunk(diff.hunks[hunkIndex], kind)
 
     this.ariaLiveChangeSignal = !this.ariaLiveChangeSignal
-    this.setState({ ariaLiveMessage: 'Expanded' })
+    this.setState({ ariaLiveMessage: '已展开' })
   }
 
   private onClickHunk = (hunkStartLine: number, select: boolean) => {
@@ -1846,13 +1846,13 @@ export class SideBySideDiff extends React.Component<
 
     const items: IMenuItem[] = [
       {
-        label: 'Copy',
+        label: '复制',
         // When using role="copy", the enabled attribute is not taken into account.
         role: selectionLength > 0 ? 'copy' : undefined,
         enabled: selectionLength > 0,
       },
       {
-        label: __DARWIN__ ? 'Select All' : 'Select all',
+        label: __DARWIN__ ? '全选' : '全选',
         action: () => this.onSelectAll(),
       },
     ]
@@ -1907,7 +1907,7 @@ export class SideBySideDiff extends React.Component<
 
     return this.diffToRestore === null
       ? {
-          label: __DARWIN__ ? 'Expand Whole File' : 'Expand whole file',
+          label: __DARWIN__ ? '展开整个文件' : '展开整个文件',
           action: () => this.onWholeFileModeChanged(true),
           // If there is only one hunk that can't be expanded, disable this item
           enabled:
@@ -1915,9 +1915,7 @@ export class SideBySideDiff extends React.Component<
             diff.hunks[0].expansionType !== DiffHunkExpansionType.None,
         }
       : {
-          label: __DARWIN__
-            ? 'Collapse Expanded Lines'
-            : 'Collapse expanded lines',
+          label: __DARWIN__ ? '折叠已展开的行' : '折叠已展开的行',
           action: () => this.onWholeFileModeChanged(false),
         }
   }
@@ -1956,8 +1954,9 @@ export class SideBySideDiff extends React.Component<
     this.ariaLiveChangeSignal = !this.ariaLiveChangeSignal
     this.setState({
       diff: updatedDiff,
-      ariaLiveMessage: 'Expanded',
+      ariaLiveMessage: '已展开',
     })
+    return
   }
 
   private onCollapseExpandedLines = () => {
@@ -2014,19 +2013,16 @@ export class SideBySideDiff extends React.Component<
     let type = ''
 
     if (rangeType === DiffRangeType.Additions) {
-      type = __DARWIN__ ? 'Added' : 'added'
+      type = '已添加'
     } else if (rangeType === DiffRangeType.Deletions) {
-      type = __DARWIN__ ? 'Removed' : 'removed'
+      type = '已删除'
     } else if (rangeType === DiffRangeType.Mixed) {
-      type = __DARWIN__ ? 'Modified' : 'modified'
+      type = '已修改'
     } else {
       assertNever(rangeType, `Invalid range type: ${rangeType}`)
     }
 
-    const plural = numLines > 1 ? 's' : ''
-    return __DARWIN__
-      ? `Discard ${type} Line${plural}${suffix}`
-      : `Discard ${type} line${plural}${suffix}`
+    return `丢弃${type}的行${suffix}`
   }
 
   private onDiscardChanges(startLine: number, endLine: number = startLine) {
@@ -2073,7 +2069,7 @@ export class SideBySideDiff extends React.Component<
     const { searchResults } = this.state
 
     if (searchQuery?.trim() === '') {
-      this.resetSearch(true, 'No results')
+      this.resetSearch(true, '无结果')
     } else if (searchQuery === this.state.searchQuery && searchResults) {
       this.continueSearch(searchResults, direction)
     } else {
@@ -2090,9 +2086,9 @@ export class SideBySideDiff extends React.Component<
     )
 
     if (searchResults === undefined || searchResults.length === 0) {
-      this.resetSearch(true, `No results for "${searchQuery}"`)
+      this.resetSearch(true, `未找到 "${searchQuery}" 的结果`)
     } else {
-      const ariaLiveMessage = `Result 1 of ${searchResults.length} for "${searchQuery}"`
+      const ariaLiveMessage = `第 1 个结果，共 ${searchResults.length} 个，匹配 "${searchQuery}"`
 
       this.scrollToSearchResult(0)
 
@@ -2121,9 +2117,9 @@ export class SideBySideDiff extends React.Component<
       (selectedSearchResult + delta + searchResults.length) %
       searchResults.length
 
-    const ariaLiveMessage = `Result ${selectedSearchResult + 1} of ${
+    const ariaLiveMessage = `第 ${selectedSearchResult + 1} 个结果，共 ${
       searchResults.length
-    } for "${searchQuery}"`
+    } 个，匹配 "${searchQuery}"`
 
     this.scrollToSearchResult(selectedSearchResult)
 

@@ -294,7 +294,7 @@ export class SectionFilterList<
         displayClearButton={true}
         prefixedIcon={octicons.search}
         autoFocus={true}
-        placeholder={this.props.placeholderText || 'Filter'}
+        placeholder={this.props.placeholderText || '筛选'}
         className="filter-list-filter-field"
         onValueChanged={this.onFilterValueChanged}
         onEnterPressed={this.onEnterPressed}
@@ -311,8 +311,7 @@ export class SectionFilterList<
     }
 
     const itemRows = this.state.rows.flat().filter(row => row.kind === 'item')
-    const resultsPluralized = itemRows.length === 1 ? 'result' : 'results'
-    const screenReaderMessage = `${itemRows.length} ${resultsPluralized}`
+    const screenReaderMessage = `${itemRows.length} 个结果`
 
     return (
       <AriaLiveContainer

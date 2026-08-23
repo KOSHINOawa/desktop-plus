@@ -42,7 +42,7 @@ export class DeleteRepositoryGroup extends React.Component<
         id="delete-repository-group"
         key="delete-repository-group-confirmation"
         type="warning"
-        title={__DARWIN__ ? 'Delete Group' : 'Delete group'}
+        title={__DARWIN__ ? '删除分组' : '删除分组'}
         dismissDisabled={this.state.isDeletingGroup}
         loading={this.state.isDeletingGroup}
         disabled={this.state.isDeletingGroup}
@@ -51,17 +51,15 @@ export class DeleteRepositoryGroup extends React.Component<
       >
         <DialogContent>
           <p>
-            Are you sure you want to delete the group "{groupName}"? This will
-            unassign it from {count}{' '}
-            {count === 1 ? 'repository' : 'repositories'}.
+            你确定要删除分组 "{groupName}" 吗？这将取消它与 {count} 个仓库的关联。
           </p>
 
           <div>
             <Checkbox
               label={
                 __DARWIN__
-                  ? `Also Remove These Repositories From Desktop Plus`
-                  : `Also remove these repositories from Desktop Plus`
+                  ? `同时从 Desktop Plus 中移除这些仓库`
+                  : `同时从 Desktop Plus 中移除这些仓库`
               }
               value={
                 this.state.removeRepositories
@@ -71,7 +69,7 @@ export class DeleteRepositoryGroup extends React.Component<
               onChange={this.onRemoveRepositoriesChanged}
             />
             <Checkbox
-              label={'Also move these repositories to ' + TrashNameLabel}
+              label={'同时将这些仓库移动到 ' + TrashNameLabel}
               value={
                 this.state.moveRepositoriesToTrash
                   ? CheckboxValue.On
@@ -83,7 +81,7 @@ export class DeleteRepositoryGroup extends React.Component<
           </div>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Delete" />
+          <OkCancelButtonGroup destructive={true} okButtonText="删除" />
         </DialogFooter>
       </Dialog>
     )

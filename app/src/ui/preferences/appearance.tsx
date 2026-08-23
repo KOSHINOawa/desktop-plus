@@ -92,11 +92,11 @@ interface IAppearanceState {
 function getTitleBarStyleDescription(titleBarStyle: TitleBarStyle): string {
   switch (titleBarStyle) {
     case 'custom':
-      return 'Uses the menu system provided by Desktop Plus, hiding the default chrome provided by your window manager.'
+      return '使用 Desktop Plus 提供的菜单系统，隐藏窗口管理器提供的默认边框。'
     case 'native':
-      return 'Uses the menu system and chrome provided by your window manager.'
+      return '使用窗口管理器提供的菜单系统和边框。'
     case 'native-without-menu-bar':
-      return 'Uses the native window chrome, but hides the menu bar. Press Alt to show it temporarily. Takes effect after restarting the app.'
+      return '使用原生窗口边框，但隐藏菜单栏。按 Alt 可临时显示它。重启应用后生效。'
   }
 }
 
@@ -308,14 +308,14 @@ export class Appearance extends React.Component<
         return (
           <span>
             <img src={lightThemeImage} alt="" />
-            <span className="theme-value-label">Light</span>
+            <span className="theme-value-label">浅色</span>
           </span>
         )
       case ApplicationTheme.Dark:
         return (
           <span>
             <img src={darkThemeImage} alt="" />
-            <span className="theme-value-label">Dark</span>
+            <span className="theme-value-label">深色</span>
           </span>
         )
       case ApplicationTheme.System:
@@ -330,7 +330,7 @@ export class Appearance extends React.Component<
               <img src={lightThemeImage} alt="" />
               <img src={darkThemeImage} alt="" />
             </span>
-            <span className="theme-value-label">System</span>
+            <span className="theme-value-label">系统</span>
           </span>
         )
     }
@@ -345,16 +345,16 @@ export class Appearance extends React.Component<
 
     return (
       <div className="advanced-section">
-        <h2>Title bar style</h2>
+        <h2>标题栏样式</h2>
 
         <Select
           value={this.state.titleBarStyle}
           onChange={this.onSelectChanged}
         >
-          <option value="native">Native</option>
-          <option value="custom">Custom</option>
+          <option value="native">原生</option>
+          <option value="custom">自定义</option>
           <option value="native-without-menu-bar">
-            Native without menu bar
+            无菜单栏的原生样式
           </option>
         </Select>
 
@@ -369,7 +369,7 @@ export class Appearance extends React.Component<
     const { selectedTheme } = this.state
 
     if (selectedTheme == null) {
-      return <Row>Loading system theme</Row>
+       return <Row>正在加载系统主题</Row>
     }
 
     const themes = [
@@ -380,7 +380,7 @@ export class Appearance extends React.Component<
 
     return (
       <div className="advanced-section">
-        <h2 id="theme-heading">Theme</h2>
+        <h2 id="theme-heading">主题</h2>
 
         <RadioGroup<ApplicationTheme>
           ariaLabelledBy="theme-heading"
@@ -415,7 +415,7 @@ export class Appearance extends React.Component<
 
     return (
       <div className="advanced-section">
-        <h2 id="branch-sort-order-heading">Sort branches</h2>
+        <h2 id="branch-sort-order-heading">分支排序</h2>
 
         <RadioGroup<BranchSortOrder>
           ariaLabelledBy="branch-sort-order-heading"
@@ -434,9 +434,9 @@ export class Appearance extends React.Component<
   private renderBranchSortOptionLabel = (branchSortOrder: BranchSortOrder) => {
     switch (branchSortOrder) {
       case BranchSortOrder.Alphabetical:
-        return 'Alphabetical'
+        return '按字母顺序'
       case BranchSortOrder.LastModified:
-        return 'Last modified'
+        return '最近修改'
       default:
         return assertNever(
           branchSortOrder,
@@ -448,10 +448,10 @@ export class Appearance extends React.Component<
   private renderRepositoryList() {
     return (
       <div className="advanced-section">
-        <h2 id="repository-list-heading">{'Repository list'}</h2>
+        <h2 id="repository-list-heading">{'仓库列表'}</h2>
 
         <Checkbox
-          label="Show recent repositories"
+          label="显示最近使用的仓库"
           value={
             this.state.showRecentRepositories
               ? CheckboxValue.On
@@ -460,14 +460,14 @@ export class Appearance extends React.Component<
           onChange={this.onShowRecentRepositoriesChanged}
         />
         <Select
-          label="Show current branch name next to repository name"
+          label="在仓库名称旁显示当前分支名"
           value={this.props.showBranchNameInRepoList}
           onChange={this.onShowBranchNameInRepoListChanged}
         >
-          <option value={ShowBranchNameInRepoListSetting.Never}>Never</option>
-          <option value={ShowBranchNameInRepoListSetting.Always}>Always</option>
+          <option value={ShowBranchNameInRepoListSetting.Never}>从不</option>
+          <option value={ShowBranchNameInRepoListSetting.Always}>始终</option>
           <option value={ShowBranchNameInRepoListSetting.WhenNotDefault}>
-            When it's not the default branch
+            非默认分支时
           </option>
         </Select>
       </div>
@@ -478,10 +478,10 @@ export class Appearance extends React.Component<
     return (
       <>
         <div className="advanced-section">
-          <h2 id="worktree-heading">{'Worktrees'}</h2>
+        <h2 id="worktree-heading">{'工作树'}</h2>
 
-          <Checkbox
-            label="Show worktrees dropdown in toolbar"
+        <Checkbox
+          label="在工具栏中显示工作树下拉菜单"
             value={
               this.state.showWorktrees ? CheckboxValue.On : CheckboxValue.Off
             }
@@ -489,7 +489,7 @@ export class Appearance extends React.Component<
           />
 
           <Checkbox
-            label="Show worktrees in repository list"
+            label="在仓库列表中显示工作树"
             value={
               this.state.showWorktreesInRepoList
                 ? CheckboxValue.On
@@ -499,10 +499,10 @@ export class Appearance extends React.Component<
           />
         </div>
         <div className="advanced-section">
-          <h2>{'Commit list'}</h2>
+          <h2>{'提交列表'}</h2>
 
           <Checkbox
-            label="Show Compare tab"
+            label="显示“比较”选项卡"
             value={
               this.state.showCompareTab ? CheckboxValue.On : CheckboxValue.Off
             }
@@ -510,7 +510,7 @@ export class Appearance extends React.Component<
           />
 
           <Checkbox
-            label="Show Conventional Commits prefixes as badges"
+            label="将 Conventional Commits 前缀显示为徽章"
             value={
               this.state.showConventionalCommitBadges
                 ? CheckboxValue.On
@@ -530,11 +530,11 @@ export class Appearance extends React.Component<
 
     return (
       <div className="appearance-section formatting-section">
-        <h2 id="formatting-heading">Formatting</h2>
+        <h2 id="formatting-heading">格式</h2>
 
         <Row>
           <Select
-            label={__DARWIN__ ? 'Date Format' : 'Date format'}
+            label={__DARWIN__ ? '日期格式' : '日期格式'}
             value={this.props.selectedDateFormat}
             onChange={this.onDateFormatChanged}
           >
@@ -546,7 +546,7 @@ export class Appearance extends React.Component<
           </Select>
 
           <Select
-            label={__DARWIN__ ? 'Time Format' : 'Time format'}
+            label={__DARWIN__ ? '时间格式' : '时间格式'}
             value={this.props.selectedTimeFormat}
             onChange={this.onTimeFormatChanged}
           >
@@ -559,7 +559,7 @@ export class Appearance extends React.Component<
         </Row>
 
         <Select
-          label={__DARWIN__ ? 'Number Format' : 'Number format'}
+          label={__DARWIN__ ? '数字格式' : '数字格式'}
           value={numberFormatToKey(this.props.selectedNumberFormat)}
           onChange={this.onNumberFormatChanged}
         >
@@ -575,7 +575,7 @@ export class Appearance extends React.Component<
 
         <Checkbox
           className="prefer-absolute-dates"
-          label="Prefer absolute dates over relative"
+          label="优先使用绝对日期而非相对日期"
           value={
             this.props.preferAbsoluteDates
               ? CheckboxValue.On
@@ -592,23 +592,23 @@ export class Appearance extends React.Component<
 
     return (
       <div className="advanced-section">
-        <h2 id="diff-heading">Diff</h2>
+        <h2 id="diff-heading">差异</h2>
 
         <Select
           value={this.state.selectedDiffFontSize.toString()}
-          label={__DARWIN__ ? 'Font Size' : 'Font size'}
+          label={__DARWIN__ ? '字号' : '字号'}
           onChange={this.onSelectedDiffFontSizeChanged}
         >
           {availableDiffFontSizes.map(n => (
             <option key={n} value={n}>
-              {n === defaultDiffFontSize ? `${n} (default)` : n}
+              {n === defaultDiffFontSize ? `${n}（默认）` : n}
             </option>
           ))}
         </Select>
 
         <Select
           value={this.state.selectedDiffFontFamily}
-          label="Font"
+          label="字体"
           onChange={this.onSelectedDiffFontFamilyChanged}
         >
           {this.state.availableDiffFontFamilies.map(fontFamily => (
@@ -620,7 +620,7 @@ export class Appearance extends React.Component<
 
         <Select
           value={this.state.selectedTabSize.toString()}
-          label={__DARWIN__ ? 'Tab Size' : 'Tab size'}
+          label={__DARWIN__ ? '制表符宽度' : '制表符宽度'}
           onChange={this.onSelectedTabSizeChanged}
         >
           {availableTabSizes.map(n => (

@@ -36,10 +36,9 @@ export class SignIn extends React.Component<ISignInProps, {}> {
     return (
       <>
         <p className="existing-account-warning">
-          You're already signed in to{' '}
-          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref> with the account{' '}
-          <Ref>{state.existingAccount.login}</Ref>. If you continue, you will
-          first be signed out.
+          你已经登录到 <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref>
+          ，使用的是账户 <Ref>{state.existingAccount.login}</Ref>
+          。如果你继续，你将首先被登出。
         </p>
         {this.renderAuthenticationStep(state)}
       </>

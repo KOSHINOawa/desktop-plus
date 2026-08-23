@@ -36,7 +36,7 @@ export class RenameStashDialog extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Rename Stash' : 'Rename stash'
+    const title = __DARWIN__ ? '重命名暂存' : '重命名暂存'
 
     return (
       <Dialog
@@ -50,10 +50,10 @@ export class RenameStashDialog extends React.Component<
         <DialogContent>
           <Row>
             <TextBox
-              label="Name"
+              label="名称"
               value={this.state.name}
               autoFocus={true}
-              placeholder="Leave empty to remove the name"
+              placeholder="留空以移除名称"
               onValueChanged={this.onNameChanged}
             />
           </Row>

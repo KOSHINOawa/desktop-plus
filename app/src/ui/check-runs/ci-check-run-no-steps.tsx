@@ -17,13 +17,13 @@ export class CICheckRunNoStepItem extends React.PureComponent<ICICheckRunNoStepP
     return (
       <div className="ci-check-run-no-steps">
         <p>
-          There are no steps to display for this check.
+          此检查没有可显示的步骤。
           <Button
             className="button-with-icon"
             onClick={this.props.onViewCheckExternally}
             role="link"
           >
-            View check details
+            查看检查详情
             <Octicon className="ml" symbol={octicons.linkExternal} />
           </Button>
         </p>

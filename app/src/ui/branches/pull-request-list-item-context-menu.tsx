@@ -24,9 +24,7 @@ export function generatePullRequestContextMenuItems(
 
   if (onCheckoutInNewWorktree !== undefined) {
     items.push({
-      label: __DARWIN__
-        ? 'Checkout in New Worktree…'
-        : 'Checkout in new worktree…',
+      label: '在新工作树中检出…',
       action: () => onCheckoutInNewWorktree(),
     })
   }
@@ -37,19 +35,19 @@ export function generatePullRequestContextMenuItems(
 function getViewPullRequestLabel(gitHubRepository: GitHubRepository): string {
   switch (gitHubRepository.type) {
     case 'github':
-      return 'View Pull Request on GitHub'
+      return '在 GitHub 上查看拉取请求'
     case 'bitbucket':
-      return 'View Pull Request on Bitbucket'
+      return '在 Bitbucket 上查看拉取请求'
     case 'gitlab':
-      return 'View Merge Request on GitLab'
+      return '在 GitLab 上查看合并请求'
     case 'forgejo':
-      return `View Pull Request on ${getForgejoName(gitHubRepository.endpoint)}`
+      return `在 ${getForgejoName(gitHubRepository.endpoint)} 上查看拉取请求`
     case 'gitea':
-      return 'View Pull Request on Gitea'
+      return '在 Gitea 上查看拉取请求'
     default:
       assertNever(
         gitHubRepository.type,
-        `Unknown repo type: ${gitHubRepository.type}`
+        `未知的仓库类型：${gitHubRepository.type}`
       )
   }
 }

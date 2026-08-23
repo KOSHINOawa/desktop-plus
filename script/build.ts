@@ -342,13 +342,25 @@ function copyDependencies() {
       : {}
 
   writeFileSync(path.join(outRoot, 'package.json'), JSON.stringify(pkg))
+
+  // The out directory is installed as an isolated pnpm project. Without this
+  // file, pnpm would climb up to the repository root and treat the install as
+  // part of the root project's workspace context.
+  writeFileSync(
+    path.join(outRoot, 'pnpm-workspace.yaml'),
+    ['nodeLinker: hoisted', 'dangerouslyAllowAllBuilds: true', ''].join('\n')
+  )
+
   rmSync(path.resolve(outRoot, 'node_modules'), {
     recursive: true,
     force: true,
   })
 
-  console.log('  Installing dependencies via yarn…')
-  cp.execSync('yarn install', { cwd: outRoot, env: process.env })
+  console.log('  Installing dependencies via pnpm…')
+  cp.execSync('pnpm install --no-frozen-lockfile', {
+    cwd: outRoot,
+    env: process.env,
+  })
 
   console.log('  Copying desktop-askpass-trampoline…')
   const trampolineSource = path.resolve(

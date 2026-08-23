@@ -40,16 +40,15 @@ interface ISignInState {
 }
 
 const SignInWithBrowserTitle = __DARWIN__
-  ? 'Sign in Using Your Browser'
-  : 'Sign in using your browser'
+  ? '使用浏览器登录'
+  : '使用浏览器登录'
 
-const DefaultTitle = 'Sign in'
+const DefaultTitle = '登录'
 
 const browserSignInInfoContent = (
   <p>
-    Your browser will redirect you back to Desktop Plus once you've signed in.
-    If your browser asks for your permission to launch Desktop Plus, please
-    allow it.
+    登录后，你的浏览器会将你重定向回 Desktop Plus。
+    如果你的浏览器请求允许启动 Desktop Plus，请允许。
   </p>
 )
 
@@ -140,13 +139,13 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     let primaryButtonText: string
     const stepKind = state.kind
     const continueWithBrowserLabel = __DARWIN__
-      ? 'Continue With Browser'
-      : 'Continue with browser'
+      ? '使用浏览器继续'
+      : '使用浏览器继续'
 
     switch (state.kind) {
       case SignInStep.EndpointEntry:
         disableSubmit = this.state.endpoint.length === 0
-        primaryButtonText = 'Continue'
+        primaryButtonText = '继续'
         break
       case SignInStep.ExistingAccountWarning:
         primaryButtonText = continueWithBrowserLabel
@@ -156,7 +155,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         break
       case SignInStep.TokenEntry:
         disableSubmit = this.state.token.length === 0
-        primaryButtonText = __DARWIN__ ? 'Sign In' : 'Sign in'
+        primaryButtonText = __DARWIN__ ? '登录' : '登录'
         break
       default:
         return assertNever(state, `Unknown sign in step ${stepKind}`)
@@ -178,10 +177,9 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     return (
       <DialogContent>
         <p className="existing-account-warning">
-          You're already signed in to{' '}
-          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref> with the account{' '}
-          <Ref>{state.existingAccount.login}</Ref>. If you continue, you will
-          first be signed out.
+          你已使用账户{' '}
+          <Ref>{state.existingAccount.login}</Ref> 登录到{' '}
+          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref>。如果继续，你将先被登出。
         </p>
         {browserSignInInfoContent}
       </DialogContent>
@@ -193,7 +191,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       <DialogContent>
         <Row>
           <TextBox
-            label="Enterprise address"
+            label="企业地址"
             value={this.state.endpoint}
             onValueChanged={this.onEndpointChanged}
             placeholder="https://example.ghe.com"
@@ -208,7 +206,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       <DialogContent>
         <Row>
           <TextBox
-            label={`${friendlySelfHostedName(apiType)} address`}
+            label={`${friendlySelfHostedName(apiType)} 地址`}
             value={this.state.endpoint}
             onValueChanged={this.onEndpointChanged}
             placeholder="https://git.example.com"
@@ -225,11 +223,11 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       <DialogContent>
         {this.renderCredentialHelperInfo()}
         <p>
-          Signing in to <Ref>{webBaseUrl}</Ref> with a personal access token.
+          正在使用个人访问令牌登录到 <Ref>{webBaseUrl}</Ref>。
         </p>
         <Row>
           <PasswordTextBox
-            label="Personal access token"
+            label="个人访问令牌"
             value={this.state.token}
             onValueChanged={this.onTokenChanged}
             ariaDescribedBy="sign-in-token-description"
@@ -237,14 +235,14 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         </Row>
         <Row>
           <div id="sign-in-token-description">
-            Create a token with the scopes{' '}
-            <Ref>{selfHostedTokenScopes[apiType].join(', ')}</Ref> in your{' '}
+            在你的{' '}
             <LinkButton
               uri={getSelfHostedTokenSettingsURL(webBaseUrl, apiType)}
             >
-              {friendlySelfHostedName(apiType)} settings
+              {friendlySelfHostedName(apiType)} 设置
             </LinkButton>
-            .
+            中创建一个具有{' '}
+            <Ref>{selfHostedTokenScopes[apiType].join(', ')}</Ref> 权限范围的令牌。
           </div>
         </Row>
       </DialogContent>
@@ -255,8 +253,8 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     const credentialHelperInfo =
       this.props.isCredentialHelperSignIn && this.props.credentialHelperUrl ? (
         <p>
-          Git requesting credentials to access{' '}
-          <Ref>{this.props.credentialHelperUrl}</Ref>.
+          Git 正在请求访问{' '}
+          <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
         </p>
       ) : undefined
 
@@ -273,8 +271,8 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     return this.props.isCredentialHelperSignIn &&
       this.props.credentialHelperUrl ? (
       <p>
-        Git requesting credentials to access{' '}
-        <Ref>{this.props.credentialHelperUrl}</Ref>.
+        Git 正在请求访问{' '}
+          <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
       </p>
     ) : undefined
   }

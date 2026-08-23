@@ -153,8 +153,8 @@ export class FullScreenInfo extends React.Component<
         timeout={toastTransitionTimeout}
       >
         <div key="notification" className="toast-notification">
-          Press <KeyboardShortcut darwinKeys={['^', '⌘', 'F']} keys={['F11']} />{' '}
-          to exit fullscreen
+          按 <KeyboardShortcut darwinKeys={['^', '⌘', 'F']} keys={['F11']} />{' '}
+          退出全屏
         </div>
       </CSSTransition>
     )

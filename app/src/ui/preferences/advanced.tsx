@@ -85,10 +85,10 @@ export class Advanced extends React.Component<
 
   private reportDesktopUsageLabel() {
     return (
-      <span>
-        Help Desktop Plus improve by submitting{' '}
-        <LinkButton uri={SamplesURL}>usage stats</LinkButton>
-      </span>
+        <span>
+          帮助 Desktop Plus 改进，提交{' '}
+          <LinkButton uri={SamplesURL}>使用情况统计</LinkButton>
+        </span>
     )
   }
 
@@ -97,9 +97,9 @@ export class Advanced extends React.Component<
       <DialogContent>
         {!__DARWIN__ && this.renderAppSettings()}
         <div className="advanced-section">
-          <h2>Background updates</h2>
+          <h2>后台更新</h2>
           <Checkbox
-            label="Show status icons in the repository list"
+            label="在仓库列表中显示状态图标"
             value={
               this.props.repositoryIndicatorsEnabled
                 ? CheckboxValue.On
@@ -110,20 +110,16 @@ export class Advanced extends React.Component<
           />
           <div id="periodic-fetch-description" className="settings-description">
             <p>
-              These icons indicate which repositories have local or remote
-              changes, and require the periodic fetching of repositories that
-              are not currently selected.
+              这些图标用来指示哪些仓库有本地或远程更改，并需要定期抓取当前未选中的仓库。
             </p>
             <p>
-              Turning this off will not stop the periodic fetching of your
-              currently selected repository, but may improve overall app
-              performance for users with many repositories.
+              关闭此选项不会停止对当前所选仓库的定期抓取，但可能会改善拥有大量仓库时的整体性能。
             </p>
           </div>
         </div>
         {ENABLE_TELEMETRY && (
           <div className="advanced-section">
-            <h2>Usage</h2>
+            <h2>使用情况</h2>
             <Checkbox
               label={this.reportDesktopUsageLabel()}
               value={
@@ -135,11 +131,11 @@ export class Advanced extends React.Component<
             />
           </div>
         )}
-        <h2>Network and credentials</h2>
+        <h2>网络与凭据</h2>
         {this.renderSSHSettings()}
         <div className="advanced-section">
           <Checkbox
-            label={'Use Git Credential Manager'}
+            label={'使用 Git Credential Manager'}
             value={
               this.state.useExternalCredentialHelper
                 ? CheckboxValue.On
@@ -153,12 +149,11 @@ export class Advanced extends React.Component<
             className="settings-description"
           >
             <p>
-              Use{' '}
+              对于 GitHub.com 之外的私有仓库，使用{' '}
               <LinkButton uri="https://gh.io/gcm">
                 Git Credential Manager{' '}
-              </LinkButton>{' '}
-              for private repositories outside of GitHub.com. This feature is
-              experimental and subject to change.
+              </LinkButton>
+              。此功能为实验性，可能会发生变化。
             </p>
           </div>
         </div>
@@ -174,7 +169,7 @@ export class Advanced extends React.Component<
     return (
       <div className="advanced-section">
         <Checkbox
-          label="Use system OpenSSH (recommended)"
+          label="使用系统 OpenSSH（推荐）"
           value={
             this.props.useWindowsOpenSSH ? CheckboxValue.On : CheckboxValue.Off
           }
@@ -187,9 +182,9 @@ export class Advanced extends React.Component<
   private renderAppSettings() {
     return (
       <div className="advanced-section">
-        <h2>App</h2>
+        <h2>应用</h2>
         <Checkbox
-          label="Hide window instead of quitting"
+          label="关闭窗口而非退出应用"
           value={
             this.props.hideWindowOnQuit ? CheckboxValue.On : CheckboxValue.Off
           }
@@ -197,8 +192,7 @@ export class Advanced extends React.Component<
         />
         <div className="git-settings-description">
           <p>
-            When the window is closed, the app will continue running in the
-            background. Use Ctrl+Q to completely quit the app.
+            关闭窗口后，应用将继续在后台运行。使用 Ctrl+Q 可完全退出应用。
           </p>
         </div>
       </div>

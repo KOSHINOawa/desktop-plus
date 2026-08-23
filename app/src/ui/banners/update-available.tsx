@@ -73,11 +73,12 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
     if (this.props.isX64ToARM64ImmediateAutoUpdate) {
       return (
         <span onSubmit={this.updateNow}>
-          An optimized version of Desktop Plus is available for your{' '}
-          {__DARWIN__ ? 'Apple silicon' : 'Arm64'} machine and will be installed
-          at the next launch or{' '}
-          <LinkButton onClick={this.updateNow}>restart Desktop Plus</LinkButton>{' '}
-          now.
+          为您的桌面增强版提供了优化版本 使用{' '}
+          {__DARWIN__ ? 'Apple silicon' : 'Arm64'}{' '}
+          的机器并将在下次启动时安装，你也可以{' '}
+          <LinkButton onClick={this.updateNow}>
+            重新启动 Desktop Plus
+          </LinkButton>{' '}
         </span>
       )
     }
@@ -85,7 +86,7 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
     if (this.props.isUpdateShowcaseVisible) {
       const version =
         this.props.newReleases !== null
-          ? ` with Desktop Plus ${this.props.newReleases[0].latestVersion}`
+          ? ` 于 Desktop Plus ${this.props.newReleases[0].latestVersion}`
           : ''
 
       return (
@@ -97,10 +98,11 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
               emoji={this.props.emoji}
             />
           </span>
-          Exciting new features have been added{version}. See{' '}
-          <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton> or{' '}
+          令人兴奋的新功能已添加{version}。 查看{' '}
+          <LinkButton onClick={this.showReleaseNotes}>有什么更新</LinkButton>{' '}
+          或者{' '}
           <LinkButton onClick={this.dismissUpdateShowCaseVisibility}>
-            dismiss
+            忽略
           </LinkButton>
           .
         </span>
@@ -110,27 +112,26 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
     if (this.props.prioritizeUpdate) {
       return (
         <span onSubmit={this.updateNow}>
-          This version of Desktop Plus is missing{' '}
+          这个版本 Desktop Plus 缺少{' '}
           {this.props.prioritizeUpdateInfoUrl ? (
             <LinkButton uri={this.props.prioritizeUpdateInfoUrl}>
-              important updates
+              重要更新
             </LinkButton>
           ) : (
-            'important updates'
+            '重要更新'
           )}
-          . Please{' '}
-          <LinkButton onClick={this.updateNow}>restart Desktop Plus</LinkButton>{' '}
-          now to install pending updates.
+          。 请立刻{' '}
+          <LinkButton onClick={this.updateNow}>重启 Desktop Plus</LinkButton>{' '}
+          来安装待定的更新。
         </span>
       )
     }
 
     return (
       <span onSubmit={this.updateNow}>
-        An updated version of Desktop Plus is available and will be installed at
-        the next launch. See{' '}
-        <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton> or{' '}
-        <LinkButton onClick={this.updateNow}>restart Desktop Plus</LinkButton>.
+        有新的 Desktop Plus 版本可用，将在下次启动时安装。查看{' '}
+        <LinkButton onClick={this.showReleaseNotes}>有什么更新</LinkButton> 或者{' '}
+        <LinkButton onClick={this.updateNow}>重启 Desktop Plus</LinkButton>.
       </span>
     )
   }

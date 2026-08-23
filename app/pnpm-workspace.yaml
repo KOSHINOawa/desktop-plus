@@ -1,0 +1,12 @@
+# Independent pnpm configuration for the app/ package. The presence of this
+# file stops pnpm from climbing up to the repository root workspace, keeping
+# app dependencies resolved and installed separately (like yarn did).
+nodeLinker: hoisted
+dangerouslyAllowAllBuilds: true
+# yarn v1 never auto-installed peer dependencies. Keep the same behavior so
+# type packages (e.g. @types/react) are not duplicated across the root and
+# app dependency trees.
+autoInstallPeers: false
+# Do not re-verify/re-install dependencies before every script run
+# (yarn v1 never did this).
+verifyDepsBeforeRun: false

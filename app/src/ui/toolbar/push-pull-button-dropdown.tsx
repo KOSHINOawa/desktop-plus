@@ -73,8 +73,8 @@ export class PushPullButtonDropDown extends React.Component<IPushPullButtonDropD
     switch (type) {
       case DropdownItemType.Fetch:
         return {
-          title: `Fetch ${remoteName}`,
-          description: `Fetch the latest changes from ${remoteName}`,
+          title: `抓取 ${remoteName}`,
+          description: `从 ${remoteName} 抓取最新更改`,
           action: this.props.fetch,
           icon: syncClockwise,
         }
@@ -82,17 +82,16 @@ export class PushPullButtonDropDown extends React.Component<IPushPullButtonDropD
         const forcePushWarning = this.props
           .askForConfirmationOnForcePush ? null : (
           <div className="warning">
-            <span className="warning-title">Warning:</span> A force push will
-            rewrite history on the remote. Any collaborators working on this
-            branch will need to reset their own local branch to match the
-            history of the remote.
+            <span className="warning-title">警告：</span> 强制推送会重写远程上的
+            历史记录。任何在此分支上协作的人员都需要将他们自己的本地分支重置为
+            与远程历史记录一致。
           </div>
         )
         return {
-          title: `Force push ${remoteName}`,
+          title: `强制推送 ${remoteName}`,
           description: (
             <>
-              Overwrite any changes on {remoteName} with your local changes
+              用你的本地更改覆盖 {remoteName} 上的任何更改
               {forcePushWarning}
             </>
           ),
@@ -102,13 +101,13 @@ export class PushPullButtonDropDown extends React.Component<IPushPullButtonDropD
       }
       case DropdownItemType.ResetAndPull:
         return {
-          title: 'Reset and pull',
+          title: '重置并拉取',
           description: (
             <>
-              Discard your local commits and pull from {remoteName}
+              丢弃你的本地提交并从 {remoteName} 拉取
               <div className="warning">
-                <span className="warning-title">Warning:</span> This will
-                permanently discard your local commits on this branch.
+                <span className="warning-title">警告：</span> 这将
+                永久丢弃你在此分支上的本地提交。
               </div>
             </>
           ),

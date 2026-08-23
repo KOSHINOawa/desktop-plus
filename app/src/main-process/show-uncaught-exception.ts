@@ -26,11 +26,10 @@ export function showUncaughtException(isLaunchError: boolean, error: Error) {
   window.onFailedToLoad(async () => {
     await dialog.showMessageBox({
       type: 'error',
-      title: __DARWIN__ ? `Unrecoverable Error` : 'Unrecoverable error',
+      title: __DARWIN__ ? `不可恢复的错误` : '不可恢复的错误',
       message:
-        `Desktop Plus has encountered an unrecoverable error and will need to restart.\n\n` +
-        `This has been reported to the team, but if you encounter this repeatedly please report ` +
-        `this issue to the Desktop Plus issue tracker.\n\n${
+        `Desktop Plus 遇到不可恢复的错误，需要重新启动。\n\n` +
+        `此问题已报告给开发团队，但如果你反复遇到此问题，请向 Desktop Plus 的问题追踪器报告。\n\n${
           error.stack || error.message
         }`,
     })

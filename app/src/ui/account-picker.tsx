@@ -118,7 +118,7 @@ export class AccountPicker extends React.Component<
             user={this.getAvatarUser(account)}
           />
           <div className="info">
-            <div className="title">No account</div>
+            <div className="title">无账户</div>
           </div>
         </div>
       )
@@ -156,11 +156,11 @@ export class AccountPicker extends React.Component<
     return (
       <PopoverDropdown
         className="account-picker"
-        contentTitle="Choose an account"
+        contentTitle="选择账户"
         buttonContent={
           <div className="account">
             {this.props.selectedAccount.isAnonymous ? (
-              'Use default account'
+              '使用默认账户'
             ) : (
               <>
                 <span className="login">
@@ -174,7 +174,7 @@ export class AccountPicker extends React.Component<
             )}
           </div>
         }
-        label="Account"
+        label="账户"
         ref={this.popoverRef}
         openButtonClassName={this.props.openButtonClassName}
       >

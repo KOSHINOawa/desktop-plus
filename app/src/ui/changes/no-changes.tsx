@@ -221,11 +221,11 @@ export class NoChanges extends React.Component<
 
   private getPlatformFileManagerName() {
     if (__DARWIN__) {
-      return 'Finder'
+      return '访达'
     } else if (__WIN32__) {
-      return 'Explorer'
+      return '文件资源管理器'
     }
-    return 'your File Manager'
+    return '你的文件管理器'
   }
 
   private renderDiscoverabilityElements(menuItem: IMenuItemInfo) {
@@ -233,7 +233,7 @@ export class NoChanges extends React.Component<
 
     return (
       <>
-        {parentMenusText} menu or{' '}
+        {parentMenusText} 菜单，或{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -281,7 +281,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'open-working-directory',
-      `View the files of your repository in ${fileManager}`,
+      `在 ${fileManager} 中查看你的仓库文件`,
       octicons.fileDirectory,
       undefined,
       this.onShowInFileManagerClicked
@@ -306,7 +306,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'view-repository-on-github',
-      'Open the repository page ' + browserTarget,
+      '在 GitHub 上打开仓库页面 ' + browserTarget,
       icon,
       undefined,
       this.onViewOnGitHubClicked
@@ -317,22 +317,22 @@ export class NoChanges extends React.Component<
     gitHubRepository: GitHubRepository | null
   ): [string, OcticonSymbol] {
     if (gitHubRepository === null) {
-      return ['in your browser', octicons.globe]
+      return ['在你的浏览器中', octicons.globe]
     }
 
     switch (gitHubRepository.type) {
       case 'github':
-        return ['on GitHub', octicons.markGithub]
+        return ['在 GitHub 上', octicons.markGithub]
       case 'bitbucket':
-        return ['on Bitbucket', bitbucket]
+        return ['在 Bitbucket 上', bitbucket]
       case 'gitlab':
-        return ['on GitLab', gitlab]
+        return ['在 GitLab 上', gitlab]
       case 'forgejo':
         return isCodebergCloud(gitHubRepository.endpoint)
-          ? ['on Codeberg', codeberg]
-          : ['on Forgejo', forgejo]
+          ? ['在 Codeberg 上', codeberg]
+          : ['在 Forgejo 上', forgejo]
       case 'gitea':
-        return ['on Gitea', gitea]
+        return ['在 Gitea 上', gitea]
       default:
         assertNever(
           gitHubRepository.type,
@@ -371,14 +371,15 @@ export class NoChanges extends React.Component<
       return null
     }
 
-    const title = `Open the repository in your external editor`
+    const title = `在外部编辑器中打开仓库`
 
     const description = (
       <>
-        Select your editor in{' '}
+        在{' '}
         <LinkButton onClick={this.openIntegrationPreferences}>
-          {__DARWIN__ ? 'Settings' : 'Options'}
+          {__DARWIN__ ? '设置' : '选项'}
         </LinkButton>
+        中选择你的编辑器
       </>
     )
 
@@ -460,13 +461,9 @@ export class NoChanges extends React.Component<
     }
     const description = <>{descriptionText}</>
     const discoverabilityContent = (
-      <>
-        When a stash exists, access it at the bottom of the Changes tab to the
-        left.
-      </>
+      <>当存在暂存时，在左侧的更改选项卡底部可以访问它。</>
     )
-    const viewStashesText =
-      stashEntries.length === 1 ? 'View stash' : 'View stashes'
+    const viewStashesText = `查看${stashEntries.length}个暂存`
     const itemId: MenuIDs = 'toggle-stashed-changes'
     const menuItem = this.getMenuItemInfo(itemId)
     if (menuItem === undefined) {
@@ -477,7 +474,7 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="view-stash-action"
-        title="View your stashed changes"
+        title="查看你暂存的更改"
         menuItemId={itemId}
         description={description}
         discoverabilityContent={discoverabilityContent}
@@ -495,7 +492,7 @@ export class NoChanges extends React.Component<
       return null
     }
     if (stashEntries.length > 1) {
-      return `You have ${stashEntries.length} stashes.`
+      return `你有 ${stashEntries.length} 个暂存。`
     }
 
     const entry = stashEntries[0]
@@ -503,8 +500,8 @@ export class NoChanges extends React.Component<
       return null
     }
     const numChanges = entry.files.files.length
-    const changesPlural = numChanges === 1 ? 'change' : 'changes'
-    return `You have ${numChanges} ${changesPlural} in progress that you have not yet committed.`
+    const changesPlural = '更改'
+    return `你有 ${numChanges} 个 ${changesPlural} 正在进行中，你尚未提交。`
   }
 
   private onViewStashClicked = () =>
@@ -525,7 +522,7 @@ export class NoChanges extends React.Component<
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar for local repositories or{' '}
+        始终在工具栏中可用，适用于本地存储库或{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -537,10 +534,10 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="publish-repository-action"
-        title={`Publish your repository to ${remoteName}`}
-        description={`This repository is currently only available on your local machine. By publishing it on ${remoteName} you can share it, and collaborate with others.`}
+        title={`公开你的仓库到 ${remoteName}`}
+        description={`此仓库目前仅在你的本地机器上可用。通过在 ${remoteName} 上发布它，你可以与他人分享和协作。`}
         discoverabilityContent={discoverabilityContent}
-        buttonText="Publish repository"
+        buttonText="公开仓库"
         icon={octicons.repoPush}
         menuItemId={itemId}
         type="primary"
@@ -568,20 +565,18 @@ export class NoChanges extends React.Component<
 
     const isGitHub = this.props.repository.gitHubRepository !== null
     const toRemoteName =
-      'to ' + this.getRemoteName(this.props.repository.gitHubRepository)
+      '到 ' + this.getRemoteName(this.props.repository.gitHubRepository)
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) hasn't been published
-        to the remote yet. By publishing it {isGitHub ? toRemoteName : ''} you
-        can share it, {isGitHub ? 'open a pull request, ' : ''}
-        and collaborate with others.
+        当前分支 (<Ref>{tip.branch.name}</Ref>) 还没有发布到远程。通过发布它{' '}
+        {isGitHub ? toRemoteName : ''}，你可以与他人分享和协作。
       </>
     )
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar or{' '}
+        始终在工具栏中可用，或{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -589,11 +584,11 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="publish-branch-action"
-        title="Publish your branch"
+        title="发布你的分支"
         menuItemId={itemId}
         description={description}
         discoverabilityContent={discoverabilityContent}
-        buttonText="Publish branch"
+        buttonText="发布分支"
         icon={octicons.gitBranch}
         extraIconClasses="mt"
         type="primary"
@@ -621,26 +616,25 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) has{' '}
-        {aheadBehind.behind === 1 ? 'a commit' : 'commits'} on{' '}
-        {this.getRemoteName(this.props.repository.gitHubRepository)} that{' '}
-        {aheadBehind.behind === 1 ? 'does not' : 'do not'} exist on your
-        machine.
+        当前分支 (<Ref>{tip.branch.name}</Ref>) 在{' '}
+        {this.getRemoteName(this.props.repository.gitHubRepository)} 上有{' '}
+        {aheadBehind.behind === 1 ? '一个提交' : '提交'}
+        ，这些提交在你的机器上不存在。
       </>
     )
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar when there are remote changes or{' '}
+        当有远程更改时始终在工具栏中可用，或{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
 
-    const title = `Pull ${formatNumber(aheadBehind.behind)} ${
-      aheadBehind.behind === 1 ? 'commit' : 'commits'
-    } from the ${remote.name} remote`
+    const title = `从 ${remote.name} 远程拉取 ${formatNumber(
+      aheadBehind.behind
+    )} 个提交`
 
-    const buttonText = `Pull ${remote.name}`
+    const buttonText = `拉取 ${remote.name}`
 
     return (
       <MenuBackedSuggestedAction
@@ -659,7 +653,7 @@ export class NoChanges extends React.Component<
 
   private getRemoteName(gitHubRepository: GitHubRepository | null) {
     if (gitHubRepository === null) {
-      return 'the remote'
+      return '远程'
     }
 
     switch (gitHubRepository.type) {
@@ -676,7 +670,7 @@ export class NoChanges extends React.Component<
       default:
         assertNever(
           gitHubRepository.type,
-          `Unknown remote type: ${gitHubRepository.type}`
+          `未知远程类型: ${gitHubRepository.type}`
         )
     }
   }
@@ -699,41 +693,41 @@ export class NoChanges extends React.Component<
     const itemsToPushDescriptions = []
 
     if (aheadBehind.ahead > 0) {
-      itemsToPushTypes.push('commits')
+      itemsToPushTypes.push('提交')
       itemsToPushDescriptions.push(
         aheadBehind.ahead === 1
-          ? '1 local commit'
-          : `${formatNumber(aheadBehind.ahead)} local commits`
+          ? '1 本地提交'
+          : `${formatNumber(aheadBehind.ahead)} 本地提交`
       )
     }
 
     if (tagsToPush !== null && tagsToPush.length > 0) {
-      itemsToPushTypes.push('tags')
+      itemsToPushTypes.push('标签')
       itemsToPushDescriptions.push(
         tagsToPush.length === 1
-          ? '1 tag'
-          : `${formatNumber(tagsToPush.length)} tags`
+          ? '1 个标签'
+          : `${formatNumber(tagsToPush.length)} 个标签`
       )
     }
 
-    const description = `You have ${itemsToPushDescriptions.join(
-      ' and '
-    )} waiting to be pushed to ${this.getRemoteName(
+    const description = `你有 ${itemsToPushDescriptions.join(
+      ' 和 '
+    )} 等待被推送到 ${this.getRemoteName(
       this.props.repository.gitHubRepository
     )}.`
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar when there are local commits waiting to
-        be pushed or {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
+        始终在工具栏中可用，当有本地提交等待推送时，或{' '}
+        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
 
-    const title = `Push ${itemsToPushTypes.join(' and ')} to the ${
+    const title = `推送 ${itemsToPushTypes.join(' 和 ')} 到 ${
       remote.name
-    } remote`
+    } 远程`
 
-    const buttonText = `Push ${remote.name}`
+    const buttonText = `推送 ${remote.name}`
 
     return (
       <MenuBackedSuggestedAction
@@ -765,14 +759,14 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) is already published
-        to {this.getRemoteName(this.props.repository.gitHubRepository)}. Create
-        a pull request to propose and collaborate on your changes.
+        当前分支 (<Ref>{tip.branch.name}</Ref>) 已经发布到{' '}
+        {this.getRemoteName(this.props.repository.gitHubRepository)}
+        。创建一个拉取请求来提出和协作处理你的更改。
       </>
     )
 
-    const title = `Create a Pull Request from your current branch`
-    const buttonText = `Create Pull Request`
+    const title = `创建拉取请求`
+    const buttonText = `创建拉取请求`
 
     const previewPullMenuItem = this.getMenuItemInfo('preview-pull-request')
 
@@ -794,14 +788,13 @@ export class NoChanges extends React.Component<
     }
 
     const previewPullRequestAction: IDropdownSuggestedActionOption = {
-      title: `Preview the Pull Request from your current branch`,
-      label: 'Preview Pull Request',
+      title: `预览来自当前分支的拉取请求`,
+      label: '预览拉取请求',
       description: (
         <>
-          The current branch (<Ref>{tip.branch.name}</Ref>) is already published
-          to {this.getRemoteName(this.props.repository.gitHubRepository)}.
-          Preview the changes this pull request will have before proposing your
-          changes.
+          当前分支 (<Ref>{tip.branch.name}</Ref>) 已经发布到{' '}
+          {this.getRemoteName(this.props.repository.gitHubRepository)}。
+          在提出你的更改之前，预览这个拉取请求将具有的更改。
         </>
       ),
       id: PullRequestSuggestedNextAction.PreviewPullRequest,
@@ -863,10 +856,9 @@ export class NoChanges extends React.Component<
         <div className="content">
           <div className="interstitial-header">
             <div className="text">
-              <h1>No local changes</h1>
+              <h1>没有本地更改</h1>
               <p>
-                There are no uncommitted changes in this repository. Here are
-                some friendly suggestions for what to do next.
+                此存储库中没有未提交的更改。以下是一些友好的建议，告诉您下一步该做什么。
               </p>
             </div>
             <img src={PaperStackImage} className="blankslate-image" alt="" />

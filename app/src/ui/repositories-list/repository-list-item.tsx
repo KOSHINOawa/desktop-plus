@@ -244,7 +244,7 @@ const renderChangesIndicator = () => {
   return (
     <TooltippedContent
       className="change-indicator-wrapper"
-      tooltip="There are uncommitted changes in this repository"
+      tooltip="此仓库中有未提交的更改"
       disabled={enableAccessibleListToolTips()}
     >
       <Octicon symbol={octicons.dotFill} />
@@ -252,5 +252,4 @@ const renderChangesIndicator = () => {
   )
 }
 
-export const commitGrammar = (commitNum: number) =>
-  `${commitNum} commit${commitNum > 1 ? 's' : ''}` // english is hard
+export const commitGrammar = (commitNum: number) => `${commitNum} 个提交`

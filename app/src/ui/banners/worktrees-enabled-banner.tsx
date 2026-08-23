@@ -19,13 +19,13 @@ export class WorktreesEnabledBanner extends React.Component<IWorktreesEnabledBan
   }
 
   public render() {
-    const label = __DARWIN__ ? 'Appearance Settings' : 'Appearance Options'
+    const label = __DARWIN__ ? '外观设置' : '外观选项'
 
     return (
       <SuccessBanner timeout={8000} onDismissed={this.props.onDismissed}>
-        Worktrees enabled. You can change this in{' '}
+        工作树已启用。您可以在{' '}
         <LinkButton onClick={this.onOpenAppearanceSettings}>{label}</LinkButton>
-        .
+        中更改此设置。
       </SuccessBanner>
     )
   }

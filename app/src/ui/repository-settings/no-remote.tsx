@@ -15,11 +15,11 @@ export class NoRemote extends React.Component<INoRemoteProps, {}> {
   public render() {
     return (
       <DialogContent>
-        <CallToAction actionTitle="Publish" onAction={this.props.onPublish}>
+        <CallToAction actionTitle="发布" onAction={this.props.onPublish}>
           <div className="no-remote-publish-message">
-            Publish your repository to GitHub. Need help?{' '}
+            将你的仓库发布到 GitHub。需要帮助？{' '}
             <LinkButton uri={HelpURL}>
-              Learn more about remote repositories.
+              了解有关远程仓库的更多信息。
             </LinkButton>
           </div>
         </CallToAction>

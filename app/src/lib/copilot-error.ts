@@ -125,13 +125,13 @@ function getFallbackPaymentRequiredMessage(
 ) {
   switch (code) {
     case 'quota_exceeded':
-      return 'You have reached your GitHub Copilot usage limit.'
+      return '你已达到 GitHub Copilot 的使用额度上限。'
     case 'session_quota_exceeded':
-      return 'You have reached your GitHub Copilot session limit.'
+      return '你已达到 GitHub Copilot 的会话额度上限。'
     case 'billing_not_configured':
-      return 'GitHub Copilot billing is not configured for this account.'
+      return '此账户尚未配置 GitHub Copilot 计费。'
     default:
-      return 'GitHub Copilot returned a billing error.'
+      return 'GitHub Copilot 返回了计费错误。'
   }
 }
 
@@ -191,11 +191,10 @@ export function parseCopilotPaymentRequiredError(
 function getRetryAfterMessage(retryAfter: string) {
   if (/^\d+$/.test(retryAfter)) {
     const seconds = Number(retryAfter)
-    const unit = seconds === 1 ? 'second' : 'seconds'
-    return `You can try again in ${seconds} ${unit}.`
+    return `你可以在 ${seconds} 秒后重试。`
   }
 
-  return `You can try again after ${retryAfter}.`
+  return `你可以在 ${retryAfter} 后重试。`
 }
 
 export function getCopilotErrorDisplayInfo(
@@ -208,7 +207,7 @@ export function getCopilotErrorDisplayInfo(
   switch (error.code) {
     case 'quota_exceeded':
       return {
-        title: 'Quota exceeded',
+        title: '额度已超出',
         message: error.message,
         retryAfterMessage:
           error.retryAfter !== undefined
@@ -218,7 +217,7 @@ export function getCopilotErrorDisplayInfo(
 
     case 'session_quota_exceeded':
       return {
-        title: 'Session quota exceeded',
+        title: '会话额度已超出',
         message: error.message,
         retryAfterMessage:
           error.retryAfter !== undefined
@@ -228,15 +227,15 @@ export function getCopilotErrorDisplayInfo(
 
     case 'billing_not_configured':
       return {
-        title: 'Copilot billing not configured',
+        title: '未配置 Copilot 计费',
         message: error.message,
-        actionText: 'Open GitHub Copilot settings',
+        actionText: '打开 GitHub Copilot 设置',
         actionURL: 'https://github.com/settings/copilot',
       }
 
     default:
       return {
-        title: 'Copilot billing issue',
+        title: 'Copilot 计费问题',
         message: error.message,
       }
   }

@@ -37,7 +37,7 @@ export class CommitProgress extends React.Component<ICommitProgressProps> {
     return (
       <Dialog
         id="commit-progress-dialog"
-        title={`Committing changes`}
+        title={`提交更改中`}
         onDismissed={this.onDismissed}
         onSubmit={this.onDismissed}
       >
@@ -52,7 +52,7 @@ export class CommitProgress extends React.Component<ICommitProgressProps> {
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={'Close'}
+            okButtonText={'关闭'}
             cancelButtonVisible={false}
           />
         </DialogFooter>

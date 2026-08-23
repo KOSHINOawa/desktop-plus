@@ -34,8 +34,8 @@ export class DiscardChangesRetryDialog extends React.Component<
       <Dialog
         title={
           __DARWIN__
-            ? 'Discarded Changes Will Be Unrecoverable'
-            : 'Discarded changes will be unrecoverable'
+            ? '丢弃的更改将无法恢复'
+            : '丢弃的更改将无法恢复'
         }
         id="discard-changes-retry"
         loading={retrying}
@@ -45,17 +45,17 @@ export class DiscardChangesRetryDialog extends React.Component<
         type="error"
       >
         <DialogContent>
-          <p>Failed to discard changes to {TrashNameLabel}.</p>
+          <p>无法将更改丢弃至 {TrashNameLabel}。</p>
           <div>
-            Common reasons are:
+            常见原因有：
             <ul>
               <li>
-                The {TrashNameLabel} is configured to delete items immediately.
+                {TrashNameLabel} 已配置为立即删除项目。
               </li>
-              <li>Restricted access to move the file(s).</li>
+              <li>移动文件时访问受限。</li>
             </ul>
           </div>
-          <p>These changes will be unrecoverable from the {TrashNameLabel}.</p>
+          <p>这些更改将无法从 {TrashNameLabel} 中恢复。</p>
           {this.renderConfirmDiscardChanges()}
         </DialogContent>
         {this.renderFooter()}
@@ -66,7 +66,7 @@ export class DiscardChangesRetryDialog extends React.Component<
   private renderConfirmDiscardChanges() {
     return (
       <Checkbox
-        label="Do not show this message again"
+        label="不要再显示此消息"
         value={
           this.state.confirmDiscardChanges
             ? CheckboxValue.Off
@@ -83,11 +83,11 @@ export class DiscardChangesRetryDialog extends React.Component<
         <OkCancelButtonGroup
           okButtonText={
             __DARWIN__
-              ? 'Permanently Discard Changes'
-              : 'Permanently discard changes'
+              ? '永久丢弃更改'
+              : '永久丢弃更改'
           }
-          okButtonTitle={`This will discard changes and they will be unrecoverable.`}
-          cancelButtonText="Cancel"
+          okButtonTitle={`这将丢弃更改，且它们将无法恢复。`}
+          cancelButtonText="取消"
           destructive={true}
         />
       </DialogFooter>

@@ -189,10 +189,10 @@ export class BranchesContainer extends React.Component<
         <Button
           className="merge-button button-with-icon"
           onClick={this.onMergeClick}
-          tooltip={`Choose a branch to merge into ${currentBranch.name}`}
+          tooltip={`选择一个分支合并到 ${currentBranch.name}`}
         >
           <Octicon className="icon" symbol={octicons.gitMerge} />
-          <span>Choose a branch to merge into</span>
+          <span>选择一个分支合并到</span>
           <strong>{currentBranch.name}</strong>
         </Button>
       </Row>
@@ -220,9 +220,9 @@ export class BranchesContainer extends React.Component<
         selectedIndex={this.props.selectedTab}
         allowDragOverSwitching={true}
       >
-        <span id="branches-tab">Branches</span>
+        <span id="branches-tab">分支</span>
         <span id="pull-requests-tab" className="pull-request-tab">
-          {__DARWIN__ ? 'Pull Requests' : 'Pull requests'}
+          拉取请求
           {this.renderOpenPullRequestsBubble()}
         </span>
       </TabBar>
@@ -308,7 +308,7 @@ export class BranchesContainer extends React.Component<
         return this.renderPullRequests()
       }
       default:
-        return assertNever(tab, `Unknown Branches tab: ${tab}`)
+        return assertNever(tab, `未知分支标签: ${tab}`)
     }
   }
 
@@ -317,7 +317,7 @@ export class BranchesContainer extends React.Component<
       return null
     }
 
-    const label = __DARWIN__ ? 'New Branch' : 'New branch'
+    const label = '新分支'
 
     return (
       /**
@@ -363,7 +363,7 @@ export class BranchesContainer extends React.Component<
     // Thus, it doesn't have to be an actual branch name.
     dragAndDropManager.emitEnterDropTarget({
       type: DropTargetType.Branch,
-      branchName: 'a new branch',
+      branchName: '一个新分支',
     })
   }
 
@@ -437,7 +437,7 @@ export class BranchesContainer extends React.Component<
     const { repository, dispatcher } = this.props
     dispatcher.closeFoldout(FoldoutType.Branch)
 
-    const timer = startTimer('checkout branch from list', repository)
+    const timer = startTimer('从列表检出分支', repository)
     dispatcher.checkoutBranch(repository, branch).then(() => timer.done())
   }
 

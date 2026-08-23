@@ -28,11 +28,11 @@ export class WholeFileToggle extends React.Component<IWholeFileToggleProps> {
     const { enabled, showWholeFile } = this.props
     const buttonLabel = showWholeFile
       ? __DARWIN__
-        ? 'Show Compact Diff'
-        : 'Show compact diff'
+        ? '显示精简差异'
+        : '显示精简差异'
       : __DARWIN__
-      ? 'Show Whole File'
-      : 'Show whole file'
+      ? '显示整个文件'
+      : '显示整个文件'
 
     return (
       <div className="diff-whole-file-toggle-component">

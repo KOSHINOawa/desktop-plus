@@ -120,8 +120,7 @@ export class AddExistingRepository extends React.Component<
       return null
     }
 
-    const msg =
-      'This directory appears to be a bare repository. Bare repositories are not currently supported.'
+    const msg = '该目录似乎是一个裸仓库。目前不支持裸仓库。'
 
     return { screenReaderMessage: msg, displayedMessage: msg }
   }
@@ -145,30 +144,27 @@ export class AddExistingRepository extends React.Component<
     const displayedMessage = (
       <>
         <p>
-          The Git repository
+          Git 仓库
           {repositoryUnsafePath !== convertedPath && (
             <>
-              {' at '}
+              {' 在 '}
               <Ref>{repositoryUnsafePath}</Ref>
             </>
           )}{' '}
-          appears to be owned by another user on your machine. Adding untrusted
-          repositories may automatically execute files in the repository.
+          似乎归你电脑上的另一个用户所有。添加不受信任的仓库可能会自动执行仓库中的文件。
         </p>
         <p>
-          If you trust the owner of the directory you can
+          如果你信任该目录的所有者，你可以
           <LinkButton onClick={this.onTrustDirectory}>
             {' '}
-            add an exception for this directory
+            信任该目录
           </LinkButton>{' '}
-          in order to continue.
+          以继续。
         </p>
       </>
     )
 
-    const screenReaderMessage = `The Git repository appears to be owned by another user on your machine.
-      Adding untrusted repositories may automatically execute files in the repository.
-      If you trust the owner of the directory you can add an exception for this directory in order to continue.`
+    const screenReaderMessage = `该 Git 仓库似乎属于您机器上的另一位用户。添加不受信任的仓库可能会自动执行仓库中的文件。如果您信任该目录的所有者，可以为该目录添加例外以继续操作。`
 
     return { screenReaderMessage, displayedMessage }
   }
@@ -180,19 +176,19 @@ export class AddExistingRepository extends React.Component<
 
     const displayedMessage = (
       <>
-        <p>This directory does not appear to be a Git repository.</p>
+        <p>该目录似乎不是一个 Git 仓库。</p>
         <p>
-          Would you like to{' '}
+          你想要在这里{' '}
           <LinkButton onClick={this.onCreateRepositoryClicked}>
-            create a repository
+            创建一个仓库
           </LinkButton>{' '}
-          here instead?
+          吗？
         </p>
       </>
     )
 
     const screenReaderMessage =
-      'This directory does not appear to be a Git repository. Would you like to create a repository here instead?'
+      '该目录似乎不是一个 Git 仓库。你想要在这里创建一个仓库吗？'
 
     return { screenReaderMessage, displayedMessage }
   }
@@ -223,7 +219,7 @@ export class AddExistingRepository extends React.Component<
     return (
       <Dialog
         id="add-existing-repository"
-        title={__DARWIN__ ? 'Add Local Repository' : 'Add local repository'}
+        title={'添加本地仓库'}
         onSubmit={this.addRepository}
         onDismissed={this.props.onDismissed}
         loading={this.state.isTrustingRepository}
@@ -233,20 +229,18 @@ export class AddExistingRepository extends React.Component<
             <TextBox
               ref={this.pathTextBoxRef}
               value={this.state.path}
-              label={__DARWIN__ ? 'Local Path' : 'Local path'}
-              placeholder="repository path"
+              label={'本地路径'}
+              placeholder="仓库路径"
               onValueChanged={this.onPathChanged}
               ariaDescribedBy="add-existing-repository-path-error"
             />
-            <Button onClick={this.showFilePicker}>Choose…</Button>
+            <Button onClick={this.showFilePicker}>选择...</Button>
           </Row>
           {this.renderErrors()}
         </DialogContent>
 
         <DialogFooter>
-          <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Add Repository' : 'Add repository'}
-          />
+          <OkCancelButtonGroup okButtonText={'添加仓库'} />
         </DialogFooter>
       </Dialog>
     )

@@ -37,14 +37,14 @@ export function generateBranchContextMenuItems(
 
   if (onRenameBranch !== undefined) {
     items.push({
-      label: 'Rename…',
+      label: '重命名...',
       action: () => onRenameBranch(branch.name),
       enabled: branch.type === BranchType.Local,
     })
   }
 
   items.push({
-    label: __DARWIN__ ? 'Copy Branch Name' : 'Copy branch name',
+    label: '复制分支名',
     action: () => clipboard.writeText(branch.name),
   })
 
@@ -64,16 +64,14 @@ export function generateBranchContextMenuItems(
 
   if (onCheckoutInNewWorktree !== undefined) {
     items.push({
-      label: __DARWIN__
-        ? 'Checkout in New Worktree…'
-        : 'Checkout in new worktree…',
+      label: '在新工作树中检出…',
       action: () => onCheckoutInNewWorktree(branch),
     })
   }
 
   if (onSetAsDefaultBranch !== undefined) {
     items.push({
-      label: __DARWIN__ ? 'Set as Default Branch' : 'Set as default branch',
+      label: '作为默认分支',
       action: () => onSetAsDefaultBranch(branch.nameWithoutRemote),
     })
   }
@@ -81,7 +79,7 @@ export function generateBranchContextMenuItems(
   if (onPullSingleBranch) {
     items.push({ type: 'separator' })
     items.push({
-      label: __DARWIN__ ? 'Pull Branch' : 'Pull branch',
+      label: '拉取分支',
       action: () => onPullSingleBranch(branch.name),
       enabled: true,
     })
@@ -90,16 +88,14 @@ export function generateBranchContextMenuItems(
   if (onDeleteBranch !== undefined) {
     items.push({ type: 'separator' })
     items.push({
-      label: 'Delete…',
+      label: '删除…',
       action: () => onDeleteBranch(branch.name),
     })
   }
 
   if (onDeleteUnusedLocalBranches !== undefined) {
     items.push({
-      label: __DARWIN__
-        ? 'Delete Unused Local Branches…'
-        : 'Delete unused local branches…',
+      label: '删除未使用的本地分支…',
       action: () => onDeleteUnusedLocalBranches(),
     })
   }
@@ -108,22 +104,22 @@ export function generateBranchContextMenuItems(
 }
 
 function getViewBranchLabel(gitHubRepository: GitHubRepository): string {
-  const branch = __DARWIN__ ? 'Branch' : 'branch'
+  const branch = __DARWIN__ ? '分支' : '分支'
   switch (gitHubRepository.type) {
     case 'github':
-      return `View ${branch} on GitHub`
+      return `在 Github 查看 ${branch}`
     case 'bitbucket':
-      return `View ${branch} on Bitbucket`
+      return `在 Bitbucket 查看 ${branch}`
     case 'gitlab':
-      return `View ${branch} on GitLab`
+      return `在 GitLab 查看 ${branch}`
     case 'forgejo':
-      return `View ${branch} on ${getForgejoName(gitHubRepository.endpoint)}`
+      return `在 ${getForgejoName(gitHubRepository.endpoint)} 查看 ${branch}`
     case 'gitea':
-      return `View ${branch} on Gitea`
+      return `在 Gitea 查看 ${branch}`
     default:
       return assertNever(
         gitHubRepository.type,
-        `Unknown repo type: ${gitHubRepository.type}`
+        `未知仓库类型: ${gitHubRepository.type}`
       )
   }
 }
@@ -131,19 +127,19 @@ function getViewBranchLabel(gitHubRepository: GitHubRepository): string {
 function getViewPullRequestLabel(gitHubRepository: GitHubRepository): string {
   switch (gitHubRepository.type) {
     case 'github':
-      return 'View Pull Request on GitHub'
+      return '在 Github 查看拉取请求'
     case 'bitbucket':
-      return 'View Pull Request on Bitbucket'
+      return '在 Bitbucket 查看拉取请求'
     case 'gitlab':
-      return 'View Merge Request on GitLab'
+      return '在 GitLab 查看合并请求'
     case 'forgejo':
-      return `View Pull Request on ${getForgejoName(gitHubRepository.endpoint)}`
+      return `在 ${getForgejoName(gitHubRepository.endpoint)} 查看拉取请求`
     case 'gitea':
-      return 'View Pull Request on Gitea'
+      return '在 Gitea 查看拉取请求'
     default:
       return assertNever(
         gitHubRepository.type,
-        `Unknown repo type: ${gitHubRepository.type}`
+        `未知仓库类型: ${gitHubRepository.type}`
       )
   }
 }

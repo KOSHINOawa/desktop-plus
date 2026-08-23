@@ -14,10 +14,10 @@ async function launchEditor(
   spawnAsDarwinApp: boolean
 ) {
   const exists = await pathExists(editorPath)
-  const label = __DARWIN__ ? 'Settings' : 'Options'
+  const label = __DARWIN__ ? '设置' : '选项'
   if (!exists) {
     throw new ExternalEditorError(
-      `Could not find executable for ${editorName} at path '${editorPath}'. Please open ${label} and select an available editor.`,
+      `在路径 '${editorPath}' 找不到 ${editorName} 的可执行文件。请打开 ${label} 并选择一个可用的编辑器。`,
       { openPreferences: true }
     )
   }
@@ -52,8 +52,8 @@ async function launchEditor(
     )
     throw new ExternalEditorError(
       e && typeof e === 'object' && 'code' in e && e.code === 'EACCES'
-        ? `Desktop Plus doesn't have the proper permissions to start ${editorName}. Please open ${label} and try another editor.`
-        : `Something went wrong while trying to start ${editorName}. Please open ${label} and try another editor.`,
+        ? `Desktop Plus 没有启动 ${editorName} 的适当权限。请打开 ${label} 并尝试另一个编辑器。`
+        : `尝试启动 ${editorName} 时出错。请打开 ${label} 并尝试另一个编辑器。`,
       { openPreferences: true }
     )
   })
@@ -78,12 +78,9 @@ async function launchExecutableAndReturnStdout(
     child.on('error', reject)
     child.on('close', () => resolve(stdout))
   }).catch((e: unknown) => {
-    log.error(
-      `Error while launching ${path}`,
-      e instanceof Error ? e : undefined
-    )
+    log.error(`在启动 ${path} 时出错`, e instanceof Error ? e : undefined)
     throw new ExternalEditorError(
-      `Something went wrong while trying to start ${path}. Please open Options and try another editor.`,
+      `尝试启动 ${path} 时出错。请打开选项并尝试另一个编辑器。`,
       { openPreferences: true }
     )
   })

@@ -105,14 +105,14 @@ export class BranchSelect extends React.Component<
 
     const buttonContent = (
       <>
-        <span className="popover-dropdown-button-label">base:</span>
+        <span className="popover-dropdown-button-label">基础:</span>
         {selectedBranch?.name ?? ''}
       </>
     )
 
     return (
       <PopoverDropdown
-        contentTitle="Choose a base branch"
+        contentTitle="选择一个基础分支"
         buttonContent={buttonContent}
         ref={this.popoverRef}
       >

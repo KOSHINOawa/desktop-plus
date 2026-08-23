@@ -34,15 +34,14 @@ export class CloneGenericRepository extends React.Component<
       <DialogContent className="clone-generic-repository-content">
         <Row>
           <TextBox
-            placeholder="URL or username/repository"
+            placeholder={`链接或者 "用户名/仓库名"`}
             value={this.props.url}
             onValueChanged={this.onUrlChanged}
             autoFocus={true}
             label={
               <div className="clone-url-textbox-label">
                 <p>
-                  Repository URL or GitHub username and repository (
-                  <Ref>hubot/cool-repo</Ref>)
+                  仓库 URL 或 GitHub 用户名和仓库 (<Ref>hubot/cool-repo</Ref>)
                 </p>
               </div>
             }
@@ -52,11 +51,11 @@ export class CloneGenericRepository extends React.Component<
         <Row className="clone-generic-repository-space">
           <TextBox
             value={this.props.path}
-            label={__DARWIN__ ? 'Local Path' : 'Local path'}
-            placeholder="repository path"
+            label={'目标路径'}
+            placeholder="仓库路径"
             onValueChanged={this.props.onPathChanged}
           />
-          <Button onClick={this.props.onChooseDirectory}>Choose…</Button>
+          <Button onClick={this.props.onChooseDirectory}>选择...</Button>
         </Row>
       </DialogContent>
     )

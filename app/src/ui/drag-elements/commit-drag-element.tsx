@@ -86,7 +86,7 @@ export class CommitDragElement extends React.Component<
           <>
             {copyToPlus}
             <span>
-              <span className="copy-to">Copy to</span>
+              <span className="copy-to">复制到</span>
               <span className="branch-name">
                 {currentDropTarget.branchName}
               </span>
@@ -99,27 +99,26 @@ export class CommitDragElement extends React.Component<
         const commitsBeingSquashedCount = this.props.selectedCommits.length + 1
         toolTipContents = (
           <>
-            <span>Squash {commitsBeingSquashedCount} commits</span>
+            <span>压缩 {commitsBeingSquashedCount} 个提交</span>
           </>
         )
         break
       case DropTargetType.ListInsertionPoint:
         if (currentDropTarget.data.type !== DragType.Commit) {
           toolTipContents = (
-            <>
-              <span>'Insert here'</span>
-            </>
-          )
-          break
-        }
-
-        const pluralized =
-          currentDropTarget.data.commits.length === 1 ? 'commit' : 'commits'
-        toolTipContents = (
           <>
-            <span>{`Move ${pluralized} here`}</span>
+            <span>'插入到此处'</span>
           </>
         )
+        break
+      }
+
+      const commitCount = currentDropTarget.data.commits.length
+      toolTipContents = (
+        <>
+          <span>{`将 ${commitCount} 个提交移动到此处`}</span>
+        </>
+      )
         break
       default:
         assertNever(

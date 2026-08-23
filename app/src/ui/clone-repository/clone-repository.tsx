@@ -360,7 +360,7 @@ export class CloneRepository extends React.Component<
     return (
       <Dialog
         className="clone-repository"
-        title={__DARWIN__ ? 'Clone a Repository' : 'Clone a repository'}
+        title={'克隆一个仓库'}
         onSubmit={this.clone}
         onDismissed={this.props.onDismissed}
         loading={this.state.loading}
@@ -420,7 +420,7 @@ export class CloneRepository extends React.Component<
       case CloneRepositoryTab.Gitea:
         return 'Gitea'
       case CloneRepositoryTab.Generic:
-        return 'URL'
+        return '链接'
       default:
         return assertNever(tab, `Unknown tab: ${tab}`)
     }
@@ -454,7 +454,7 @@ export class CloneRepository extends React.Component<
 
     return (
       <DialogFooter>
-        <OkCancelButtonGroup okButtonText="Clone" okButtonDisabled={disabled} />
+        <OkCancelButtonGroup okButtonText="克隆" okButtonDisabled={disabled} />
       </DialogFooter>
     )
   }
@@ -711,14 +711,12 @@ export class CloneRepository extends React.Component<
     if (tab === CloneRepositoryTab.Generic) {
       return null
     }
-    const signInTitle = __DARWIN__ ? 'Sign In' : 'Sign in'
+    const signInTitle = '登录'
     const accountName = this.getTabName(tab)
     const action = this.getSignInAction(tab)
     return (
       <CallToAction actionTitle={signInTitle} onAction={action}>
-        <div>
-          Sign in to your {accountName} account to access your repositories.
-        </div>
+        <div>登录到您的 {accountName} 账户以访问您的仓库。</div>
       </CallToAction>
     )
   }
@@ -817,8 +815,8 @@ export class CloneRepository extends React.Component<
     const tabState = this.getSelectedTabState()
 
     const path = await showSaveDialog({
-      buttonLabel: 'Select',
-      nameFieldLabel: 'Clone As:',
+      buttonLabel: '选择',
+      nameFieldLabel: '克隆为:',
       showsTagField: false,
       defaultPath: tabState.path ?? '',
       properties: ['createDirectory'],
@@ -875,9 +873,7 @@ export class CloneRepository extends React.Component<
     path: string | null
   ): Promise<null | Error> {
     if (path === null) {
-      return new Error(
-        'Unable to read path on disk. Please check the path and try again.'
-      )
+      return new Error('无法读取磁盘上的路径。请检查路径并重试。')
     }
 
     try {
@@ -886,15 +882,15 @@ export class CloneRepository extends React.Component<
       if (directoryFiles.length === 0) {
         return null
       } else {
-        return new Error(
-          'This folder contains files. Git can only clone to empty folders.'
-        )
+        return new Error('此文件夹包含文件。Git 只能克隆到空文件夹。')
       }
     } catch (error) {
       if (error.code === 'ENOTDIR') {
         // path refers to a file or other file system entry
         return new Error(
-          'There is already a file with this name. Git can only clone to a folder.'
+          '这里有已经有一个文件叫做 ' +
+            Path.basename(path) +
+            '. Git 只能克隆到空文件夹。'
         )
       }
 
@@ -906,9 +902,7 @@ export class CloneRepository extends React.Component<
       log.error(
         'CloneRepository: Path validation failed. Error: ' + error.message
       )
-      return new Error(
-        'Unable to read path on disk. Please check the path and try again.'
-      )
+      return new Error('无法读取磁盘上的路径。请检查路径并重试。')
     }
   }
 
@@ -960,7 +954,7 @@ export class CloneRepository extends React.Component<
     const { path } = this.getSelectedTabState()
 
     if (path == null) {
-      const error = new Error(`Directory could not be created at this path.`)
+      const error = new Error(`目录无法在此路径创建。`)
       this.setState({ loading: false })
       this.setSelectedTabState({ error })
       return
@@ -968,7 +962,7 @@ export class CloneRepository extends React.Component<
 
     if (!cloneInfo) {
       const error = new Error(
-        `We couldn't find that repository. Check that you are logged in, the network is accessible, and the URL or repository alias are spelled correctly.`
+        `我们找不到该仓库。请检查您是否已登录，网络是否可访问，以及 URL 或仓库别名是否拼写正确。`
       )
       this.setState({ loading: false })
       this.setSelectedTabState({ error })

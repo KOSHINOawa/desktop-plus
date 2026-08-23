@@ -30,32 +30,30 @@ export class ChangeRepositoryAlias extends React.Component<
 
   public render() {
     const repository = this.props.repository
-    const verb = repository.alias === null ? 'Create' : 'Change'
+    const verb = repository.alias === null ? '创建' : '修改'
 
     return (
       <Dialog
         id="change-repository-alias"
-        title={
-          __DARWIN__ ? `${verb} Repository Alias` : `${verb} repository alias`
-        }
+        title={`${verb} 仓库别名`}
         ariaDescribedBy="change-repository-alias-description"
         onDismissed={this.props.onDismissed}
         onSubmit={this.changeAlias}
       >
         <DialogContent>
           <p id="change-repository-alias-description">
-            Choose a new alias for the repository "{nameOf(repository)}".{' '}
+            为仓库 "{nameOf(repository)}" 选择一个新的别名。{' '}
           </p>
           <p>
             <TextBox
-              ariaLabel="Alias"
+              ariaLabel="别名"
               value={this.state.newAlias}
               onValueChanged={this.onNameChanged}
             />
           </p>
           {repository.gitHubRepository !== null && (
             <p className="description">
-              This will not affect the original repository name
+              这不会影响原始仓库名称
               {this.remoteLabel(repository)}.
             </p>
           )}
@@ -63,7 +61,7 @@ export class ChangeRepositoryAlias extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? `${verb} Alias` : `${verb} alias`}
+            okButtonText={`${verb} 别名`}
             okButtonDisabled={this.state.newAlias.length === 0}
           />
         </DialogFooter>
@@ -79,19 +77,19 @@ export class ChangeRepositoryAlias extends React.Component<
 
     switch (gitHubRepository.type) {
       case 'github':
-        return ' on GitHub'
+        return ' 在 GitHub'
       case 'bitbucket':
-        return ' on Bitbucket'
+        return ' 在 Bitbucket'
       case 'gitlab':
-        return ' on GitLab'
+        return ' 在 GitLab'
       case 'forgejo':
-        return ` on ${getForgejoName(gitHubRepository.endpoint)}`
+        return ` 在 ${getForgejoName(gitHubRepository.endpoint)}`
       case 'gitea':
-        return ' on Gitea'
+        return ' 在 Gitea'
       default:
         assertNever(
           gitHubRepository.type,
-          `Unknown repository type: ${gitHubRepository.type}`
+          `未知仓库类型: ${gitHubRepository.type}`
         )
     }
   }

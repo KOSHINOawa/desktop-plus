@@ -287,7 +287,7 @@ export class CommitGraphCommitListItem extends React.PureComponent<ICommitGraphC
     return (
       <span
         className="commitGraph-current-commit-indicator"
-        aria-label="Currently checked out commit"
+        aria-label="当前检出的提交"
         role="img"
       />
     )
@@ -448,7 +448,7 @@ export class CommitGraphCommitListItem extends React.PureComponent<ICommitGraphC
           </div>
         ))}
         <div>
-          <div className="label">Date: </div>
+            <div className="label">日期：</div>
           {absoluteDate}
         </div>
         {this.props.showUnpushedIndicator ? (
@@ -458,7 +458,7 @@ export class CommitGraphCommitListItem extends React.PureComponent<ICommitGraphC
                 <Octicon symbol={octicons.arrowUp} />
               </span>
             </div>
-            <div>{this.props.unpushedIndicatorTitle ?? 'Unpushed commit'}</div>
+            <div>{this.props.unpushedIndicatorTitle ?? '未推送的提交'}</div>
           </div>
         ) : null}
       </div>
@@ -478,7 +478,7 @@ export class CommitGraphCommitListItem extends React.PureComponent<ICommitGraphC
       <span
         className="commitGraph-unpushed-indicator"
         role="img"
-        aria-label={this.props.unpushedIndicatorTitle ?? 'Unpushed commit'}
+        aria-label={this.props.unpushedIndicatorTitle ?? '未推送的提交'}
       >
         <Octicon symbol={octicons.arrowUp} />
       </span>
@@ -544,7 +544,7 @@ function commitGraph_getDayDifference(newerDate: Date, olderDate: Date) {
 }
 
 function commitGraph_getCommitSummary(commit: Commit) {
-  return commit.summary.length === 0 ? 'Empty commit message' : commit.summary
+   return commit.summary.length === 0 ? '空的提交信息' : commit.summary
 }
 
 function commitGraph_renderSummaryTokens(
@@ -591,7 +591,7 @@ function commitGraph_renderExpandedAuthor(
   user: IAvatarUser
 ): string | JSX.Element {
   if (!user) {
-    return 'Unknown user'
+    return '未知用户'
   }
 
   if (user.name) {

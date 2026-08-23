@@ -96,12 +96,10 @@ export class About extends React.Component<IAboutProps> {
       <Row>
         <p className="no-padding">
           <LinkButton uri={DesktopPlusReleaseNotesUri}>
-            Desktop Plus Releases
+            Desktop Plus 正式版
           </LinkButton>
           <span className="separator">|</span>
-          <LinkButton uri={UpstreamReleaseNotesUri}>
-            Upstream Releases
-          </LinkButton>
+          <LinkButton uri={UpstreamReleaseNotesUri}>上游正式版</LinkButton>
         </p>
       </Row>
     )
@@ -109,30 +107,20 @@ export class About extends React.Component<IAboutProps> {
 
   private renderUpdateDetails() {
     if (__LINUX__) {
-      return (
-        <p>
-          Please visit the Desktop Plus release page for release notes and to
-          download the latest version.
-        </p>
-      )
+      return <p>请访问 Desktop Plus 发布页面以查看发布说明并下载最新版本。</p>
     }
 
     if (!this.canCheckForUpdates) {
-      return (
-        <p>
-          The application is currently running in development and will not
-          receive any updates.
-        </p>
-      )
+      return <p>该应用程序当前在开发模式下运行，不会接收任何更新。</p>
     }
 
     const { status, lastSuccessfulCheck } = this.props.updateState
 
     switch (status) {
       case UpdateStatus.CheckingForUpdates:
-        return <UpdateInfo message="Checking for updates…" loading={true} />
+        return <UpdateInfo message="正在检查更新…" loading={true} />
       case UpdateStatus.UpdateAvailable:
-        return <UpdateInfo message="Downloading update…" loading={true} />
+        return <UpdateInfo message="正在下载更新…" loading={true} />
       case UpdateStatus.UpdateNotAvailable:
         if (!lastSuccessfulCheck) {
           return null
@@ -140,7 +128,7 @@ export class About extends React.Component<IAboutProps> {
 
         const richMessage = (
           <p>
-            You have the latest version (last checked{' '}
+            你拥有最新版本 (最后检查于{' '}
             <RelativeTime date={lastSuccessfulCheck} />)
           </p>
         )
@@ -152,14 +140,12 @@ export class About extends React.Component<IAboutProps> {
 
         return (
           <UpdateInfo
-            message={`You have the latest version (last checked ${absoluteDate})`}
+            message={`你拥有最新版本（最后检查于 ${absoluteDate}）`}
             richMessage={richMessage}
           />
         )
       case UpdateStatus.UpdateReady:
-        return (
-          <UpdateInfo message="An update has been downloaded and is ready to be installed." />
-        )
+        return <UpdateInfo message="更新已下载完毕，准备安装。" />
       case UpdateStatus.UpdateNotChecked:
         return null
       default:
@@ -179,10 +165,9 @@ export class About extends React.Component<IAboutProps> {
     if (isOSNoLongerSupportedByElectron()) {
       return (
         <DialogError>
-          This operating system is no longer supported. Software updates have
-          been disabled.{' '}
+          此操作系统不再受支持。软件更新已禁用。{' '}
           <LinkButton uri="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/supported-operating-systems">
-            Supported operating systems
+            受支持的操作系统
           </LinkButton>
         </DialogError>
       )
@@ -199,10 +184,10 @@ export class About extends React.Component<IAboutProps> {
     const name = this.props.applicationName
     const version = this.props.applicationVersion
     const releaseNotesLink = (
-      <LinkButton uri={DesktopPlusReleaseNotesUri}>release notes</LinkButton>
+      <LinkButton uri={DesktopPlusReleaseNotesUri}>发布说明</LinkButton>
     )
 
-    const versionText = __DEV__ ? `Build ${version}` : `Version ${version}`
+    const versionText = __DEV__ ? `构建 ${version}` : `版本 ${version}`
     const titleId = 'Dialog_about'
 
     return (
@@ -217,7 +202,7 @@ export class About extends React.Component<IAboutProps> {
           <Row className="logo">
             <img src={DesktopLogo} alt="Desktop Plus" width="64" height="64" />
           </Row>
-          <h1 id={titleId}>About {name}</h1>
+          <h1 id={titleId}>关于 {name}</h1>
           <p className="no-padding">
             <span className="selectable-text">
               {versionText} ({this.props.applicationArchitecture})
@@ -230,17 +215,17 @@ export class About extends React.Component<IAboutProps> {
           <div className="terms-and-license-container">
             <p className="no-padding terms-and-license">
               <LinkButton onClick={this.props.onShowTermsAndConditions}>
-                Terms and Conditions
+                条款与条件
               </LinkButton>
             </p>
             <p className="no-padding terms-and-license">
               <LinkButton onClick={this.props.onShowAcknowledgements}>
-                License and Open Source Notices
+                许可证和开源声明
               </LinkButton>
             </p>
             <p className="terms-and-license">
               <LinkButton uri="https://gh.io/copilot-for-desktop-transparency">
-                Responsible use of Copilot in Desktop Plus
+                在 Desktop Plus 中负责任地使用 Copilot
               </LinkButton>
             </p>
           </div>

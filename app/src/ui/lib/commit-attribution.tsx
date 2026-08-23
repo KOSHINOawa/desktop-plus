@@ -35,7 +35,7 @@ export class CommitAttribution extends React.Component<
         </span>
       )
     } else {
-      return <span className="authors">{authors.length} people</span>
+      return <span className="authors">{authors.length} 人</span>
     }
   }
 

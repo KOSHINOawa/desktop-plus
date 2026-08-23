@@ -60,9 +60,9 @@ export class GitConfig extends React.Component<IGitConfigProps> {
   private renderUpdateBranchStrategyLabel = (key: UpdateBranchStrategy) => {
     switch (key) {
       case UpdateBranchStrategy.Merge:
-        return 'Merge the default branch into my current branch'
+        return '将默认分支合并到当前分支'
       case UpdateBranchStrategy.Rebase:
-        return 'Rebase my current branch onto the default branch'
+        return '将当前分支变基到默认分支上'
       default:
         return assertNever(key, `Unknown update branch strategy: ${key}`)
     }
@@ -71,9 +71,9 @@ export class GitConfig extends React.Component<IGitConfigProps> {
   private renderConfigOptionLabel = (key: GitConfigLocation) => {
     switch (key) {
       case GitConfigLocation.Global:
-        return 'Use my global Git config'
+        return '使用我的全局 Git 配置'
       case GitConfigLocation.Local:
-        return 'Use a local Git config'
+        return '使用本地 Git 配置'
       default:
         return assertNever(key, `Unknown git config location: ${key}`)
     }
@@ -89,7 +89,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
       <DialogContent className="git-config-tab">
         <div className="advanced-section update-branch-strategy">
           <h2 id="update-branch-strategy-heading">
-            When updating from the default branch, I wish to
+            从默认分支更新时，我希望
           </h2>
           <Row>
             <RadioGroup<UpdateBranchStrategy>
@@ -107,7 +107,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
           </Row>
         </div>
         <div className="advanced-section">
-          <h2 id="git-config-heading">For this repository I wish to</h2>
+          <h2 id="git-config-heading">对于此仓库，我希望</h2>
           <Row>
             <RadioGroup<GitConfigLocation>
               ariaLabelledBy="git-config-heading"
@@ -168,10 +168,10 @@ export class GitConfig extends React.Component<IGitConfigProps> {
           {key} = {origin.value}
         </div>
         <div className="config-origin-detail">
-          Scope: {formatConfigScope(origin)}
+          作用域：{formatConfigScope(origin)}
         </div>
         <div className="config-origin-detail">
-          File:{' '}
+          文件：{' '}
           <LinkButton onClick={onReveal}>
             {formatConfigPath(origin, repoPath)}
           </LinkButton>
@@ -188,7 +188,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
 
     return (
       <div className="config-origin-hint">
-        <h2>Resolved effective identity</h2>
+        <h2>已解析的有效身份</h2>
         {nameOrigin &&
           this.renderOriginEntry(
             'user.name',

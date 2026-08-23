@@ -116,13 +116,13 @@ export class GitLFSProgressParser {
   private directionToHumanFacingVerb(direction: string): string {
     switch (direction) {
       case 'download':
-        return 'Downloading'
+        return '下载中'
       case 'upload':
-        return 'Uploading'
+        return '上传中'
       case 'checkout':
-        return 'Checking out'
+        return '检出中'
       default:
-        return 'Downloading'
+        return '下载中'
     }
   }
 }

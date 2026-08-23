@@ -24,27 +24,25 @@ export class NoBranches extends React.Component<INoBranchesProps> {
         <div className="no-branches">
           <img src={BlankSlateImage} className="blankslate-image" alt="" />
 
-          <div className="title">Sorry, I can't find that branch</div>
+          <div className="title">抱歉，分支自己跑丢了</div>
 
-          <div className="subtitle">
-            Do you want to create a new branch instead?
-          </div>
+          <div className="subtitle">你想要创建一个新分支吗？</div>
 
           <Button
             className="create-branch-button"
             onClick={this.props.onCreateNewBranch}
             type="submit"
           >
-            {__DARWIN__ ? 'Create New Branch' : 'Create new branch'}
+            创建新分支
           </Button>
 
           <div className="protip">
-            ProTip! Press{' '}
+            小贴士！按{' '}
             <KeyboardShortcut
               darwinKeys={['⌘', '⇧', 'N']}
               keys={['Ctrl', 'Shift', 'N']}
             />{' '}
-            to quickly create a new branch from anywhere within the app
+            可以在应用中的任何位置快速创建一个新分支
           </div>
         </div>
       )
@@ -52,7 +50,7 @@ export class NoBranches extends React.Component<INoBranchesProps> {
 
     return (
       <div className="no-branches">
-        {this.props.noBranchesMessage ?? "Sorry, I can't find that branch"}
+        {this.props.noBranchesMessage ?? '抱歉，我找不到那个分支'}
       </div>
     )
   }

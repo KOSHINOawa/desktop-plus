@@ -45,12 +45,12 @@ export class StashDiffHeader extends React.Component<
     return (
       <div className="header">
         <div className="title-row">
-          <h3>{stashEntry.customName ?? 'Stashed changes'}</h3>
+          <h3>{stashEntry.customName ?? '暂存的更改'}</h3>
           <Button
             className="rename-stash-button"
             onClick={this.onRenameClick}
-            tooltip="Rename stash"
-            ariaLabel="Rename stash"
+            tooltip="重命名暂存"
+            ariaLabel="重命名暂存"
             disabled={isRestoring || isDiscarding}
           >
             <Octicon symbol={octicons.pencil} />
@@ -59,30 +59,30 @@ export class StashDiffHeader extends React.Component<
         <div className="row button-group">
           <Button
             onClick={this.onCloseClick}
-            tooltip={'Close the stash view'}
+            tooltip={'关闭暂存视图'}
             className="button-with-icon"
           >
             <Octicon symbol={octicons.x} className="mr" />
-            Close
+            关闭
           </Button>
           <Button
             onClick={this.onRestoreClick}
             type="submit"
-            tooltip={'Restore the stashed changes into the working directory'}
+            tooltip={'将暂存的更改恢复到工作目录'}
             className="button-with-icon"
             disabled={isRestoring || isDiscarding}
           >
             <Octicon symbol={octicons.fileDiff} className="mr" />
-            Restore Changes
+            恢复更改
           </Button>
           <Button
             onClick={this.onDiscardClick}
-            tooltip={'Discard the stashed changes'}
+            tooltip={'丢弃暂存的更改'}
             className="destructive button-with-icon"
             disabled={isRestoring || isDiscarding}
           >
             <Octicon symbol={octicons.trash} className="mr" />
-            Discard
+            丢弃
           </Button>
         </div>
       </div>

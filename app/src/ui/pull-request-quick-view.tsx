@@ -168,7 +168,7 @@ export class PullRequestQuickView extends React.Component<
     return (
       <header className="header">
         <Octicon symbol={octicons.listUnordered} />
-        <div className="action-needed">Review requested</div>
+        <div className="action-needed">已请求审查</div>
         <Button
           className="button-with-icon"
           onClick={this.onViewOnGitHub}
@@ -186,15 +186,15 @@ export class PullRequestQuickView extends React.Component<
   private getViewOnGitHubLabel(gitHubRepository: GitHubRepository): string {
     switch (gitHubRepository.type) {
       case 'github':
-        return 'View on GitHub'
+        return '在 GitHub 上查看'
       case 'bitbucket':
-        return 'View on Bitbucket'
+        return '在 Bitbucket 上查看'
       case 'gitlab':
-        return 'View on GitLab'
+        return '在 GitLab 上查看'
       case 'forgejo':
-        return `View on ${getForgejoName(gitHubRepository.endpoint)}`
+        return `在 ${getForgejoName(gitHubRepository.endpoint)} 上查看`
       case 'gitea':
-        return 'View on Gitea'
+        return '在 Gitea 上查看'
       default:
         assertNever(
           gitHubRepository.type,
@@ -212,7 +212,7 @@ export class PullRequestQuickView extends React.Component<
             isDraft ? octicons.gitPullRequestDraft : octicons.gitPullRequest
           }
         />
-        <span className="state">{isDraft ? 'Draft' : 'Open'}</span>
+        <span className="state">{isDraft ? '草稿' : '开放'}</span>
       </div>
     )
   }
@@ -222,8 +222,8 @@ export class PullRequestQuickView extends React.Component<
       this.props.pullRequest
     const displayBody =
       body !== undefined && body !== null && body.trim() !== ''
-        ? body
-        : '_No description provided._'
+          ? body
+          : '_未提供描述。_'
 
     return (
       <div className="pull-request">
@@ -245,7 +245,7 @@ export class PullRequestQuickView extends React.Component<
           onMarkdownLinkClicked={this.onMarkdownLinkClicked}
           onMarkdownParsed={this.onMarkdownParsed}
           underlineLinks={this.props.underlineLinks}
-          ariaLabel="Pull request markdown body"
+          ariaLabel="拉取请求 Markdown 正文"
         />
       </div>
     )

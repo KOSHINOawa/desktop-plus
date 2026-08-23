@@ -152,11 +152,11 @@ export class AddWorktreeDialog extends React.Component<
         <p className="branch-status-hint">
           {branch.type === BranchType.Remote ? (
             <>
-              Will check out remote branch <Ref>{effectiveName}</Ref>.
+              将检出远程分支 <Ref>{effectiveName}</Ref>。
             </>
           ) : (
             <>
-              Will check out existing branch <Ref>{effectiveName}</Ref>.
+              将检出已有分支 <Ref>{effectiveName}</Ref>。
             </>
           )}
         </p>
@@ -172,7 +172,7 @@ export class AddWorktreeDialog extends React.Component<
 
     return (
       <div id="add-worktree-path-msg">
-        Worktree will be created at <Ref>{fullPath}</Ref>.
+        工作树将创建于 <Ref>{fullPath}</Ref>。
       </div>
     )
   }
@@ -187,7 +187,7 @@ export class AddWorktreeDialog extends React.Component<
     return (
       <Dialog
         id="add-worktree"
-        title={__DARWIN__ ? 'Add Worktree' : 'Add worktree'}
+        title={__DARWIN__ ? '添加工作树' : '添加工作树'}
         loading={this.state.creating}
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
@@ -199,14 +199,14 @@ export class AddWorktreeDialog extends React.Component<
             }
             onFullPathChanged={this.onFullPathChanged}
             onNameChanged={this.onWorktreeNameChanged}
-            nameLabel={__DARWIN__ ? 'Worktree Name' : 'Worktree name'}
-            namePlaceholder="worktree name"
-            pathPlaceholder="worktree path"
+            nameLabel={__DARWIN__ ? '工作树名称' : '工作树名称'}
+            namePlaceholder="工作树名称"
+            pathPlaceholder="工作树路径"
           />
 
           <Row>
             <RefNameTextBox
-              label={__DARWIN__ ? 'Branch Name' : 'Branch name'}
+              label={__DARWIN__ ? '分支名称' : '分支名称'}
               placeholder={branchPlaceholder}
               initialValue={this.state.branchName}
               onValueChange={this.onBranchNameChanged}
@@ -221,7 +221,7 @@ export class AddWorktreeDialog extends React.Component<
         <DialogFooter>
           {this.renderPathMessage()}
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Create Worktree' : 'Create worktree'}
+            okButtonText={__DARWIN__ ? '创建工作树' : '创建工作树'}
             okButtonDisabled={disabled}
           />
         </DialogFooter>

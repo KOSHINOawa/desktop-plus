@@ -132,12 +132,12 @@ export class Integrations extends React.Component<
     const options = this.props.availableEditors
     return (
       <Select
-        aria-label="Custom external editor"
+        aria-label="自定义外部编辑器"
         value={this.getSelectorValue()}
         onChange={this.onSelectedEditorChanged}
       >
         <option key={DoNotOverrideValue} value={DoNotOverrideValue}>
-          {__DARWIN__ ? 'Use Default Editor' : 'Use default editor'}
+          {__DARWIN__ ? '使用默认编辑器' : '使用默认编辑器'}
         </option>
         {options.map(n => (
           <option key={n} value={n}>
@@ -145,7 +145,7 @@ export class Integrations extends React.Component<
           </option>
         ))}
         <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-          {__DARWIN__ ? 'Configure Custom Editor…' : 'Configure custom editor…'}
+          {__DARWIN__ ? '配置自定义编辑器…' : '配置自定义编辑器…'}
         </option>
       </Select>
     )
@@ -171,9 +171,9 @@ export class Integrations extends React.Component<
       <Row>
         <div className="no-options-found">
           <span>
-            No other editors found.{' '}
+            未找到其他编辑器。{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
-              Install {suggestedExternalEditor.name}?
+              安装 {suggestedExternalEditor.name}？
             </LinkButton>
           </span>
         </div>
@@ -224,7 +224,7 @@ export class Integrations extends React.Component<
         <fieldset className="advanced-section">
           <legend>
             <h2>
-              {__DARWIN__ ? 'Custom External Editor' : 'Custom external editor'}
+              {__DARWIN__ ? '自定义外部编辑器' : '自定义外部编辑器'}
             </h2>
           </legend>
           <Row>{this.renderExternalEditor()}</Row>

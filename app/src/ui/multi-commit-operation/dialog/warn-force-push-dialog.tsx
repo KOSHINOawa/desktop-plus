@@ -41,8 +41,8 @@ export class WarnForcePushDialog extends React.Component<
     const { operation, onDismissed } = this.props
 
     const title = __DARWIN__
-      ? `${operation} Will Require Force Push`
-      : `${operation} will require force push`
+      ? `${operation} 将需要强制推送`
+      : `${operation} 将需要强制推送`
 
     return (
       <Dialog
@@ -56,17 +56,14 @@ export class WarnForcePushDialog extends React.Component<
       >
         <DialogContent>
           <p id="warn-force-push-confirmation-title">
-            Are you sure you want to {operation.toLowerCase()}?
+            你确定要 {operation.toLowerCase()} 吗？
           </p>
           <p id="warn-force-push-confirmation-message">
-            At the end of the {operation.toLowerCase()} flow, Desktop Plus will
-            enable you to force push the branch to update the upstream branch.
-            Force pushing will alter the history on the remote and potentially
-            cause problems for others collaborating on this branch.
+            在 {operation.toLowerCase()} 流程结束时，Desktop Plus 将允许你强制推送该分支以更新上游分支。强制推送会修改远程上的历史记录，并可能给协作此分支的其他人带来问题。
           </p>
           <div>
             <Checkbox
-              label="Do not show this message again"
+              label="不再显示此消息"
               value={
                 this.state.askForConfirmationOnForcePush
                   ? CheckboxValue.Off
@@ -78,7 +75,7 @@ export class WarnForcePushDialog extends React.Component<
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={`Begin ${
+            okButtonText={`开始 ${
               __DARWIN__ ? operation : operation.toLowerCase()
             }`}
             onCancelButtonClick={this.props.onDismissed}

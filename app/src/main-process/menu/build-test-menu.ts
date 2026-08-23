@@ -11,14 +11,14 @@ export function buildTestMenu() {
 
   if (__WIN32__) {
     testMenuItems.push(separator, {
-      label: 'Command Line Tool',
+      label: '命令行工具',
       submenu: [
         {
-          label: 'Install',
+          label: '安装',
           click: emit('install-windows-cli'),
         },
         {
-          label: 'Uninstall',
+          label: '卸载',
           click: emit('uninstall-windows-cli'),
         },
       ],
@@ -27,73 +27,73 @@ export function buildTestMenu() {
 
   const errorDialogsSubmenu: MenuItemConstructorOptions[] = [
     {
-      label: 'Confirm Committing Conflicted Files',
+      label: '确认提交存在冲突的文件',
       click: emit('test-confirm-committing-conflicted-files'),
     },
     {
-      label: 'Discarded Changes Will Be Unrecoverable',
+      label: '丢弃的更改将无法恢复',
       click: emit('test-discarded-changes-will-be-unrecoverable'),
     },
     {
-      label: 'Do you want to fork this repository?',
+      label: '要复刻此仓库吗？',
       click: emit('test-do-you-want-fork-this-repository'),
     },
     {
-      label: 'Newer Commits On Remote',
+      label: '远程上有更新的提交',
       click: emit('test-newer-commits-on-remote'),
     },
     {
-      label: 'Files Too Large',
+      label: '文件过大',
       click: emit('test-files-too-large'),
     },
     {
-      label: 'Generic Git Authentication',
+      label: '通用 Git 身份验证',
       click: emit('test-generic-git-authentication'),
     },
     {
-      label: 'Invalidated Account Token',
+      label: '账户令牌已失效',
       click: emit('test-invalidated-account-token'),
     },
   ]
 
   if (__DARWIN__) {
     errorDialogsSubmenu.push({
-      label: 'Move to Application Folder',
+      label: '移动到应用程序文件夹',
       click: emit('test-move-to-application-folder'),
     })
   }
 
   errorDialogsSubmenu.push(
     {
-      label: 'Push Rejected',
+      label: '推送被拒绝',
       click: emit('test-push-rejected'),
     },
     {
-      label: 'Re-Authorization Required',
+      label: '需要重新授权',
       click: emit('test-re-authorization-required'),
     },
     {
-      label: 'Unable to Locate Git',
+      label: '无法找到 Git',
       click: emit('test-unable-to-locate-git'),
     },
     {
-      label: 'Unable to Open External Editor',
+      label: '无法打开外部编辑器',
       click: emit('test-no-external-editor'),
     },
     {
-      label: 'Unable to Open Shell',
+      label: '无法打开 Shell',
       click: emit('test-unable-to-open-shell'),
     },
     {
-      label: 'Untrusted Server',
+      label: '不受信任的服务器',
       click: emit('test-untrusted-server'),
     },
     {
-      label: 'Update Existing Git LFS Filters?',
+      label: '更新现有的 Git LFS 过滤器？',
       click: emit('test-update-existing-git-lfs-filters'),
     },
     {
-      label: 'Upstream Already Exists',
+      label: '上游已存在',
       click: emit('test-upstream-already-exists'),
     }
   )
@@ -101,40 +101,40 @@ export function buildTestMenu() {
   testMenuItems.push(
     separator,
     {
-      label: 'Crash main process…',
+      label: '使主进程崩溃…',
       click() {
         throw new Error('Boomtown!')
       },
     },
     {
-      label: 'Crash renderer process…',
+      label: '使渲染进程崩溃…',
       click: emit('boomtown'),
     },
     {
-      label: 'Prune branches',
+      label: '清理分支',
       click: emit('test-prune-branches'),
     },
     {
-      label: 'Show notification',
+      label: '显示通知',
       click: emit('test-notification'),
     },
     {
-      label: 'Dispatch CLI action',
+      label: '派发 CLI 操作',
       click: emit('test-cli-action'),
     },
     {
-      label: 'Show popup',
+      label: '显示弹出框',
       submenu: [
         {
-          label: 'Release notes',
+          label: '发布说明',
           click: emit('test-release-notes-popup'),
         },
         {
-          label: 'Thank you',
+          label: '感谢',
           click: emit('test-thank-you-popup'),
         },
         {
-          label: 'Show App Error',
+          label: '显示应用错误',
           click: emit('test-app-error'),
         },
         {
@@ -142,62 +142,62 @@ export function buildTestMenu() {
           click: emit('test-icons'),
         },
         {
-          label: 'About dialog (test mode)',
+          label: '关于对话框（测试模式）',
           click: emit('test-about-dialog'),
         },
         {
-          label: 'Copilot snapshot card',
+          label: 'Copilot 快照卡片',
           click: emit('test-copilot-snapshot-card'),
         },
       ],
     },
     {
-      label: 'Show banner',
+      label: '显示提示条',
       submenu: [
         {
-          label: 'Update banner',
+          label: '更新提示条',
           click: emit('test-update-banner'),
         },
         {
-          label: 'Update banner (priority)',
+          label: '更新提示条（优先）',
           click: emit('test-prioritized-update-banner'),
         },
         {
-          label: `Showcase Update banner`,
+          label: `展示更新提示条`,
           click: emit('test-showcase-update-banner'),
         },
         {
-          label: `${__DARWIN__ ? 'Apple silicon' : 'Arm64'} banner`,
+          label: `${__DARWIN__ ? 'Apple 芯片' : 'Arm64'} 提示条`,
           click: emit('test-arm64-banner'),
         },
         {
-          label: 'Thank you',
+          label: '感谢',
           click: emit('test-thank-you-banner'),
         },
         {
-          label: 'Reorder Successful',
+          label: '重新排序成功',
           click: emit('test-reorder-banner'),
         },
         {
-          label: 'Reorder Undone',
+          label: '已撤销重新排序',
           click: emit('test-undone-banner'),
         },
         {
-          label: 'Cherry Pick Conflicts',
+          label: '挑拣冲突',
           click: emit('test-cherry-pick-conflicts-banner'),
         },
         {
-          label: 'Merge Successful',
+          label: '合并成功',
           click: emit('test-merge-successful-banner'),
         },
         {
-          label: 'OS Version No Longer Supported',
+          label: '操作系统版本不再受支持',
           click: emit('test-os-version-no-longer-supported'),
         },
       ],
     },
     {
-      label: 'Show Error Dialogs',
+      label: '显示错误对话框',
       submenu: errorDialogsSubmenu,
     }
   )

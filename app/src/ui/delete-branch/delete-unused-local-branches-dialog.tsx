@@ -39,8 +39,8 @@ export class DeleteUnusedLocalBranches extends React.Component<
         id="delete-unused-local-branches"
         title={
           __DARWIN__
-            ? 'Delete Unused Local Branches'
-            : 'Delete unused local branches'
+            ? '删除未使用的本地分支'
+            : '删除未使用的本地分支'
         }
         type="warning"
         onSubmit={this.deleteBranches}
@@ -52,10 +52,7 @@ export class DeleteUnusedLocalBranches extends React.Component<
       >
         <DialogContent>
           <div id="delete-unused-local-branches-message">
-            <p>
-              Delete the following {count}{' '}
-              {count === 1 ? 'local branch' : 'local branches'}?
-            </p>
+            <p>删除以下 {count} 个本地分支？</p>
             <ul className="delete-unused-local-branches-list">
               {this.props.branches.map(branch => (
                 <li key={branch.name}>
@@ -63,11 +60,11 @@ export class DeleteUnusedLocalBranches extends React.Component<
                 </li>
               ))}
             </ul>
-            <p>This action cannot be undone.</p>
+            <p>此操作无法撤销。</p>
           </div>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Delete" />
+          <OkCancelButtonGroup destructive={true} okButtonText="删除" />
         </DialogFooter>
       </Dialog>
     )

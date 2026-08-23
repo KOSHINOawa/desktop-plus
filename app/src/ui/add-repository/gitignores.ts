@@ -39,7 +39,7 @@ async function getGitIgnoreText(name: string): Promise<string> {
   const path = gitIgnores.get(name)
   if (!path) {
     throw new Error(
-      `Unknown gitignore: ${name}. Only names returned from getGitIgnoreNames() can be used.`
+      `未知的 gitignore: ${name}。只能使用从 getGitIgnoreNames() 返回的名称。`
     )
   }
 

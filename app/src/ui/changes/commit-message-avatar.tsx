@@ -156,15 +156,15 @@ export class CommitMessageAvatar extends React.Component<
     let ariaLabel = ''
     switch (warningType) {
       case 'none':
-        ariaLabel = 'View commit author information'
+        ariaLabel = '查看提交作者信息'
         break
 
       case 'misattribution':
-        ariaLabel = 'Commit may be misattributed. View warning.'
+        ariaLabel = '提交可能被错误归因。查看警告。'
         break
 
       case 'disallowedEmail':
-        ariaLabel = 'Email address is disallowed. View warning.'
+        ariaLabel = '该邮箱地址被禁止使用。查看警告。'
         break
     }
 
@@ -239,30 +239,28 @@ export class CommitMessageAvatar extends React.Component<
     const { user } = this.props
     const { isGitConfigLocal } = this.state
 
-    const location = isGitConfigLocal ? 'local' : 'global'
-    const locationDesc = isGitConfigLocal ? 'for your repository' : ''
-    const settingsName = __DARWIN__ ? 'settings' : 'options'
-    const settings = isGitConfigLocal
-      ? 'repository settings'
-      : `git ${settingsName}`
-    const buttonText = __DARWIN__ ? 'Open Git Settings' : 'Open git settings'
+    const location = isGitConfigLocal ? '本地' : '全局'
+    const locationDesc = isGitConfigLocal ? '于你的仓库' : ''
+    const settingsName = __DARWIN__ ? '设置' : '选项'
+    const settings = isGitConfigLocal ? '仓库设置' : `git ${settingsName}`
+    const buttonText = '打开 Git 设置'
 
     return (
       <>
-        <p>{user && user.name && `Email: ${user.email}`}</p>
+        <p>{user && user.name && `邮箱：${user.email}`}</p>
 
         <p>
-          You can update your {location} git configuration {locationDesc} in
-          your {settings}.
+          您可以在您的 {settings} 中更新您的 {location} git 配置 {locationDesc}
+          。
         </p>
 
         {!isGitConfigLocal && (
           <p className="secondary-text">
-            You can also set an email local to this repository from the{' '}
+            您也可以从{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              repository settings
+              仓库设置
             </LinkButton>
-            .
+            中设置此仓库的本地邮箱。
           </p>
         )}
         <Row className="button-row">
@@ -279,11 +277,11 @@ export class CommitMessageAvatar extends React.Component<
   private renderWarningPopover() {
     const { warningType, emailRuleFailures } = this.props
 
-    const updateEmailTitle = __DARWIN__ ? 'Update Email' : 'Update email'
+    const updateEmailTitle = __DARWIN__ ? '更新邮箱' : '更新邮箱'
 
     const sharedHeader = (
       <>
-        The email in your global Git config (
+        您的全局 Git 配置中的邮箱 (
         <span className="git-email">{this.props.email}</span>)
       </>
     )
@@ -295,7 +293,7 @@ export class CommitMessageAvatar extends React.Component<
         {hasEmails && (
           <Row>
             <Select
-              label="Your Account Emails"
+              label="您的账户邮箱"
               value={this.state.accountEmail}
               onChange={this.onSelectedGitHubEmailChange}
             >
@@ -309,17 +307,16 @@ export class CommitMessageAvatar extends React.Component<
         )}
         <Row>
           <div className="secondary-text">
-            You can{hasEmails ? ' also' : ''} choose an email local to this
-            repository from the{' '}
+            您可以{hasEmails ? '也' : ''}从{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              repository settings
+              仓库设置
             </LinkButton>
-            .
+            中选择一个本地邮箱。
           </div>
         </Row>
         <Row className="button-row">
           <Button onClick={this.onIgnoreClick} type="button">
-            Ignore
+            忽略
           </Button>
           {hasEmails && (
             <Button onClick={this.onUpdateEmailClick} type="submit">
@@ -333,20 +330,20 @@ export class CommitMessageAvatar extends React.Component<
     if (warningType === 'misattribution') {
       const accountType = this.getAccountType(this.props.repositoryAccount)
       const userName = this.props.user?.name
-        ? ` for ${this.props.user.name}`
+        ? ` 于 ${this.props.user.name}`
         : ''
 
       return (
         <>
           <Row>
             <div>
-              {sharedHeader} doesn't match your {accountType}
+              {sharedHeader} 与您的 {accountType} 不匹配
               {userName}.{' '}
               <LinkButton
-                ariaLabel="Learn more about commit attribution"
+                ariaLabel="了解有关提交归因的更多信息"
                 uri="https://docs.github.com/en/github/committing-changes-to-your-project/why-are-my-commits-linked-to-the-wrong-user"
               >
-                Learn more
+                了解更多
               </LinkButton>
             </div>
           </Row>
@@ -379,7 +376,7 @@ export class CommitMessageAvatar extends React.Component<
     const { user } = this.props
 
     if (user === undefined) {
-      return 'Unknown user'
+      return '未知用户'
     }
 
     const { name, email } = user
@@ -387,12 +384,12 @@ export class CommitMessageAvatar extends React.Component<
     if (name) {
       return (
         <>
-          Committing as <strong>{name}</strong>
+          以 <strong>{name}</strong> 提交
         </>
       )
     }
 
-    return <>Committing with {email}</>
+    return <>使用 {email} 提交</>
   }
 
   private renderPopover() {
@@ -401,11 +398,11 @@ export class CommitMessageAvatar extends React.Component<
     let header: string | JSX.Element | undefined = ''
     switch (this.props.warningType) {
       case 'misattribution':
-        header = 'This commit will be misattributed'
+        header = '此提交将被错误归因'
         break
 
       case 'disallowedEmail':
-        header = 'This email address is disallowed'
+        header = '此邮箱地址被禁止使用'
         break
 
       default:
@@ -476,23 +473,23 @@ export class CommitMessageAvatar extends React.Component<
 
   private getAccountType(account: Account | null) {
     if (account === null) {
-      return 'account'
+      return '账户'
     }
     switch (account.apiType) {
       case 'dotcom':
-        return 'GitHub account'
+        return 'GitHub 账户'
       case 'enterprise':
-        return 'GitHub Enterprise account'
+        return 'GitHub Enterprise 账户'
       case 'bitbucket':
-        return 'Bitbucket account'
+        return 'Bitbucket 账户'
       case 'gitlab':
-        return 'GitLab account'
+        return 'GitLab 账户'
       case 'forgejo':
-        return `${getForgejoName(account.endpoint)} account`
+        return `${getForgejoName(account.endpoint)} 账户`
       case 'gitea':
-        return 'Gitea account'
+        return 'Gitea 账户'
       default:
-        assertNever(account.apiType, 'Unknown account type')
+        assertNever(account.apiType, '未知账户')
     }
   }
 }

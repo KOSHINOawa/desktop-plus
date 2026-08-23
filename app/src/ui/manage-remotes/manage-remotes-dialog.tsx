@@ -120,7 +120,7 @@ export class ManageRemotesDialog extends React.Component<
     if (this.state.loading) {
       return (
         <div className="remotes-loading">
-          <Loading /> Loading remotes…
+          <Loading /> 正在加载远程…
         </div>
       )
     }
@@ -130,9 +130,9 @@ export class ManageRemotesDialog extends React.Component<
     if (remotes.length === 0) {
       return (
         <div className="no-remotes">
-          {this.state.remotes.length === 0
-            ? 'This repository has no remotes.'
-            : 'No remotes match your filter.'}
+           {this.state.remotes.length === 0
+            ? '此仓库没有任何远程。'
+            : '没有远程匹配你的筛选条件。'}
         </div>
       )
     }
@@ -147,8 +147,8 @@ export class ManageRemotesDialog extends React.Component<
         id="manage-remotes"
         title={
           __DARWIN__
-            ? 'Manage Remote Repositories'
-            : 'Manage remote repositories'
+            ? '管理远程仓库'
+            : '管理远程仓库'
         }
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
@@ -160,7 +160,7 @@ export class ManageRemotesDialog extends React.Component<
               autoFocus={true}
               displayClearButton={true}
               prefixedIcon={octicons.search}
-              placeholder="Filter remotes"
+              placeholder="筛选远程"
               value={this.state.filterText}
               onValueChanged={this.onFilterTextChanged}
               onKeyDown={this.onFilterKeyDown}
@@ -170,7 +170,7 @@ export class ManageRemotesDialog extends React.Component<
               onClick={this.onNewRemote}
             >
               <Octicon symbol={octicons.plus} className="mr" />
-              {__DARWIN__ ? 'New Remote' : 'New remote'}
+              {__DARWIN__ ? '新建远程' : '新建远程'}
             </Button>
           </Row>
 

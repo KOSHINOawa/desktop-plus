@@ -91,8 +91,8 @@ const formatReasoningEffortLevels = (
   }
 
   return supportedReasoningEfforts.length === 1
-    ? '1 level'
-    : `${supportedReasoningEfforts.length} levels`
+    ? '1 个级别'
+    : `${supportedReasoningEfforts.length} 个级别`
 }
 
 const formatAIModelCreditAmount = (value: number | undefined) =>
@@ -147,7 +147,7 @@ const getListItemSubtitle = (item: ICopilotModelListItem) => {
   const modelPickerPriceCategory = getModelPickerPriceCategory(item)
   return modelPickerPriceCategory === null
     ? null
-    : `Use of credits: ${modelPickerPriceCategory}`
+    : `积分用量：${modelPickerPriceCategory}`
 }
 
 export const getCopilotModelPickerSelectionInfo = (
@@ -172,16 +172,16 @@ export const getCopilotModelPickerSelectionInfo = (
   }
 
   const modelPickerCategory = selectedModel?.modelPickerCategory?.trim()
-  const useOfCredits = `Use of credits: ${formatModelPickerCategory(
+  const useOfCredits = `积分用量：${formatModelPickerCategory(
     modelPickerPriceCategory
   )}`
 
   const summary =
     modelPickerCategory === undefined || modelPickerCategory.length === 0
       ? useOfCredits
-      : `${formatModelPickerCategoryHeader(
-          modelPickerCategory
-        )} model. ${useOfCredits}`
+    : `${formatModelPickerCategoryHeader(
+        modelPickerCategory
+      )}模型。${useOfCredits}`
   const contextWindowTokenCount = getContextWindowTokenCount(
     tokenPrices.contextMax,
     selectedModel.capabilities.limits?.max_output_tokens,
@@ -213,7 +213,7 @@ const getCopilotModelTitle = (item: ICopilotModelListItem) => {
     ? ''
     : getPremiumRequestsBillingLabel(item.billing)
   return item.isDefault
-    ? `${item.name} (default)`
+    ? `${item.name}（默认）`
     : `${item.name}${billingLabel}`
 }
 
@@ -226,9 +226,9 @@ const getCopilotModelAriaLabel = (item: ICopilotModelListItem) => {
 
 const getDisabledModelItem = (): ICopilotModelListItem => ({
   id: DisabledCopilotModel,
-  text: ['None (hide Copilot button)', DisabledCopilotModel],
+  text: ['无（隐藏 Copilot 按钮）', DisabledCopilotModel],
   value: DisabledCopilotModel,
-  name: 'None (hide Copilot button)',
+  name: '无（隐藏 Copilot 按钮）',
   billing: undefined,
   modelPickerCategory: undefined,
   modelPickerPriceCategory: undefined,
@@ -451,7 +451,7 @@ export class CopilotModelPicker extends React.Component<
   }
 
   private renderNoItems = () => {
-    return <div className="copilot-model-list-empty">No models found.</div>
+    return <div className="copilot-model-list-empty">未找到模型。</div>
   }
 
   private getItemAriaLabel = (item: ICopilotModelListItem) => {
@@ -482,16 +482,16 @@ export class CopilotModelPicker extends React.Component<
     )
     const buttonItem = this.getItemByValue(groups, this.props.value)
     const buttonAriaLabel = `${this.props.label}: ${
-      buttonItem === undefined ? 'None' : getCopilotModelTitle(buttonItem)
+      buttonItem === undefined       ? '无' : getCopilotModelTitle(buttonItem)
     }`
     return (
       <PopoverDropdown
         className="copilot-model-picker"
-        contentTitle="Choose a model"
+        contentTitle="选择模型"
         contentHeaderAccessory={
           this.props.onConfigureCustomProviders === undefined ? undefined : (
             <LinkButton onClick={this.onConfigureCustomProviders}>
-              Configure custom providers…
+              配置自定义提供方…
             </LinkButton>
           )
         }
@@ -516,7 +516,7 @@ export class CopilotModelPicker extends React.Component<
           onSelectionChanged={this.onSelectionChanged}
           getItemAriaLabel={this.getItemAriaLabel}
           getGroupAriaLabel={this.getGroupAriaLabel}
-          placeholderText="Filter models"
+          placeholderText="筛选模型"
           renderNoItems={this.renderNoItems}
         />
       </PopoverDropdown>

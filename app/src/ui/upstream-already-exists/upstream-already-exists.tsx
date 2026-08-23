@@ -40,34 +40,31 @@ export class UpstreamAlreadyExists extends React.Component<IUpstreamAlreadyExist
     const replacementURL = parent.cloneURL
     return (
       <Dialog
-        title={
-          __DARWIN__ ? 'Upstream Already Exists' : 'Upstream already exists'
-        }
+        title={__DARWIN__ ? '上游已存在' : '上游已存在'}
         onDismissed={this.props.onDismissed}
         onSubmit={this.onUpdate}
         type="warning"
       >
         <DialogContent>
           <p>
-            The repository <Ref>{name}</Ref> is a fork of{' '}
-            <Ref>{parentName}</Ref>, but its <Ref>{UpstreamRemoteName}</Ref>{' '}
-            remote points elsewhere.
+            仓库 <Ref>{name}</Ref> 是 <Ref>{parentName}</Ref>{' '}
+            的复刻，但其 <Ref>{UpstreamRemoteName}</Ref> 远程指向了别处。
           </p>
           <ul>
             <li>
-              Current: <Ref>{existingURL}</Ref>
+              当前：<Ref>{existingURL}</Ref>
             </li>
             <li>
-              Expected: <Ref>{replacementURL}</Ref>
+              预期：<Ref>{replacementURL}</Ref>
             </li>
           </ul>
-          <p>Would you like to update the remote to use the expected URL?</p>
+          <p>是否要更新远程以使用预期的网址？</p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText="Update"
-            cancelButtonText="Ignore"
+            okButtonText="更新"
+            cancelButtonText="忽略"
             onCancelButtonClick={this.onIgnore}
           />
         </DialogFooter>

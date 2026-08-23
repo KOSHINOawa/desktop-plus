@@ -186,11 +186,11 @@ export class CompareSidebar extends React.Component<
       <div id="compare-view" role="tabpanel" aria-labelledby="compare-tab">
         <div className="commit-search-form">
           <FancyTextBox
-            ariaLabel="Commit filter"
+            ariaLabel="提交筛选"
             type="search"
             symbol={this.state.isSearching ? syncClockwise : octicons.search}
             symbolClassName={this.state.isSearching ? 'spin' : undefined}
-            placeholder={__DARWIN__ ? 'Search Commits' : 'Search commits'}
+            placeholder={__DARWIN__ ? '搜索提交' : '搜索提交'}
             value={commitSearchQuery}
             onValueChanged={this.onCommitSearchQueryChanged}
           />
@@ -209,7 +209,7 @@ export class CompareSidebar extends React.Component<
       <div id="compare-view" role="tabpanel" aria-labelledby="compare-tab">
         <div className="compare-form">
           <FancyTextBox
-            ariaLabel="Branch filter"
+            ariaLabel="分支筛选"
             symbol={octicons.gitBranch}
             displayClearButton={true}
             placeholder={placeholderText}
@@ -263,20 +263,18 @@ export class CompareSidebar extends React.Component<
 
     let emptyListMessage: string | JSX.Element
     if (formState.kind === HistoryTabMode.History) {
-      emptyListMessage = commitSearchQuery ? 'No results found' : 'No history'
+      emptyListMessage = commitSearchQuery ? '未找到结果' : '没有历史记录'
     } else {
       const currentlyComparedBranchName = formState.comparisonBranch.name
 
       emptyListMessage =
         formState.comparisonMode === ComparisonMode.Ahead ? (
           <p>
-            The compared branch (<Ref>{currentlyComparedBranchName}</Ref>) is up
-            to date with your branch
+            所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>）与你的分支保持最新
           </p>
         ) : (
           <p>
-            Your branch is up to date with the compared branch (
-            <Ref>{currentlyComparedBranchName}</Ref>)
+            你的分支与所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>）保持最新
           </p>
         )
     }
@@ -371,7 +369,7 @@ export class CompareSidebar extends React.Component<
     ) {
       defaultErrorHandler(
         new Error(
-          `Unable to reorder. Reordering replays all commits up to the last one required for the reorder. A merge commit cannot exist among those commits.`
+          `无法重新排序。重新排序会重放重排所需的所有提交。这些提交中不能存在合并提交。`
         ),
         this.props.dispatcher
       )
@@ -483,10 +481,10 @@ export class CompareSidebar extends React.Component<
     return (
       <div className="compare-content">
         <TabBar selectedIndex={selectedTab} onTabClicked={this.onTabClicked}>
-          <span>{`Behind (${formatNumber(
+          <span>{`落后 (${formatNumber(
             formState.aheadBehind.behind
           )})`}</span>
-          <span>{`Ahead (${formatNumber(formState.aheadBehind.ahead)})`}</span>
+          <span>{`领先 (${formatNumber(formState.aheadBehind.ahead)})`}</span>
         </TabBar>
         {this.renderActiveTab(formState)}
       </div>
@@ -809,7 +807,7 @@ export class CompareSidebar extends React.Component<
     ) {
       defaultErrorHandler(
         new Error(
-          `Unable to squash. Squashing replays all commits up to the last one required for the squash. A merge commit cannot exist among those commits.`
+          `无法压缩。压缩会重放压缩所需的所有提交。这些提交中不能存在合并提交。`
         ),
         this.props.dispatcher
       )
@@ -851,18 +849,18 @@ function getPlaceholderText(state: ICompareState) {
   const { branches } = state
 
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
-    return __DARWIN__ ? 'No Branches to Compare' : 'No branches to compare'
+    return __DARWIN__ ? '没有可比较的分支' : '没有可比较的分支'
   } else {
     return __DARWIN__
-      ? 'Select Branch to Compare…'
-      : 'Select branch to compare…'
+      ? '选择要比较的分支…'
+      : '选择要比较的分支…'
   }
 }
 
 function getNoBranchesMessage(state: ICompareState) {
   const { branches } = state
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
-    return 'Create a new branch to start comparing commits.'
+    return '创建一个新分支以开始比较提交。'
   } else {
     return undefined
   }

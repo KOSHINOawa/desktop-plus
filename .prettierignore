@@ -1,6 +1,8 @@
 out/
 dist/
 vendor/
+pnpm-lock.yaml
+app/pnpm-lock.yaml
 tslint-rules/*.js
 npm-debug.log
 yarn-error.log

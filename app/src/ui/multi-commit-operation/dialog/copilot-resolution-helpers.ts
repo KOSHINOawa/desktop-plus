@@ -12,8 +12,8 @@ export type CopilotFileResolutionChoice = 'copilot' | 'ours' | 'theirs'
 /** Label and icon for each resolution choice. */
 export const resolutionChoices = {
   copilot: { label: 'Copilot', icon: octicons.copilot },
-  ours: { label: 'Current', icon: octicons.chevronLeft },
-  theirs: { label: 'Incoming', icon: octicons.chevronRight },
+  ours: { label: '当前', icon: octicons.chevronLeft },
+  theirs: { label: '传入', icon: octicons.chevronRight },
 } as const
 
 /**
@@ -82,16 +82,16 @@ export function getDeleteConflictLabels(
     const keepSuffix = theirBranch ? ` from ${theirBranch}` : ''
     const deleteSuffix = ourBranch ? ` on ${ourBranch}` : ''
     return {
-      oursLabel: `Delete file${deleteSuffix}`,
-      theirsLabel: `Keep file${keepSuffix}`,
+      oursLabel: `删除文件${deleteSuffix}`,
+      theirsLabel: `保留文件${keepSuffix}`,
     }
   }
 
   const keepSuffix = ourBranch ? ` from ${ourBranch}` : ''
   const deleteSuffix = theirBranch ? ` on ${theirBranch}` : ''
   return {
-    oursLabel: `Keep file${keepSuffix}`,
-    theirsLabel: `Delete file${deleteSuffix}`,
+    oursLabel: `保留文件${keepSuffix}`,
+    theirsLabel: `删除文件${deleteSuffix}`,
   }
 }
 
@@ -110,10 +110,10 @@ export function getDeleteConflictChoiceLabel(
   }
 
   if (deletedSide === 'ours') {
-    return choice === 'ours' ? 'Delete file' : 'Keep file'
+    return choice === 'ours' ? '删除文件' : '保留文件'
   }
 
-  return choice === 'ours' ? 'Keep file' : 'Delete file'
+  return choice === 'ours' ? '保留文件' : '删除文件'
 }
 
 /**
@@ -130,10 +130,10 @@ export function getOursTheirsLabels(
   }
 
   const oursLabel = ourBranch
-    ? `Use current file from ${ourBranch}`
-    : 'Use current file'
+    ? `使用来自 ${ourBranch} 的当前文件`
+    : '使用当前文件'
   const theirsLabel = theirBranch
-    ? `Use incoming file from ${theirBranch}`
-    : 'Use incoming file'
+    ? `使用来自 ${theirBranch} 的传入文件`
+    : '使用传入文件'
   return { oursLabel, theirsLabel }
 }

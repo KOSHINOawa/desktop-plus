@@ -44,7 +44,7 @@ export class PushProtectionErrorLocation extends React.Component<
             {location.commitSha.substring(0, 7)}
           </span>
           <CopyButton
-            ariaLabel="Copy the full SHA"
+            ariaLabel="复制完整 SHA"
             copyContent={location.commitSha}
           />
         </span>
@@ -54,7 +54,7 @@ export class PushProtectionErrorLocation extends React.Component<
               path={location.path}
               availableWidth={isFirst ? 200 : 275}
             />
-            at line {location.lineNumber}
+            第 {location.lineNumber} 行
           </span>
         </span>
       </span>
@@ -66,9 +66,7 @@ export class PushProtectionErrorLocation extends React.Component<
     const { showMoreLocations } = this.state
     const firstLocation = secret.locations.at(0)
     const showMoreLocationsToggle = secret.locations.length > 1
-    const toggleText = showMoreLocations
-      ? 'Show Less Locations'
-      : 'Show More locations'
+    const toggleText = showMoreLocations ? '显示较少位置' : '显示更多位置'
     if (firstLocation === undefined) {
       return null
     }

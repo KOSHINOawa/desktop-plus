@@ -23,7 +23,7 @@ function getFontFamilyName(fontFamily: DiffFontFamily): string | null {
 
 export function getDiffFontFamilyLabel(fontFamily: DiffFontFamily) {
   const name = getFontFamilyName(fontFamily)
-  return name === null ? 'Default monospace' : name
+  return name === null ? '默认等宽字体' : name
 }
 
 export function getDiffFontFamilyCssValue(fontFamily: DiffFontFamily) {

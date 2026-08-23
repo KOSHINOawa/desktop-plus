@@ -176,7 +176,7 @@ export class DiffMinimap extends React.PureComponent<IDiffMinimapProps> {
         ref={this.containerRef}
         type="button"
         className="diff-minimap"
-        aria-label="Diff minimap"
+        aria-label="差异缩略图"
         onMouseDown={this.onMouseDown}
         onKeyDown={this.onKeyDown}
       >

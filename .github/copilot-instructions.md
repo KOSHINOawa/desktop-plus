@@ -10,7 +10,7 @@ This repository contains GitHub Desktop, an open-source Electron-based GitHub ap
 - **Build Tool**: Webpack with parallel builds
 - **Package Manager**: Yarn (>= 1.21.1)
 - **Node Version**: >= 22 (see `.nvmrc` for specific version)
-- **Testing**: Node.js built-in test runner (run using `yarn test`, optionally providing one or more test files e.g `yarn test app/test/unit/repository-list-test.ts`)
+- **Testing**: Node.js built-in test runner (run using `pnpm test`, optionally providing one or more test files e.g `pnpm test app/test/unit/repository-list-test.ts`)
 
 ## Code Style & Conventions
 
@@ -93,17 +93,17 @@ The codebase uses comprehensive ESLint rules. Key custom rules:
 
 ```bash
 # Install dependencies
-yarn
+pnpm
 
 # Development build
-yarn build:dev
+pnpm build:dev
 ```
 
 ### Testing
 
 ```bash
 # Run all tests
-yarn test:docker
+pnpm test:docker
 ```
 
 **Test Conventions**:
@@ -116,22 +116,22 @@ yarn test:docker
 
 ```bash
 # Run all linters
-yarn lint
+pnpm lint
 
 # Fix auto-fixable issues
-yarn lint:fix
+pnpm lint:fix
 
 # Lint source code
-yarn lint:src
+pnpm lint:src
 
 # Check Markdown files
-yarn markdownlint
+pnpm markdownlint
 
 # Format with Prettier
-yarn prettier
+pnpm prettier
 
 # Fix Prettier issues
-yarn prettier --write
+pnpm prettier --write
 ```
 
 ## Security & Quality
@@ -192,7 +192,7 @@ This project adheres to the Contributor Covenant [Code of Conduct](../CODE_OF_CO
 
 1. **Keep changes minimal**: Make the smallest possible changes to achieve the goal
 2. **Run tests frequently**: Test after each meaningful change
-3. **Run `yarn lint:fix` after any code change**: This runs Prettier and ESLint with auto-fix to ensure formatting and lint rules are satisfied before committing
+3. **Run `pnpm lint:fix` after any code change**: This runs Prettier and ESLint with auto-fix to ensure formatting and lint rules are satisfied before committing
 4. **Update documentation**: Update docs if changes affect documented behavior
 5. **Follow existing patterns**: Match the style and patterns already in the codebase
 6. **Don't remove working code**: Only modify what's necessary for the task

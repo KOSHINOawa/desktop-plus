@@ -352,7 +352,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
       )
     }
 
-    return user?.email ?? 'Unknown user'
+    return user?.email ?? '未知用户'
   }
 
   private onImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -390,8 +390,8 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
   private renderAvatar = () => {
     const { imageError, user } = this.state
     const alt = user
-      ? `Avatar for ${user.name || user.email}`
-      : `Avatar for unknown user`
+      ? `${user.name || user.email} 的头像`
+      : `未知用户的头像`
     const now = Date.now()
     const src = this.state.candidates.find(c => {
       const lastFailed = FailingAvatars.get(c)

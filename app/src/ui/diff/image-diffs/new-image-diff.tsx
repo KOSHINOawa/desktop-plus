@@ -45,7 +45,7 @@ export class NewImageDiff extends React.Component<
       return (
         <div className="panel image" id="diff">
           <div className="image-diff-current">
-            <div className="image-diff-header">Added</div>
+            <div className="image-diff-header">已添加</div>
             <ImageContainer image={this.props.current} />
           </div>
         </div>
@@ -62,8 +62,8 @@ export class NewImageDiff extends React.Component<
             onTabClicked={this.onTabClicked}
             type={TabBarType.Switch}
           >
-            <span>Code</span>
-            <span>Image</span>
+            <span>代码</span>
+            <span>图像</span>
           </TabBar>
           {renderCodeDiff()}
         </div>
@@ -77,11 +77,11 @@ export class NewImageDiff extends React.Component<
           onTabClicked={this.onTabClicked}
           type={TabBarType.Switch}
         >
-          <span>Code</span>
-          <span>Image</span>
+            <span>代码</span>
+            <span>图像</span>
         </TabBar>
         <div className="image-diff-current">
-          <div className="image-diff-header">Added</div>
+            <div className="image-diff-header">已添加</div>
           <ImageContainer image={this.props.current} />
         </div>
       </div>

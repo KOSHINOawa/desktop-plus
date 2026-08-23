@@ -456,7 +456,7 @@ export class SideBySideDiffRow extends React.Component<
             {data.noNewLineIndicator && (
               <span className="no-newline-indicator">
                 <Octicon symbol={narrowNoNewlineSymbol} />
-                <span> No newline at end of file</span>
+                <span> 文件末尾没有换行符</span>
               </span>
             )}
           </div>
@@ -474,7 +474,7 @@ export class SideBySideDiffRow extends React.Component<
       case DiffHunkExpansionType.Up:
         return {
           icon: octicons.foldUp,
-          title: 'Expand Up',
+          title: '向上展开',
           handler: this.onExpandHunk(hunkIndex, expansionType),
         }
       // This can only be the last dummy hunk. In this case, we expand the
@@ -482,13 +482,13 @@ export class SideBySideDiffRow extends React.Component<
       case DiffHunkExpansionType.Down:
         return {
           icon: octicons.foldDown,
-          title: 'Expand Down',
+          title: '向下展开',
           handler: this.onExpandHunk(hunkIndex - 1, expansionType),
         }
       case DiffHunkExpansionType.Short:
         return {
           icon: octicons.fold,
-          title: 'Expand All',
+          title: '全部展开',
           handler: this.onExpandHunk(hunkIndex, expansionType),
         }
     }
@@ -651,12 +651,12 @@ export class SideBySideDiffRow extends React.Component<
           {!isOnlyOneCheckInRow && (
             <span className="sr-only">
               {' '}
-              Lines {lineNumbers.at(0)} to {lineNumbers.at(-1)}{' '}
+              行 {lineNumbers.at(0)} 到 {lineNumbers.at(-1)}{' '}
               {diffType === DiffRowType.Added
-                ? 'added'
+                ? '已添加'
                 : diffType === DiffRowType.Deleted
-                ? 'deleted'
-                : 'modified'}
+                ? '已删除'
+                : '已修改'}
             </span>
           )}
         </span>
@@ -791,11 +791,11 @@ export class SideBySideDiffRow extends React.Component<
           {this.renderLineNumberCheck(isSelected)}
           {lineNumbers.map((lineNumber, index) => (
             <span key={index}>
-              {lineNumber && <span className="sr-only">Line </span>}
+              {lineNumber && <span className="sr-only">行 </span>}
               {lineNumber}
               {lineNumber && isSelected !== undefined && (
                 <span className="sr-only">
-                  {column === DiffColumn.After ? ' added' : ' deleted'}
+                  {column === DiffColumn.After ? ' 已添加' : ' 已删除'}
                 </span>
               )}
             </span>

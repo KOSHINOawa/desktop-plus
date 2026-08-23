@@ -60,9 +60,9 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
     return (
       <div className="container">
         <div className="column">
-          {this.renderList(release.bugfixes, 'Bugfixes')}
-          {this.renderList(release.enhancements, 'Enhancements')}
-          {this.renderList(release.other, 'Other')}
+          {this.renderList(release.bugfixes, '问题修复')}
+          {this.renderList(release.enhancements, '功能增强')}
+          {this.renderList(release.other, '其他')}
         </div>
       </div>
     )
@@ -72,11 +72,11 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
     return (
       <div className="container">
         <div className="column">
-          {this.renderList(release.enhancements, 'Enhancements')}
-          {this.renderList(release.other, 'Other')}
+          {this.renderList(release.enhancements, '功能增强')}
+          {this.renderList(release.other, '其他')}
         </div>
         <div className="column">
-          {this.renderList(release.bugfixes, 'Bugfixes')}
+          {this.renderList(release.bugfixes, '问题修复')}
         </div>
       </div>
     )
@@ -121,7 +121,7 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
         emoji={this.props.emoji}
         onMarkdownLinkClicked={this.onMarkdownLinkClicked}
         underlineLinks={this.props.underlineLinks}
-        ariaLabel="Release notes generated from markdown"
+        ariaLabel="由 Markdown 生成的发布说明"
       />
     )
   }
@@ -135,9 +135,9 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
     const latestVersion = this.props.newReleases[0].latestVersion
     if (latestVersion === __APP_VERSION__) {
       return (
-        <Button type="submit" onClick={this.onDismissed}>
-          Close
-        </Button>
+          <Button type="submit" onClick={this.onDismissed}>
+            关闭
+          </Button>
       )
     }
 
@@ -145,9 +145,9 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
       <OkCancelButtonGroup
         destructive={true}
         okButtonText={
-          __DARWIN__ ? 'Install and Restart' : 'Install and restart'
+          __DARWIN__ ? '安装并重启' : '安装并重启'
         }
-        cancelButtonText="Close"
+        cancelButtonText="关闭"
       />
     )
   }
@@ -187,7 +187,7 @@ export class ReleaseNotes extends React.Component<IReleaseNotesProps, {}> {
         </DialogContent>
         <DialogFooter>
           <LinkButton onClick={this.showAllReleaseNotes}>
-            View all release notes
+            查看全部发布说明
           </LinkButton>
           {this.renderButtons()}
         </DialogFooter>

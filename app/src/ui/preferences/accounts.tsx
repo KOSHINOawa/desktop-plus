@@ -90,7 +90,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       dotComAccounts,
       SignInType.DotCom,
-      'Add GitHub account',
+      '添加 GitHub 账户',
       this.props.onDotComSignIn
     )
   }
@@ -102,7 +102,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       enterpriseAccounts,
       SignInType.Enterprise,
-      'Add GitHub Enterprise account',
+      '添加 GitHub Enterprise 账户',
       this.props.onEnterpriseSignIn
     )
   }
@@ -114,7 +114,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       bitbucketAccounts,
       SignInType.Bitbucket,
-      'Add Bitbucket account',
+      '添加 Bitbucket 账户',
       this.props.onBitbucketSignIn
     )
   }
@@ -126,7 +126,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       gitlabAccounts,
       SignInType.GitLab,
-      'Add GitLab account',
+      '添加 GitLab 账户',
       this.props.onGitLabSignIn
     )
   }
@@ -138,7 +138,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       forgejoAccounts,
       SignInType.Forgejo,
-      'Add Codeberg account',
+      '添加 Codeberg 账户',
       this.props.onCodebergSignIn
     )
   }
@@ -148,7 +148,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return this.renderMultipleAccounts(
       giteaAccounts,
       SignInType.Gitea,
-      'Add Gitea account',
+      '添加 Gitea 账户',
       this.props.onGiteaSignIn
     )
   }
@@ -182,7 +182,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
     return apiType === undefined ? null : (
       <Row>
         <LinkButton onClick={this.getOnSelfHostedSignIn(apiType)}>
-          Add self-hosted instance…
+          添加自托管实例…
         </LinkButton>
       </Row>
     )
@@ -234,7 +234,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
           </div>
         </div>
         <Button onClick={this.logout(account)} className={className}>
-          {__DARWIN__ ? 'Sign Out' : 'Sign out'}
+          {__DARWIN__ ? '退出登录' : '退出登录'}
         </Button>
       </Row>
     )
@@ -265,7 +265,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
   }
 
   private renderSignIn(type: SignInType) {
-    const signInTitle = __DARWIN__ ? 'Sign Into' : 'Sign into'
+    const signInTitle = __DARWIN__ ? '登录到' : '登录到'
     switch (type) {
       case SignInType.DotCom: {
         return (
@@ -277,7 +277,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             buttonClassName={DialogPreferredFocusClassName}
           >
             <div>
-              Sign in to your GitHub.com account to access your repositories.
+              登录你的 GitHub.com 账户以访问你的仓库。
             </div>
           </CallToAction>
         )
@@ -289,8 +289,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onEnterpriseSignIn}
           >
             <div>
-              If you are using GitHub Enterprise at work, sign in to it to get
-              access to your repositories.
+              如果你在工作中使用 GitHub Enterprise，请登录以访问你的仓库。
             </div>
           </CallToAction>
         )
@@ -301,7 +300,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onBitbucketSignIn}
           >
             <div>
-              Sign in to your Bitbucket account to access your repositories.
+              登录你的 Bitbucket 账户以访问你的仓库。
             </div>
           </CallToAction>
         )
@@ -312,7 +311,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onGitLabSignIn}
           >
             <div>
-              Sign in to your GitLab account to access your repositories.
+              登录你的 GitLab 账户以访问你的仓库。
             </div>
           </CallToAction>
         )
@@ -323,7 +322,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onCodebergSignIn}
           >
             <div>
-              Sign in to your Codeberg account to access your repositories.
+              登录你的 Codeberg 账户以访问你的仓库。
             </div>
           </CallToAction>
         )
@@ -334,7 +333,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onGiteaSignIn}
           >
             <div>
-              Sign in to your Gitea account to access your repositories.
+              登录你的 Gitea 账户以访问你的仓库。
             </div>
           </CallToAction>
         )

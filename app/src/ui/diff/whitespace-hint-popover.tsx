@@ -28,14 +28,14 @@ export class WhitespaceHintPopover extends React.Component<IWhitespaceHintPopove
         ariaLabelledby="whitespace-hint-header"
         ariaDescribedBy="whitespace-hint-message"
       >
-        <h3 id="whitespace-hint-header">Show whitespace changes?</h3>
+        <h3 id="whitespace-hint-header">显示空白字符更改吗？</h3>
         <p id="whitespace-hint-message" className="byline">
-          Selecting lines is disabled when hiding whitespace changes.
+          隐藏空白字符更改时，无法选择行。
         </p>
         <div className="popover-footer">
           <OkCancelButtonGroup
-            okButtonText="Yes"
-            cancelButtonText="No"
+            okButtonText="是"
+            cancelButtonText="否"
             onCancelButtonClick={this.onDismissed}
             onOkButtonClick={this.onShowWhitespaceChanges}
           />

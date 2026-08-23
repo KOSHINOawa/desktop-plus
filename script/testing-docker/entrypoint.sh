@@ -5,9 +5,9 @@ set -e
 
 cd /app
 
-yarn test:setup
-yarn test:unit
-yarn test:script
+pnpm run test:setup
+pnpm run test:unit
+pnpm run test:script
 
 echo '-------------------'
 echo 'All tests passed 🎉'

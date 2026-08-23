@@ -34,7 +34,7 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
     return (
       <Dialog
         id="initialize-lfs"
-        title="Initialize Git LFS"
+        title="初始化 Git LFS"
         backdropDismissable={false}
         onSubmit={this.onInitialize}
         onDismissed={this.props.onDismissed}
@@ -43,8 +43,8 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Initialize Git LFS"
-            cancelButtonText={__DARWIN__ ? 'Not Now' : 'Not now'}
+            okButtonText="初始化 Git LFS"
+            cancelButtonText={__DARWIN__ ? '暂不' : '暂不'}
             onCancelButtonClick={this.props.onDismissed}
           />
         </DialogFooter>
@@ -61,24 +61,23 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
     if (this.props.repositories.length > MaxRepositoriesToList) {
       return (
         <p>
-          {this.props.repositories.length} repositories use{' '}
-          <LinkButton uri={LFSURL}>Git LFS</LinkButton>. To contribute to them,
-          Git LFS must first be initialized. Would you like to do so now?
+          {this.props.repositories.length} 个仓库使用{' '}
+          <LinkButton uri={LFSURL}>Git LFS</LinkButton>。要为其贡献，必须先初始化
+          Git LFS。您想要现在这样做吗？
         </p>
       )
     } else {
       const plural = this.props.repositories.length !== 1
       const pluralizedRepositories = plural
-        ? 'The repositories use'
-        : 'This repository uses'
-      const pluralizedUse = plural ? 'them' : 'it'
+        ? '这些仓库使用'
+        : '此仓库使用'
+      const pluralizedUse = plural ? '它们' : '它'
       return (
         <div>
           <p>
             {pluralizedRepositories}{' '}
-            <LinkButton uri={LFSURL}>Git LFS</LinkButton>. To contribute to{' '}
-            {pluralizedUse}, Git LFS must first be initialized. Would you like
-            to do so now?
+            <LinkButton uri={LFSURL}>Git LFS</LinkButton>。要为其贡献
+            （{pluralizedUse}），必须先初始化 Git LFS。您想要现在这样做吗？
           </p>
           <ul>
             {this.props.repositories.map(r => (

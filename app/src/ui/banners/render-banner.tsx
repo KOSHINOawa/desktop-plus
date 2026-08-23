@@ -124,20 +124,17 @@ export function renderBanner(
         />
       )
     case BannerType.SquashUndone: {
-      const pluralized = banner.commitsCount === 1 ? 'commit' : 'commits'
       return (
         <SuccessBanner
           key="squash-undone"
           timeout={5000}
           onDismissed={onDismissed}
         >
-          Squash of {banner.commitsCount} {pluralized} undone.
+          已撤销压缩 {banner.commitsCount} 个提交。
         </SuccessBanner>
       )
     }
     case BannerType.SuccessfulReorder: {
-      const pluralized = banner.count === 1 ? 'commit' : 'commits'
-
       return (
         <SuccessBanner
           key="successful-reorder"
@@ -145,21 +142,18 @@ export function renderBanner(
           onDismissed={onDismissed}
           onUndo={banner.onUndo}
         >
-          <span>
-            Successfully reordered {banner.count} {pluralized}.
-          </span>
+          <span>已成功重新排序 {banner.count} 个提交。</span>
         </SuccessBanner>
       )
     }
     case BannerType.ReorderUndone: {
-      const pluralized = banner.commitsCount === 1 ? 'commit' : 'commits'
       return (
         <SuccessBanner
           key="reorder-undone"
           timeout={5000}
           onDismissed={onDismissed}
         >
-          Reorder of {banner.commitsCount} {pluralized} undone.
+          已撤销重新排序 {banner.commitsCount} 个提交。
         </SuccessBanner>
       )
     }
@@ -200,6 +194,6 @@ export function renderBanner(
         />
       )
     default:
-      return assertNever(banner, `Unknown popup type: ${banner}`)
+      return assertNever(banner, `未知弹出类型： ${banner}`)
   }
 }

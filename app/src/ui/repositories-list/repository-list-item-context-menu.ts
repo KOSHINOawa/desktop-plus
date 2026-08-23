@@ -277,7 +277,7 @@ const buildAssignToGroupMenuItems = (
   if (pin) {
     items.push(
       {
-        label: 'Pinned',
+        label: '已固定',
         type: 'checkbox',
         checked: pin.isPinned,
         action: () => pin.onTogglePinnedRepository(repository),

@@ -100,7 +100,7 @@ export class DiffOptions extends React.Component<
   }
 
   public render() {
-    const buttonLabel = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const buttonLabel = `差异${__DARWIN__ ? '设置' : '选项'}`
     return (
       <div className="diff-options-component" ref={this.diffOptionsRef}>
         <button
@@ -127,7 +127,7 @@ export class DiffOptions extends React.Component<
   }
 
   private renderPopover() {
-    const header = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const header = `差异${__DARWIN__ ? '设置' : '选项'}`
     return (
       <Popover
         ariaLabelledby="diff-options-popover-header"
@@ -156,11 +156,11 @@ export class DiffOptions extends React.Component<
   private renderShowSideBySide() {
     return (
       <fieldset role="radiogroup">
-        <legend>Diff display</legend>
+        <legend>差异显示方式</legend>
         <RadioButton
           value="Unified"
           checked={!this.props.showSideBySideDiff}
-          label="Unified"
+          label="统一"
           onSelected={this.onUnifiedSelected}
         />
         <RadioButton
@@ -168,7 +168,7 @@ export class DiffOptions extends React.Component<
           checked={this.props.showSideBySideDiff}
           label={
             <>
-              <div>Split</div>
+              <div>拆分</div>
             </>
           }
           onSelected={this.onSideBySideSelected}
@@ -180,7 +180,7 @@ export class DiffOptions extends React.Component<
   private renderHideWhitespaceChanges() {
     return (
       <fieldset>
-        <legend>Whitespace</legend>
+        <legend>空白字符</legend>
         <Checkbox
           value={
             this.props.hideWhitespaceChanges
@@ -189,13 +189,12 @@ export class DiffOptions extends React.Component<
           }
           onChange={this.onHideWhitespaceChangesChanged}
           label={
-            __DARWIN__ ? 'Hide Whitespace Changes' : 'Hide whitespace changes'
+            __DARWIN__ ? '隐藏空白字符更改' : '隐藏空白字符更改'
           }
         />
         {this.props.isInteractiveDiff && (
           <p className="secondary-text">
-            Interacting with individual lines or hunks will be disabled while
-            hiding whitespace.
+            在隐藏空白字符期间，将无法对单独的行或区块进行交互操作。
           </p>
         )}
       </fieldset>
@@ -205,13 +204,13 @@ export class DiffOptions extends React.Component<
   private renderShowDiffMinimap() {
     return (
       <fieldset>
-        <legend>Minimap</legend>
+        <legend>缩略图</legend>
         <Checkbox
           value={
             this.props.showDiffMinimap ? CheckboxValue.On : CheckboxValue.Off
           }
           onChange={this.onShowDiffMinimapChanged}
-          label={__DARWIN__ ? 'Show Minimap' : 'Show minimap'}
+          label={__DARWIN__ ? '显示缩略图' : '显示缩略图'}
         />
       </fieldset>
     )
@@ -220,13 +219,13 @@ export class DiffOptions extends React.Component<
   private renderWrapDiffLines() {
     return (
       <fieldset>
-        <legend>Line wrapping</legend>
+        <legend>换行</legend>
         <Checkbox
           value={
             this.props.wrapDiffLines ? CheckboxValue.On : CheckboxValue.Off
           }
           onChange={this.onWrapDiffLinesChanged}
-          label={__DARWIN__ ? 'Wrap Lines' : 'Wrap lines'}
+          label={__DARWIN__ ? '自动换行' : '自动换行'}
         />
       </fieldset>
     )

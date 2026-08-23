@@ -28,10 +28,10 @@ How to write a plugin is out of scope for this documentation, but I've added som
 
 ## Checking locally
 
-The custom ESLint rules are annotated with TypeScript types wherever available, and can be checked through `yarn`:
+The custom ESLint rules are annotated with TypeScript types wherever available, and can be checked through `pnpm`:
 
 ```
-$ yarn check:eslint
+$ pnpm check:eslint
 ```
 
 The `eslint-rules/tsconfig.json` is setup to guide `tsc` to understand the environment for running the ESlint rules, and each rule is annotated
@@ -39,10 +39,10 @@ with `@type` hints wherever possible to appease the typechecker.
 
 ## Testing locally
 
-Tests are added alongside each rule in the `eslint-rules/tests/` section, and can be run from the project root through `yarn`:
+Tests are added alongside each rule in the `eslint-rules/tests/` section, and can be run from the project root through `pnpm`:
 
 ```
-$ yarn test:eslint
+$ pnpm test:eslint
 ```
 
 Each test suite is designed to exercise the relevant rule against code snippets that illustrate both valid and invalid code, and indicate which messages should be reported in case of failure.
@@ -52,7 +52,7 @@ If you wish to debug the rules using VSCode, add this action to the `configurati
 
 ```json
 {
-  "command": "yarn test:eslint",
+  "command": "pnpm test:eslint",
   "name": "Test ESLint scripts",
   "request": "launch",
   "type": "node-terminal"

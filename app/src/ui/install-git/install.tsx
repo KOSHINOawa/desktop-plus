@@ -45,25 +45,23 @@ export class InstallGit extends React.Component<IInstallGitProps, {}> {
       <Dialog
         id="install-git"
         type="warning"
-        title={__DARWIN__ ? 'Unable to Locate Git' : 'Unable to locate Git'}
+        title={__DARWIN__ ? '无法找到 Git' : '无法找到 Git'}
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
       >
         <DialogContent>
           <p>
-            We were unable to locate Git on your system. This means you won't be
-            able to execute any Git commands in the{' '}
-            {__DARWIN__ ? 'Terminal window' : 'command prompt'}.
+            我们无法在您的系统上找到 Git。这意味着您将无法在{' '}
+            {__DARWIN__ ? '终端窗口' : '命令提示符'} 中执行任何 Git 命令。
           </p>
           <p>
-            To help you get Git installed and configured for your operating
-            system, we have some external resources available.
+            为了帮助您为操作系统安装并配置 Git，我们提供了一些外部资源。
           </p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Open Without Git' : 'Open without Git'}
-            cancelButtonText="Install Git"
+            okButtonText={__DARWIN__ ? '不使用 Git 打开' : '不使用 Git 打开'}
+            cancelButtonText="安装 Git"
             onCancelButtonClick={this.onExternalLink}
           />
         </DialogFooter>

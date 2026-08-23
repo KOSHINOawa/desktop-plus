@@ -1697,7 +1697,7 @@ export class App extends React.Component<IAppProps, IAppState> {
   ) => {
     showCertificateTrustDialog(
       certificate,
-      'Could not securely connect to the server, because its certificate is not trusted. Attackers might be trying to steal your information.\n\nTo connect unsafely, which may put your data at risk, you can “Always trust” the certificate and try again.'
+      '无法安全地连接到服务器，因为其证书不受信任。攻击者可能正在试图窃取你的信息。\n\n要不安全地连接（这可能会使你的数据面临风险），你可以“始终信任”该证书然后重试。'
     )
   }
 
@@ -3166,7 +3166,7 @@ export class App extends React.Component<IAppProps, IAppState> {
             onAccepted={onAccepted}
             onDismissed={onPopupDismissedFn}
           >
-            Review and edit the generated message carefully before use.
+            在使用前请仔细审查和编辑生成的提交信息。
           </CopilotDisclaimer>
         )
       }
@@ -3183,8 +3183,7 @@ export class App extends React.Component<IAppProps, IAppState> {
             onAccepted={onAccepted}
             onDismissed={onPopupDismissedFn}
           >
-            Review the suggested resolutions carefully before applying them to
-            your files.
+            在应用到你的文件之前，请仔细审查建议的解决方案。
           </CopilotDisclaimer>
         )
       }
@@ -3843,10 +3842,10 @@ export class App extends React.Component<IAppProps, IAppState> {
       }
     } else if (this.state.repositories.length > 0) {
       icon = octicons.repo
-      title = __DARWIN__ ? 'Select a Repository' : 'Select a repository'
+      title = __DARWIN__ ? '选择一个仓库' : '选择一个仓库'
     } else {
       icon = octicons.repo
-      title = __DARWIN__ ? 'No Repositories' : 'No repositories'
+      title = __DARWIN__ ? '无仓库' : '无仓库'
     }
 
     const isOpen =
@@ -3877,7 +3876,7 @@ export class App extends React.Component<IAppProps, IAppState> {
       <ToolbarDropdown
         icon={icon}
         title={title}
-        description={__DARWIN__ ? 'Current Repository' : 'Current repository'}
+        description={__DARWIN__ ? '当前仓库' : '当前仓库'}
         tooltip={tooltip}
         foldoutStyle={foldoutStyle}
         onContextMenu={this.onRepositoryToolbarButtonContextMenu}
@@ -4697,5 +4696,5 @@ export class App extends React.Component<IAppProps, IAppState> {
 }
 
 function NoRepositorySelected() {
-  return <div className="panel blankslate">No repository selected</div>
+  return <div className="panel blankslate">未选择仓库</div>
 }

@@ -5,10 +5,10 @@ type TimeUnitDescriptor = {
 }
 
 const units: TimeUnitDescriptor[] = [
-  { shortUnit: 'd', longUnit: 'day', ms: 86400000 },
-  { shortUnit: 'h', longUnit: 'hour', ms: 3600000 },
-  { shortUnit: 'm', longUnit: 'minute', ms: 60000 },
-  { shortUnit: 's', longUnit: 'second', ms: 1000 },
+  { shortUnit: 'd', longUnit: '天', ms: 86400000 },
+  { shortUnit: 'h', longUnit: '小时', ms: 3600000 },
+  { shortUnit: 'm', longUnit: '分钟', ms: 60000 },
+  { shortUnit: 's', longUnit: '秒', ms: 1000 },
 ]
 
 /**
@@ -50,7 +50,7 @@ export const formatLongPreciseDuration = (ms: number) => {
     if (parts.length > 0 || ms >= unit.ms || unit.shortUnit === 's') {
       const qty = Math.floor(ms / unit.ms)
       ms -= qty * unit.ms
-      parts.push(`${qty} ${unit.longUnit}${qty === 1 ? '' : 's'}`)
+      parts.push(`${qty} ${unit.longUnit}`)
     }
   }
 

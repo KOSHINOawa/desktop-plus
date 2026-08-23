@@ -38,8 +38,8 @@ export function startTimer(action: string, repository?: Repository) {
 
   const messagePrefix =
     repository === undefined
-      ? `Action '${action}'`
-      : `Action '${action}' for '${nameOf(repository)}'`
+      ? `行动 '${action}'`
+      : `行动 '${action}' 于 '${nameOf(repository)}'`
 
   return {
     done: onCompleted(startTime, messagePrefix),

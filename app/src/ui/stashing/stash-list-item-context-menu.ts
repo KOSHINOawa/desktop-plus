@@ -17,15 +17,15 @@ export const generateStashListContextMenu = (
 ) => {
   const items: ReadonlyArray<IMenuItem> = [
     {
-      label: 'Rename…',
+      label: '重命名…',
       action: () => onRename(config),
     },
     {
-      label: 'Restore Changes',
+      label: '恢复更改',
       action: () => onRestore(config),
     },
     {
-      label: 'Discard',
+      label: '丢弃',
       action: () => onDiscard(config),
     },
   ]

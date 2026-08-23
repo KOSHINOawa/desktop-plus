@@ -18,7 +18,7 @@ export function renderAllResolved() {
       <div className="green-circle">
         <Octicon symbol={octicons.check} />
       </div>
-      <div className="message">All conflicts resolved</div>
+      <div className="message">所有冲突已解决</div>
     </div>
   )
 }

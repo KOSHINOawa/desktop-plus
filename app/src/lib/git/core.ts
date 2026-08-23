@@ -468,96 +468,96 @@ export function getDescriptionForError(
         return 'Unsupported git configuration value.'
       }
 
-      return `Unsupported value '${errorInfo.value}' for git config key '${errorInfo.key}'`
+      return `git 配置项 '${errorInfo.key}' 的值 '${errorInfo.value}' 不受支持`
     case DugiteError.SSHKeyAuditUnverified:
-      return 'The SSH key is unverified.'
+      return 'SSH 密钥未经验证。'
     case DugiteError.RemoteDisconnection:
-      return 'The remote disconnected. Check your Internet connection and try again.'
+      return '远程连接已断开。请检查你的网络连接后重试。'
     case DugiteError.HostDown:
-      return 'The host is down. Check your Internet connection and try again.'
+      return '主机已离线。请检查你的网络连接后重试。'
     case DugiteError.RebaseConflicts:
-      return 'We found some conflicts while trying to rebase. Please resolve the conflicts before continuing.'
+      return '在尝试变基时发现了一些冲突。请先解决冲突再继续。'
     case DugiteError.MergeConflicts:
-      return 'We found some conflicts while trying to merge. Please resolve the conflicts and commit the changes.'
+      return '在尝试合并时发现了一些冲突。请先解决冲突并提交更改。'
     case DugiteError.HTTPSRepositoryNotFound:
     case DugiteError.SSHRepositoryNotFound:
-      return 'The repository does not seem to exist anymore. You may not have access, or it may have been deleted or renamed.'
+      return '该仓库似乎已不存在。你可能没有访问权限，或者它已被删除或重命名。'
     case DugiteError.PushNotFastForward:
-      return 'The repository has been updated since you last pulled. Try pulling before pushing.'
+      return '自你上次拉取以来，仓库已更新。请先拉取再推送。'
     case DugiteError.BranchDeletionFailed:
-      return 'Could not delete the branch. It was probably already deleted.'
+      return '无法删除该分支。它可能已经被删除了。'
     case DugiteError.DefaultBranchDeletionFailed:
-      return `The branch is the repository's default branch and cannot be deleted.`
+      return `该分支是仓库的默认分支，无法删除。`
     case DugiteError.RevertConflicts:
-      return 'To finish reverting, please merge and commit the changes.'
+      return '要完成还原，请合并并提交更改。'
     case DugiteError.EmptyRebasePatch:
-      return 'There aren’t any changes left to apply.'
+      return '没有剩余需要应用的更改了。'
     case DugiteError.NoMatchingRemoteBranch:
-      return 'There aren’t any remote branches that match the current branch.'
+      return '没有与当前分支匹配的远程分支。'
     case DugiteError.NothingToCommit:
-      return 'There are no changes to commit.'
+      return '没有可提交的更改。'
     case DugiteError.NoSubmoduleMapping:
-      return 'A submodule was removed from .gitmodules, but the folder still exists in the repository. Delete the folder, commit the change, then try again.'
+      return '子模块已从 .gitmodules 中移除，但文件夹仍存在于仓库中。请删除该文件夹，提交更改，然后重试。'
     case DugiteError.SubmoduleRepositoryDoesNotExist:
-      return 'A submodule points to a location which does not exist.'
+      return '子模块指向一个不存在的位置。'
     case DugiteError.InvalidSubmoduleSHA:
-      return 'A submodule points to a commit which does not exist.'
+      return '子模块指向一个不存在的提交。'
     case DugiteError.LocalPermissionDenied:
-      return 'Permission denied.'
+      return '权限被拒绝。'
     case DugiteError.InvalidMerge:
-      return 'This is not something we can merge.'
+      return '这不是可以合并的内容。'
     case DugiteError.InvalidRebase:
-      return 'This is not something we can rebase.'
+      return '这不是可以变基的内容。'
     case DugiteError.NonFastForwardMergeIntoEmptyHead:
-      return 'The merge you attempted is not a fast-forward, so it cannot be performed on an empty branch.'
+      return '你尝试的合并不是快进合并，因此无法在空分支上执行。'
     case DugiteError.PatchDoesNotApply:
-      return 'The requested changes conflict with one or more files in the repository.'
+      return '请求的更改与仓库中的一个或多个文件存在冲突。'
     case DugiteError.BranchAlreadyExists:
-      return 'A branch with that name already exists.'
+      return '已存在同名分支。'
     case DugiteError.BadRevision:
-      return 'Bad revision.'
+      return '无效的修订版本。'
     case DugiteError.NotAGitRepository:
-      return 'This is not a git repository.'
+      return '这不是一个 Git 仓库。'
     case DugiteError.ProtectedBranchForcePush:
-      return 'This branch is protected from force-push operations.'
+      return '该分支受保护，禁止强制推送。'
     case DugiteError.ProtectedBranchRequiresReview:
-      return 'This branch is protected and any changes requires an approved review. Open a pull request with changes targeting this branch instead.'
+      return '该分支受保护，任何更改都需要经过批准的审查。请改为创建一个面向该分支的拉取请求来提交更改。'
     case DugiteError.PushWithFileSizeExceedingLimit:
-      return "The push operation includes a file which exceeds GitHub's file size restriction of 100MB. Please remove the file from history and try again."
+      return '推送操作包含的文件超出了 GitHub 100MB 的文件大小限制。请从历史记录中移除该文件后重试。'
     case DugiteError.HexBranchNameRejected:
-      return 'The branch name cannot be a 40-character string of hexadecimal characters, as this is the format that Git uses for representing objects.'
+      return '分支名称不能是由 40 个十六进制字符组成的字符串，因为那是 Git 表示对象所使用的格式。'
     case DugiteError.ForcePushRejected:
-      return 'The force push has been rejected for the current branch.'
+      return '当前分支的强制推送已被拒绝。'
     case DugiteError.InvalidRefLength:
-      return 'A ref cannot be longer than 255 characters.'
+      return '引用（ref）长度不能超过 255 个字符。'
     case DugiteError.CannotMergeUnrelatedHistories:
-      return 'Unable to merge unrelated histories in this repository.'
+      return '无法合并此仓库中不相干的历史记录。'
     case DugiteError.PushWithPrivateEmail:
-      return 'Cannot push these commits as they contain an email address marked as private on GitHub. To push anyway, visit https://github.com/settings/emails, uncheck "Keep my email address private", then switch back to Desktop Plus to push your commits. You can then enable the setting again.'
+      return '无法推送这些提交，因为它们包含在 GitHub 上被标记为私有的电子邮件地址。若要继续推送，请访问 https://github.com/settings/emails，取消勾选“对我的电子邮件地址保密”，然后切回 Desktop Plus 以推送提交。之后你可以重新启用该设置。'
     case DugiteError.LFSAttributeDoesNotMatch:
-      return 'Git LFS attribute found in global Git configuration does not match expected value.'
+      return '在全局 Git 配置中找到的 Git LFS 属性与预期值不匹配。'
     case DugiteError.ProtectedBranchDeleteRejected:
-      return 'This branch cannot be deleted from the remote repository because it is marked as protected.'
+      return '该分支在远程仓库中被标记为受保护，因此无法删除。'
     case DugiteError.ProtectedBranchRequiredStatus:
-      return 'The push was rejected by the remote server because a required status check has not been satisfied.'
+      return '推送被远程服务器拒绝，因为尚未通过所需的状态检查。'
     case DugiteError.BranchRenameFailed:
-      return 'The branch could not be renamed.'
+      return '无法重命名该分支。'
     case DugiteError.PathDoesNotExist:
-      return 'The path does not exist on disk.'
+      return '该路径在磁盘上不存在。'
     case DugiteError.InvalidObjectName:
-      return 'The object was not found in the Git repository.'
+      return '在 Git 仓库中找不到该对象。'
     case DugiteError.OutsideRepository:
-      return 'This path is not a valid path inside the repository.'
+      return '该路径不是仓库内的有效路径。'
     case DugiteError.LockFileAlreadyExists:
-      return 'A lock file already exists in the repository, which blocks this operation from completing.'
+      return '仓库中已存在锁文件，导致此操作无法完成。'
     case DugiteError.NoMergeToAbort:
-      return 'There is no merge in progress, so there is nothing to abort.'
+      return '当前没有正在进行的合并，因此无需中止。'
     case DugiteError.NoExistingRemoteBranch:
-      return 'The remote branch does not exist.'
+      return '远程分支不存在。'
     case DugiteError.LocalChangesOverwritten:
-      return 'Unable to switch branches as there are working directory changes which would be overwritten. Please commit or stash your changes.'
+      return '无法切换分支，因为工作目录中的更改会被覆盖。请提交或暂存你的更改。'
     case DugiteError.UnresolvedConflicts:
-      return 'There are unresolved conflicts in the working directory.'
+      return '工作目录中存在未解决的冲突。'
     case DugiteError.ConfigLockFileAlreadyExists:
       // Added in dugite 1.88.0 (https://github.com/desktop/dugite/pull/386)
       // in support of https://github.com/desktop/desktop/issues/8675 but we're
@@ -568,7 +568,7 @@ export function getDescriptionForError(
     case DugiteError.RemoteAlreadyExists:
       return null
     case DugiteError.TagAlreadyExists:
-      return 'A tag with that name already exists'
+      return '已存在同名标签'
     case DugiteError.MergeWithLocalChanges:
     case DugiteError.RebaseWithLocalChanges:
     case DugiteError.GPGFailedToSignData:

@@ -16,24 +16,22 @@ export class CantDeleteCurrentBranch extends React.Component<ICantDeleteCurrentB
     return (
       <Dialog
         id="cant-delete-current-branch"
-        title={__DARWIN__ ? 'Cannot Delete Branch' : 'Cannot delete branch'}
+        title={__DARWIN__ ? '无法删除分支' : '无法删除分支'}
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >
         <DialogContent>
           <p>
-            You cannot delete the currently used branch because{' '}
-            <Ref>{blockedByBranch.name}</Ref> is in use by another worktree so
-            it cannot be checked out automatically.
+            你无法删除当前正在使用的分支，因为{' '}
+            <Ref>{blockedByBranch.name}</Ref> 正被另一个工作树使用，无法自动检出。
           </p>
           <p>
-            Consider switching to a new branch before deleting{' '}
-            <Ref>{branchToDelete.name}</Ref>.
+            在删除 <Ref>{branchToDelete.name}</Ref> 之前，请先切换到一个新分支。
           </p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Close"
+            okButtonText="关闭"
             cancelButtonVisible={false}
           />
         </DialogFooter>

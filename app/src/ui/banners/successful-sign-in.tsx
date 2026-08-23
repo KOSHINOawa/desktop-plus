@@ -11,7 +11,7 @@ export class SuccessfulSignIn extends React.Component<ISuccessfulSignInProps> {
   public render() {
     return (
       <SuccessBanner timeout={5000} onDismissed={this.props.onDismissed}>
-        Successfully signed in to {this.props.friendlyEndpoint} as{' '}
+        成功登录到 {this.props.friendlyEndpoint}，用户为{' '}
         <strong>{this.props.login}</strong>.
       </SuccessBanner>
     )

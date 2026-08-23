@@ -28,7 +28,7 @@ export class ConfirmRestart extends React.Component<IConfirmRestartProps> {
         type="warning"
       >
         <DialogContent>
-          <p>Restart Desktop Plus to apply the title bar settings change?</p>
+          <p>重启 Desktop Plus 以应用标题栏设置更改？</p>
         </DialogContent>
         {this.renderFooter()}
       </Dialog>
@@ -39,8 +39,8 @@ export class ConfirmRestart extends React.Component<IConfirmRestartProps> {
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText="Restart"
-          cancelButtonText="Not Now"
+          okButtonText="重启"
+          cancelButtonText="暂不"
           onCancelButtonClick={this.onNotNow}
         />
       </DialogFooter>

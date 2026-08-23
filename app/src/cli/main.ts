@@ -5,7 +5,7 @@ import { execFile, spawn } from 'child_process'
 const run = (...args: Array<string>) => {
   function cb(e: unknown | null, stderr?: string) {
     if (e) {
-      console.error(`Error running command ${args}`)
+      console.error(`运行命令出错：${args}`)
       console.error(stderr ?? `${e}`)
       process.exit(
         typeof e === 'object' && 'code' in e && typeof e.code === 'number'
@@ -29,7 +29,7 @@ const run = (...args: Array<string>) => {
   } else if (process.platform === 'linux') {
     execFile('/bin/desktop-plus', args, cb)
   } else {
-    throw new Error('Unsupported platform')
+    throw new Error('不支持的平台')
   }
 }
 
@@ -41,11 +41,10 @@ const args = parse(process.argv.slice(2), {
 const usage = (exitCode = 1): never => {
   process.stderr.write(
     'Desktop Plus CLI usage: \n' +
-      '  desktop-plus-cli                           Open the current directory\n' +
-      '  desktop-plus-cli open [path]               Open the provided path\n' +
-      '  desktop-plus-cli clone [-b branch] <url>   Clone the repository by url or name/owner\n' +
-      '                                             (ex torvalds/linux), optionally checking\n' +
-      '                                             out the branch\n'
+      '  desktop-plus-cli                           打开当前目录\n' +
+      '  desktop-plus-cli open [path]               打开指定路径\n' +
+      '  desktop-plus-cli clone [-b branch] <url>   通过 URL 或名称/所有者克隆仓库\n' +
+      '                                             (例如 torvalds/linux)，可选择检出分支\n'
   )
   process.exit(exitCode)
 }

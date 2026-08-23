@@ -35,7 +35,7 @@ export class MoveToApplicationsFolder extends React.Component<
   public render() {
     return (
       <Dialog
-        title="Move Desktop Plus to the Applications folder?"
+        title="将 Desktop Plus 移动到“应用程序”文件夹？"
         id="move-to-applications-folder"
         backdropDismissable={false}
         onDismissed={this.props.onDismissed}
@@ -44,17 +44,14 @@ export class MoveToApplicationsFolder extends React.Component<
       >
         <DialogContent>
           <p>
-            We've detected that you're not running Desktop Plus from the
-            Applications folder of your machine. This could cause problems with
-            the app, including impacting your ability to sign in.
+            我们检测到 Desktop Plus 并非从你计算机上的“应用程序”文件夹中运行。这可能会导致应用出现问题，包括影响你登录的能力。
           </p>
           <p>
-            Do you want to move Desktop Plus to the Applications folder now?
-            This will also restart the app.
+            是否要立即将 Desktop Plus 移动到“应用程序”文件夹？这还将重启应用。
           </p>
           <div>
             <Checkbox
-              label="Do not show this message again"
+              label="不再显示此消息"
               value={
                 this.state.askToMoveToApplicationsFolder
                   ? CheckboxValue.Off
@@ -73,9 +70,9 @@ export class MoveToApplicationsFolder extends React.Component<
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText="Move and Restart"
-          okButtonTitle="This will move Desktop Plus to the Applications folder in your machine and restart the app."
-          cancelButtonText="Not Now"
+          okButtonText="移动并重启"
+          okButtonTitle="这会将 Desktop Plus 移动到你计算机上的“应用程序”文件夹并重启应用。"
+          cancelButtonText="暂不"
           onCancelButtonClick={this.onNotNow}
         />
       </DialogFooter>

@@ -33,7 +33,7 @@ export class ContinueRebase extends React.Component<IContinueRebaseProps, {}> {
     const { manualResolutions } = this.props.rebaseConflictState
 
     let canCommit = true
-    let tooltip = 'Continue rebase'
+    let tooltip = '继续变基'
 
     const conflictedFilesCount = getConflictedFiles(
       this.props.workingDirectory,
@@ -41,7 +41,7 @@ export class ContinueRebase extends React.Component<IContinueRebaseProps, {}> {
     ).length
 
     if (conflictedFilesCount > 0) {
-      tooltip = 'Resolve all conflicts before continuing'
+      tooltip = '在继续之前解决所有冲突'
       canCommit = false
     }
 
@@ -50,9 +50,7 @@ export class ContinueRebase extends React.Component<IContinueRebaseProps, {}> {
     const loading = this.props.isCommitting ? <Loading /> : undefined
 
     const warnAboutUntrackedFiles = this.props.hasUntrackedChanges ? (
-      <div className="warning-untracked-files">
-        Untracked files will be excluded
-      </div>
+      <div className="warning-untracked-files">未跟踪的文件将被排除</div>
     ) : undefined
 
     return (
@@ -65,7 +63,7 @@ export class ContinueRebase extends React.Component<IContinueRebaseProps, {}> {
           tooltip={tooltip}
         >
           {loading}
-          <span>{loading !== undefined ? 'Rebasing' : 'Continue rebase'}</span>
+          <span>{loading !== undefined ? '变基中' : '继续变基'}</span>
         </Button>
 
         {warnAboutUntrackedFiles}

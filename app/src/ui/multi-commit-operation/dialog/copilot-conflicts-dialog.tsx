@@ -165,7 +165,7 @@ export class CopilotConflictsDialog extends React.Component<
 
     const items: ReadonlyArray<IMenuItem> = [
       {
-        label: "Use Copilot's suggestion",
+        label: '使用 Copilot 的建议',
         type: 'checkbox',
         checked: currentChoice === 'copilot',
         action: () => this.setResolution(path, 'copilot'),
@@ -218,7 +218,7 @@ export class CopilotConflictsDialog extends React.Component<
 
     if (resolvedExternalEditor !== null) {
       items.push({
-        label: `Open in ${resolvedExternalEditor}`,
+        label: `在 ${resolvedExternalEditor} 中打开`,
         action: () => this.props.openFileInExternalEditor(absolutePath),
       })
     }
@@ -378,9 +378,9 @@ export class CopilotConflictsDialog extends React.Component<
       <li key={path} className="copilot-conflicts-file-item">
         <div className="copilot-file-details">
           <PathText path={path} />
-          <span className="copilot-file-explanation resolved-text">
-            No conflicts remaining
-          </span>
+           <span className="copilot-file-explanation resolved-text">
+             没有剩余冲突
+           </span>
         </div>
         <div className="green-circle">
           <Octicon symbol={octicons.check} />
@@ -425,26 +425,26 @@ export class CopilotConflictsDialog extends React.Component<
         : undefined
       const { ourBranch, theirBranch } = this.props.conflictState
       if (deletedSide === 'ours') {
-        const branch = ourBranch ?? 'current branch'
+        const branch = ourBranch ?? '当前分支'
         reasoningText =
           choice === 'ours'
-            ? `Deleting file (deleted on ${branch})`
-            : `Keeping modified file`
+            ? `删除文件（已在 ${branch} 上删除）`
+            : `保留已修改的文件`
       } else if (deletedSide === 'theirs') {
-        const branch = theirBranch ?? 'incoming branch'
+        const branch = theirBranch ?? '传入分支'
         reasoningText =
           choice === 'theirs'
-            ? `Deleting file (deleted on ${branch})`
-            : `Keeping modified file`
+            ? `删除文件（已在 ${branch} 上删除）`
+            : `保留已修改的文件`
       }
     } else if (choice === 'ours') {
-      reasoningText = `Using changes from ${
-        this.props.conflictState.ourBranch ?? 'current branch'
-      }`
+      reasoningText = `使用来自 ${
+        this.props.conflictState.ourBranch ?? '当前分支'
+      } 的更改`
     } else if (choice === 'theirs') {
-      reasoningText = `Using changes from ${
-        this.props.conflictState.theirBranch ?? 'incoming branch'
-      }`
+      reasoningText = `使用来自 ${
+        this.props.conflictState.theirBranch ?? '传入分支'
+      } 的更改`
     }
 
     const onDropdownClick = this.getResolutionDropdownClickHandler(file.path)
@@ -472,7 +472,7 @@ export class CopilotConflictsDialog extends React.Component<
             className="copilot-overflow-menu"
             onClick={onOverflowClick}
             disabled={this.state.isContinuing}
-            ariaLabel="File options"
+            ariaLabel="文件选项"
           >
             <Octicon symbol={octicons.kebabHorizontal} />
           </Button>
@@ -514,7 +514,7 @@ export class CopilotConflictsDialog extends React.Component<
       <>
         <h2 className="copilot-conflicts-file-heading">
           <Octicon symbol={octicons.fileCode} />
-          {conflictedFiles.length} Conflicted files
+          {conflictedFiles.length} 个冲突文件
         </h2>
         <ul className="copilot-conflicts-file-list">
           {conflictedFiles.map(file =>
@@ -557,7 +557,7 @@ export class CopilotConflictsDialog extends React.Component<
         ? oursLabel
         : choice === 'theirs'
         ? theirsLabel
-        : 'Choose a resolution'
+        : '选择解决方案'
 
     const onDropdownClick = this.getSkippedDropdownClickHandler(skipped.path)
     const onOverflowClick = this.getOverflowMenuClickHandler(skipped.path)
@@ -573,7 +573,7 @@ export class CopilotConflictsDialog extends React.Component<
             className="copilot-resolution-dropdown"
             onClick={onDropdownClick}
             disabled={this.state.isContinuing}
-            ariaLabel="Choose a resolution for this file"
+            ariaLabel="为此文件选择解决方案"
           >
             <Octicon
               symbol={choice === undefined ? octicons.alert : octicons.check}
@@ -585,7 +585,7 @@ export class CopilotConflictsDialog extends React.Component<
             className="copilot-overflow-menu"
             onClick={onOverflowClick}
             disabled={this.state.isContinuing}
-            ariaLabel="File options"
+            ariaLabel="文件选项"
           >
             <Octicon symbol={octicons.kebabHorizontal} />
           </Button>
@@ -604,7 +604,7 @@ export class CopilotConflictsDialog extends React.Component<
       <>
         <h2 className="copilot-conflicts-file-heading copilot-conflicts-skipped-heading">
           <Octicon symbol={octicons.alert} />
-          {skippedFiles.length} Skipped by Copilot
+          {skippedFiles.length} 个被 Copilot 跳过的文件
         </h2>
         <ul className="copilot-conflicts-file-list">
           {skippedFiles.map(file => this.renderSkippedFile(file))}
@@ -686,7 +686,7 @@ export class CopilotConflictsDialog extends React.Component<
         disabled={isContinuing}
       >
         <DialogHeader
-          title={`Resolve conflicts before ${operationKind}`}
+          title={`在 ${operationKind} 之前解决冲突`}
           titleId={CopilotConflictsDialogTitleId}
           showCloseButton={!isContinuing}
           onCloseButtonClick={this.props.onDismissed}
@@ -696,8 +696,8 @@ export class CopilotConflictsDialog extends React.Component<
             <span className="copilot-conflicts-dialog-model">{modelLabel}</span>
             <Button
               className="copilot-conflicts-dialog-settings-button"
-              tooltip="Configure Copilot in app settings"
-              ariaLabel="Configure Copilot in app settings"
+              tooltip="在应用设置中配置 Copilot"
+              ariaLabel="在应用设置中配置 Copilot"
               onClick={this.onOpenCopilotSettings}
             >
               <Octicon symbol={octicons.sliders} />
@@ -710,25 +710,25 @@ export class CopilotConflictsDialog extends React.Component<
             onTabClicked={this.onTabSelected}
             type={TabBarType.Tabs}
           >
-            <span>Summary</span>
-            <span>Changes</span>
+            <span>摘要</span>
+            <span>更改</span>
           </TabBar>
           {this.renderTabContent(unmergedFiles)}
         </DialogContent>
         <DialogFooter>
           <div className="copilot-conflicts-footer">
             <Button onClick={this.onBackToManual} disabled={isContinuing}>
-              Switch to manual
+              切换到手动解决
             </Button>
             <OkCancelButtonGroup
-              okButtonText={`Continue ${operation}`}
+              okButtonText={`继续 ${operation}`}
               okButtonDisabled={hasUnresolvedSkippedFiles || isContinuing}
               okButtonTitle={
                 hasUnresolvedSkippedFiles
-                  ? 'Some files were skipped by Copilot. Those need to be resolved manually.'
+                  ? '部分文件已被 Copilot 跳过。这些文件需要手动解决。'
                   : undefined
               }
-              cancelButtonText={`Abort ${operation}`}
+              cancelButtonText={`中止 ${operation}`}
               onCancelButtonClick={this.onAbort}
               cancelButtonDisabled={isContinuing}
             />

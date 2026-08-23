@@ -51,7 +51,7 @@ export function getCombinedStatusSummary(
       ).toLocaleLowerCase()}`
   )
 
-  const pluralize = statusHolders.length > 1 ? `${description}s` : description
+  const pluralize = description === 'check' ? '个检查' : '个步骤'
   return `${toSentence(conclusions)} ${pluralize}`
 }
 
@@ -226,8 +226,8 @@ export class CICheckRunPopover extends React.PureComponent<
     return (
       <div className="loading-check-runs">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Stand By</div>
-        <div className="call-to-action">Check runs incoming!</div>
+        <div className="title">请稍候</div>
+        <div className="call-to-action">正在加载检查...</div>
       </div>
     )
   }
@@ -262,11 +262,11 @@ export class CICheckRunPopover extends React.PureComponent<
 
     const valueMap = getCheckStatusCountMap(checkRuns)
 
-    const ariaLabel = `Completeness indicator. ${
+    const ariaLabel = `完整性指示器. ${
       valueMap.get(APICheckStatus.Completed) ?? 0
-    } completed, ${valueMap.get(APICheckStatus.InProgress) ?? 0} in progress, ${
+    } 已完成, ${valueMap.get(APICheckStatus.InProgress) ?? 0} 进行中, ${
       valueMap.get(APICheckStatus.Queued) ?? 0
-    } queued.`
+    } 已排队.`
 
     return <Donut ariaLabel={ariaLabel} valueMap={valueMap} />
   }
@@ -279,18 +279,16 @@ export class CICheckRunPopover extends React.PureComponent<
   ): JSX.Element {
     switch (true) {
       case loading:
-        return <>Checks Summary</>
+        return <>检查总结</>
       case somePendingNoFailures:
-        return (
-          <span className="pending">Some checks haven't completed yet</span>
-        )
+        return <span className="pending">一些检查还没结束</span>
       case allFailure:
-        return <span className="failure">All checks have failed</span>
+        return <span className="failure">所有检查都失败了</span>
       case allSuccess:
-        return <>All checks have passed</>
+        return <>所有检查都通过了</>
     }
 
-    return <span className="failure">Some checks were not successful</span>
+    return <span className="failure">一些检查失败了</span>
   }
 
   private renderHeader = (): JSX.Element => {

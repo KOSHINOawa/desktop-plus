@@ -20,11 +20,17 @@ runs:
       with:
         python-version: '3.11'
 
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
     - name: Use Node.js ${{ inputs.node-version }}
       uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
-        cache: yarn
+        cache: pnpm
+        cache-dependency-path: |
+          pnpm-lock.yaml
+          app/pnpm-lock.yaml
 
     - name: Install ffmpeg
       if: ${{ runner.os == 'Windows' && inputs.install-ffmpeg == 'true' }}
@@ -33,7 +39,7 @@ runs:
 
     - name: Install and build dependencies
       shell: bash
-      run: yarn
+      run: pnpm install
       env:
         npm_config_arch: ${{ inputs.arch }}
         TARGET_ARCH: ${{ inputs.arch }}
@@ -56,7 +62,13 @@ runs:
 
         if [ ! -d "app/node_modules/@github/copilot-${PLATFORM}-${{ inputs.arch }}" ]; then
           echo "Installing ${PKG}@${VERSION} for cross-compilation…"
-          cd app && yarn add --optional --ignore-platform --ignore-scripts "${PKG}@${VERSION}"
+          # The package may target a platform/arch different from the runner,
+          # so fetch the tarball and unpack it manually instead of using the
+          # package manager (pnpm has no --ignore-platform equivalent).
+          TARBALL=$(npm pack "${PKG}@${VERSION}" --silent)
+          mkdir -p "app/node_modules/${PKG}"
+          tar -xzf "$TARBALL" -C "app/node_modules/${PKG}" --strip-components=1
+          rm -f "$TARBALL"
 
           PATH="${GITHUB_WORKSPACE}/node_modules/.bin:$PATH" \
             npm rebuild desktop-notifications desktop-trampoline

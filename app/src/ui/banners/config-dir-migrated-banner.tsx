@@ -10,8 +10,8 @@ export class ConfigDirMigratedBanner extends React.Component<IConfigDirMigratedB
   public render() {
     return (
       <SuccessBanner timeout={15000} onDismissed={this.props.onDismissed}>
-        Your settings from <strong>{this.props.migratedFromAppName}</strong>{' '}
-        were migrated successfully.
+        您从 <strong>{this.props.migratedFromAppName}</strong>{' '}
+        的设置已成功迁移。
       </SuccessBanner>
     )
   }

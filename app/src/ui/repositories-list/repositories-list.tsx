@@ -244,7 +244,7 @@ class RepositoryGroupHeader extends React.Component<IRepositoryGroupHeaderProps>
   }
 
   private renderDeleteGroupButton(groupName: string) {
-    const deleteLabel = `Delete group "${groupName}"`
+    const deleteLabel = `删除组 "${groupName}"`
 
     return (
       <Button
@@ -458,7 +458,7 @@ export class RepositoriesList extends React.Component<
     const aheadBehindTooltip = this.getAheadBehindTooltip(aheadBehind)
     const hasChanges = changedFilesCount > 0
     const uncommittedChangesTooltip = hasChanges
-      ? `There are uncommitted changes in this repository.`
+      ? `此仓库中有未提交的更改。`
       : null
 
     const ahead = aheadBehind?.ahead ?? 0
@@ -652,8 +652,8 @@ export class RepositoriesList extends React.Component<
         : [
             {
               label: __DARWIN__
-                ? `Delete Group "${groupName}"`
-                : `Delete group "${groupName}"`,
+                ? `删除组 "${groupName}"`
+                : `删除组 "${groupName}"`,
               action: () => this.onDeleteGroup(groupName),
             },
           ]

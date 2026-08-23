@@ -31,7 +31,7 @@ makedepends=(python-setuptools
              npm
              util-linux
              xorg-server-xvfb
-             yarn)
+             pnpm)
 source=("$pkgname::git+https://github.com/desktop-plus/desktop-plus.git"
         'git+https://github.com/github/gemoji.git'
         'git+https://github.com/github/gitignore.git'
@@ -70,7 +70,7 @@ build() {
     cd "$pkgname"
     # https://github.com/nodejs/node/issues/48444
     export UV_USE_IO_URING=0
-    xvfb-run yarn install
+    xvfb-run pnpm install
 
     # These can be extracted trivially from the app, so there is no point in trying to hide them.
     # Obfuscate them slightly in the PKGBUILD to prevent bots from easily scraping them.    
@@ -84,7 +84,7 @@ build() {
     export "$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_SECRET_CODEBERG_NAME]]")"="$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_SECRET_CODEBERG]]")"
     export "$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_ID_GITEA_NAME]]")"="$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_ID_GITEA]]")"
     export "$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_SECRET_GITEA_NAME]]")"="$(_deobfuscate "[[DESKTOP_OAUTH_CLIENT_SECRET_GITEA]]")"
-    xvfb-run yarn build:prod
+    xvfb-run pnpm build:prod
 }
 
 package() {

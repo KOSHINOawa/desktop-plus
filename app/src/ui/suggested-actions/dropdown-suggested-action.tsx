@@ -154,7 +154,7 @@ export class DropdownSuggestedAction extends React.Component<
             id,
           }))}
           disabled={disabled}
-          dropdownAriaLabel="Suggested actions for this branch"
+          dropdownAriaLabel="此分支的建议操作"
           onCheckedOptionChange={this.onActionSelectionChange}
           onSubmit={this.onActionSubmitted}
         />

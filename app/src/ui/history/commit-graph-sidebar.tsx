@@ -212,7 +212,7 @@ class CommitGraphBranchGroupRow extends React.PureComponent<ICommitGraphBranchGr
         <button
           type="button"
           className="commitGraph-group-disclosure"
-          aria-label={collapsed ? `Expand ${label}` : `Collapse ${label}`}
+          aria-label={collapsed ? `展开 ${label}` : `折叠 ${label}`}
           aria-expanded={!collapsed}
           onClick={this.onToggleCollapsed}
         >
@@ -547,11 +547,11 @@ export class CommitGraphSidebar extends React.Component<
         <div className="commitGraph-view-toolbar">
           <div className="commit-search-form">
             <FancyTextBox
-              ariaLabel="Commit filter"
+              ariaLabel="提交筛选"
               type="search"
               symbol={this.state.isSearching ? syncClockwise : octicons.search}
               symbolClassName={this.state.isSearching ? 'spin' : undefined}
-              placeholder={__DARWIN__ ? 'Search Commits' : 'Search commits'}
+              placeholder={__DARWIN__ ? '搜索提交' : '搜索提交'}
               value={commitSearchQuery}
               onValueChanged={this.onCommitSearchQueryChanged}
             />
@@ -578,8 +578,8 @@ export class CommitGraphSidebar extends React.Component<
           ariaPressed={
             this.state.commitGraphViewMode === CommitHistoryViewMode.List
           }
-          ariaLabel="List view"
-          tooltip="List view"
+          ariaLabel="列表视图"
+          tooltip="列表视图"
           onClick={this.commitGraph_onListModeClicked}
         >
           <Octicon symbol={octicons.listUnordered} />
@@ -593,8 +593,8 @@ export class CommitGraphSidebar extends React.Component<
           ariaPressed={
             this.state.commitGraphViewMode === CommitHistoryViewMode.Graph
           }
-          ariaLabel="Graph view"
-          tooltip="Graph view"
+          ariaLabel="图形视图"
+          tooltip="图形视图"
           onClick={this.commitGraph_onTreeModeClicked}
         >
           <Octicon symbol={octicons.gitBranch} />
@@ -634,7 +634,7 @@ export class CommitGraphSidebar extends React.Component<
         maximumWidth={commitGraphBranchListWidth.max}
         onResize={this.commitGraph_onBranchListResize}
         onReset={this.commitGraph_onBranchListReset}
-        description="Commit graph branch list"
+        description="提交图形分支列表"
       >
         <div className="commitGraph-branches-pane">
           <div className="commitGraph-branch-list" role="group">
@@ -719,13 +719,13 @@ export class CommitGraphSidebar extends React.Component<
 
     const emptyListMessage = commitGraphIsTreeMode
       ? this.commitGraph_getSelectedRefs().length === 0
-        ? 'No branches selected'
+        ? '未选择任何分支'
         : commitSearchQuery
-        ? 'No results found'
-        : 'No history'
+        ? '未找到结果'
+        : '没有历史记录'
       : commitSearchQuery
-      ? 'No results found'
-      : 'No history'
+      ? '未找到结果'
+      : '没有历史记录'
 
     const commitSHAs = commitGraphIsTreeMode
       ? commitGraphCommitSHAsForList
@@ -1012,15 +1012,15 @@ export class CommitGraphSidebar extends React.Component<
 
     switch (group) {
       case 'local':
-        return `Local Branches (${count})`
+        return `本地分支 (${count})`
       case 'origin':
         return `origin (${count})`
       case 'upstream':
         return `upstream (${count})`
       case 'remote':
-        return `Other Remotes (${count})`
+        return `其他远程 (${count})`
       case 'tags':
-        return `Tags (${count})`
+        return `标签 (${count})`
     }
   }
 
@@ -1221,7 +1221,7 @@ export class CommitGraphSidebar extends React.Component<
     ) {
       defaultErrorHandler(
         new Error(
-          `Unable to reorder. Reordering replays all commits up to the last one required for the reorder. A merge commit cannot exist among those commits.`
+          `无法重新排序。重新排序会重放重排所需的所有提交。这些提交中不能存在合并提交。`
         ),
         this.props.dispatcher
       )
@@ -1450,7 +1450,7 @@ export class CommitGraphSidebar extends React.Component<
     ) {
       defaultErrorHandler(
         new Error(
-          `Unable to squash. Squashing replays all commits up to the last one required for the squash. A merge commit cannot exist among those commits.`
+          `无法压缩。压缩会重放压缩所需的所有提交。这些提交中不能存在合并提交。`
         ),
         this.props.dispatcher
       )

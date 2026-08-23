@@ -188,7 +188,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
     if (file == null) {
       // don't show both 'empty' messages
       const message =
-        this.props.changesetData.files.length === 0 ? '' : 'No file selected'
+        this.props.changesetData.files.length === 0 ? '' : '未选择文件'
 
       return (
         <div className="panel blankslate" id="diff">
@@ -310,7 +310,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
   private renderFileList() {
     const files = this.props.changesetData.files
     if (files.length === 0) {
-      return <div className="fill-window">No files in commit</div>
+       return <div className="fill-window">提交中没有文件</div>
     }
 
     // -1 for right hand side border
@@ -333,10 +333,9 @@ export class SelectedCommits extends DiffPresentationStateComponent<
 
   private renderFileHeader() {
     const fileCount = this.props.changesetData.files.length
-    const filesPlural = fileCount === 1 ? 'file' : 'files'
     return (
       <div className="file-list-header">
-        {fileCount} changed {filesPlural}
+        {`${fileCount} 个已更改的文件`}
       </div>
     )
   }
@@ -375,7 +374,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
             maximumWidth={commitSummaryWidth.max}
             onResize={this.onCommitSummaryResize}
             onReset={this.onCommitSummaryReset}
-            description="Selected commit file list"
+            description="所选提交的文件列表"
           >
             {this.renderFileList()}
           </Resizable>
@@ -404,19 +403,18 @@ export class SelectedCommits extends DiffPresentationStateComponent<
       <div id="multiple-commits-selected" className="blankslate">
         <div className="panel blankslate">
           <img src={BlankSlateImage} className="blankslate-image" alt="" />
-          <div>
+           <div>
             <p>
-              Unable to display diff when multiple non-consecutive selected.
+              无法显示所选多个非连续提交的 diff。
             </p>
-            <div>You can:</div>
+            <div>您可以：</div>
             <ul>
               <li>
-                Select a single commit or a range of consecutive commits to view
-                a diff.
+                选择单个提交或一组连续提交以查看 diff。
               </li>
-              <li>Drag the commits to the branch menu to cherry-pick them.</li>
-              <li>Drag the commits to squash or reorder them.</li>
-              <li>Right click on multiple commits to see options.</li>
+              <li>将提交拖到分支菜单以挑拣它们。</li>
+              <li>将提交拖拽以压缩或重新排序。</li>
+              <li>右键单击多个提交以查看选项。</li>
             </ul>
           </div>
         </div>
@@ -444,8 +442,8 @@ export class SelectedCommits extends DiffPresentationStateComponent<
       showContextualMenu([
         {
           label: __DARWIN__
-            ? 'File Does Not Exist on Disk'
-            : 'File does not exist on disk',
+            ? '文件在磁盘上不存在'
+            : '文件在磁盘上不存在',
           enabled: false,
         },
       ])
@@ -456,7 +454,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
 
     const isSafeExtension = isSafeFileExtension(extension)
     const openInExternalEditor = externalEditorLabel
-      ? `Open in ${externalEditorLabel}`
+      ? `在 ${externalEditorLabel} 中打开`
       : DefaultEditorLabel
 
     const { selectedFiles } = this.state
@@ -522,7 +520,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
     items.push({
       label: gitHubRepository
         ? getViewOnGitHubLabel(gitHubRepository)
-        : 'Not uploaded to GitHub',
+        : '未上传到 GitHub',
       action: () => this.onViewOnGitHub(selectedCommits[0].sha, file),
       enabled:
         selectedCommits.length === 1 &&
@@ -548,7 +546,7 @@ function NoCommitSelected() {
   return (
     <div className="panel blankslate">
       <img src={BlankSlateImage} className="blankslate-image" alt="" />
-      No commit selected
+      未选择提交
     </div>
   )
 }
@@ -557,16 +555,16 @@ function getViewOnGitHubLabel(gitHubRepository: GitHubRepository) {
   switch (gitHubRepository.type) {
     case 'github':
       return gitHubRepository.endpoint === getDotComAPIEndpoint()
-        ? 'View on GitHub'
-        : 'View on GitHub Enterprise'
+        ? '在 GitHub 上查看'
+        : '在 GitHub Enterprise 上查看'
     case 'bitbucket':
-      return 'View on Bitbucket'
+      return '在 Bitbucket 上查看'
     case 'gitlab':
-      return 'View on GitLab'
+      return '在 GitLab 上查看'
     case 'forgejo':
-      return `View on ${getForgejoName(gitHubRepository.endpoint)}`
+      return `在 ${getForgejoName(gitHubRepository.endpoint)} 上查看`
     case 'gitea':
-      return 'View on Gitea'
+      return '在 Gitea 上查看'
     default:
       assertNever(
         gitHubRepository.type,

@@ -2063,7 +2063,7 @@ export class API {
       if (e instanceof APIError) {
         if (org !== null) {
           throw new Error(
-            `Unable to create repository for organization '${org.login}'. Verify that the repository does not already exist and that you have permission to create a repository there.`
+            `无法为组织 “${org.login}” 创建仓库。请确认该仓库尚未存在，且你拥有在该处创建仓库的权限。`
           )
         }
         throw e
@@ -2071,7 +2071,7 @@ export class API {
 
       log.error(`createRepository: failed with endpoint ${this.endpoint}`, e)
       throw new Error(
-        `Unable to publish repository. Please check if you have an internet connection and try again.`
+        `无法发布仓库。请检查你的网络连接后重试。`
       )
     }
   }
@@ -3198,13 +3198,13 @@ export class API {
         response
       )
     } catch (e) {
-      const msg = `Unable to create push protection bypass.
+      const msg = `无法创建推送保护绕过。
 
-    Repository: ${owner}/${name}
-    Reason: ${reason}
-    Placeholder Id: ${placeholderId}.
+    仓库：${owner}/${name}
+    原因：${reason}
+    占位符 ID：${placeholderId}
 
-    Try again at: ${bypassURL}`
+    重试地址：${bypassURL}`
 
       log.error(msg, e)
       throw new Error(msg)
@@ -5009,7 +5009,7 @@ export class ForgejoAPI extends API {
       if (e instanceof APIError) {
         if (org !== null) {
           throw new Error(
-            `Unable to create repository for organization '${org.login}'. Verify that the repository does not already exist and that you have permission to create a repository there.`
+            `无法为组织 “${org.login}” 创建仓库。请确认该仓库尚未存在，且你拥有在该处创建仓库的权限。`
           )
         }
         throw e
@@ -5017,7 +5017,7 @@ export class ForgejoAPI extends API {
 
       log.error(`createRepository: failed with endpoint ${this.endpoint}`, e)
       throw new Error(
-        `Unable to publish repository. Please check if you have an internet connection and try again.`
+        `无法发布仓库。请检查你的网络连接后重试。`
       )
     }
   }

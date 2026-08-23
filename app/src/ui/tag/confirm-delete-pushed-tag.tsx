@@ -31,7 +31,7 @@ export class ConfirmDeletePushedTagDialog extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Delete Pushed Tag?' : 'Delete pushed tag?'
+    const title = __DARWIN__ ? '删除已推送的标签？' : '删除已推送的标签？'
 
     return (
       <Dialog
@@ -47,12 +47,11 @@ export class ConfirmDeletePushedTagDialog extends React.Component<
       >
         <DialogContent>
           <Row id="delete-pushed-tag-confirmation">
-            This tag has already been pushed to the remote. Are you sure you
-            want to delete it locally?
+            此标签已经推送到远程。你确定要在本地删除它吗？
           </Row>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Delete" />
+          <OkCancelButtonGroup destructive={true} okButtonText="删除" />
         </DialogFooter>
       </Dialog>
     )

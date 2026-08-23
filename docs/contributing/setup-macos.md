@@ -3,7 +3,7 @@
 You will need to install these tools on your machine:
 
  - Node.js
- - Yarn
+ - pnpm
  - Python 3
  - Xcode and Xcode Command Line Tools (Xcode -> Preferences -> Downloads)
 
@@ -51,17 +51,21 @@ If you see any version number, you're good to go.
 
 `asdf` is a little more involved to install. Check out the instructions [here](https://github.com/asdf-vm/asdf) and [here](https://github.com/asdf-vm/asdf-nodejs) for more information.
 
-## Yarn
+## pnpm
 
-Follow [this guide](https://yarnpkg.com/en/docs/install#mac-stable) to install
-a system-level `yarn`. GitHub Desktop uses a local version of `yarn`, but it
-needs a version on your `PATH` to bootstrap itself.
+Enable [Corepack](https://nodejs.org/api/corepack.html) (bundled with Node.js)
+to get the version of `pnpm` pinned in the `packageManager` field of the root
+`package.json`:
 
-This is important because `yarn` uses lock files to pin dependencies. If you
+```shellsession
+$ corepack enable pnpm
+```
+
+This is important because `pnpm` uses lock files to pin dependencies. If you
 find yourself changing packages, this will prevent mismatches in versions
 between machines.
 
-If you're not familiar with `yarn`, please read [this document](./working-with-packages.md)
+If you're not familiar with `pnpm`, please read [this document](./working-with-packages.md)
 to help familiarize yourself with how to do the common package tasks that are
 relevant to Desktop.
 

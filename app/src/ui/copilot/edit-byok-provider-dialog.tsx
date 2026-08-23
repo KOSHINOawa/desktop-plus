@@ -71,10 +71,10 @@ class ModelRow extends React.Component<IModelRowProps> {
         ? model.name
         : model.id !== ''
         ? model.id
-        : 'Untitled model'
+        : '未命名的模型'
     const reasoningLabel =
       model.reasoningEffort !== undefined
-        ? `Reasoning: ${formatReasoningEffort(model.reasoningEffort)}`
+        ? `推理强度: ${formatReasoningEffort(model.reasoningEffort)}`
         : null
     return (
       <li className="copilot-byok-entry">
@@ -88,10 +88,10 @@ class ModelRow extends React.Component<IModelRowProps> {
           </span>
         </div>
         <div className="copilot-byok-entry-actions">
-          <Button onClick={this.onEdit} ariaLabel={`Edit ${heading}`}>
-            <Octicon symbol={octicons.pencil} />
-          </Button>
-          <Button onClick={this.onRemove} ariaLabel={`Remove ${heading}`}>
+           <Button onClick={this.onEdit} ariaLabel={`编辑 ${heading}`}>
+             <Octicon symbol={octicons.pencil} />
+           </Button>
+           <Button onClick={this.onRemove} ariaLabel={`移除 ${heading}`}>
             <Octicon symbol={octicons.trash} />
           </Button>
         </div>
@@ -145,13 +145,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
 
   public render() {
     const isEditing = this.props.provider !== null
-    const title = isEditing
-      ? __DARWIN__
-        ? 'Edit Custom Provider'
-        : 'Edit custom provider'
-      : __DARWIN__
-      ? 'Add Custom Provider'
-      : 'Add custom provider'
+    const title = isEditing ? '编辑自定义提供商' : '添加自定义提供商'
 
     return (
       <Dialog
@@ -169,7 +163,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
           {this.renderModelsSection()}
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup okButtonText={isEditing ? 'Save' : 'Add'} />
+          <OkCancelButtonGroup okButtonText={isEditing ? '保存' : '添加'} />
         </DialogFooter>
       </Dialog>
     )
@@ -178,20 +172,20 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
   private renderProviderSection() {
     return (
       <fieldset className="copilot-byok-fieldset">
-        <legend>Provider</legend>
+        <legend>提供商</legend>
         <Row>
-          <TextBox
-            label="Name"
+            <TextBox
+            label="名称"
             value={this.state.name}
             onValueChanged={this.onNameChanged}
-            placeholder="My provider"
+            placeholder="我的提供商"
             required={true}
             autoFocus={true}
           />
         </Row>
         <Row>
-          <Select
-            label="Type"
+           <Select
+            label="类型"
             value={this.state.type}
             onChange={this.onTypeChanged}
           >
@@ -202,7 +196,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
         </Row>
         <Row>
           <TextBox
-            label={__DARWIN__ ? 'Base URL' : 'Base URL'}
+            label={'基础 URL'}
             value={this.state.baseUrl}
             onValueChanged={this.onBaseUrlChanged}
             placeholder={getBaseUrlPlaceholder(this.state.type)}
@@ -212,19 +206,19 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
         {this.state.type === 'openai' && (
           <Row>
             <Select
-              label={__DARWIN__ ? 'API Format' : 'API format'}
+               label={__DARWIN__ ? 'API 格式' : 'API 格式'}
               value={this.state.wireApi}
               onChange={this.onWireApiChanged}
             >
-              <option value="completions">Chat completions (default)</option>
-              <option value="responses">Responses (GPT-5 series)</option>
+               <option value="completions">Chat completions（默认）</option>
+               <option value="responses">Responses（GPT-5 系列）</option>
             </Select>
           </Row>
         )}
         {this.state.type === 'azure' && (
           <Row>
             <TextBox
-              label={__DARWIN__ ? 'Azure API Version' : 'Azure API version'}
+               label={__DARWIN__ ? 'Azure API 版本' : 'Azure API 版本'}
               value={this.state.azureApiVersion}
               onValueChanged={this.onAzureApiVersionChanged}
               placeholder="2024-10-21"
@@ -233,11 +227,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
         )}
         <Row>
           <TextBox
-            label={
-              __DARWIN__
-                ? 'Request Timeout (seconds)'
-                : 'Request timeout (seconds)'
-            }
+            label="回复超时时长（秒）"
             value={this.state.requestTimeoutSeconds}
             onValueChanged={this.onRequestTimeoutChanged}
             placeholder="60"
@@ -252,31 +242,31 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
       <fieldset className="copilot-byok-fieldset">
         <Row>
           <Select
-            label="Authentication"
+            label="身份验证"
             value={this.state.authKind}
             onChange={this.onAuthKindChanged}
           >
-            <option value="apiKey">API key</option>
-            <option value="bearer">Bearer token</option>
-            <option value="none">None</option>
+            <option value="apiKey">API 密钥</option>
+            <option value="bearer">持有者令牌</option>
+            <option value="none">无</option>
           </Select>
         </Row>
         {this.state.authKind !== 'none' && (
           <Row>
             <TextBox
               label={
-                this.state.authKind === 'bearer' ? 'Bearer token' : 'API key'
+                this.state.authKind === 'bearer' ? '持有者令牌' : 'API 密钥'
               }
               type="password"
               value={this.state.secret}
               onValueChanged={this.onSecretChanged}
-              placeholder={isEditing ? '(unchanged)' : ''}
+              placeholder={isEditing ? '(未修改)' : ''}
             />
           </Row>
         )}
         {this.state.authKind === 'none' && (
           <p className="copilot-byok-section-hint">
-            No credentials will be sent with requests to this provider.
+            向此提供商的请求将不会发送凭据。
           </p>
         )}
       </fieldset>
@@ -286,14 +276,14 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
   private renderModelsSection() {
     return (
       <fieldset className="copilot-byok-fieldset copilot-byok-models">
-        <legend>Models</legend>
+        <legend>模型</legend>
         <p className="copilot-byok-section-hint">
-          Tell Desktop which models this provider offers. Each one will appear
-          in the model picker for Copilot features.
+          告诉桌面此提供者提供哪些模型。每个模型都会出现在 Copilot
+          功能的模型选择器中。
         </p>
         {this.state.models.length === 0 ? (
           <p className="copilot-byok-empty">
-            No models yet. Add at least one to use this provider.
+            还没有模型。至少添加一个以使用此提供者。
           </p>
         ) : (
           <ul className="copilot-byok-entry-list">
@@ -308,9 +298,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
             ))}
           </ul>
         )}
-        <Button onClick={this.onAddModel}>
-          {__DARWIN__ ? 'Add Model…' : 'Add model…'}
-        </Button>
+        <Button onClick={this.onAddModel}>添加模型…</Button>
       </fieldset>
     )
   }
@@ -433,27 +421,27 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
 
   private validate(): string | null {
     if (this.state.name.trim() === '') {
-      return 'Please enter a name.'
+      return '请输入一个名称。'
     }
 
     const trimmedUrl = this.state.baseUrl.trim()
     if (trimmedUrl === '') {
-      return 'Please enter a base URL.'
+      return '请输入基础 URL。'
     }
     if (!isValidBYOKBaseUrl(trimmedUrl)) {
-      return 'Base URL must be an https URL, or an http URL pointing at the local machine.'
+      return '基础 URL 必须是 https URL，或者是指向本地机器的 http URL。'
     }
 
     const trimmedModels = this.state.models.filter(m => m.id.trim() !== '')
     if (trimmedModels.length === 0) {
-      return 'Please add at least one model.'
+      return '请至少添加一个模型。'
     }
 
     const ids = new Set<string>()
     for (const model of trimmedModels) {
       const id = model.id.trim()
       if (ids.has(id)) {
-        return `Duplicate model ID '${id}'.`
+        return `重复的模型 ID '${id}'。`
       }
       ids.add(id)
     }
@@ -464,15 +452,15 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
       requiresNewBYOKSecret(this.state.authKind, existing)
     ) {
       return this.state.authKind === 'bearer'
-        ? 'Please enter a bearer token.'
-        : 'Please enter an API key.'
+        ? '请输入持有者令牌。'
+        : '请输入 API 密钥。'
     }
 
     const trimmedTimeout = this.state.requestTimeoutSeconds.trim()
     if (trimmedTimeout !== '') {
       const timeout = Number(trimmedTimeout)
       if (!Number.isFinite(timeout) || timeout <= 0) {
-        return 'Request timeout must be a positive number of seconds.'
+        return '请求超时必须为正数秒数。'
       }
     }
 

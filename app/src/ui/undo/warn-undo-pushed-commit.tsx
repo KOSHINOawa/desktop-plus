@@ -32,7 +32,7 @@ export class WarnUndoPushedCommit extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Undo Pushed Commit?' : 'Undo pushed commit?'
+    const title = __DARWIN__ ? '撤销已推送的提交？' : '撤销已推送的提交？'
 
     return (
       <Dialog
@@ -48,18 +48,16 @@ export class WarnUndoPushedCommit extends React.Component<
       >
         <DialogContent>
           <p id="undo-pushed-commit-warning-message">
-            This commit has already been pushed to the remote repository.
-            Undoing it will rewrite your local history.
+            此提交已经推送到远程仓库。撤销它将重写你的本地历史记录。
           </p>
           <p>
-            If others have pulled this commit, they may encounter issues when
-            pushing or pulling. You will need to force push to update the remote
-            repository.
+            如果其他人已经拉取了此提交，他们在推送或拉取时可能会遇到问题。
+            你将需要强制推送以更新远程仓库。
           </p>
-          <p>Are you sure you want to continue?</p>
+          <p>            确定要继续吗？</p>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Undo Commit" />
+          <OkCancelButtonGroup destructive={true} okButtonText="撤销提交" />
         </DialogFooter>
       </Dialog>
     )

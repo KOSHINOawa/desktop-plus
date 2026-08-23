@@ -1,11 +1,11 @@
 /**
  * CI helper for the Draft Release workflow (.github/workflows/draft-release.yml).
  *
- * Reuses the same functions as `yarn draft-release` so there is a single source
+ * Reuses the same functions as `pnpm draft-release` so there is a single source
  * of truth for version computation, tag discovery, and changelog aggregation.
  *
  * Usage (from repo root):
- *   yarn ts-node -P script/tsconfig.json script/draft-release/ci.ts <command> [args]
+ *   pnpm ts-node -P script/tsconfig.json script/draft-release/ci.ts <command> [args]
  *
  * Commands:
  *   version <channel>

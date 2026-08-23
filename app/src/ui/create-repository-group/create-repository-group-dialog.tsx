@@ -69,11 +69,11 @@ export class CreateRepositoryGroup extends React.Component<
         title={
           isEditing
             ? __DARWIN__
-              ? 'Edit Group'
-              : 'Edit group'
+              ? '编辑组'
+              : '编辑组'
             : __DARWIN__
-            ? 'New Group'
-            : 'New group'
+              ? '新建组'
+              : '新建组'
         }
         ariaDescribedBy="create-repository-group-description"
         onDismissed={this.props.onDismissed}
@@ -83,22 +83,18 @@ export class CreateRepositoryGroup extends React.Component<
           <p id="create-repository-group-description">
             {isEditing ? (
               <>
-                Choose a name for the group and select which repositories belong
-                to it. Repositories you deselect will go back to their automatic
-                group.
+                为该组选择一个名称，并选择属于它的仓库。你取消选择的仓库将回到其自动分组。
               </>
             ) : (
               <>
-                Choose a name for the new group and select which repositories to
-                add to it. You can change this later from each repository's
-                context menu.
+                为新组选择一个名称，并选择要添加到其中的仓库。你可以稍后通过每个仓库的右键菜单更改此项。
               </>
             )}
           </p>
           <p>
             <TextBox
-              ariaLabel="Group name"
-              placeholder="Group name"
+              ariaLabel="组名称"
+              placeholder="组名称"
               value={this.state.groupName}
               onValueChanged={this.onGroupNameChanged}
               autoFocus={true}
@@ -107,8 +103,8 @@ export class CreateRepositoryGroup extends React.Component<
           <p>
             <TextBox
               type="search"
-              placeholder="Filter"
-              ariaLabel="Filter repositories"
+              placeholder="筛选"
+              ariaLabel="筛选仓库"
               prefixedIcon={octicons.search}
               value={this.state.filterText}
               onValueChanged={this.onFilterTextChanged}
@@ -123,11 +119,11 @@ export class CreateRepositoryGroup extends React.Component<
             okButtonText={
               isEditing
                 ? __DARWIN__
-                  ? 'Save Group'
-                  : 'Save group'
+                  ? '保存组'
+                  : '保存组'
                 : __DARWIN__
-                ? 'Create Group'
-                : 'Create group'
+                  ? '创建组'
+                  : '创建组'
             }
             okButtonDisabled={
               this.state.groupName.length === 0 ||
@@ -141,9 +137,7 @@ export class CreateRepositoryGroup extends React.Component<
 
   private renderRepositoryList() {
     const repositories = this.sortRepositories(this.getFilteredRepositories())
-    const resultCount = `${repositories.length} ${
-      repositories.length === 1 ? 'result' : 'results'
-    }`
+    const resultCount = `${repositories.length} 个结果`
 
     return (
       <>
@@ -153,13 +147,13 @@ export class CreateRepositoryGroup extends React.Component<
         />
         {repositories.length === 0 ? (
           <div className="no-repositories">
-            No repositories match your filter.
+            没有仓库匹配你的筛选条件。
           </div>
         ) : (
           <div
             className="repository-list-selector"
             role="group"
-            aria-label="Repositories to add to the group"
+            aria-label="要添加到组的仓库"
           >
             {repositories.map(this.renderRepositoryCheckbox)}
           </div>

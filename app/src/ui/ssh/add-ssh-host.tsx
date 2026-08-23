@@ -20,23 +20,23 @@ export class AddSSHHost extends React.Component<IAddSSHHostProps> {
       <Dialog
         id="add-ssh-host"
         type="normal"
-        title="SSH Host"
+        title="SSH 主机"
         backdropDismissable={false}
         onSubmit={this.onSubmit}
         onDismissed={this.onCancel}
       >
         <DialogContent>
           <p>
-            The authenticity of host '{this.props.host} ({this.props.ip})' can't
-            be established. {this.props.keyType} key fingerprint is{' '}
-            {this.props.fingerprint}.
+            无法确认主机 '{this.props.host} ({this.props.ip})'
+            的真实性。{this.props.keyType} 密钥指纹为{' '}
+            {this.props.fingerprint}。
           </p>
-          <p>Are you sure you want to continue connecting?</p>
+          <p>确定要继续保持连接吗？</p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Yes"
-            cancelButtonText="No"
+            okButtonText="是"
+            cancelButtonText="否"
             onCancelButtonClick={this.onCancel}
           />
         </DialogFooter>

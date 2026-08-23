@@ -390,7 +390,7 @@ export class SandboxedMarkdown extends React.PureComponent<
         ref={this.frameContainingDivRef}
       >
         <iframe
-          title="sandboxed-markdown-component"
+          title="沙箱 Markdown 组件"
           className="sandboxed-markdown-component"
           sandbox="allow-same-origin"
           ref={this.onFrameRef}

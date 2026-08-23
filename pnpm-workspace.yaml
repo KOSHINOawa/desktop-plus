@@ -1,0 +1,25 @@
+# pnpm configuration for the root project (build tooling dependencies).
+# The app/ directory has its own independent pnpm-workspace.yaml and lockfile,
+# mirroring the previous root/app split of yarn.lock files.
+overrides:
+  '@types/react-css-transition-replace>@types/react': ^16.14.62
+  # @types/glob@5 declares `@types/minimatch: *`, which now resolves to the
+  # v6 stub package (no type definitions). Pin the last version that ships
+  # real typings so `tsc` keeps finding them when scanning node_modules/@types.
+  '@types/minimatch': 3.0.3
+  yauzl: 3.3.1
+  wrap-ansi: 7.0.0
+
+# Electron apps need a flat, npm-like node_modules layout so that packaging
+# (and native module rebuilds) keep working as they did with yarn v1.
+nodeLinker: hoisted
+
+# Run postinstall scripts of all dependencies (dugite, keytar, electron, …)
+# without an interactive approval step, like yarn v1 did.
+dangerouslyAllowAllBuilds: true
+
+# yarn v1 never auto-installed peer dependencies. Keep the same behavior.
+autoInstallPeers: false
+# Do not re-verify/re-install dependencies before every script run
+# (yarn v1 never did this).
+verifyDepsBeforeRun: false

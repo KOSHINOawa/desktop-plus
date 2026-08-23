@@ -15,15 +15,15 @@ import { formatNumber } from '../../lib/format-number'
 import { getNumberFormatPreference } from '../../models/formatting-preferences'
 
 const snapshotDisplayNames: Record<string, string> = {
-  chat: 'Chat messages',
-  completions: 'Code completions',
-  premium_interactions: 'Premium requests',
-  session: 'Session limits',
-  weekly: 'Weekly limits',
+  chat: '聊天消息',
+  completions: '代码补全',
+  premium_interactions: '高级请求',
+  session: '会话限制',
+  weekly: '每周限制',
 }
 
 const tokenBasedSnapshotDisplayNames: Record<string, string> = {
-  premium_interactions: 'AI credits',
+  premium_interactions: 'AI 额度',
 }
 
 const quotaKeys = ['chat', 'completions', 'premium_interactions']
@@ -123,10 +123,10 @@ function formatUsageTooltip(
     return undefined
   }
 
-  if (displayName === 'AI credits') {
+  if (displayName === 'AI 额度') {
     return `${formatAiCreditValue(
       snapshot.usedRequests
-    )} / ${formatAiCreditValue(snapshot.entitlementRequests)} AI credits used`
+    )} / ${formatAiCreditValue(snapshot.entitlementRequests)} AI 额度已使用`
   }
 
   const formatRequests = (value: number) =>
@@ -137,7 +137,7 @@ function formatUsageTooltip(
 
   return `${formatRequests(snapshot.usedRequests)} / ${formatRequests(
     snapshot.entitlementRequests
-  )} ${displayName.toLowerCase()} used`
+  )} ${displayName} 已使用`
 }
 
 function isFutureResetDate(resetDate: string | undefined): boolean {
@@ -248,8 +248,8 @@ function QuotaProgressBar({ snapshot }: IQuotaProgressBarProps) {
       aria-valuenow={usedPercentage}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-valuetext={disabled ? 'No usage limit' : undefined}
-      aria-label={disabled ? 'No usage limit' : `${usedPercentage}% quota used`}
+      aria-valuetext={disabled ? '无使用限制' : undefined}
+      aria-label={disabled ? '无使用限制' : `${usedPercentage}% 已使用配额`}
     >
       <div
         className="copilot-snapshot-progress-value"
@@ -264,9 +264,9 @@ function SnapshotUsageItem({
   tokenBasedBilling = false,
 }: ISnapshotUsageItemProps) {
   const { snapshot, displayName } = item
-  const usageLabel = snapshot.isUnlimitedEntitlement
-    ? 'No usage limit'
-    : formatUsedPercentage(snapshot)
+    const usageLabel = snapshot.isUnlimitedEntitlement
+      ? '无使用限制'
+      : formatUsedPercentage(snapshot)
   const usageTooltip = formatUsageTooltip(snapshot, displayName)
   const resetText =
     snapshot.resetDate !== undefined && isFutureResetDate(snapshot.resetDate)
@@ -286,7 +286,7 @@ function SnapshotUsageItem({
           {!snapshot.isUnlimitedEntitlement && resetText !== null ? (
             <span className="copilot-snapshot-reset">({resetText})</span>
           ) : showMonthlyResetFallback ? (
-            <span className="copilot-snapshot-reset">(resets monthly)</span>
+            <span className="copilot-snapshot-reset">（每月重置）</span>
           ) : null}
         </span>
         <TooltippedContent
@@ -336,7 +336,7 @@ export class SnapshotCard extends React.Component<ISnapshotCardProps> {
             </div>
           </div>
           {onConfigureModels !== undefined && (
-            <Button onClick={this.onConfigureModelsClick}>Configure…</Button>
+            <Button onClick={this.onConfigureModelsClick}>配置…</Button>
           )}
         </div>
         {snapshots === null
@@ -352,7 +352,7 @@ export class SnapshotCard extends React.Component<ISnapshotCardProps> {
 }
 
 function renderLoadingSnapshots(): JSX.Element {
-  return <p className="copilot-usage-empty">Loading Copilot usage…</p>
+   return <p className="copilot-usage-empty">正在加载 Copilot 使用情况…</p>
 }
 
 function renderSnapshots(snapshots: CopilotQuotaSnapshots): JSX.Element {
@@ -363,7 +363,7 @@ function renderSnapshots(snapshots: CopilotQuotaSnapshots): JSX.Element {
   if (rateLimits.length === 0 && quotas.length === 0) {
     return (
       <p className="copilot-usage-empty">
-        No Copilot usage data available yet.
+        暂无 Copilot 使用数据。
       </p>
     )
   }

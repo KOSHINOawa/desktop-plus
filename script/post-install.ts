@@ -4,9 +4,6 @@
 import * as Path from 'path'
 import { spawnSync, SpawnSyncOptions } from 'child_process'
 
-import glob from 'glob'
-import { forceUnwrap } from '../app/src/lib/fatal-error'
-
 const root = Path.dirname(__dirname)
 
 const options: SpawnSyncOptions = {
@@ -33,37 +30,37 @@ function isOffline() {
   return process.env.OFFLINE === '1'
 }
 
+/**
+ * Node refuses to spawn the Windows `pnpm.cmd` shim without a shell, so
+ * enable shell mode only when targeting it.
+ */
+function pnpmSpawnOptions(extra?: SpawnSyncOptions): SpawnSyncOptions {
+  return {
+    ...options,
+    ...extra,
+    shell: process.platform === 'win32',
+  }
+}
+
 /** Format the arguments to ensure these work offline */
-function getYarnArgs(baseArgs: Array<string>): Array<string> {
+function getPnpmArgs(baseArgs: Array<string>): Array<string> {
   const args = baseArgs
 
   if (isOffline()) {
-    args.splice(1, 0, '--offline')
+    args.unshift('--offline')
   }
 
   return args
 }
 
-function findYarnVersion(callback: (path: string) => void) {
-  glob('vendor/yarn-*.js', (error, files) => {
-    if (error != null) {
-      throw error
-    }
-
-    // this ensures the paths returned by glob are sorted alphabetically
-    files.sort()
-
-    // use the latest version here if multiple are found
-    callback(forceUnwrap('Missing vendored yarn', files.at(-1)))
-  })
-}
+const pnpmExecutable = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm'
 
 console.log('---> Running post-install script...')
 
-findYarnVersion(path => {
-  const installArgs = getYarnArgs([path, '--cwd', 'app', 'install', '--force'])
+{
+  const installArgs = getPnpmArgs(['--dir', 'app', 'install', '--force'])
 
-  let result = spawnSync('node', installArgs, options)
+  let result = spawnSync(pnpmExecutable, installArgs, pnpmSpawnOptions())
 
   if (result.status !== 0) {
     process.exit(result.status || 1)
@@ -93,7 +90,11 @@ findYarnVersion(path => {
     }
   }
 
-  result = spawnSync('node', getYarnArgs([path, 'compile:script']), options)
+  result = spawnSync(
+    pnpmExecutable,
+    getPnpmArgs(['run', 'compile:script']),
+    pnpmSpawnOptions()
+  )
 
   if (result.status !== 0) {
     console.error('Failed to compile app dependencies. Code:', result.status)
@@ -126,11 +127,15 @@ findYarnVersion(path => {
   }
 
   if (process.platform === 'linux') {
-    result = spawnSync('node', getYarnArgs([path, 'patch-package']), options)
+    result = spawnSync(
+      pnpmExecutable,
+      ['exec', 'patch-package'],
+      pnpmSpawnOptions()
+    )
 
     if (result.status !== 0) {
       console.error('Failed to run patch-package. Code:', result.status)
       process.exit(result.status || 1)
     }
   }
-})
+}

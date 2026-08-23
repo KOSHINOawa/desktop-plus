@@ -17,7 +17,7 @@ export function validateURL(address: string): string {
   // relaxed here about what we accept for the server name
   const trimmed = address.trim()
   if (trimmed.length === 0) {
-    const error = new Error('Unknown address')
+    const error = new Error('地址未知')
     error.name = InvalidURLErrorName
     throw error
   }
@@ -30,7 +30,7 @@ export function validateURL(address: string): string {
   }
 
   if (!url.protocol) {
-    const error = new Error('Invalid URL')
+    const error = new Error('无效的 URL')
     error.name = InvalidURLErrorName
     throw error
   }
@@ -38,7 +38,7 @@ export function validateURL(address: string): string {
   const isLocalhost =
     url.hostname === 'localhost' || url.hostname === '127.0.0.1'
   if (url.protocol !== 'https:' && !isLocalhost) {
-    const error = new Error('Invalid protocol')
+    const error = new Error('无效的协议')
     error.name = InvalidProtocolErrorName
     throw error
   }

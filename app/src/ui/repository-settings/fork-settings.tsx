@@ -19,9 +19,9 @@ export class ForkSettings extends React.Component<IForkSettingsProps, {}> {
   private renderForkOptionsLabel = (key: ForkContributionTarget) => {
     switch (key) {
       case ForkContributionTarget.Parent:
-        return 'To contribute to the parent repository'
+        return '用于向父仓库贡献'
       case ForkContributionTarget.Self:
-        return 'For my own purposes'
+        return '用于我自己的用途'
       default:
         return assertNever(key, `Unknown fork contribution target: ${key}`)
     }
@@ -35,7 +35,7 @@ export class ForkSettings extends React.Component<IForkSettingsProps, {}> {
 
     return (
       <DialogContent>
-        <h2 id="fork-usage-heading">I'll be using this fork…</h2>
+        <h2 id="fork-usage-heading">我将使用此复刻…</h2>
 
         <RadioGroup<ForkContributionTarget>
           ariaLabelledBy="fork-usage-heading"

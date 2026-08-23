@@ -15,20 +15,19 @@ export class ConfirmExitTutorial extends React.Component<
   public render() {
     return (
       <Dialog
-        title={__DARWIN__ ? 'Exit Tutorial' : 'Exit tutorial'}
+        title={__DARWIN__ ? '退出教程' : '退出教程'}
         onDismissed={this.props.onDismissed}
         onSubmit={this.onContinue}
         type="normal"
       >
         <DialogContent>
           <p>
-            Are you sure you want to leave the tutorial? This will bring you
-            back to the home screen.
+            你确定要离开教程吗？这将把你带回主屏幕。
           </p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Exit Tutorial' : 'Exit tutorial'}
+            okButtonText={__DARWIN__ ? '退出教程' : '退出教程'}
           />
         </DialogFooter>
       </Dialog>

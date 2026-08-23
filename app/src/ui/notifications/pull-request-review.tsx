@@ -103,19 +103,19 @@ export class PullRequestReview extends React.Component<
     if (!isApprovedReview) {
       if (shouldChangeRepository) {
         okButtonTitle = __DARWIN__
-          ? 'Switch to Repository and Pull Request'
-          : 'Switch to repository and pull request'
+          ? '切换仓库并切换到拉取请求'
+          : '切换仓库并切换到拉取请求'
       } else if (shouldCheckoutBranch) {
         okButtonTitle = __DARWIN__
-          ? 'Switch to Pull Request'
-          : 'Switch to pull request'
+          ? '切换到拉取请求'
+          : '切换到拉取请求'
       }
     }
 
     const okCancelButtonGroup = (
       <OkCancelButtonGroup
         onCancelButtonClick={this.props.onDismissed}
-        cancelButtonText="Dismiss"
+        cancelButtonText="关闭"
         // If there is nothing special about the OK button, just hide the cancel
         // button, since they will both just dismiss the dialog.
         cancelButtonVisible={okButtonTitle !== undefined}
@@ -125,7 +125,7 @@ export class PullRequestReview extends React.Component<
       />
     )
 
-    const openInBrowserText = __DARWIN__ ? 'Open in Browser' : 'Open in browser'
+    const openInBrowserText = __DARWIN__ ? '在浏览器中打开' : '在浏览器中打开'
 
     return (
       <Row>

@@ -88,14 +88,14 @@ export class AddRemoteDialog extends React.Component<
     return (
       <Dialog
         id="add-remote"
-        title={__DARWIN__ ? 'Add a Remote' : 'Add a remote'}
+        title={__DARWIN__ ? '添加远程' : '添加远程'}
         loading={this.state.adding}
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
       >
         {this.nameAlreadyExists ? (
           <DialogError>
-            A remote named "{this.state.name.trim()}" already exists.
+            名为 "{this.state.name.trim()}" 的远程已存在。
           </DialogError>
         ) : null}
 
@@ -103,7 +103,7 @@ export class AddRemoteDialog extends React.Component<
           <Row>
             <TextBox
               ref={this.nameTextBoxRef}
-              label="Name"
+              label="名称"
               placeholder="upstream"
               value={this.state.name}
               onValueChanged={this.onNameChanged}
@@ -112,7 +112,7 @@ export class AddRemoteDialog extends React.Component<
 
           <Row>
             <TextBox
-              label="URL"
+              label="网址"
               placeholder="https://github.com/user/repo.git"
               value={this.state.url}
               onValueChanged={this.onUrlChanged}
@@ -122,7 +122,7 @@ export class AddRemoteDialog extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Add Remote' : 'Add remote'}
+            okButtonText={__DARWIN__ ? '添加远程' : '添加远程'}
             okButtonDisabled={disabled}
           />
         </DialogFooter>

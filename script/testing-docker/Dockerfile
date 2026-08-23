@@ -18,6 +18,6 @@ RUN echo 'export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 COPY ./entrypoint.sh /entrypoint.sh
 
 # To allow the image to run without internet connection
-RUN corepack pack yarn@1.22.22
+RUN corepack pack pnpm@11.22.0
 
 CMD ["/entrypoint.sh"]

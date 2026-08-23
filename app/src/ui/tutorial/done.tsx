@@ -60,33 +60,32 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
         <div className="content">
           <div className="header">
             <div className="text">
-              <h1 ref={this.header}>You're done!</h1>
+              <h1 ref={this.header}>你已完成！</h1>
               <p>
-                You’ve learned the basics on how to use Desktop Plus. Here are
-                some suggestions for what to do next.
+                你已经了解了如何使用 Desktop Plus 的基础。以下是一些后续建议。
               </p>
             </div>
             <img
               src={ClappingHandsImage}
               className="image"
-              alt="Hands clapping"
+              alt="鼓掌的双手"
             />
           </div>
           <SuggestedActionGroup>
             <SuggestedAction
-              title="Explore projects on GitHub"
-              description="Contribute to a project that interests you"
-              buttonText={__DARWIN__ ? 'Open in Browser' : 'Open in browser'}
+              title="在 GitHub 上探索项目"
+              description="为你感兴趣的项目做出贡献"
+              buttonText={__DARWIN__ ? '在浏览器中打开' : '在浏览器中打开'}
               icon={octicons.browser}
               onClick={this.openDotcomExplore}
               type="normal"
               image={TelescopeOcticon}
             />
             <SuggestedAction
-              title="Create a new repository"
-              description="Get started on a brand new project"
+              title="创建新的仓库"
+              description="开始一个全新的项目"
               buttonText={
-                __DARWIN__ ? 'Create Repository' : 'Create repository'
+                __DARWIN__ ? '创建仓库' : '创建仓库'
               }
               icon={octicons.repo}
               onClick={this.onCreateNewRepository}
@@ -94,9 +93,9 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
               image={PlusOcticon}
             />
             <SuggestedAction
-              title="Add a local repository"
-              description="Work on an existing project in Desktop Plus"
-              buttonText={__DARWIN__ ? 'Add Repository' : 'Add repository'}
+              title="添加本地仓库"
+              description="在 Desktop Plus 中处理现有项目"
+              buttonText={__DARWIN__ ? '添加仓库' : '添加仓库'}
               icon={octicons.fileDirectory}
               onClick={this.onAddExistingRepository}
               type="normal"

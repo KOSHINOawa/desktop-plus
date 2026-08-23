@@ -164,7 +164,7 @@ export class OkCancelButtonGroup extends React.Component<
         ariaDescribedBy={this.props.okButtonAriaDescribedBy}
       >
         {okButtonIcon && <Octicon symbol={okButtonIcon} className="mr" />}
-        {this.props.okButtonText || 'Ok'}
+        {this.props.okButtonText || '确定'}
       </Button>
     )
   }
@@ -195,7 +195,7 @@ export class OkCancelButtonGroup extends React.Component<
         type={this.props.destructive === true ? 'submit' : 'reset'}
         ariaDescribedBy={this.props.cancelButtonAriaDescribedBy}
       >
-        {this.props.cancelButtonText || 'Cancel'}
+        {this.props.cancelButtonText || '取消'}
       </Button>
     )
   }

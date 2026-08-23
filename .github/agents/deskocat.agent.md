@@ -58,9 +58,9 @@ Write the code. Follow all conventions in `.github/copilot-instructions.md`. Key
 Before opening a PR, run and confirm:
 
 ```bash
-yarn lint          # All linting passes
-yarn test          # All unit tests pass
-yarn build:dev     # Development build succeeds
+pnpm lint          # All linting passes
+pnpm test          # All unit tests pass
+pnpm build:dev     # Development build succeeds
 ```
 
 If any of these fail due to your changes, fix them before proceeding.

@@ -31,11 +31,11 @@ interface ISnapshotDefinition {
 }
 
 const snapshotDefinitions: ReadonlyArray<ISnapshotDefinition> = [
-  { key: 'chat', label: 'Chat messages' },
-  { key: 'completions', label: 'Code completions' },
-  { key: 'premium_interactions', label: 'Premium requests / AI credits' },
-  { key: 'session', label: 'Session limits' },
-  { key: 'weekly', label: 'Weekly limits' },
+  { key: 'chat', label: '聊天消息' },
+  { key: 'completions', label: '代码补全' },
+  { key: 'premium_interactions', label: '高级请求 / AI 额度' },
+  { key: 'session', label: '会话限制' },
+  { key: 'weekly', label: '每周限制' },
 ]
 
 interface IEditableSnapshot {
@@ -172,7 +172,7 @@ export class TestCopilotSnapshotCardDialog extends React.Component<
     return (
       <Dialog
         id="test-copilot-snapshot-card"
-        title="Test Copilot Snapshot Card"
+        title="测试 Copilot 快照卡片"
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >
@@ -193,13 +193,13 @@ export class TestCopilotSnapshotCardDialog extends React.Component<
         <DialogFooter>
           <div className="test-copilot-snapshot-card-footer-buttons">
             <Button type="button" onClick={this.onUseTokenBasedBillingPreset}>
-              AI credits preset
+              AI 额度预设
             </Button>
             <Button type="button" onClick={this.onUseRateLimitPreset}>
-              Rate limit preset
+              速率限制预设
             </Button>
           </div>
-          <OkCancelButtonGroup okButtonText="Done" />
+          <OkCancelButtonGroup okButtonText="完成" />
         </DialogFooter>
       </Dialog>
     )
@@ -241,26 +241,26 @@ export class TestCopilotSnapshotCardDialog extends React.Component<
   private renderAccountControls(): JSX.Element {
     return (
       <fieldset className="test-copilot-snapshot-card-fieldset">
-        <legend>Fake account</legend>
+        <legend>模拟账户</legend>
         <div className="test-copilot-snapshot-card-grid">
           <TextBox
-            label="Login"
+            label="登录名"
             value={this.state.login}
             onValueChanged={this.onLoginChanged}
             autoFocus={true}
           />
           <TextBox
-            label="Name"
+            label="名称"
             value={this.state.name}
             onValueChanged={this.onNameChanged}
           />
           <TextBox
-            label="Endpoint"
+            label="端点"
             value={this.state.endpoint}
             onValueChanged={this.onEndpointChanged}
           />
           <TextBox
-            label="Avatar URL"
+            label="头像 URL"
             value={this.state.avatarURL}
             onValueChanged={this.onAvatarURLChanged}
           />
@@ -280,48 +280,48 @@ export class TestCopilotSnapshotCardDialog extends React.Component<
         <legend>{definition.label}</legend>
         <Row className="test-copilot-snapshot-card-checkbox-row">
           <Checkbox
-            label="Enabled"
+            label="已启用"
             value={checkboxValue(snapshot.enabled)}
             onChange={this.onSnapshotEnabledChanged(definition.key)}
           />
           <Checkbox
-            label="Token-based billing"
+            label="基于令牌的计费"
             value={checkboxValue(snapshot.tokenBasedBilling)}
             onChange={this.onSnapshotTokenBasedBillingChanged(definition.key)}
           />
           <Checkbox
-            label="Unlimited"
+            label="无限制"
             value={checkboxValue(snapshot.isUnlimitedEntitlement)}
             onChange={this.onSnapshotUnlimitedChanged(definition.key)}
           />
         </Row>
         <div className="test-copilot-snapshot-card-grid">
           <TextBox
-            label="Entitlement requests"
+            label="配额请求"
             value={snapshot.entitlementRequests}
             onValueChanged={this.onSnapshotEntitlementRequestsChanged(
               definition.key
             )}
           />
           <TextBox
-            label="Used requests"
+            label="已用请求"
             value={snapshot.usedRequests}
             onValueChanged={this.onSnapshotUsedRequestsChanged(definition.key)}
           />
           <TextBox
-            label="Remaining percentage"
+            label="剩余百分比"
             value={snapshot.remainingPercentage}
             onValueChanged={this.onSnapshotRemainingPercentageChanged(
               definition.key
             )}
           />
           <TextBox
-            label="Overage"
+            label="超出量"
             value={snapshot.overage}
             onValueChanged={this.onSnapshotOverageChanged(definition.key)}
           />
           <TextBox
-            label="Reset date"
+            label="重置日期"
             value={snapshot.resetDate}
             placeholder="2026-07-10T12:00:00Z"
             onValueChanged={this.onSnapshotResetDateChanged(definition.key)}
@@ -329,12 +329,12 @@ export class TestCopilotSnapshotCardDialog extends React.Component<
         </div>
         <Row className="test-copilot-snapshot-card-checkbox-row">
           <Checkbox
-            label="Usage allowed with exhausted quota"
+            label="配额用尽时允许使用"
             value={checkboxValue(snapshot.usageAllowedWithExhaustedQuota)}
             onChange={this.onSnapshotUsageAllowedChanged(definition.key)}
           />
           <Checkbox
-            label="Overage allowed with exhausted quota"
+            label="配额用尽时允许超出"
             value={checkboxValue(snapshot.overageAllowedWithExhaustedQuota)}
             onChange={this.onSnapshotOverageAllowedChanged(definition.key)}
           />

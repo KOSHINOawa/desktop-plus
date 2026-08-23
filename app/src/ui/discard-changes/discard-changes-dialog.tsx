@@ -58,18 +58,18 @@ export class DiscardChanges extends React.Component<
 
   private getOkButtonLabel() {
     if (this.props.discardingAllChanges) {
-      return __DARWIN__ ? 'Discard All' : 'Discard all'
+      return __DARWIN__ ? '丢弃全部' : '丢弃全部'
     }
-    return __DARWIN__ ? 'Discard Changes' : 'Discard changes'
+    return __DARWIN__ ? '丢弃更改' : '丢弃更改'
   }
 
   private getDialogTitle() {
     if (this.props.discardingAllChanges) {
       return __DARWIN__
-        ? 'Confirm Discard All Changes'
-        : 'Confirm discard all changes'
+        ? '确认丢弃全部更改'
+        : '确认丢弃全部更改'
     }
-    return __DARWIN__ ? 'Confirm Discard Changes' : 'Confirm discard changes'
+    return __DARWIN__ ? '确认丢弃更改' : '确认丢弃更改'
   }
 
   public render() {
@@ -93,12 +93,11 @@ export class DiscardChanges extends React.Component<
           {this.props.permanentlyDelete ? (
             <p id="discard-changes-confirmation-message">
               <span className="warning-icon">⚠️</span>{' '}
-              <b>Changes CANNOT be restored after deletion!</b>
+              <b>删除后更改将无法恢复！</b>
             </p>
           ) : (
             <p id="discard-changes-confirmation-message">
-              Changes can be restored by retrieving them from the{' '}
-              {TrashNameLabel}.
+              可以通过从 {TrashNameLabel} 中找回这些更改来恢复。
             </p>
           )}
           {this.renderConfirmDiscardChanges()}
@@ -120,7 +119,7 @@ export class DiscardChanges extends React.Component<
     if (this.props.showDiscardChangesSetting) {
       return (
         <Checkbox
-          label="Do not show this message again"
+          label="不要再显示此消息"
           value={
             this.state.confirmDiscardChanges
               ? CheckboxValue.Off
@@ -141,14 +140,13 @@ export class DiscardChanges extends React.Component<
     if (this.props.files.length > MaxFilesToList) {
       return (
         <p id="discard-changes-confirmation-file-list">
-          Are you sure you want to discard all {this.props.files.length} changed
-          files?
+          你确定要丢弃全部 {this.props.files.length} 个已更改的文件吗？
         </p>
       )
     } else {
       return (
         <div id="discard-changes-confirmation-file-list">
-          <p>Are you sure you want to discard all changes to:</p>
+          <p>你确定要丢弃以下文件的所有更改吗：</p>
           <div className="file-list">
             <ul>
               {this.props.files.map(p => (

@@ -37,7 +37,7 @@ export class CopilotSettingsDialog extends React.Component<ICopilotSettingsDialo
       <Dialog
         id="copilot-settings-dialog"
         className="copilot-settings-dialog"
-        title={__DARWIN__ ? 'Copilot Settings' : 'Copilot settings'}
+        title={__DARWIN__ ? 'Copilot 设置' : 'Copilot 设置'}
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >
@@ -63,7 +63,7 @@ export class CopilotSettingsDialog extends React.Component<ICopilotSettingsDialo
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Done"
+            okButtonText="完成"
             cancelButtonVisible={false}
           />
         </DialogFooter>

@@ -15,28 +15,25 @@ export class CantDeleteMainBranch extends React.Component<ICantDeleteMainBranchP
     return (
       <Dialog
         id="cant-delete-main-branch"
-        title={__DARWIN__ ? 'Cannot Delete Branch' : 'Cannot delete branch'}
+        title={__DARWIN__ ? '无法删除分支' : '无法删除分支'}
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >
         <DialogContent>
           <p>
-            You cannot delete the default branch{' '}
-            <Ref>{branchToDelete.name}</Ref> because it is currently
-            checked-out.
+            你无法删除默认分支{' '}
+            <Ref>{branchToDelete.name}</Ref>，因为它当前已被检出。
           </p>
           <p>
-            You will need to switch to a different branch before removing this
-            one.
+            在移除该分支之前，你需要先切换到一个不同的分支。
           </p>
           <div className="secondary-text">
-            Tip: You can right-click on a branch and select "Set as default
-            branch" to change the default branch for the repository.
+            提示：你可以右键点击某个分支并选择"设为默认分支"来更改仓库的默认分支。
           </div>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Close"
+            okButtonText="关闭"
             cancelButtonVisible={false}
           />
         </DialogFooter>

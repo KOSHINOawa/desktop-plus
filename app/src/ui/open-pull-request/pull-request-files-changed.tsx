@@ -153,16 +153,16 @@ export class PullRequestFilesChanged extends React.Component<
     switch (gitHubRepository.type) {
       case 'github':
         return gitHubRepository.endpoint !== getDotComAPIEndpoint()
-          ? 'View on GitHub Enterprise'
-          : 'View on GitHub'
+          ? '在 GitHub Enterprise 上查看'
+          : '在 GitHub 上查看'
       case 'bitbucket':
-        return 'View on Bitbucket'
+        return '在 Bitbucket 上查看'
       case 'gitlab':
-        return 'View on GitLab'
+        return '在 GitLab 上查看'
       case 'forgejo':
-        return `View on ${getForgejoName(gitHubRepository.endpoint)}`
+        return `在 ${getForgejoName(gitHubRepository.endpoint)} 上查看`
       case 'gitea':
-        return 'View on Gitea'
+        return '在 Gitea 上查看'
       default:
         assertNever(
           gitHubRepository.type,
@@ -206,8 +206,8 @@ export class PullRequestFilesChanged extends React.Component<
       showContextualMenu([
         {
           label: __DARWIN__
-            ? 'File Does Not Exist on Disk'
-            : 'File does not exist on disk',
+            ? '磁盘上不存在该文件'
+            : '磁盘上不存在该文件',
           enabled: false,
         },
       ])
@@ -220,7 +220,7 @@ export class PullRequestFilesChanged extends React.Component<
     const isSafeExtension = isSafeFileExtension(extension)
     const openInExternalEditor =
       externalEditorLabel !== undefined
-        ? `Open in ${externalEditorLabel}`
+        ? `在 ${externalEditorLabel} 中打开`
         : DefaultEditorLabel
 
     const items: IMenuItem[] = [
@@ -257,7 +257,7 @@ export class PullRequestFilesChanged extends React.Component<
     items.push({
       label: gitHubRepository
         ? this.getViewOnGitHubLabel(gitHubRepository)
-        : 'No remote',
+        : '无远程',
       action: () => this.onViewOnGitHub(file),
       enabled: nonLocalCommitSHA !== null && gitHubRepository !== null,
     })
@@ -292,9 +292,9 @@ export class PullRequestFilesChanged extends React.Component<
     const { showSideBySideDiff } = this.state
     return (
       <div className="files-changed-header">
-        <div className="commits-displayed">
-          Showing changes from all commits
-        </div>
+          <div className="commits-displayed">
+            显示所有提交中的更改
+          </div>
         <DiffOptions
           isInteractiveDiff={false}
           hideWhitespaceChanges={hideWhitespaceInDiff}
@@ -321,7 +321,7 @@ export class PullRequestFilesChanged extends React.Component<
         maximumWidth={fileListWidth.max}
         onResize={this.onFileListResize}
         onReset={this.onFileListSizeReset}
-        description="Pull request file list"
+        description="拉取请求文件列表"
       >
         <FileList
           files={files}

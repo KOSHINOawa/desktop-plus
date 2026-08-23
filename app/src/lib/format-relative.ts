@@ -16,10 +16,10 @@ const getRelativeFormatter = mem(
 
 export function formatRelative(ms: number) {
   if (!Number.isFinite(ms)) {
-    return 'Invalid date'
+    return '无效日期'
   }
 
-  const formatter = getRelativeFormatter('en-US', { numeric: 'auto' })
+  const formatter = getRelativeFormatter('zh-CN', { numeric: 'auto' })
 
   const sign = ms < 0 ? -1 : 1
 

@@ -25,8 +25,8 @@ export class RemoteListItem extends React.Component<IRemoteListItemProps, {}> {
         <span className="url">{remote.url}</span>
         <Button
           className="remove-remote-button"
-          tooltip={`Remove the "${remote.name}" remote`}
-          ariaLabel={`Remove the "${remote.name}" remote`}
+          tooltip={`移除 "${remote.name}" 远程`}
+          ariaLabel={`移除 "${remote.name}" 远程`}
           onClick={this.onRemoveClick}
         >
           <Octicon symbol={octicons.trash} />

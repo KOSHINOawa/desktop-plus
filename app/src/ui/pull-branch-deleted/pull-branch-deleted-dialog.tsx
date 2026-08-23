@@ -41,7 +41,7 @@ export class PullBranchDeletedDialog extends React.Component<
     return (
       <Dialog
         id="pull-branch-deleted"
-        title={__DARWIN__ ? 'Unable to Pull' : 'Unable to pull'}
+        title={__DARWIN__ ? '无法拉取' : '无法拉取'}
         type="error"
         role="alertdialog"
         ariaDescribedBy="pull-branch-deleted-message"
@@ -51,21 +51,17 @@ export class PullBranchDeletedDialog extends React.Component<
         <DialogContent>
           <div id="pull-branch-deleted-message">
             <p>
-              Unable to pull <Ref>{this.props.repository.name}</Ref> because the
-              remote branch for <Ref>{this.props.branchName}</Ref> does not
-              exist.
+              无法拉取 <Ref>{this.props.repository.name}</Ref>，因为{' '}
+              <Ref>{this.props.branchName}</Ref> 的远程分支不存在。
             </p>
-            <p>
-              You can switch this repository to its default branch and pull
-              again.
-            </p>
+            <p>你可以将此仓库切换到其默认分支并再次拉取。</p>
           </div>
 
           <div className="pull-branch-deleted-dialog__delete-stale-branch">
             <Checkbox
               label={
                 <>
-                  Also delete branch <Ref>{this.props.branchName}</Ref>
+                  同时删除分支 <Ref>{this.props.branchName}</Ref>
                 </>
               }
               value={
@@ -80,12 +76,10 @@ export class PullBranchDeletedDialog extends React.Component<
         <DialogFooter>
           <OkCancelButtonGroup
             okButtonText={
-              __DARWIN__
-                ? 'Switch to Default Branch'
-                : 'Switch to default branch'
+              __DARWIN__ ? '切换到默认分支' : '切换到默认分支'
             }
-            okButtonTitle="This will check out the repository's default branch and pull it."
-            cancelButtonText="Close"
+            okButtonTitle="这将检出仓库的默认分支并拉取它。"
+            cancelButtonText="关闭"
           />
         </DialogFooter>
       </Dialog>

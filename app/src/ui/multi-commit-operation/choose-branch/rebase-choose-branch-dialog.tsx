@@ -95,9 +95,9 @@ export class RebaseChooseBranchDialog extends React.Component<
         : false
 
     return selectedBranchIsCurrentBranch
-      ? 'You are not able to rebase this branch onto itself.'
+      ? '你无法将当前分支变基到其自身上。'
       : !currentBranchIsBehindSelectedBranch
-      ? 'The current branch is already up to date with the selected branch.'
+      ? '当前分支已与所选分支保持最新。'
       : undefined
   }
 
@@ -108,7 +108,7 @@ export class RebaseChooseBranchDialog extends React.Component<
     )
     return (
       <>
-        Rebase <strong>{truncatedName}</strong>
+        变基 <strong>{truncatedName}</strong>
       </>
     )
   }
@@ -148,11 +148,11 @@ export class RebaseChooseBranchDialog extends React.Component<
   }
 
   private renderLoadingRebaseMessage() {
-    return <>Checking for ability to rebase automatically…</>
+    return <>正在检查能否自动变基…</>
   }
 
   private renderInvalidRebaseMessage() {
-    return <>Unable to start rebase. Check you have chosen a valid branch.</>
+    return <>无法开始变基。请确认你选择了有效的分支。</>
   }
 
   private renderCleanRebaseMessage(
@@ -163,27 +163,24 @@ export class RebaseChooseBranchDialog extends React.Component<
   ) {
     // The current branch is behind the base branch
     if (commitsBehindCount > 0 && commitsAheadCount <= 0) {
-      const pluralized = commitsBehindCount === 1 ? 'commit' : 'commits'
+      const pluralized = '个提交'
       return (
         <>
-          This will fast-forward <strong>{currentBranch.name}</strong> by
+          这将把 <strong>{currentBranch.name}</strong> 快进
           <strong>{` ${commitsBehindCount} ${pluralized}`}</strong>
-          {` to match `}
-          <strong>{baseBranch.name}</strong>
+          以匹配 <strong>{baseBranch.name}</strong>
         </>
       )
     }
 
     // The current branch is behind and ahead of the base branch
     if (commitsBehindCount > 0 && commitsAheadCount > 0) {
-      const pluralized = commitsAheadCount === 1 ? 'commit' : 'commits'
+      const pluralized = '个提交'
       return (
         <>
-          This will update <strong>{currentBranch.name}</strong>
-          {` by applying its `}
+          这将更新 <strong>{currentBranch.name}</strong>，将其
           <strong>{` ${commitsAheadCount} ${pluralized}`}</strong>
-          {` on top of `}
-          <strong>{baseBranch.name}</strong>
+          应用到 <strong>{baseBranch.name}</strong> 之上
         </>
       )
     }
@@ -193,8 +190,9 @@ export class RebaseChooseBranchDialog extends React.Component<
     return (
       <>
         <strong>{currentBranch.name}</strong>
-        {` `}
-        is already up to date with <strong>{baseBranch.name}</strong>
+        {' 已与 '}
+        <strong>{baseBranch.name}</strong>
+        {' 保持最新'}
       </>
     )
   }

@@ -98,17 +98,17 @@ export async function checkBranchNameRules(
   if (cannotBypass) {
     return {
       error: new Error(
-        `Branch name '${branchName}' is restricted by repo rules.`
+        `分支名 '${branchName}' 受仓库规则限制。`
       ),
       isWarning: false,
     }
   }
 
   return {
-    error: new Error(
-      `Branch name '${branchName}' is restricted by repo rules, but you can bypass them. Proceed with caution!`
-    ),
-    isWarning: true,
+      error: new Error(
+        `分支名 '${branchName}' 受仓库规则限制，但你可以绕过它们。请谨慎操作！`
+      ),
+      isWarning: true,
   }
 }
 

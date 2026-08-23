@@ -343,16 +343,16 @@ export class CopilotConflictsChanges extends React.Component<
     path: string
   ): string | undefined {
     if (choice === 'ours') {
-      return `Using changes from ${this.props.ourBranch ?? 'current branch'}`
+      return `使用来自 ${this.props.ourBranch ?? '当前分支'} 的更改`
     }
     if (choice === 'theirs') {
-      return `Using changes from ${this.props.theirBranch ?? 'incoming branch'}`
+      return `使用来自 ${this.props.theirBranch ?? '传入分支'} 的更改`
     }
     const resolution = this.props.copilotResolutions?.find(r => r.path === path)
     if (resolution === undefined) {
-      return 'No Copilot resolution available'
+      return '没有可用的 Copilot 解决方案'
     }
-    return resolution.reasoning ?? "Using Copilot's merged resolution"
+    return resolution.reasoning ?? '使用 Copilot 的合并解决方案'
   }
 
   public render() {
@@ -385,7 +385,7 @@ export class CopilotConflictsChanges extends React.Component<
       <div className="copilot-changes-tab">
         <div className="copilot-changes-header">
           <span className="copilot-changes-file-count">
-            {files.length} files changed
+            {files.length} 个文件已更改
           </span>
           <DiffOptions
             isInteractiveDiff={false}
@@ -431,13 +431,13 @@ export class CopilotConflictsChanges extends React.Component<
                       className="copilot-changes-diff-subheader-toggle"
                       onClick={this.onToggleSubheaderExpanded}
                       tooltip={
-                        this.state.isSubheaderExpanded ? 'Collapse' : 'Expand'
+                        this.state.isSubheaderExpanded ? '折叠' : '展开'
                       }
                       ariaExpanded={this.state.isSubheaderExpanded}
                       ariaLabel={
                         this.state.isSubheaderExpanded
-                          ? 'Collapse description'
-                          : 'Expand description'
+                          ? '折叠说明'
+                          : '展开说明'
                       }
                       ariaControls="copilot-changes-diff-description"
                     >
@@ -453,7 +453,7 @@ export class CopilotConflictsChanges extends React.Component<
                   <Button
                     className="copilot-resolution-dropdown"
                     onClick={this.onDropdownClick}
-                    ariaLabel="Change resolution choice"
+                    ariaLabel="更改解决方案选择"
                   >
                     <Octicon symbol={choiceIcon} />
                     {choiceLabel}
@@ -484,12 +484,12 @@ export class CopilotConflictsChanges extends React.Component<
             )}
             {selectedFile !== null && noResolution && (
               <div className="copilot-changes-no-diff">
-                No Copilot resolution available for this file.
+                此文件没有可用的 Copilot 解决方案。
               </div>
             )}
             {selectedFile !== null && !noResolution && diffError && (
               <div className="copilot-changes-no-diff">
-                Unable to load the diff for this file.
+                无法加载此文件的差异。
               </div>
             )}
           </div>

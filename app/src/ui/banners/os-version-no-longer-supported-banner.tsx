@@ -24,10 +24,9 @@ export class OSVersionNoLongerSupportedBanner extends React.Component<{
         onDismissed={this.onDismissed}
       >
         <Octicon className="alert-icon" symbol={octicons.alert} />
-        This operating system is no longer supported. Software updates have been
-        disabled.
+        这个操作系统不再受支持。软件更新已被禁用。
         <LinkButton uri="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/supported-operating-systems">
-          Support details
+          支持详情
         </LinkButton>
       </Banner>
     )

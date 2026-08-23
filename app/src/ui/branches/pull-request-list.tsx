@@ -133,11 +133,10 @@ export class PullRequestList extends React.Component<
     const loadingComplete =
       this.props.isLoadingPullRequests && !nextProps.isLoadingPullRequests
     const numPullRequests = this.props.pullRequests.length
-    const plural = numPullRequests === 1 ? '' : 's'
     const screenReaderStateMessage = loadingStarted
-      ? 'Hang Tight. Loading pull requests as fast as I can!'
+      ? '请稍等。正在尽快加载拉取请求！'
       : loadingComplete
-      ? `${numPullRequests} pull request${plural} found`
+      ? `找到了 ${numPullRequests} 个拉取请求`
       : null
 
     this.setState({
@@ -148,7 +147,7 @@ export class PullRequestList extends React.Component<
   }
 
   private getListAriaLabel = () => {
-    return `Pull requests in ${this.getRepositoryName()}`
+    return `拉取请求在 ${this.getRepositoryName()} 中`
   }
 
   public render() {
@@ -296,10 +295,7 @@ export class PullRequestList extends React.Component<
     const pullRequest = item.pullRequest
 
     this.props.dispatcher.closeFoldout(FoldoutType.Branch)
-    const timer = startTimer(
-      'checkout pull request from list',
-      this.props.repository
-    )
+    const timer = startTimer('从列表中检出拉取请求', this.props.repository)
     this.props.dispatcher
       .checkoutPullRequest(this.props.repository, pullRequest)
       .then(() => timer.done())
@@ -324,7 +320,7 @@ export class PullRequestList extends React.Component<
   private renderListHeader = () => {
     return (
       <div className="filter-list-group-header">
-        Pull requests in {this.getRepositoryName()}
+        在 {this.getRepositoryName()} 中的拉取请求
       </div>
     )
   }
@@ -334,7 +330,7 @@ export class PullRequestList extends React.Component<
   }
 
   private renderPostFilter = () => {
-    const tooltip = 'Refresh the list of pull requests'
+    const tooltip = '刷新拉取请求列表'
 
     return (
       <Button
@@ -363,7 +359,7 @@ export class PullRequestList extends React.Component<
 
 function getSubtitle(pr: PullRequest) {
   const timeAgo = formatRelative(pr.created.getTime() - Date.now())
-  return `#${pr.pullRequestNumber} opened ${timeAgo} by ${pr.author}`
+  return `#${pr.pullRequestNumber} 被 ${pr.author} 打开在 ${timeAgo}  `
 }
 
 function createListItems(

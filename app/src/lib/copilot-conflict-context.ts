@@ -302,12 +302,12 @@ export function getHunkSkipReason(
       totalContent += side.length
       for (const line of side.split('\n')) {
         if (line.length > MAX_CONFLICT_LINE_LENGTH) {
-          return 'Conflict contains lines too long to resolve automatically'
+          return '冲突包含过长、无法自动解决的行'
         }
       }
     }
     if (totalContent > MAX_CONFLICT_CONTENT_SIZE) {
-      return 'Conflict region too large to resolve automatically'
+      return '冲突区域过大，无法自动解决'
     }
   }
 

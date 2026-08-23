@@ -91,8 +91,8 @@ type LoadingTheme = 'gathering' | 'analyzing'
 
 /** User-facing label for each theme. */
 const ThemeLabels: Record<LoadingTheme, string> = {
-  gathering: 'Gathering context…',
-  analyzing: 'Analyzing conflicts…',
+  gathering: '正在收集上下文…',
+  analyzing: '正在分析冲突…',
 }
 
 /** Pick a random dwell duration in [MinDwellSeconds, MaxDwellSeconds]. */
@@ -113,12 +113,12 @@ function buildGatheringPool(
 ): ReadonlyArray<string> {
   const fileNames = filePaths.map(p => p.split('/').pop() ?? p)
   const pool: string[] = [
-    'Reviewing the changes from each side',
-    'Reading recent commit history',
-    'Looking for related context',
+    '正在查看每一侧的更改',
+    '正在读取最近的提交历史',
+    '正在查找相关上下文',
   ]
   for (const name of fileNames.slice(0, 4)) {
-    pool.push(`Reading ${name}`)
+    pool.push(`正在读取 ${name}`)
   }
   return pool
 }
@@ -132,14 +132,14 @@ function buildAnalyzingPool(
 ): ReadonlyArray<string> {
   const fileNames = filePaths.map(p => p.split('/').pop() ?? p)
   const pool: string[] = [
-    'Cross-referencing related files',
-    'Considering both sides of each conflict',
+    '正在交叉引用相关文件',
+    '正在考虑每个冲突的双方',
   ]
   for (const name of fileNames.slice(0, 6)) {
-    pool.push(`Analyzing ${name}`)
+    pool.push(`正在分析 ${name}`)
   }
   if (fileNames.length > 6) {
-    pool.push(`…and ${fileNames.length - 6} more`)
+    pool.push(`…以及另外 ${fileNames.length - 6} 个`)
   }
   return pool
 }
@@ -419,7 +419,7 @@ export class CopilotConflictsLoadingDialog extends React.Component<
         onDismissed={this.props.onDismissed}
       >
         <DialogHeader
-          title={`Resolving conflicts for ${operationKind.toLowerCase()}`}
+          title={`正在为 ${operationKind.toLowerCase()} 解决冲突`}
           titleId={CopilotConflictsLoadingDialogId}
           showCloseButton={true}
           onCloseButtonClick={this.props.onDismissed}
@@ -468,10 +468,10 @@ export class CopilotConflictsLoadingDialog extends React.Component<
                 className="copilot-conflicts-loading-stop-icon"
                 symbol={octicons.squareFill}
               />
-              Stop
+              停止
             </Button>
             <Button onClick={this.props.onAbort}>
-              Abort {operationKind.toLowerCase()}
+              中止 {operationKind.toLowerCase()}
             </Button>
           </div>
         </DialogFooter>

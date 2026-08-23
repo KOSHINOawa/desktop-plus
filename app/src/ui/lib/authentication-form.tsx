@@ -6,7 +6,7 @@ import { Button } from './button'
 
 /** Text to let the user know their browser will send them back to GH Desktop */
 export const BrowserRedirectMessage =
-  "Your browser will redirect you back to Desktop Plus once you've signed in. If your browser asks for your permission to launch Desktop Plus please allow it to."
+  "登录后，你的浏览器会自动带你回到 Desktop Plus。如果你的浏览器请求允许打开 Desktop Plus，请允许。"
 
 interface IAuthenticationFormProps {
   /**
@@ -47,7 +47,7 @@ export class AuthenticationForm extends React.Component<IAuthenticationFormProps
           autoFocus={true}
           role="link"
         >
-          Sign in using your browser
+          使用浏览器登录
           <Octicon symbol={octicons.linkExternal} />
         </Button>
         {this.props.additionalButtons}

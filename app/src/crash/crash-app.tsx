@@ -136,8 +136,8 @@ export class CrashApp extends React.Component<ICrashAppProps, ICrashAppState> {
   private renderTitle() {
     const message =
       this.state.type === 'launch'
-        ? 'Desktop Plus failed to launch'
-        : 'Desktop Plus encountered an error'
+        ? 'Desktop Plus 启动失败'
+        : 'Desktop Plus 遇到一个错误'
 
     return (
       <header>
@@ -151,19 +151,17 @@ export class CrashApp extends React.Component<ICrashAppProps, ICrashAppState> {
     if (this.state.type === 'launch') {
       return (
         <p>
-          Desktop Plus encountered a catastrophic error that prevents it from
-          launching. This has been reported to the team, but if you encounter
-          this repeatedly please report this issue to the Desktop Plus{' '}
-          <LinkButton uri={issuesUri}>issue tracker</LinkButton>.
+          Desktop Plus
+          遇到了一个导致其无法启动的灾难性错误。这个问题已经报告给团队，但如果您多次遇到此问题，请将此问题报告给
+          Desktop Plus。 <LinkButton uri={issuesUri}>问题跟踪器</LinkButton>.
         </p>
       )
     } else {
       return (
         <p>
-          Desktop Plus has encountered an unrecoverable error and will need to
-          restart. This has been reported to the team, but if you encounter this
-          repeatedly please report this issue to the Desktop Plus{' '}
-          <LinkButton uri={issuesUri}>issue tracker</LinkButton>.
+          Desktop Plus
+          遇到了一个无法恢复的错误，需要重启。这个问题已经报告给团队，但如果您多次遇到此问题，请将此问题报告给
+          Desktop Plus。 <LinkButton uri={issuesUri}>问题跟踪器</LinkButton>.
         </p>
       )
     }

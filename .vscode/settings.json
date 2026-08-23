@@ -6,7 +6,6 @@
     "**/node_modules": true,
     "**/out": true,
     "app/test/fixtures": true,
-    "vendor/yarn-*": true,
     "app/static/common/choosealicense.com": true
   },
   "files.exclude": {
@@ -46,5 +45,6 @@
     "editor.codeActionsOnSave": {
       "source.removeUnusedImports": "explicit"
     }
-  }
+  },
+  "commentTranslate.source": "Bing"
 }

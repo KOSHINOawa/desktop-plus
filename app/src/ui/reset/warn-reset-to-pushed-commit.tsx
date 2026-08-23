@@ -33,8 +33,8 @@ export class WarnResetToPushedCommit extends React.Component<
 
   public render() {
     const title = __DARWIN__
-      ? 'Reset to Pushed Commit?'
-      : 'Reset to pushed commit?'
+      ? '重置到已推送的提交？'
+      : '重置到已推送的提交？'
 
     return (
       <Dialog
@@ -60,7 +60,7 @@ export class WarnResetToPushedCommit extends React.Component<
           </p>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Reset" />
+          <OkCancelButtonGroup destructive={true} okButtonText="重置" />
         </DialogFooter>
       </Dialog>
     )

@@ -86,26 +86,26 @@ export function getCheckRunConclusionAdjective(
   conclusion: APICheckConclusion | null
 ): string {
   if (conclusion === null) {
-    return 'In progress'
+    return '进行中'
   }
 
   switch (conclusion) {
     case APICheckConclusion.ActionRequired:
-      return 'Action required'
+      return '需要操作'
     case APICheckConclusion.Canceled:
-      return 'Canceled'
+      return '已取消'
     case APICheckConclusion.TimedOut:
-      return 'Timed out'
+      return '已超时'
     case APICheckConclusion.Failure:
-      return 'Failed'
+      return '失败'
     case APICheckConclusion.Neutral:
-      return 'Neutral'
+      return '中性'
     case APICheckConclusion.Success:
-      return 'Successful'
+      return '成功'
     case APICheckConclusion.Skipped:
-      return 'Skipped'
+      return '已跳过'
     case APICheckConclusion.Stale:
-      return 'Marked as stale'
+      return '标记为过期'
   }
 }
 
@@ -129,7 +129,7 @@ function getCheckRunShortDescription(
   durationMs?: number
 ): string {
   if (status !== APICheckStatus.Completed || conclusion === null) {
-    return 'In progress'
+    return '进行中'
   }
 
   const adjective = getCheckRunConclusionAdjective(conclusion)
@@ -146,7 +146,7 @@ function getCheckRunShortDescription(
     return adjective
   }
 
-  const preposition = conclusion === APICheckConclusion.Success ? 'in' : 'after'
+  const preposition = conclusion === APICheckConclusion.Success ? '在' : '之后'
 
   if (durationMs !== undefined && durationMs > 0) {
     return `${adjective} ${preposition} ${formatPreciseDuration(durationMs)}`
@@ -607,7 +607,7 @@ export function getCheckRunsGroupedByActionWorkflowNameAndEvent(
 
   const groups = new Map<string, IRefCheck[]>()
   for (const checkRun of checkRuns) {
-    let group = checkRun.actionsWorkflow?.name || 'Other'
+    let group = checkRun.actionsWorkflow?.name || '其他'
 
     if (
       checkRunsHaveMultipleEventTypes &&
@@ -618,7 +618,7 @@ export function getCheckRunsGroupedByActionWorkflowNameAndEvent(
     }
 
     if (group === 'Other' && checkRun.appName === 'GitHub Code Scanning') {
-      group = 'Code scanning results'
+      group = '代码扫描结果'
     }
 
     const existingGroup = groups.get(group)
@@ -650,15 +650,15 @@ export function getCheckRunGroupNames(
 
   // Sort names with 'Other' always last.
   groupNames.sort((a, b) => {
-    if (a === 'Other' && b !== 'Other') {
+    if (a === '其他' && b !== '其他') {
       return 1
     }
 
-    if (a !== 'Other' && b === 'Other') {
+    if (a !== '其他' && b === '其他') {
       return -1
     }
 
-    if (a === 'Other' && b === 'Other') {
+    if (a === '其他' && b === '其他') {
       return 0
     }
 

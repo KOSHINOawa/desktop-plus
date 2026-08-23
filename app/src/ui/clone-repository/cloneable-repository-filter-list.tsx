@@ -188,7 +188,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
         renderPostFilter={this.renderPostFilter}
         renderPreFilter={this.props.renderPreFilter}
         onItemClick={this.props.onItemClicked ? this.onItemClick : undefined}
-        placeholderText={'Filter your repositories'}
+        placeholderText={'过滤您的仓库'}
         getGroupAriaLabel={this.getGroupAriaLabelGetter(groups)}
       />
     )
@@ -222,7 +222,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
   }
 
   private getYourRepositoriesLabel = () => {
-    return __DARWIN__ ? 'Your Repositories' : 'Your repositories'
+    return '你的仓库'
   }
 
   private renderGroupHeader = (identifier: string) => {
@@ -252,13 +252,13 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
         >
           <HighlightText text={item.text[0]} highlight={matches.title} />
         </TooltippedContent>
-        {item.archived && <div className="archived">Archived</div>}
+        {item.archived && <div className="archived">已存档</div>}
       </div>
     )
   }
 
   private renderPostFilter = () => {
-    const tooltip = 'Refresh the list of repositories'
+    const tooltip = '刷新仓库列表'
 
     return (
       <Button
@@ -280,7 +280,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
 
     if (loading && (repositories === null || repositories.length === 0)) {
       return (
-        <div className="no-items loading">{`Loading repositories from ${account.friendlyEndpoint}…`}</div>
+        <div className="no-items loading">{`正在从 ${account.friendlyEndpoint} 加载仓库…`}</div>
       )
     }
 
@@ -288,8 +288,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
       return (
         <div className="no-items no-results-found">
           <div>
-            Sorry, I can't find any repository matching{' '}
-            <Ref>{this.props.filterText}</Ref>
+             抱歉，我找不到与 <Ref>{this.props.filterText}</Ref> 匹配的任何仓库
           </div>
         </div>
       )
@@ -298,12 +297,10 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
     return (
       <div className="no-items empty-repository-list">
         <div>
-          Looks like there are no repositories for{' '}
-          <Ref>{this.props.account.login}</Ref> on {account.friendlyEndpoint}.{' '}
-          <LinkButton onClick={this.refreshRepositories}>
-            Refresh this list
-          </LinkButton>{' '}
-          if you've created a repository recently.
+          看起来 {account.friendlyEndpoint} 上没有属于{' '}
+          <Ref>{this.props.account.login}</Ref> 的仓库。{' '}
+          <LinkButton onClick={this.refreshRepositories}>刷新此列表</LinkButton>{' '}
+          如果您最近创建了仓库。
         </div>
       </div>
     )

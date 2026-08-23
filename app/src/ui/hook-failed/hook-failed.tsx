@@ -15,7 +15,7 @@ interface IHookFailedProps {
 /** A component to confirm and then discard changes. */
 export class HookFailed extends React.Component<IHookFailedProps> {
   private getDialogTitle() {
-    return `${this.props.hookName} ${__DARWIN__ ? 'Failed' : 'failed'}`
+    return `${this.props.hookName} 失败`
   }
 
   private onDismissed = () => {
@@ -53,8 +53,8 @@ export class HookFailed extends React.Component<IHookFailedProps> {
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={'Ignore and Continue'}
-            cancelButtonText={'Abort'}
+            okButtonText={'忽略并继续'}
+            cancelButtonText={'中止'}
           />
         </DialogFooter>
       </Dialog>

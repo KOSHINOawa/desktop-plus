@@ -84,9 +84,9 @@ export class Acknowledgements extends React.Component<
       if (license.sourceText) {
         licenseText = license.sourceText
       } else if (license.license) {
-        licenseText = `License: ${license.license}`
+        licenseText = `协议: ${license.license}`
       } else {
-        licenseText = 'Unknown license'
+        licenseText = '未知协议'
       }
 
       const nameHeader = <h2 key={`${key}-header`}>{nameElement}</h2>
@@ -115,21 +115,20 @@ export class Acknowledgements extends React.Component<
     return (
       <Dialog
         id="acknowledgements"
-        title="License and Open Source Notices"
+        title="许可证和开源声明"
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >
         <DialogContent>
           <p>
-            <LinkButton uri={WebsiteURL}>Desktop Plus</LinkButton> is an open
-            source project published under the MIT License. You can view the
-            source code and contribute to this project on{' '}
+            <LinkButton uri={WebsiteURL}>Desktop Plus</LinkButton> 是一个在 MIT
+            许可证下发布的开源项目。您可以查看源代码并为该项目做出贡献{' '}
             <LinkButton uri={RepositoryURL}>GitHub</LinkButton>.
           </p>
 
           {desktopLicense}
 
-          <p>Desktop Plus also distributes these libraries:</p>
+          <p>Desktop Plus 还分发这些库：</p>
 
           {licenses ? this.renderLicenses(licenses) : <Loading />}
         </DialogContent>

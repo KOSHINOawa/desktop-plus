@@ -59,7 +59,7 @@ export class DiscardSelection extends React.Component<
   }
 
   private getOkButtonLabel() {
-    return __DARWIN__ ? 'Discard Changes' : 'Discard changes'
+    return __DARWIN__ ? '丢弃更改' : '丢弃更改'
   }
 
   public render() {
@@ -69,7 +69,7 @@ export class DiscardSelection extends React.Component<
       <Dialog
         id="discard-changes"
         title={
-          __DARWIN__ ? 'Confirm Discard changes' : 'Confirm discard changes'
+          __DARWIN__ ? '确认丢弃更改' : '确认丢弃更改'
         }
         onDismissed={this.props.onDismissed}
         onSubmit={this.discard}
@@ -79,7 +79,7 @@ export class DiscardSelection extends React.Component<
         type="warning"
       >
         <DialogContent>
-          <p>Are you sure you want to discard the selected changes to:</p>
+          <p>你确定要丢弃所选的以下更改吗：</p>
 
           <ul>
             <li>
@@ -88,7 +88,7 @@ export class DiscardSelection extends React.Component<
           </ul>
 
           <Checkbox
-            label="Do not show this message again"
+            label="不要再显示此消息"
             value={
               this.state.confirmDiscardSelection
                 ? CheckboxValue.Off

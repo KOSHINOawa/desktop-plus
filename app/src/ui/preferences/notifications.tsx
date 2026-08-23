@@ -51,9 +51,9 @@ export class Notifications extends React.Component<
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2>Notifications</h2>
+          <h2>通知</h2>
           <Checkbox
-            label="Enable notifications"
+            label="启用通知"
             value={
               this.props.notificationsEnabled
                 ? CheckboxValue.On
@@ -62,8 +62,7 @@ export class Notifications extends React.Component<
             onChange={this.onNotificationsEnabledChanged}
           />
           <p className="settings-description">
-            Allows the display of notifications when high-signal events take
-            place in the current repository.{this.renderNotificationHint()}
+            当当前仓库中发生重要事件时允许显示通知。{this.renderNotificationHint()}
           </p>
         </div>
       </DialogContent>
@@ -103,11 +102,11 @@ export class Notifications extends React.Component<
       return (
         <>
           {' '}
-          You need to{' '}
+          你需要{' '}
           <LinkButton onClick={this.onGrantNotificationPermission}>
-            grant permission
-          </LinkButton>{' '}
-          to display these notifications from Desktop Plus.
+            授予权限
+          </LinkButton>
+          才能从 Desktop Plus 显示这些通知。
         </>
       )
     }
@@ -121,28 +120,27 @@ export class Notifications extends React.Component<
     if (warnNotificationsDenied) {
       return (
         <div className="setting-hint-warning">
-          <span className="warning-icon">⚠️</span> Desktop Plus has no
-          permission to display notifications. Please, enable them in the{' '}
+          <span className="warning-icon">⚠️</span> Desktop Plus 没有显示通知的权限。请在{' '}
           <LinkButton uri={notificationSettingsURL}>
-            Notifications Settings
+            通知设置
           </LinkButton>
-          .
+          中启用。
         </div>
       )
     }
 
     const verb = suggestConfigureNotifications
-      ? 'properly configured'
-      : 'enabled'
+      ? '已正确配置'
+      : '已启用'
 
     return (
       <>
         {' '}
-        Make sure notifications are {verb} for Desktop Plus in the{' '}
+        请确保已在{' '}
         <LinkButton uri={notificationSettingsURL}>
-          Notifications Settings
+          通知设置
         </LinkButton>
-        .
+        中为 Desktop Plus {verb}。
       </>
     )
   }

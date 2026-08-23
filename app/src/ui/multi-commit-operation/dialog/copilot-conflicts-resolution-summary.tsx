@@ -37,31 +37,31 @@ function getOperationPhrase(
     case MultiCommitOperationKind.Merge:
       return (
         <span>
-          Merging <Ref>{theirLabel}</Ref> into <Ref>{ourLabel}</Ref>
+          正在将 <Ref>{theirLabel}</Ref> 合并到 <Ref>{ourLabel}</Ref>
         </span>
       )
     case MultiCommitOperationKind.Rebase:
       return (
         <span>
-          Rebasing <Ref>{ourLabel}</Ref> onto <Ref>{theirLabel}</Ref>
+          正在将 <Ref>{ourLabel}</Ref> 变基到 <Ref>{theirLabel}</Ref>
         </span>
       )
     case MultiCommitOperationKind.CherryPick:
       return (
         <span>
-          Cherry-picking from <Ref>{theirLabel}</Ref> into <Ref>{ourLabel}</Ref>
+          正在将 <Ref>{theirLabel}</Ref> 挑拣到 <Ref>{ourLabel}</Ref>
         </span>
       )
     case MultiCommitOperationKind.Squash:
       return (
         <span>
-          Squashing into <Ref>{ourLabel}</Ref>
+          正在压缩到 <Ref>{ourLabel}</Ref>
         </span>
       )
     case MultiCommitOperationKind.Reorder:
       return (
         <span>
-          Reordering <Ref>{ourLabel}</Ref>
+          正在对 <Ref>{ourLabel}</Ref> 重新排序
         </span>
       )
     default:
@@ -124,7 +124,7 @@ export class CopilotConflictsResolutionSummary extends React.Component<ICopilotC
             className="copilot-conflicts-summary-copilot-icon"
           />
           <span className="copilot-conflicts-summary-theme-label">
-            Resolution summary
+            解决方案摘要
           </span>
         </h2>
         <div className="copilot-conflicts-summary-body">
@@ -150,7 +150,7 @@ export class CopilotConflictsResolutionSummary extends React.Component<ICopilotC
           repository={this.props.gitHubRepository ?? undefined}
           onMarkdownLinkClicked={this.props.onMarkdownLinkClicked}
           underlineLinks={true}
-          ariaLabel="Copilot conflict resolution summary"
+          ariaLabel="Copilot 冲突解决摘要"
           customCSS={summaryMarkdownCSS}
         />
       </div>
@@ -165,7 +165,7 @@ export class CopilotConflictsResolutionSummary extends React.Component<ICopilotC
 
     return (
       <div className="copilot-conflicts-summary-references">
-        <h3 className="copilot-conflicts-summary-references-title">Context</h3>
+        <h3 className="copilot-conflicts-summary-references-title">上下文</h3>
         <ul className="copilot-conflicts-summary-reference-list">
           {references.map((ref, i) => (
             <li
@@ -252,13 +252,13 @@ function renderReference(
           <span className="copilot-conflicts-summary-reference-commit-ref">
             <span className="ref selectable">{ref.commit.shortSha}</span>
             <CopyButton
-              ariaLabel="Copy the full SHA"
+              ariaLabel="复制完整 SHA"
               copyContent={ref.commit.sha}
             />
           </span>
           {!ref.commit.isOnRemote && (
             <span className="copilot-conflicts-summary-reference-tag">
-              local only
+              仅本地
             </span>
           )}
         </>
