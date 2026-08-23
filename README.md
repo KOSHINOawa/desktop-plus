@@ -1,9 +1,9 @@
 # GH Desktop Plus
 
-> [!WARN]
-> This application is developed for myself(or others?), I don't hope you use this fork.
-> Because ALL COMMITS are by AI, so I'm not sure it can work correctly...
-> Go to [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) to download the better version.
+> [!WARNNING]
+> This app is built for my own use (maybe for others too?), but I'd rather you didn't use this fork.
+> All commits are AI-generated, so I can't guarantee it works properly...
+> Check out [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) for a better version.
 
 The fork of [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) with Added `Conversional Commit` and Chinese support.
 
