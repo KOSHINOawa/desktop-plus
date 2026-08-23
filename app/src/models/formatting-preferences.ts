@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import { zhCN } from 'date-fns/locale'
 import { enableFormattingPreferences } from '../lib/feature-flag'
 
 const localeCountryCode =
@@ -227,7 +228,7 @@ export const dateFormats: ReadonlyArray<{
   ] as const
 ).map(pattern => ({
   pattern,
-  example: format(previewDate, pattern),
+  example: format(previewDate, pattern, { locale: zhCN }),
 }))
 
 /**
@@ -249,7 +250,7 @@ export const timeFormats: ReadonlyArray<{
   ] as const
 ).map(pattern => ({
   pattern,
-  example: format(previewDate, pattern),
+  example: format(previewDate, pattern, { locale: zhCN }),
 }))
 
 /**
@@ -267,7 +268,7 @@ export const numberFormats: ReadonlyArray<INumberFormat> = [
   { thousandsSeparator: ' ', decimalSeparator: ',' },
 ]
 
-export const defaultDateFormat: DateFormat = 'MMM d, yyyy'
+export const defaultDateFormat: DateFormat = 'yyyy-MM-dd'
 export const defaultTimeFormat: TimeFormat = prefersTwelveHourTime()
   ? 'h:mm aaa'
   : 'HH:mm'

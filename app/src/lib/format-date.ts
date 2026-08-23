@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import { zhCN } from 'date-fns/locale'
 import {
   getDateFormatPreference,
   getTimeFormatPreference,
@@ -75,7 +76,7 @@ export function formatDate(
   }
 
   try {
-    return format(value, formatString)
+    return format(value, formatString, { locale: zhCN })
   } catch (e) {
     // In case the user has configured an invalid format pattern, we don't want
     // the app to crash, let's fall back to a default format and log the error

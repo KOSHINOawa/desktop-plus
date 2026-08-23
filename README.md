@@ -1,6 +1,11 @@
 # GH Desktop Plus
 
-This is an **up-to-date** fork of [GitHub Desktop](https://desktop.github.com) with additional features and improvements.
+> [!WARN]
+> This application is developed for myself(or others?), I don't hope you use this fork.
+> Because ALL COMMITS are by AI, so I'm not sure it can work correctly...
+> Go to [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) to download the better version.
+
+The fork of [Github Desktop Plus](https://github.com/desktop-plus/desktop-plus/) with Added `Conversional Commit` and Chinese support.
 
 > [!IMPORTANT]
 > This is a community-maintained project. It **is not** an official GitHub product. 
