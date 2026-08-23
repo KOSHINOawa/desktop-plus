@@ -430,14 +430,10 @@ export class CopilotConflictsChanges extends React.Component<
                     <Button
                       className="copilot-changes-diff-subheader-toggle"
                       onClick={this.onToggleSubheaderExpanded}
-                      tooltip={
-                        this.state.isSubheaderExpanded ? '折叠' : '展开'
-                      }
+                      tooltip={this.state.isSubheaderExpanded ? '折叠' : '展开'}
                       ariaExpanded={this.state.isSubheaderExpanded}
                       ariaLabel={
-                        this.state.isSubheaderExpanded
-                          ? '折叠说明'
-                          : '展开说明'
+                        this.state.isSubheaderExpanded ? '折叠说明' : '展开说明'
                       }
                       ariaControls="copilot-changes-diff-description"
                     >

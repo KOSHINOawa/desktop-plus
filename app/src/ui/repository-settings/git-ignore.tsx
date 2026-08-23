@@ -16,7 +16,8 @@ export class GitIgnore extends React.Component<IGitIgnoreProps, {}> {
     return (
       <DialogContent>
         <p id="ignored-files-description">
-          正在编辑 <Ref>.gitignore</Ref>。此文件用于指定 Git 应忽略的、有意不跟踪的文件。已被 Git 跟踪的文件不受影响。{' '}
+          正在编辑 <Ref>.gitignore</Ref>。此文件用于指定 Git
+          应忽略的、有意不跟踪的文件。已被 Git 跟踪的文件不受影响。{' '}
           <LinkButton onClick={this.props.onShowExamples}>
             了解有关 gitignore 文件的更多信息
           </LinkButton>

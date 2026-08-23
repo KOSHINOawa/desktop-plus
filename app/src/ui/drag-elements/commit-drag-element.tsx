@@ -106,19 +106,19 @@ export class CommitDragElement extends React.Component<
       case DropTargetType.ListInsertionPoint:
         if (currentDropTarget.data.type !== DragType.Commit) {
           toolTipContents = (
+            <>
+              <span>'插入到此处'</span>
+            </>
+          )
+          break
+        }
+
+        const commitCount = currentDropTarget.data.commits.length
+        toolTipContents = (
           <>
-            <span>'插入到此处'</span>
+            <span>{`将 ${commitCount} 个提交移动到此处`}</span>
           </>
         )
-        break
-      }
-
-      const commitCount = currentDropTarget.data.commits.length
-      toolTipContents = (
-        <>
-          <span>{`将 ${commitCount} 个提交移动到此处`}</span>
-        </>
-      )
         break
       default:
         assertNever(

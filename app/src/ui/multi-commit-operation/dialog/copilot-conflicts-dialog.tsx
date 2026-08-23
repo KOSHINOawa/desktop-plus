@@ -378,9 +378,9 @@ export class CopilotConflictsDialog extends React.Component<
       <li key={path} className="copilot-conflicts-file-item">
         <div className="copilot-file-details">
           <PathText path={path} />
-           <span className="copilot-file-explanation resolved-text">
-             没有剩余冲突
-           </span>
+          <span className="copilot-file-explanation resolved-text">
+            没有剩余冲突
+          </span>
         </div>
         <div className="green-circle">
           <Octicon symbol={octicons.check} />

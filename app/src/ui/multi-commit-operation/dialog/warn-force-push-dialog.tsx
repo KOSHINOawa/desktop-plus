@@ -59,7 +59,8 @@ export class WarnForcePushDialog extends React.Component<
             你确定要 {operation.toLowerCase()} 吗？
           </p>
           <p id="warn-force-push-confirmation-message">
-            在 {operation.toLowerCase()} 流程结束时，Desktop Plus 将允许你强制推送该分支以更新上游分支。强制推送会修改远程上的历史记录，并可能给协作此分支的其他人带来问题。
+            在 {operation.toLowerCase()} 流程结束时，Desktop Plus
+            将允许你强制推送该分支以更新上游分支。强制推送会修改远程上的历史记录，并可能给协作此分支的其他人带来问题。
           </p>
           <div>
             <Checkbox

@@ -11,20 +11,17 @@ export function getMergeOptions(): ReadonlyArray<IDropdownSelectButtonOption> {
   return [
     {
       label: '创建合并提交',
-      description:
-        '所选分支的提交将通过合并提交添加到当前分支。',
+      description: '所选分支的提交将通过合并提交添加到当前分支。',
       id: MultiCommitOperationKind.Merge,
     },
     {
       label: '压缩并合并',
-      description:
-        '所选分支中的提交将合并为当前分支中的一个提交。',
+      description: '所选分支中的提交将合并为当前分支中的一个提交。',
       id: MultiCommitOperationKind.Squash,
     },
     {
       label: '变基',
-      description:
-        '所选分支的提交将被变基并添加到当前分支。',
+      description: '所选分支的提交将被变基并添加到当前分支。',
       id: MultiCommitOperationKind.Rebase,
     },
   ]

@@ -30,15 +30,13 @@ export class InvalidatedToken extends React.Component<IInvalidatedTokenProps> {
       <Dialog
         id="invalidated-token"
         type="warning"
-        title={
-          __DARWIN__ ? '账户令牌已失效' : '账户令牌已失效'
-        }
+        title={__DARWIN__ ? '账户令牌已失效' : '账户令牌已失效'}
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
       >
         <DialogContent>
-          您的账户令牌已失效，您已退出{' '}
-          <Ref>{account.friendlyEndpoint}</Ref> 账户：
+          您的账户令牌已失效，您已退出 <Ref>{account.friendlyEndpoint}</Ref>{' '}
+          账户：
           <Ref>@{account.login}</Ref>。您想要重新登录吗？
         </DialogContent>
         <DialogFooter>

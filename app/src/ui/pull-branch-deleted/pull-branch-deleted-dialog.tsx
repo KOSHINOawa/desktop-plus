@@ -75,9 +75,7 @@ export class PullBranchDeletedDialog extends React.Component<
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? '切换到默认分支' : '切换到默认分支'
-            }
+            okButtonText={__DARWIN__ ? '切换到默认分支' : '切换到默认分支'}
             okButtonTitle="这将检出仓库的默认分支并拉取它。"
             cancelButtonText="关闭"
           />

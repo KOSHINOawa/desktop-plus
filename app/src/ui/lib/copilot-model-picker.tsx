@@ -179,9 +179,9 @@ export const getCopilotModelPickerSelectionInfo = (
   const summary =
     modelPickerCategory === undefined || modelPickerCategory.length === 0
       ? useOfCredits
-    : `${formatModelPickerCategoryHeader(
-        modelPickerCategory
-      )}模型。${useOfCredits}`
+      : `${formatModelPickerCategoryHeader(
+          modelPickerCategory
+        )}模型。${useOfCredits}`
   const contextWindowTokenCount = getContextWindowTokenCount(
     tokenPrices.contextMax,
     selectedModel.capabilities.limits?.max_output_tokens,
@@ -212,9 +212,7 @@ const getCopilotModelTitle = (item: ICopilotModelListItem) => {
   const billingLabel = item.isDefault
     ? ''
     : getPremiumRequestsBillingLabel(item.billing)
-  return item.isDefault
-    ? `${item.name}（默认）`
-    : `${item.name}${billingLabel}`
+  return item.isDefault ? `${item.name}（默认）` : `${item.name}${billingLabel}`
 }
 
 const getCopilotModelAriaLabel = (item: ICopilotModelListItem) => {
@@ -482,7 +480,7 @@ export class CopilotModelPicker extends React.Component<
     )
     const buttonItem = this.getItemByValue(groups, this.props.value)
     const buttonAriaLabel = `${this.props.label}: ${
-      buttonItem === undefined       ? '无' : getCopilotModelTitle(buttonItem)
+      buttonItem === undefined ? '无' : getCopilotModelTitle(buttonItem)
     }`
     return (
       <PopoverDropdown

@@ -62,7 +62,8 @@ export class Notifications extends React.Component<
             onChange={this.onNotificationsEnabledChanged}
           />
           <p className="settings-description">
-            当当前仓库中发生重要事件时允许显示通知。{this.renderNotificationHint()}
+            当当前仓库中发生重要事件时允许显示通知。
+            {this.renderNotificationHint()}
           </p>
         </div>
       </DialogContent>
@@ -120,26 +121,21 @@ export class Notifications extends React.Component<
     if (warnNotificationsDenied) {
       return (
         <div className="setting-hint-warning">
-          <span className="warning-icon">⚠️</span> Desktop Plus 没有显示通知的权限。请在{' '}
-          <LinkButton uri={notificationSettingsURL}>
-            通知设置
-          </LinkButton>
+          <span className="warning-icon">⚠️</span> Desktop Plus
+          没有显示通知的权限。请在{' '}
+          <LinkButton uri={notificationSettingsURL}>通知设置</LinkButton>
           中启用。
         </div>
       )
     }
 
-    const verb = suggestConfigureNotifications
-      ? '已正确配置'
-      : '已启用'
+    const verb = suggestConfigureNotifications ? '已正确配置' : '已启用'
 
     return (
       <>
         {' '}
         请确保已在{' '}
-        <LinkButton uri={notificationSettingsURL}>
-          通知设置
-        </LinkButton>
+        <LinkButton uri={notificationSettingsURL}>通知设置</LinkButton>
         中为 Desktop Plus {verb}。
       </>
     )

@@ -44,7 +44,8 @@ export class MoveToApplicationsFolder extends React.Component<
       >
         <DialogContent>
           <p>
-            我们检测到 Desktop Plus 并非从你计算机上的“应用程序”文件夹中运行。这可能会导致应用出现问题，包括影响你登录的能力。
+            我们检测到 Desktop Plus
+            并非从你计算机上的“应用程序”文件夹中运行。这可能会导致应用出现问题，包括影响你登录的能力。
           </p>
           <p>
             是否要立即将 Desktop Plus 移动到“应用程序”文件夹？这还将重启应用。

@@ -130,7 +130,7 @@ export class ManageRemotesDialog extends React.Component<
     if (remotes.length === 0) {
       return (
         <div className="no-remotes">
-           {this.state.remotes.length === 0
+          {this.state.remotes.length === 0
             ? '此仓库没有任何远程。'
             : '没有远程匹配你的筛选条件。'}
         </div>
@@ -145,11 +145,7 @@ export class ManageRemotesDialog extends React.Component<
       <Dialog
         className="manage-remotes"
         id="manage-remotes"
-        title={
-          __DARWIN__
-            ? '管理远程仓库'
-            : '管理远程仓库'
-        }
+        title={__DARWIN__ ? '管理远程仓库' : '管理远程仓库'}
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >

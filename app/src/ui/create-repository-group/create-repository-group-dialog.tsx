@@ -72,8 +72,8 @@ export class CreateRepositoryGroup extends React.Component<
               ? '编辑组'
               : '编辑组'
             : __DARWIN__
-              ? '新建组'
-              : '新建组'
+            ? '新建组'
+            : '新建组'
         }
         ariaDescribedBy="create-repository-group-description"
         onDismissed={this.props.onDismissed}
@@ -122,8 +122,8 @@ export class CreateRepositoryGroup extends React.Component<
                   ? '保存组'
                   : '保存组'
                 : __DARWIN__
-                  ? '创建组'
-                  : '创建组'
+                ? '创建组'
+                : '创建组'
             }
             okButtonDisabled={
               this.state.groupName.length === 0 ||
@@ -146,9 +146,7 @@ export class CreateRepositoryGroup extends React.Component<
           trackedUserInput={this.state.filterText}
         />
         {repositories.length === 0 ? (
-          <div className="no-repositories">
-            没有仓库匹配你的筛选条件。
-          </div>
+          <div className="no-repositories">没有仓库匹配你的筛选条件。</div>
         ) : (
           <div
             className="repository-list-selector"

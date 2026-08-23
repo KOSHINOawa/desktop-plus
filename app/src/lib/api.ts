@@ -2070,9 +2070,7 @@ export class API {
       }
 
       log.error(`createRepository: failed with endpoint ${this.endpoint}`, e)
-      throw new Error(
-        `无法发布仓库。请检查你的网络连接后重试。`
-      )
+      throw new Error(`无法发布仓库。请检查你的网络连接后重试。`)
     }
   }
 
@@ -5016,9 +5014,7 @@ export class ForgejoAPI extends API {
       }
 
       log.error(`createRepository: failed with endpoint ${this.endpoint}`, e)
-      throw new Error(
-        `无法发布仓库。请检查你的网络连接后重试。`
-      )
+      throw new Error(`无法发布仓库。请检查你的网络连接后重试。`)
     }
   }
 

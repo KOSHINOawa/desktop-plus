@@ -81,7 +81,7 @@ export class DeletedImageDiff extends React.Component<
           <span>图像</span>
         </TabBar>
         <div className="image-diff-previous">
-            <div className="image-diff-header">已删除</div>
+          <div className="image-diff-header">已删除</div>
           <ImageContainer image={this.props.previous} />
         </div>
       </div>

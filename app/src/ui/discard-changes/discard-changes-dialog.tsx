@@ -65,9 +65,7 @@ export class DiscardChanges extends React.Component<
 
   private getDialogTitle() {
     if (this.props.discardingAllChanges) {
-      return __DARWIN__
-        ? '确认丢弃全部更改'
-        : '确认丢弃全部更改'
+      return __DARWIN__ ? '确认丢弃全部更改' : '确认丢弃全部更改'
     }
     return __DARWIN__ ? '确认丢弃更改' : '确认丢弃更改'
   }

@@ -167,9 +167,7 @@ export class RepositoryPath extends React.Component<
         ariaLiveMessage={`将创建为 ${sanitizedName}。无效字符已被替换为连字符。`}
       >
         <p>将创建为 {sanitizedName}</p>
-        <span className="sr-only">
-          无效字符已被替换为连字符。
-        </span>
+        <span className="sr-only">无效字符已被替换为连字符。</span>
       </InputWarning>
     )
   }
@@ -194,9 +192,7 @@ export class RepositoryPath extends React.Component<
         <Row>
           <TextBox
             value={this.state.path ?? ''}
-            label={
-              this.props.pathLabel ?? '本地路径'
-            }
+            label={this.props.pathLabel ?? '本地路径'}
             placeholder={this.props.pathPlaceholder ?? '路径'}
             onValueChanged={this.onPathChanged}
             disabled={loadingPath}

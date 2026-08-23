@@ -47,8 +47,8 @@ export class UpstreamAlreadyExists extends React.Component<IUpstreamAlreadyExist
       >
         <DialogContent>
           <p>
-            仓库 <Ref>{name}</Ref> 是 <Ref>{parentName}</Ref>{' '}
-            的复刻，但其 <Ref>{UpstreamRemoteName}</Ref> 远程指向了别处。
+            仓库 <Ref>{name}</Ref> 是 <Ref>{parentName}</Ref> 的复刻，但其{' '}
+            <Ref>{UpstreamRemoteName}</Ref> 远程指向了别处。
           </p>
           <ul>
             <li>

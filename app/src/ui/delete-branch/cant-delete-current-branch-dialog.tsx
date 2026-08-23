@@ -22,8 +22,8 @@ export class CantDeleteCurrentBranch extends React.Component<ICantDeleteCurrentB
       >
         <DialogContent>
           <p>
-            你无法删除当前正在使用的分支，因为{' '}
-            <Ref>{blockedByBranch.name}</Ref> 正被另一个工作树使用，无法自动检出。
+            你无法删除当前正在使用的分支，因为 <Ref>{blockedByBranch.name}</Ref>{' '}
+            正被另一个工作树使用，无法自动检出。
           </p>
           <p>
             在删除 <Ref>{branchToDelete.name}</Ref> 之前，请先切换到一个新分支。

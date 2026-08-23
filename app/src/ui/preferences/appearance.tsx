@@ -353,9 +353,7 @@ export class Appearance extends React.Component<
         >
           <option value="native">原生</option>
           <option value="custom">自定义</option>
-          <option value="native-without-menu-bar">
-            无菜单栏的原生样式
-          </option>
+          <option value="native-without-menu-bar">无菜单栏的原生样式</option>
         </Select>
 
         <div className="git-settings-description">
@@ -369,7 +367,7 @@ export class Appearance extends React.Component<
     const { selectedTheme } = this.state
 
     if (selectedTheme == null) {
-       return <Row>正在加载系统主题</Row>
+      return <Row>正在加载系统主题</Row>
     }
 
     const themes = [
@@ -478,10 +476,10 @@ export class Appearance extends React.Component<
     return (
       <>
         <div className="advanced-section">
-        <h2 id="worktree-heading">{'工作树'}</h2>
+          <h2 id="worktree-heading">{'工作树'}</h2>
 
-        <Checkbox
-          label="在工具栏中显示工作树下拉菜单"
+          <Checkbox
+            label="在工具栏中显示工作树下拉菜单"
             value={
               this.state.showWorktrees ? CheckboxValue.On : CheckboxValue.Off
             }

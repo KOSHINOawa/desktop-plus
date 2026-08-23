@@ -97,18 +97,16 @@ export async function checkBranchNameRules(
 
   if (cannotBypass) {
     return {
-      error: new Error(
-        `分支名 '${branchName}' 受仓库规则限制。`
-      ),
+      error: new Error(`分支名 '${branchName}' 受仓库规则限制。`),
       isWarning: false,
     }
   }
 
   return {
-      error: new Error(
-        `分支名 '${branchName}' 受仓库规则限制，但你可以绕过它们。请谨慎操作！`
-      ),
-      isWarning: true,
+    error: new Error(
+      `分支名 '${branchName}' 受仓库规则限制，但你可以绕过它们。请谨慎操作！`
+    ),
+    isWarning: true,
   }
 }
 

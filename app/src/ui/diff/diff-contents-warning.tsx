@@ -67,7 +67,9 @@ export class DiffContentsWarning extends React.Component<IDiffContentsWarningPro
       case DiffContentsWarningType.UnicodeBidiCharacters:
         return (
           <>
-            此差异包含双向 Unicode 文本，可能会被以与下方显示内容不同的方式解释或编译。要查看，请在能够显示隐藏 Unicode 字符的编辑器中打开该文件。{' '}
+            此差异包含双向 Unicode
+            文本，可能会被以与下方显示内容不同的方式解释或编译。要查看，请在能够显示隐藏
+            Unicode 字符的编辑器中打开该文件。{' '}
             <LinkButton uri="https://github.co/hiddenchars">
               了解有关双向 Unicode 字符的更多信息
             </LinkButton>

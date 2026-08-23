@@ -122,13 +122,9 @@ export abstract class CherryPick extends BaseMultiCommitOperation {
       targetBranchName,
     } = step
 
-    const okButtonText = __DARWIN__
-      ? '创建分支并挑拣'
-      : '创建分支并挑拣'
+    const okButtonText = __DARWIN__ ? '创建分支并挑拣' : '创建分支并挑拣'
 
-    const headerText = __DARWIN__
-      ? '挑拣到新分支'
-      : '挑拣到新分支'
+    const headerText = __DARWIN__ ? '挑拣到新分支' : '挑拣到新分支'
 
     return (
       <CreateBranch

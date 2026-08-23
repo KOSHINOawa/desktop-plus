@@ -85,7 +85,8 @@ export class CreateTutorialRepositoryDialog extends React.Component<ICreateTutor
             <LinkButton uri={getHTMLURL(account.endpoint)}>
               {account.friendlyEndpoint}
             </LinkButton>{' '}
-            上的账户 <Ref>@{this.props.account.login}</Ref>。此仓库仅对你可见，不会公开显示。
+            上的账户 <Ref>@{this.props.account.login}</Ref>
+            。此仓库仅对你可见，不会公开显示。
           </div>
           {this.renderProgress()}
         </DialogContent>

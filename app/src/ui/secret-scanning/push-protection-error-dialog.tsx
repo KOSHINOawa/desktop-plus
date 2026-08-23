@@ -68,11 +68,7 @@ export class PushProtectionErrorDialog extends React.Component<
   public render() {
     return (
       <Dialog
-        title={
-          __DARWIN__
-            ? '推送被阻止：检测到机密'
-            : '推送被阻止：检测到机密'
-        }
+        title={__DARWIN__ ? '推送被阻止：检测到机密' : '推送被阻止：检测到机密'}
         onDismissed={this.props.onDismissed}
         onSubmit={this.props.onDismissed}
         type="error"
@@ -151,8 +147,7 @@ export class PushProtectionErrorDialog extends React.Component<
     if (this.state.secretsBypassed.get(secret.id)) {
       return (
         <span className="bypass-success">
-          已绕过{' '}
-          <Octicon symbol={octicons.check} className="bypass-success" />{' '}
+          已绕过 <Octicon symbol={octicons.check} className="bypass-success" />{' '}
         </span>
       )
     }

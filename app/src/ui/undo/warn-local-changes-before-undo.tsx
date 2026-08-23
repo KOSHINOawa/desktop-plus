@@ -71,7 +71,7 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
         </Row>
         <Row>
           <Checkbox
-              label="不再显示此消息"
+            label="不再显示此消息"
             value={
               this.state.confirmUndoCommit
                 ? CheckboxValue.Off
@@ -95,9 +95,7 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
     }
     return (
       <DialogContent>
-        <p>
-          你有正在进行的更改。撤销合并提交可能会导致其中部分更改丢失。
-        </p>
+        <p>你有正在进行的更改。撤销合并提交可能会导致其中部分更改丢失。</p>
         <p>{this.getMergeCommitUndoWarningText()}</p>
         <p>Do you want to continue anyway?</p>
       </DialogContent>

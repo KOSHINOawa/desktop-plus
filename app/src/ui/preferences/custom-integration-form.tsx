@@ -103,8 +103,7 @@ export class CustomIntegrationForm extends React.Component<
       return null
     }
 
-    const errorDescription =
-      '该路径似乎不是有效的可执行文件。'
+    const errorDescription = '该路径似乎不是有效的可执行文件。'
 
     return (
       <div className="custom-integration-form-error">

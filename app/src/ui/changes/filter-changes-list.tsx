@@ -897,7 +897,7 @@ export class FilterChangesList extends React.Component<
     showContextualMenu(items)
   }
 
-  private   getPlaceholderMessage(
+  private getPlaceholderMessage(
     files: ReadonlyArray<WorkingDirectoryFileChange>,
     prepopulateCommitSummary: boolean
   ) {

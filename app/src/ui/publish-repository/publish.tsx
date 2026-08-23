@@ -277,9 +277,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
       case PublishTab.DotCom:
         return (
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
-            <div>
-              登录你的 GitHub.com 账户以访问你的仓库。
-            </div>
+            <div>登录你的 GitHub.com 账户以访问你的仓库。</div>
           </CallToAction>
         )
       case PublishTab.Enterprise:
@@ -307,9 +305,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
       return (
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? '发布仓库' : '发布仓库'
-            }
+            okButtonText={__DARWIN__ ? '发布仓库' : '发布仓库'}
             okButtonDisabled={disabled}
           />
         </DialogFooter>

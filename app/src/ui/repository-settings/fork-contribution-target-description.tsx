@@ -32,8 +32,8 @@ export function ForkSettingsDescription(props: IForkSettingsDescription) {
         新分支将基于 <strong>{targetRepository.fullName}</strong> 的默认分支。
       </li>
       <li>
-        用户与议题的自动补全将基于{' '}
-        <strong>{targetRepository.fullName}</strong>。
+        用户与议题的自动补全将基于 <strong>{targetRepository.fullName}</strong>
+        。
       </li>
     </ul>
   )

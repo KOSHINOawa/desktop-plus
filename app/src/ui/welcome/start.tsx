@@ -91,9 +91,9 @@ export class Start extends React.Component<IStartProps, {}> {
               服务条款
             </LinkButton>
             。有关 GitHub 隐私实践的更多信息，请参见{' '}
-              <LinkButton uri={'https://github.com/site/privacy'}>
-                GitHub 隐私声明。
-              </LinkButton>
+            <LinkButton uri={'https://github.com/site/privacy'}>
+              GitHub 隐私声明。
+            </LinkButton>
           </p>
           {ENABLE_TELEMETRY && (
             <p>

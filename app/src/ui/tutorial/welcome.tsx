@@ -28,16 +28,13 @@ export class TutorialWelcome extends React.Component {
             </p>
           </li>
           <li>
-            <img
-              src={TeamDiscussionImage}
-              alt="头顶有讨论气泡的人"
-            />
+            <img src={TeamDiscussionImage} alt="头顶有讨论气泡的人" />
             <p>
               <strong>GitHub</strong> 是你存储代码并与他人协作的地方
             </p>
           </li>
           <li>
-            <img src={CloudServerImage}               alt="带有云的服务器堆栈" />
+            <img src={CloudServerImage} alt="带有云的服务器堆栈" />
             <p>
               <strong>Desktop Plus</strong> 帮助你在本地使用 Github
             </p>

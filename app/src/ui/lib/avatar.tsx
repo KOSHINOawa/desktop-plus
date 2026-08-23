@@ -389,9 +389,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   private renderAvatar = () => {
     const { imageError, user } = this.state
-    const alt = user
-      ? `${user.name || user.email} 的头像`
-      : `未知用户的头像`
+    const alt = user ? `${user.name || user.email} 的头像` : `未知用户的头像`
     const now = Date.now()
     const src = this.state.candidates.find(c => {
       const lastFailed = FailingAvatars.get(c)

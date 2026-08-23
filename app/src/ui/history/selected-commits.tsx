@@ -310,7 +310,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
   private renderFileList() {
     const files = this.props.changesetData.files
     if (files.length === 0) {
-       return <div className="fill-window">提交中没有文件</div>
+      return <div className="fill-window">提交中没有文件</div>
     }
 
     // -1 for right hand side border
@@ -334,9 +334,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
   private renderFileHeader() {
     const fileCount = this.props.changesetData.files.length
     return (
-      <div className="file-list-header">
-        {`${fileCount} 个已更改的文件`}
-      </div>
+      <div className="file-list-header">{`${fileCount} 个已更改的文件`}</div>
     )
   }
 
@@ -403,15 +401,11 @@ export class SelectedCommits extends DiffPresentationStateComponent<
       <div id="multiple-commits-selected" className="blankslate">
         <div className="panel blankslate">
           <img src={BlankSlateImage} className="blankslate-image" alt="" />
-           <div>
-            <p>
-              无法显示所选多个非连续提交的 diff。
-            </p>
+          <div>
+            <p>无法显示所选多个非连续提交的 diff。</p>
             <div>您可以：</div>
             <ul>
-              <li>
-                选择单个提交或一组连续提交以查看 diff。
-              </li>
+              <li>选择单个提交或一组连续提交以查看 diff。</li>
               <li>将提交拖到分支菜单以挑拣它们。</li>
               <li>将提交拖拽以压缩或重新排序。</li>
               <li>右键单击多个提交以查看选项。</li>
@@ -441,9 +435,7 @@ export class SelectedCommits extends DiffPresentationStateComponent<
     if (!fileExistsOnDisk) {
       showContextualMenu([
         {
-          label: __DARWIN__
-            ? '文件在磁盘上不存在'
-            : '文件在磁盘上不存在',
+          label: __DARWIN__ ? '文件在磁盘上不存在' : '文件在磁盘上不存在',
           enabled: false,
         },
       ])

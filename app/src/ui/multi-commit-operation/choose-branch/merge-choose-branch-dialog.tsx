@@ -90,8 +90,8 @@ export class MergeChooseBranchDialog extends React.Component<
     )
     const squashPrefix =
       this.props.operation === MultiCommitOperationKind.Squash
-      ? '压缩并 '
-      : null
+        ? '压缩并 '
+        : null
     return (
       <>
         {squashPrefix}合并到 <strong>{truncatedName}</strong>
@@ -205,11 +205,7 @@ export class MergeChooseBranchDialog extends React.Component<
   }
 
   private renderInvalidMergeMessage() {
-    return (
-      <React.Fragment>
-        无法合并此仓库中无关联的历史记录
-      </React.Fragment>
-    )
+    return <React.Fragment>无法合并此仓库中无关联的历史记录</React.Fragment>
   }
 
   private renderConflictedMergeMessage(

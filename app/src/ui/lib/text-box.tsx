@@ -385,9 +385,7 @@ export class TextBox extends React.Component<ITextBoxProps, ITextBoxState> {
               <Octicon symbol={octicons.x} />
             </button>
           )}
-        {this.state.valueCleared && (
-          <AriaLiveContainer message="输入已清除" />
-        )}
+        {this.state.valueCleared && <AriaLiveContainer message="输入已清除" />}
       </div>
     )
   }

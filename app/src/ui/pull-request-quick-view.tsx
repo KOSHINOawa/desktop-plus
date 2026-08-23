@@ -222,8 +222,8 @@ export class PullRequestQuickView extends React.Component<
       this.props.pullRequest
     const displayBody =
       body !== undefined && body !== null && body.trim() !== ''
-          ? body
-          : '_未提供描述。_'
+        ? body
+        : '_未提供描述。_'
 
     return (
       <div className="pull-request">

@@ -54,7 +54,7 @@ export class WarnUndoPushedCommit extends React.Component<
             如果其他人已经拉取了此提交，他们在推送或拉取时可能会遇到问题。
             你将需要强制推送以更新远程仓库。
           </p>
-          <p>            确定要继续吗？</p>
+          <p> 确定要继续吗？</p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup destructive={true} okButtonText="撤销提交" />

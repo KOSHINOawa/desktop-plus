@@ -35,7 +35,8 @@ export class Accessibility extends React.Component<
             id="underline-setting-description"
             className="settings-description"
           >
-            启用后，Desktop Plus 会在提交信息、评论及其他文本字段中为链接添加下划线。这有助于更清晰地区分链接。
+            启用后，Desktop Plus
+            会在提交信息、评论及其他文本字段中为链接添加下划线。这有助于更清晰地区分链接。
             {this.renderExampleLink()}
           </p>
 

@@ -201,9 +201,7 @@ export class Prompts extends React.Component<
 
     return (
       <div className="advanced-section">
-        <h2 id="switch-branch-heading">
-          如果我有更改并切换分支…
-        </h2>
+        <h2 id="switch-branch-heading">如果我有更改并切换分支…</h2>
 
         <RadioGroup<UncommittedChangesStrategy>
           ariaLabelledBy="switch-branch-heading"
@@ -234,9 +232,7 @@ export class Prompts extends React.Component<
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2 id="show-confirm-dialog-heading">
-            在以下操作前显示确认对话框…
-          </h2>
+          <h2 id="show-confirm-dialog-heading">在以下操作前显示确认对话框…</h2>
           <div role="group" aria-labelledby="show-confirm-dialog-heading">
             <Checkbox
               label="移除仓库"

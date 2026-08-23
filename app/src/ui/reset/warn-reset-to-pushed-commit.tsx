@@ -32,9 +32,7 @@ export class WarnResetToPushedCommit extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__
-      ? '重置到已推送的提交？'
-      : '重置到已推送的提交？'
+    const title = __DARWIN__ ? '重置到已推送的提交？' : '重置到已推送的提交？'
 
     return (
       <Dialog

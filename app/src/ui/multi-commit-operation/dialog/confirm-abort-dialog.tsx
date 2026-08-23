@@ -66,12 +66,8 @@ export class ConfirmAbortDialog extends React.Component<
       >
         <DialogContent>
           <div className="column-left" id="abort-operation-confirmation">
-            <p>
-              你确定要中止此 {operation.toLowerCase()} 吗？
-            </p>
-            <p>
-              这将使你回到原始分支状态，并且你已经解决的冲突将会被丢弃。
-            </p>
+            <p>你确定要中止此 {operation.toLowerCase()} 吗？</p>
+            <p>这将使你回到原始分支状态，并且你已经解决的冲突将会被丢弃。</p>
           </div>
         </DialogContent>
         <DialogFooter>

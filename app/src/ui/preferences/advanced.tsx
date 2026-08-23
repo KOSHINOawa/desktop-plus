@@ -85,10 +85,10 @@ export class Advanced extends React.Component<
 
   private reportDesktopUsageLabel() {
     return (
-        <span>
-          帮助 Desktop Plus 改进，提交{' '}
-          <LinkButton uri={SamplesURL}>使用情况统计</LinkButton>
-        </span>
+      <span>
+        帮助 Desktop Plus 改进，提交{' '}
+        <LinkButton uri={SamplesURL}>使用情况统计</LinkButton>
+      </span>
     )
   }
 
@@ -191,9 +191,7 @@ export class Advanced extends React.Component<
           onChange={this.onHideWindowOnQuitChanged}
         />
         <div className="git-settings-description">
-          <p>
-            关闭窗口后，应用将继续在后台运行。使用 Ctrl+Q 可完全退出应用。
-          </p>
+          <p>关闭窗口后，应用将继续在后台运行。使用 Ctrl+Q 可完全退出应用。</p>
         </div>
       </div>
     )

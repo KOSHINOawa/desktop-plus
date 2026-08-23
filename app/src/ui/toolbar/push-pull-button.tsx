@@ -562,9 +562,7 @@ export class PushPullButton extends React.Component<
   }
 
   private detachedHeadButton(rebaseInProgress: boolean) {
-    const description = rebaseInProgress
-      ? '变基进行中'
-      : '无法发布分离的 HEAD'
+    const description = rebaseInProgress ? '变基进行中' : '无法发布分离的 HEAD'
 
     return (
       <ToolbarButton
@@ -582,8 +580,7 @@ export class PushPullButton extends React.Component<
     onClick: () => void,
     shouldNudge: boolean
   ) {
-    const description =
-      '发布此分支 ' + this.getToRemoteLabel(gitHubRepository)
+    const description = '发布此分支 ' + this.getToRemoteLabel(gitHubRepository)
 
     const className = classNames(
       this.defaultDropdownProps().className,

@@ -448,7 +448,7 @@ export class CommitGraphCommitListItem extends React.PureComponent<ICommitGraphC
           </div>
         ))}
         <div>
-            <div className="label">日期：</div>
+          <div className="label">日期：</div>
           {absoluteDate}
         </div>
         {this.props.showUnpushedIndicator ? (
@@ -544,7 +544,7 @@ function commitGraph_getDayDifference(newerDate: Date, olderDate: Date) {
 }
 
 function commitGraph_getCommitSummary(commit: Commit) {
-   return commit.summary.length === 0 ? '空的提交信息' : commit.summary
+  return commit.summary.length === 0 ? '空的提交信息' : commit.summary
 }
 
 function commitGraph_renderSummaryTokens(

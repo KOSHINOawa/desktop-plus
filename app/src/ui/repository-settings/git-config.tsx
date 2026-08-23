@@ -88,9 +88,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
     return (
       <DialogContent className="git-config-tab">
         <div className="advanced-section update-branch-strategy">
-          <h2 id="update-branch-strategy-heading">
-            从默认分支更新时，我希望
-          </h2>
+          <h2 id="update-branch-strategy-heading">从默认分支更新时，我希望</h2>
           <Row>
             <RadioGroup<UpdateBranchStrategy>
               ariaLabelledBy="update-branch-strategy-heading"

@@ -723,9 +723,7 @@ export class NoChanges extends React.Component<
       </>
     )
 
-    const title = `推送 ${itemsToPushTypes.join(' 和 ')} 到 ${
-      remote.name
-    } 远程`
+    const title = `推送 ${itemsToPushTypes.join(' 和 ')} 到 ${remote.name} 远程`
 
     const buttonText = `推送 ${remote.name}`
 

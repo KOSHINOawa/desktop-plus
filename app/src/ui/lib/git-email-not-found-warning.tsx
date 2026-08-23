@@ -50,9 +50,7 @@ export class GitEmailNotFoundWarning extends React.Component<IGitEmailNotFoundWa
 
   private buildScreenReaderMessage(isAttributableEmail: boolean) {
     const verb = !isAttributableEmail ? '不匹配' : '匹配'
-    const info = !isAttributableEmail
-      ? '你的提交将被错误地归属。'
-      : ''
+    const info = !isAttributableEmail ? '你的提交将被错误地归属。' : ''
     return `此电子邮件地址 ${verb} ${this.getAccountTypeDescription()}。${info}`
   }
 

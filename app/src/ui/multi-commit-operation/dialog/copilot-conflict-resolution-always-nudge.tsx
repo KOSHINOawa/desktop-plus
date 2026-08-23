@@ -38,7 +38,8 @@ export class CopilotConflictResolutionAlwaysNudge extends React.Component<ICopil
         <DialogContent>
           <p>
             你是否希望在检测到冲突时自动使用 Copilot 开始？你可以随时在{' '}
-            {__DARWIN__ ? '设置 → Copilot' : '文件 → 选项 → Copilot'} 中更改此设置。
+            {__DARWIN__ ? '设置 → Copilot' : '文件 → 选项 → Copilot'}{' '}
+            中更改此设置。
           </p>
         </DialogContent>
         <DialogFooter>

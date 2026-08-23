@@ -251,10 +251,7 @@ function renderReference(
           )}
           <span className="copilot-conflicts-summary-reference-commit-ref">
             <span className="ref selectable">{ref.commit.shortSha}</span>
-            <CopyButton
-              ariaLabel="复制完整 SHA"
-              copyContent={ref.commit.sha}
-            />
+            <CopyButton ariaLabel="复制完整 SHA" copyContent={ref.commit.sha} />
           </span>
           {!ref.commit.isOnRemote && (
             <span className="copilot-conflicts-summary-reference-tag">

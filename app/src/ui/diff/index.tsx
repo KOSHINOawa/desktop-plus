@@ -208,9 +208,7 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
         <img src={NoDiffImage} className="blankslate-image" alt="" />
         <div className="description">
           <p>该差异过大，默认情况下无法显示。</p>
-          <p>
-            你可以尝试仍然显示它，但这可能会对性能造成负面影响。
-          </p>
+          <p>你可以尝试仍然显示它，但这可能会对性能造成负面影响。</p>
         </div>
         <Button onClick={this.showLargeDiff}>
           {__DARWIN__ ? '显示差异' : '显示差异'}
@@ -272,11 +270,7 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
             </div>
           )
         }
-        return (
-          <div className="panel renamed">
-            该文件已重命名但没有更改
-          </div>
-        )
+        return <div className="panel renamed">该文件已重命名但没有更改</div>
       }
 
       if (

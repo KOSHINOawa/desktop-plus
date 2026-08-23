@@ -633,7 +633,7 @@ export class CommitList extends React.Component<
       <div className="commit-list-item-tooltip list-item-tooltip">
         {authorList}
         <div>
-            <div className="label">日期：</div>
+          <div className="label">日期：</div>
           {absoluteDate}
         </div>
         {showUnpushedIndicator ? (
@@ -755,9 +755,7 @@ export class CommitList extends React.Component<
     }
 
     const containerWidth = this.containerRef.current?.clientWidth ?? 0
-     const reorderCommitsHintTitle = __DARWIN__
-      ? '重新排序提交'
-      : '重新排序提交'
+    const reorderCommitsHintTitle = __DARWIN__ ? '重新排序提交' : '重新排序提交'
 
     return (
       <Popover
@@ -916,9 +914,7 @@ export class CommitList extends React.Component<
 
     items.push(
       {
-        label: __DARWIN__
-          ? '还原提交中的更改'
-          : '还原提交中的更改',
+        label: __DARWIN__ ? '还原提交中的更改' : '还原提交中的更改',
         action: () => {
           if (this.props.onRevertCommit) {
             this.props.onRevertCommit(commit)
@@ -928,9 +924,7 @@ export class CommitList extends React.Component<
       },
       { type: 'separator' },
       {
-        label: __DARWIN__
-          ? '从提交创建分支'
-          : '从提交创建分支',
+        label: __DARWIN__ ? '从提交创建分支' : '从提交创建分支',
         action: () => {
           if (this.props.onCreateBranch) {
             this.props.onCreateBranch(commit)
@@ -1070,16 +1064,12 @@ export class CommitList extends React.Component<
 
     return [
       {
-        label: __DARWIN__
-          ? `挑拣 ${count} 个提交…`
-          : `挑拣 ${count} 个提交…`,
+        label: __DARWIN__ ? `挑拣 ${count} 个提交…` : `挑拣 ${count} 个提交…`,
         action: () => this.props.onCherryPick?.(this.selectedCommits),
         enabled: this.canCherryPick(),
       },
       {
-        label: __DARWIN__
-          ? `压缩 ${count} 个提交…`
-          : `压缩 ${count} 个提交…`,
+        label: __DARWIN__ ? `压缩 ${count} 个提交…` : `压缩 ${count} 个提交…`,
         action: () => this.onSquash(this.selectedCommits, commit, true),
         enabled: this.canSquash(),
       },

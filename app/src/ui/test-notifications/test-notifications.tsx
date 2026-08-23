@@ -650,8 +650,7 @@ export class TestNotifications extends React.Component<
         leftAccessory={this.renderReviewStateIcon('COMMENTED')}
       >
         {comment.body}
-        <br />
-        由 <i>{comment.user.login}</i>
+        <br />由 <i>{comment.user.login}</i>
       </TestNotificationItemRowContent>
     )
   }
@@ -701,8 +700,7 @@ export class TestNotifications extends React.Component<
           #{pullRequest.pullRequestNumber}
           {pullRequest.draft ? '（草稿）' : ''}:
         </b>{' '}
-        {pullRequest.title} <br />
-        由 <i>{pullRequest.author}</i>
+        {pullRequest.title} <br />由 <i>{pullRequest.author}</i>
       </TestNotificationItemRowContent>
     )
   }

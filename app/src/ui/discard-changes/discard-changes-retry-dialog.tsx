@@ -32,11 +32,7 @@ export class DiscardChangesRetryDialog extends React.Component<
 
     return (
       <Dialog
-        title={
-          __DARWIN__
-            ? '丢弃的更改将无法恢复'
-            : '丢弃的更改将无法恢复'
-        }
+        title={__DARWIN__ ? '丢弃的更改将无法恢复' : '丢弃的更改将无法恢复'}
         id="discard-changes-retry"
         loading={retrying}
         disabled={retrying}
@@ -49,9 +45,7 @@ export class DiscardChangesRetryDialog extends React.Component<
           <div>
             常见原因有：
             <ul>
-              <li>
-                {TrashNameLabel} 已配置为立即删除项目。
-              </li>
+              <li>{TrashNameLabel} 已配置为立即删除项目。</li>
               <li>移动文件时访问受限。</li>
             </ul>
           </div>
@@ -81,11 +75,7 @@ export class DiscardChangesRetryDialog extends React.Component<
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText={
-            __DARWIN__
-              ? '永久丢弃更改'
-              : '永久丢弃更改'
-          }
+          okButtonText={__DARWIN__ ? '永久丢弃更改' : '永久丢弃更改'}
           okButtonTitle={`这将丢弃更改，且它们将无法恢复。`}
           cancelButtonText="取消"
           destructive={true}

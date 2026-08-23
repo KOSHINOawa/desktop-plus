@@ -102,7 +102,8 @@ export class PushBranchCommits extends React.Component<
             在打开拉取请求之前，必须先发布你的分支。
           </p>
           <p id="push-branch-commits-message">
-            你想要现在发布 <Ref>{this.props.branch.name}</Ref> 并打开一个拉取请求吗？
+            你想要现在发布 <Ref>{this.props.branch.name}</Ref>{' '}
+            并打开一个拉取请求吗？
           </p>
         </DialogContent>
       )
@@ -143,9 +144,7 @@ export class PushBranchCommits extends React.Component<
     return (
       <OkCancelButtonGroup
         okButtonText={__DARWIN__ ? '推送提交' : '推送提交'}
-        cancelButtonText={
-          __DARWIN__ ? '创建而不推送' : '创建而不推送'
-        }
+        cancelButtonText={__DARWIN__ ? '创建而不推送' : '创建而不推送'}
         onCancelButtonClick={this.onCreateWithoutPushButtonClick}
       />
     )

@@ -243,9 +243,7 @@ export class Integrations extends React.Component<
         ))}
         {enableCustomIntegration() && (
           <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-             {__DARWIN__
-               ? '配置自定义编辑器…'
-               : '配置自定义编辑器…'}
+            {__DARWIN__ ? '配置自定义编辑器…' : '配置自定义编辑器…'}
           </option>
         )}
       </Select>
@@ -327,7 +325,7 @@ export class Integrations extends React.Component<
         ))}
         {enableCustomIntegration() && (
           <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-             {__DARWIN__ ? '配置自定义 Shell…' : '配置自定义 Shell…'}
+            {__DARWIN__ ? '配置自定义 Shell…' : '配置自定义 Shell…'}
           </option>
         )}
       </Select>
@@ -421,7 +419,7 @@ export class Integrations extends React.Component<
         value={this.state.copyPathNormalization}
         onChange={this.onCopyPathNormalizationChanged}
       >
-        <option value={CopyPathNormalization.None}>{"不规范化"}</option>
+        <option value={CopyPathNormalization.None}>{'不规范化'}</option>
         <option value={CopyPathNormalization.Unix}>转换为 UNIX (/)</option>
         <option value={CopyPathNormalization.Windows}>
           转换为 Windows (\)

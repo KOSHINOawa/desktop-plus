@@ -64,16 +64,12 @@ export class DeleteWorktreeFailedDialog extends React.Component<
             </p>
             {this.renderErrorMessage()}
             <p>
-              你是否要强制删除工作树 <Ref>{name}</Ref>
-              ？
+              你是否要强制删除工作树 <Ref>{name}</Ref>？
             </p>
           </div>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup
-            destructive={true}
-            okButtonText="强制删除"
-          />
+          <OkCancelButtonGroup destructive={true} okButtonText="强制删除" />
         </DialogFooter>
       </Dialog>
     )

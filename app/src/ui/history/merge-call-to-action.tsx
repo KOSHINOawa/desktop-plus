@@ -53,9 +53,7 @@ export class MergeCallToAction extends React.Component<
         <div className="merge-message merge-message-legacy">
           这将把
           <strong>{` ${formatNumber(count)} 个提交`}</strong>
-          {` `}
-          从
-          {` `}
+          {` `}从{` `}
           <strong>{branch.name}</strong>
           {` `}
           合并到

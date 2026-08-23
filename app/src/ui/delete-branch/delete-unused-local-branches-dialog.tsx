@@ -37,11 +37,7 @@ export class DeleteUnusedLocalBranches extends React.Component<
     return (
       <Dialog
         id="delete-unused-local-branches"
-        title={
-          __DARWIN__
-            ? '删除未使用的本地分支'
-            : '删除未使用的本地分支'
-        }
+        title={__DARWIN__ ? '删除未使用的本地分支' : '删除未使用的本地分支'}
         type="warning"
         onSubmit={this.deleteBranches}
         onDismissed={this.props.onDismissed}

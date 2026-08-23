@@ -300,11 +300,7 @@ export class MergeCallToActionWithConflicts extends React.Component<
       )
     }
 
-    return (
-      <div className="merge-message">
-        无法合并此仓库中不相关的历史记录
-      </div>
-    )
+    return <div className="merge-message">无法合并此仓库中不相关的历史记录</div>
   }
 
   private renderConflictedMergeMessage(

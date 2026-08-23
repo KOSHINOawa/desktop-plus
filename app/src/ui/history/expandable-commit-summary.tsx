@@ -224,9 +224,7 @@ export class ExpandableCommitSummary extends React.Component<
         tooltip={isExpanded ? '折叠' : '展开'}
         applyTooltipAriaDescribedBy={false}
         ariaExpanded={isExpanded}
-        ariaLabel={
-          isExpanded ? '折叠提交详情' : '展开提交详情'
-        }
+        ariaLabel={isExpanded ? '折叠提交详情' : '展开提交详情'}
         ariaControls="expandable-commit-summary"
       >
         <Octicon symbol={isExpanded ? octicons.fold : octicons.unfold} />
@@ -481,10 +479,7 @@ export class ExpandableCommitSummary extends React.Component<
             {`${numInDiff} 个提交`}
           </LinkButton>
         ) : (
-          <>
-            {' '}
-            {`${numInDiff} 个提交`}
-          </>
+          <> {`${numInDiff} 个提交`}</>
         )}{' '}
         的更改
       </>
@@ -555,11 +550,7 @@ export class ExpandableCommitSummary extends React.Component<
           {!isExpanded ? <>+{linesAdded}</> : <>{linesAdded} 行新增</>}
         </div>
         <div className="lines-deleted">
-          {!isExpanded ? (
-            <>-{linesDeleted}</>
-          ) : (
-            <>{linesDeleted} 行删除</>
-          )}
+          {!isExpanded ? <>-{linesDeleted}</> : <>{linesDeleted} 行删除</>}
         </div>
       </div>
     )

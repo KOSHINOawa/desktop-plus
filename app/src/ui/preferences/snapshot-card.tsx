@@ -264,9 +264,9 @@ function SnapshotUsageItem({
   tokenBasedBilling = false,
 }: ISnapshotUsageItemProps) {
   const { snapshot, displayName } = item
-    const usageLabel = snapshot.isUnlimitedEntitlement
-      ? '无使用限制'
-      : formatUsedPercentage(snapshot)
+  const usageLabel = snapshot.isUnlimitedEntitlement
+    ? '无使用限制'
+    : formatUsedPercentage(snapshot)
   const usageTooltip = formatUsageTooltip(snapshot, displayName)
   const resetText =
     snapshot.resetDate !== undefined && isFutureResetDate(snapshot.resetDate)
@@ -352,7 +352,7 @@ export class SnapshotCard extends React.Component<ISnapshotCardProps> {
 }
 
 function renderLoadingSnapshots(): JSX.Element {
-   return <p className="copilot-usage-empty">正在加载 Copilot 使用情况…</p>
+  return <p className="copilot-usage-empty">正在加载 Copilot 使用情况…</p>
 }
 
 function renderSnapshots(snapshots: CopilotQuotaSnapshots): JSX.Element {
@@ -361,11 +361,7 @@ function renderSnapshots(snapshots: CopilotQuotaSnapshots): JSX.Element {
   const quotas = getVisibleQuotaSnapshots(snapshots, tokenBasedBilling)
 
   if (rateLimits.length === 0 && quotas.length === 0) {
-    return (
-      <p className="copilot-usage-empty">
-        暂无 Copilot 使用数据。
-      </p>
-    )
+    return <p className="copilot-usage-empty">暂无 Copilot 使用数据。</p>
   }
 
   return (

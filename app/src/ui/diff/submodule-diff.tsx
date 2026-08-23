@@ -100,16 +100,13 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
     const { diff, readOnly } = this.props
     const { oldSHA, newSHA } = diff
 
-    const suffix = readOnly
-      ? ''
-      : ' 此更改可以提交到父仓库。'
+    const suffix = readOnly ? '' : ' 此更改可以提交到父仓库。'
 
     if (oldSHA !== null && newSHA !== null) {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffModified, className: 'modified-icon' },
         <>
-          该子模块将其提交从{' '}
-          {this.renderCommitSHA(oldSHA, 'previous')} 更改为{' '}
+          该子模块将其提交从 {this.renderCommitSHA(oldSHA, 'previous')} 更改为{' '}
           {this.renderCommitSHA(newSHA, 'new')}。{suffix}
         </>
       )
@@ -117,16 +114,15 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffAdded, className: 'added-icon' },
         <>
-          该子模块已添加，指向提交{' '}
-          {this.renderCommitSHA(newSHA)}。{suffix}
+          该子模块已添加，指向提交 {this.renderCommitSHA(newSHA)}。{suffix}
         </>
       )
     } else if (oldSHA !== null && newSHA === null) {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffRemoved, className: 'removed-icon' },
         <>
-          该子模块已移除，当时它指向提交{' '}
-          {this.renderCommitSHA(oldSHA)}。{suffix}
+          该子模块已移除，当时它指向提交 {this.renderCommitSHA(oldSHA)}。
+          {suffix}
         </>
       )
     }
@@ -143,9 +139,7 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
         <Ref>{shortenSHA(sha)}</Ref>
         <CopyButton
           ariaLabel={
-            whichLabel === ''
-              ? '复制完整 SHA'
-              : `复制完整${whichLabel}的 SHA`
+            whichLabel === '' ? '复制完整 SHA' : `复制完整${whichLabel}的 SHA`
           }
           copyContent={sha}
         />
@@ -170,7 +164,8 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
     return this.renderSubmoduleDiffItem(
       { octicon: octicons.fileDiff, className: 'untracked-icon' },
       <>
-        该子模块存在 {changes} 更改。这些更改必须先在该子模块内提交，才能成为父仓库的一部分。
+        该子模块存在 {changes}{' '}
+        更改。这些更改必须先在该子模块内提交，才能成为父仓库的一部分。
       </>
     )
   }

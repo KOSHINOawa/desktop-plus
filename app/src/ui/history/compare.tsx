@@ -270,11 +270,13 @@ export class CompareSidebar extends React.Component<
       emptyListMessage =
         formState.comparisonMode === ComparisonMode.Ahead ? (
           <p>
-            所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>）与你的分支保持最新
+            所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>
+            ）与你的分支保持最新
           </p>
         ) : (
           <p>
-            你的分支与所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>）保持最新
+            你的分支与所比较的分支（<Ref>{currentlyComparedBranchName}</Ref>
+            ）保持最新
           </p>
         )
     }
@@ -481,9 +483,7 @@ export class CompareSidebar extends React.Component<
     return (
       <div className="compare-content">
         <TabBar selectedIndex={selectedTab} onTabClicked={this.onTabClicked}>
-          <span>{`落后 (${formatNumber(
-            formState.aheadBehind.behind
-          )})`}</span>
+          <span>{`落后 (${formatNumber(formState.aheadBehind.behind)})`}</span>
           <span>{`领先 (${formatNumber(formState.aheadBehind.ahead)})`}</span>
         </TabBar>
         {this.renderActiveTab(formState)}
@@ -851,9 +851,7 @@ function getPlaceholderText(state: ICompareState) {
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
     return __DARWIN__ ? '没有可比较的分支' : '没有可比较的分支'
   } else {
-    return __DARWIN__
-      ? '选择要比较的分支…'
-      : '选择要比较的分支…'
+    return __DARWIN__ ? '选择要比较的分支…' : '选择要比较的分支…'
   }
 }
 

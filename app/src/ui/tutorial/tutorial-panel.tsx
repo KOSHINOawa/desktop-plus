@@ -134,10 +134,7 @@ export class TutorialPanel extends React.Component<
                     {suggestedExternalEditor.name}
                   </LinkButton>
                   {` 或 `}
-                  <LinkButton
-                    uri="https://atom.io"
-                    title="打开 Atom 网站"
-                  >
+                  <LinkButton uri="https://atom.io" title="打开 Atom 网站">
                     Atom
                   </LinkButton>
                   ，但你也可以使用任意编辑器。
@@ -149,14 +146,14 @@ export class TutorialPanel extends React.Component<
                 </div>
               </>
             ) : (
-                <p className="description">
-                  你的默认编辑器是{' '}
-                  <strong>{this.props.resolvedExternalEditor}</strong>。你可以在{' '}
-                  <LinkButton onClick={this.onPreferencesClick}>
-                    {__DARWIN__ ? '设置' : '选项'}
-                  </LinkButton>
-                  中更改首选编辑器。
-                </p>
+              <p className="description">
+                你的默认编辑器是{' '}
+                <strong>{this.props.resolvedExternalEditor}</strong>。你可以在{' '}
+                <LinkButton onClick={this.onPreferencesClick}>
+                  {__DARWIN__ ? '设置' : '选项'}
+                </LinkButton>
+                中更改首选编辑器。
+              </p>
             )}
           </TutorialStepInstructions>
           <TutorialStepInstructions
@@ -167,9 +164,11 @@ export class TutorialPanel extends React.Component<
             currentlyOpenSectionId={this.state.currentlyOpenSectionId}
             onSummaryClick={this.onStepSummaryClick}
           >
-              <p className="description">
-                {`分支允许你同时处理仓库的不同版本。进入顶部栏的分支菜单并点击"${__DARWIN__ ? '新建分支' : '新建分支'}"来创建分支。`}
-              </p>
+            <p className="description">
+              {`分支允许你同时处理仓库的不同版本。进入顶部栏的分支菜单并点击"${
+                __DARWIN__ ? '新建分支' : '新建分支'
+              }"来创建分支。`}
+            </p>
             <div className="action">
               <KeyboardShortcut
                 darwinKeys={['⌘', '⇧', 'N']}
@@ -185,18 +184,18 @@ export class TutorialPanel extends React.Component<
             currentlyOpenSectionId={this.state.currentlyOpenSectionId}
             onSummaryClick={this.onStepSummaryClick}
           >
-              <p className="description">
-                在你首选的文本编辑器中打开此仓库。编辑
-                {` `}
-                <Ref>README.md</Ref>
-                {` `}
-                文件，保存后返回。
-              </p>
+            <p className="description">
+              在你首选的文本编辑器中打开此仓库。编辑
+              {` `}
+              <Ref>README.md</Ref>
+              {` `}
+              文件，保存后返回。
+            </p>
             {this.props.resolvedExternalEditor && (
               <div className="action">
-                  <Button onClick={this.openTutorialFileInEditor}>
-                    {__DARWIN__ ? '打开编辑器' : '打开编辑器'}
-                  </Button>
+                <Button onClick={this.openTutorialFileInEditor}>
+                  {__DARWIN__ ? '打开编辑器' : '打开编辑器'}
+                </Button>
                 <KeyboardShortcut
                   darwinKeys={['⌘', '⇧', 'A']}
                   keys={['Ctrl', 'Shift', 'A']}
@@ -212,9 +211,9 @@ export class TutorialPanel extends React.Component<
             currentlyOpenSectionId={this.state.currentlyOpenSectionId}
             onSummaryClick={this.onStepSummaryClick}
           >
-              <p className="description">
-                提交允许你保存一组更改。在左下角的“摘要”字段中，写下描述你所做更改的简短信息。完成后，点击蓝色的“提交”按钮完成。
-              </p>
+            <p className="description">
+              提交允许你保存一组更改。在左下角的“摘要”字段中，写下描述你所做更改的简短信息。完成后，点击蓝色的“提交”按钮完成。
+            </p>
           </TutorialStepInstructions>
           <TutorialStepInstructions
             summaryText="发布到 GitHub"
@@ -224,9 +223,10 @@ export class TutorialPanel extends React.Component<
             currentlyOpenSectionId={this.state.currentlyOpenSectionId}
             onSummaryClick={this.onStepSummaryClick}
           >
-              <p className="description">
-                发布会将你的提交“推送”（即上传）到你在 GitHub 上此仓库的该分支。使用顶部栏的第三个按钮进行发布。
-              </p>
+            <p className="description">
+              发布会将你的提交“推送”（即上传）到你在 GitHub
+              上此仓库的该分支。使用顶部栏的第三个按钮进行发布。
+            </p>
             <div className="action">
               <KeyboardShortcut darwinKeys={['⌘', 'P']} keys={['Ctrl', 'P']} />
             </div>
@@ -240,9 +240,9 @@ export class TutorialPanel extends React.Component<
             skipLinkButton={<SkipLinkButton onClick={this.skipCreatePR} />}
             onSummaryClick={this.onStepSummaryClick}
           >
-              <p className="description">
-                拉取请求允许你提出对代码的更改。通过发起一个，你是在请求某人审查并合并这些更改。由于这是一个演示仓库，此拉取请求将是私有的。
-              </p>
+            <p className="description">
+              拉取请求允许你提出对代码的更改。通过发起一个，你是在请求某人审查并合并这些更改。由于这是一个演示仓库，此拉取请求将是私有的。
+            </p>
             <div className="action">
               <Button onClick={this.openPullRequest} role="link">
                 {__DARWIN__ ? '发起拉取请求' : '发起拉取请求'}
@@ -253,9 +253,9 @@ export class TutorialPanel extends React.Component<
           </TutorialStepInstructions>
         </ol>
         <div className="footer">
-            <Button onClick={this.props.onExitTutorial}>
-              {__DARWIN__ ? '退出教程' : '退出教程'}
-            </Button>
+          <Button onClick={this.props.onExitTutorial}>
+            {__DARWIN__ ? '退出教程' : '退出教程'}
+          </Button>
         </div>
       </div>
     )
@@ -275,4 +275,4 @@ export class TutorialPanel extends React.Component<
 
 const SkipLinkButton: React.FunctionComponent<{
   onClick: () => void
-}> =   props => <LinkButton onClick={props.onClick}>跳过</LinkButton>
+}> = props => <LinkButton onClick={props.onClick}>跳过</LinkButton>

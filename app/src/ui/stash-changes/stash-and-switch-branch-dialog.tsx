@@ -82,8 +82,7 @@ export class StashAndSwitchBranch extends React.Component<
     const items = [
       {
         title: `将我的更改保留在 ${this.state.currentBranchName}`,
-        description:
-          '你进行中的工作将被暂存在此分支上，供你稍后返回',
+        description: '你进行中的工作将被暂存在此分支上，供你稍后返回',
         key: StashAction.StashOnCurrentBranch,
       },
       {

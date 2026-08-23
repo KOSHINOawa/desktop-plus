@@ -258,16 +258,10 @@ export class ConflictsDialog extends React.Component<
     }
 
     if (conflictedFilesCount === 0) {
-      return (
-        <DialogSuccess>所有冲突文件都已解决。</DialogSuccess>
-      )
+      return <DialogSuccess>所有冲突文件都已解决。</DialogSuccess>
     }
 
-    return (
-      <DialogSuccess>
-        {countResolved} 个冲突文件已解决。
-      </DialogSuccess>
-    )
+    return <DialogSuccess>{countResolved} 个冲突文件已解决。</DialogSuccess>
   }
 
   /**
@@ -369,9 +363,7 @@ export class ConflictsDialog extends React.Component<
     )
 
     const tooltipString =
-      conflictedFiles.length > 0
-        ? '继续前请先解决所有更改'
-        : undefined
+      conflictedFiles.length > 0 ? '继续前请先解决所有更改' : undefined
 
     return (
       <Dialog

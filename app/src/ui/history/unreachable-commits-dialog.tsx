@@ -146,7 +146,8 @@ export class UnreachableCommitsDialog extends React.Component<
       this.state.selectedTab === UnreachableCommitsTab.Unreachable
     return (
       <div className="message">
-        您{unreachable ? '不会' : '会'}看到来自以下提交（共 {count} 个）的更改，因为
+        您{unreachable ? '不会' : '会'}看到来自以下提交（共 {count}{' '}
+        个）的更改，因为
         {unreachable ? '它们不' : '它们'}在您所选最新提交的祖先路径中。
         <LinkButton uri="https://github.com/desktop/desktop/blob/development/docs/learn-more/unreachable-commits.md">
           了解有关不可达提交的更多信息。

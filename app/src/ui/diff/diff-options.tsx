@@ -188,9 +188,7 @@ export class DiffOptions extends React.Component<
               : CheckboxValue.Off
           }
           onChange={this.onHideWhitespaceChangesChanged}
-          label={
-            __DARWIN__ ? '隐藏空白字符更改' : '隐藏空白字符更改'
-          }
+          label={__DARWIN__ ? '隐藏空白字符更改' : '隐藏空白字符更改'}
         />
         {this.props.isInteractiveDiff && (
           <p className="secondary-text">

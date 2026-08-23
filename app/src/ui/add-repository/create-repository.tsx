@@ -526,9 +526,7 @@ export class CreateRepository extends React.Component<
           ariaLiveMessage={`目录 ${fullPath} 似乎是一个 Git 仓库的子文件夹。你是否了解子模块？`}
         >
           目录 <Ref>{fullPath}</Ref> 似乎是一个 Git 仓库的子文件夹。
-          <LinkButton uri={submoduleDocsUrl}>
-            了解子模块。
-          </LinkButton>
+          <LinkButton uri={submoduleDocsUrl}>了解子模块。</LinkButton>
         </InputWarning>
       </Row>
     )
@@ -596,9 +594,7 @@ export class CreateRepository extends React.Component<
     return (
       <Dialog
         id="create-repository"
-        title={
-          __DARWIN__ ? '创建新仓库' : '创建新仓库'
-        }
+        title={__DARWIN__ ? '创建新仓库' : '创建新仓库'}
         loading={this.state.creating}
         onSubmit={this.createRepository}
         onDismissed={this.props.onDismissed}
@@ -658,9 +654,7 @@ export class CreateRepository extends React.Component<
         <DialogFooter>
           {this.renderPathMessage()}
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? '创建仓库' : '创建仓库'
-            }
+            okButtonText={__DARWIN__ ? '创建仓库' : '创建仓库'}
             okButtonDisabled={disabled}
             okButtonAriaDescribedBy="create-repo-path-msg"
           />

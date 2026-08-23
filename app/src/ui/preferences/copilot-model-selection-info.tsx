@@ -118,30 +118,27 @@ export class CopilotModelSelectionInfo extends React.Component<
               {selectionInfo.contextWindow === null
                 ? null
                 : this.renderCostDetailsRow(
-                     '上下文',
+                    '上下文',
                     selectionInfo.contextWindow
                   )}
               {selectionInfo.reasoningEffortLevels === null
                 ? null
                 : this.renderCostDetailsRow(
-                     '推理',
-                     selectionInfo.reasoningEffortLevels
-                   )}
+                    '推理',
+                    selectionInfo.reasoningEffortLevels
+                  )}
             </dl>
           ) : null}
 
           <div className="copilot-model-picker-cost-details-section">
-              <h4>每 {tokenPriceDetails.batchSize} 个令牌的 AI 额度</h4>
-             <dl>
-               {this.renderCostDetailsRow('输入', tokenPriceDetails.inputPrice)}
-               {this.renderCostDetailsRow(
-                 '缓存输入',
-                 tokenPriceDetails.cachePrice
-               )}
-               {this.renderCostDetailsRow(
-                 '输出',
-                 tokenPriceDetails.outputPrice
-               )}
+            <h4>每 {tokenPriceDetails.batchSize} 个令牌的 AI 额度</h4>
+            <dl>
+              {this.renderCostDetailsRow('输入', tokenPriceDetails.inputPrice)}
+              {this.renderCostDetailsRow(
+                '缓存输入',
+                tokenPriceDetails.cachePrice
+              )}
+              {this.renderCostDetailsRow('输出', tokenPriceDetails.outputPrice)}
             </dl>
           </div>
         </div>

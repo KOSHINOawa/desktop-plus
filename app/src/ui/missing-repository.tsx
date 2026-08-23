@@ -112,16 +112,13 @@ export class MissingRepository extends React.Component<
       return (
         <UiView id="missing-repository-view">
           <div className="title-container">
-            <div className="title">
-               {this.props.repository.name} 可能不安全
-            </div>
+            <div className="title">{this.props.repository.name} 可能不安全</div>
             <div className="details">
               <p>
-                位于 <Ref>{unsafePath}</Ref> 的 Git 仓库似乎由你计算机上的另一个用户拥有。添加不受信任的仓库可能会自动执行仓库中的文件。
+                位于 <Ref>{unsafePath}</Ref> 的 Git
+                仓库似乎由你计算机上的另一个用户拥有。添加不受信任的仓库可能会自动执行仓库中的文件。
               </p>
-              <p>
-                如果你信任该目录的所有者，可以为该目录添加例外以继续。
-              </p>
+              <p>如果你信任该目录的所有者，可以为该目录添加例外以继续。</p>
             </div>
           </div>
 

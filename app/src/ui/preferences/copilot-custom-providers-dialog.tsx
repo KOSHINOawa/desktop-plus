@@ -55,7 +55,8 @@ export class CopilotCustomProvidersDialog extends React.Component<ICopilotCustom
     if (this.props.providers.length === 0) {
       return (
         <p className="copilot-byok-empty">
-          添加自定义提供商，以将你自己的 API 密钥用于 OpenAI 兼容的端点、Azure、Anthropic，或 Ollama 等本地提供商。
+          添加自定义提供商，以将你自己的 API 密钥用于 OpenAI
+          兼容的端点、Azure、Anthropic，或 Ollama 等本地提供商。
         </p>
       )
     }

@@ -51,7 +51,8 @@ export class DeleteRepositoryGroup extends React.Component<
       >
         <DialogContent>
           <p>
-            你确定要删除分组 "{groupName}" 吗？这将取消它与 {count} 个仓库的关联。
+            你确定要删除分组 "{groupName}" 吗？这将取消它与 {count}{' '}
+            个仓库的关联。
           </p>
 
           <div>

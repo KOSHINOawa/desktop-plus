@@ -54,8 +54,7 @@ export class GenericGitAuthentication extends React.Component<
       >
         <DialogContent>
           <p id="generic-git-auth-error">
-            我们无法使用{' '}
-            <Ref>{this.props.remoteUrl}</Ref> 进行身份验证。请输入{' '}
+            我们无法使用 <Ref>{this.props.remoteUrl}</Ref> 进行身份验证。请输入{' '}
             {this.props.username ? (
               <>
                 用户 <Ref>{this.props.username}</Ref> 的密码

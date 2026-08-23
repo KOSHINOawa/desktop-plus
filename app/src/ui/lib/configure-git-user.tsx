@@ -257,9 +257,9 @@ export class ConfigureGitUser extends React.Component<
 
     return (
       <>
-          <Select
-            label="电子邮件"
-            value={this.state.gitHubEmail}
+        <Select
+          label="电子邮件"
+          value={this.state.gitHubEmail}
           onChange={this.onSelectedGitHubEmailChange}
         >
           {this.account.emails.map(e => (

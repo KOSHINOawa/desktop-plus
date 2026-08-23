@@ -40,7 +40,8 @@ export class PushNeedsPullWarning extends React.Component<
       >
         <DialogContent>
           <p>
-            Desktop Plus 无法将提交推送到此分支，因为远程上有一些提交在你的本地分支中不存在。在推送前请先抓取这些新提交，以便将它们与你的本地提交进行协调。
+            Desktop Plus
+            无法将提交推送到此分支，因为远程上有一些提交在你的本地分支中不存在。在推送前请先抓取这些新提交，以便将它们与你的本地提交进行协调。
           </p>
         </DialogContent>
         <DialogFooter>

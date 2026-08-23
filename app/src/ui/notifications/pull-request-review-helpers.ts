@@ -9,14 +9,14 @@ import { OcticonSymbol } from '../octicons'
 export function getVerbForPullRequestReview(
   review: ValidNotificationPullRequestReview
 ) {
-    switch (review.state) {
-      case 'APPROVED':
-        return '批准了'
-      case 'CHANGES_REQUESTED':
-        return '请求更改'
-      case 'COMMENTED':
-        return '审查了'
-    }
+  switch (review.state) {
+    case 'APPROVED':
+      return '批准了'
+    case 'CHANGES_REQUESTED':
+      return '请求更改'
+    case 'COMMENTED':
+      return '审查了'
+  }
 }
 
 type ReviewStateIcon = {

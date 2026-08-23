@@ -31,8 +31,7 @@ export class PullRequestMergeStatus extends React.Component<IPullRequestMergeSta
       case ComputedAction.Invalid:
         return (
           <span className="pr-merge-status-invalid">
-            <strong>检查合并状态出错。</strong>{' '}
-            无法合并此仓库中不相关的历史记录
+            <strong>检查合并状态出错。</strong> 无法合并此仓库中不相关的历史记录
           </span>
         )
       case ComputedAction.Clean:

@@ -605,8 +605,8 @@ export class RepositoriesList extends React.Component<
             ? '展开分组'
             : '展开分组'
           : __DARWIN__
-            ? '折叠分组'
-            : '折叠分组',
+          ? '折叠分组'
+          : '折叠分组',
         action: () => this.onToggleGroupCollapsed(group),
         enabled: canToggle,
       },
@@ -1070,9 +1070,7 @@ export class RepositoriesList extends React.Component<
         action: this.onCreateNewRepository,
       },
       {
-        label: __DARWIN__
-          ? '添加现有仓库…'
-          : '添加现有仓库…',
+        label: __DARWIN__ ? '添加现有仓库…' : '添加现有仓库…',
         action: this.onAddExistingRepository,
       },
       { type: 'separator' },

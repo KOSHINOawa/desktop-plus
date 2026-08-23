@@ -13,18 +13,14 @@ import { buildTestMenu } from './build-test-menu'
 import { assertNever } from '../../lib/fatal-error'
 import { getForgejoName } from '../../lib/forgejo-name'
 
-const createPullRequestLabel = __DARWIN__
-  ? '创建拉取请求'
-  : '创建&拉取请求'
+const createPullRequestLabel = __DARWIN__ ? '创建拉取请求' : '创建&拉取请求'
 const defaultBranchNameValue = __DARWIN__ ? '默认分支' : '默认分支'
 const confirmRepositoryRemovalLabel = __DARWIN__ ? '移除…' : '&移除…'
 const repositoryRemovalLabel = __DARWIN__ ? '移除' : '&移除'
 const confirmStashAllChangesLabel = __DARWIN__
   ? '暂存所有更改…'
   : '&暂存所有更改…'
-const stashAllChangesLabel = __DARWIN__
-  ? '暂存所有更改'
-  : '&暂存所有更改'
+const stashAllChangesLabel = __DARWIN__ ? '暂存所有更改' : '&暂存所有更改'
 
 enum ZoomDirection {
   Reset,
@@ -64,7 +60,10 @@ export function buildDefaultMenuTemplate({
     : repositoryRemovalLabel
 
   const showPullRequestLabel = __DARWIN__
-    ? `在 ${onGithubLabel(gitHubRepositoryType, gitHubRepositoryEndpoint)} 上查看拉取请求`
+    ? `在 ${onGithubLabel(
+        gitHubRepositoryType,
+        gitHubRepositoryEndpoint
+      )} 上查看拉取请求`
     : `在 ${onGithubLabel(
         gitHubRepositoryType,
         gitHubRepositoryEndpoint
@@ -261,9 +260,7 @@ export function buildDefaultMenuTemplate({
       {
         label: __DARWIN__
           ? `${isChangesFilterVisible ? '隐藏' : '显示'}更改筛选`
-          : `${
-              isChangesFilterVisible ? '隐藏' : '显示'
-            }切换更改&筛选`,
+          : `${isChangesFilterVisible ? '隐藏' : '显示'}切换更改&筛选`,
         id: 'toggle-changes-filter',
         accelerator: 'CmdOrCtrl+L',
         click: emit('toggle-changes-filter'),
@@ -289,17 +286,13 @@ export function buildDefaultMenuTemplate({
         click: zoom(ZoomDirection.Out),
       },
       {
-        label: __DARWIN__
-          ? '展开活动可调整区域'
-          : '展开活动可调整区域',
+        label: __DARWIN__ ? '展开活动可调整区域' : '展开活动可调整区域',
         id: 'increase-active-resizable-width',
         accelerator: 'CmdOrCtrl+9',
         click: emit('increase-active-resizable-width'),
       },
       {
-        label: __DARWIN__
-          ? '收起活动可调整区域'
-          : '收起活动可调整区域',
+        label: __DARWIN__ ? '收起活动可调整区域' : '收起活动可调整区域',
         id: 'decrease-active-resizable-width',
         accelerator: 'CmdOrCtrl+8',
         click: emit('decrease-active-resizable-width'),
@@ -322,9 +315,7 @@ export function buildDefaultMenuTemplate({
       },
       {
         id: 'show-devtools',
-        label: __DARWIN__
-          ? '切换开发者工具'
-          : '&切换开发者工具',
+        label: __DARWIN__ ? '切换开发者工具' : '&切换开发者工具',
         accelerator: (() => {
           return __DARWIN__ ? 'Alt+Command+I' : 'Ctrl+Shift+I'
         })(),
@@ -483,9 +474,7 @@ export function buildDefaultMenuTemplate({
       click: emit('discard-all-changes'),
     },
     {
-      label: __DARWIN__
-        ? '永久丢弃所有更改…'
-        : '永久丢弃所有更改…',
+      label: __DARWIN__ ? '永久丢弃所有更改…' : '永久丢弃所有更改…',
       id: 'permanently-discard-all-changes',
       click: emit('permanently-discard-all-changes'),
     },
@@ -513,17 +502,13 @@ export function buildDefaultMenuTemplate({
       click: emit('compare-to-branch'),
     },
     {
-      label: __DARWIN__
-        ? '合并到当前分支…'
-        : '&合并到当前分支…',
+      label: __DARWIN__ ? '合并到当前分支…' : '&合并到当前分支…',
       id: 'merge-branch',
       accelerator: 'CmdOrCtrl+Shift+M',
       click: emit('merge-branch'),
     },
     {
-      label: __DARWIN__
-        ? '压缩合并到当前分支…'
-        : '&压缩合并到当前分支…',
+      label: __DARWIN__ ? '压缩合并到当前分支…' : '&压缩合并到当前分支…',
       id: 'squash-and-merge-branch',
       accelerator: 'CmdOrCtrl+Shift+H',
       click: emit('squash-and-merge-branch'),
@@ -554,7 +539,7 @@ export function buildDefaultMenuTemplate({
             gitHubRepositoryType,
             gitHubRepositoryEndpoint
           )} 上查看分&支`,
-        id: 'branch-on-github',
+      id: 'branch-on-github',
       accelerator: 'CmdOrCtrl+Alt+B',
       click: emit('branch-on-github'),
     },

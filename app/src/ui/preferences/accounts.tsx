@@ -276,9 +276,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             // focused initially when the dialog is opened.
             buttonClassName={DialogPreferredFocusClassName}
           >
-            <div>
-              登录你的 GitHub.com 账户以访问你的仓库。
-            </div>
+            <div>登录你的 GitHub.com 账户以访问你的仓库。</div>
           </CallToAction>
         )
       }
@@ -299,9 +297,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             actionTitle={signInTitle + ' Bitbucket'}
             onAction={this.onBitbucketSignIn}
           >
-            <div>
-              登录你的 Bitbucket 账户以访问你的仓库。
-            </div>
+            <div>登录你的 Bitbucket 账户以访问你的仓库。</div>
           </CallToAction>
         )
       case SignInType.GitLab:
@@ -310,9 +306,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             actionTitle={signInTitle + ' GitLab'}
             onAction={this.onGitLabSignIn}
           >
-            <div>
-              登录你的 GitLab 账户以访问你的仓库。
-            </div>
+            <div>登录你的 GitLab 账户以访问你的仓库。</div>
           </CallToAction>
         )
       case SignInType.Forgejo:
@@ -321,9 +315,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             actionTitle={signInTitle + ' Codeberg'}
             onAction={this.onCodebergSignIn}
           >
-            <div>
-              登录你的 Codeberg 账户以访问你的仓库。
-            </div>
+            <div>登录你的 Codeberg 账户以访问你的仓库。</div>
           </CallToAction>
         )
       case SignInType.Gitea:
@@ -332,9 +324,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             actionTitle={signInTitle + ' Gitea'}
             onAction={this.onGiteaSignIn}
           >
-            <div>
-              登录你的 Gitea 账户以访问你的仓库。
-            </div>
+            <div>登录你的 Gitea 账户以访问你的仓库。</div>
           </CallToAction>
         )
       default:

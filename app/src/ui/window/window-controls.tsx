@@ -100,7 +100,8 @@ export class WindowControls extends React.Component<{}, IWindowControlState> {
       restore: '还原',
       close: '关闭',
     }
-    const title = windowControlTitle[name] ?? name[0].toUpperCase() + name.substring(1)
+    const title =
+      windowControlTitle[name] ?? name[0].toUpperCase() + name.substring(1)
 
     return (
       <Button

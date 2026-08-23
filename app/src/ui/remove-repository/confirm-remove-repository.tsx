@@ -66,8 +66,8 @@ export class ConfirmRemoveRepository extends React.Component<
       >
         <DialogContent>
           <p>
-            你确定要从 Desktop Plus 中移除仓库 "
-            {this.props.repository.name}" 吗？
+            你确定要从 Desktop Plus 中移除仓库 "{this.props.repository.name}"
+            吗？
           </p>
           <div className="description">
             <p>该仓库将从 Desktop Plus 中移除：</p>

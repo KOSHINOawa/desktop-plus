@@ -60,9 +60,7 @@ export class AuthorHandle extends React.Component<IAuthorHandleProps> {
   private getAriaLabel() {
     const { author } = this.props
     if (isKnownAuthor(author)) {
-      return `${getFullTextForAuthor(
-        author
-      )} 按退格键或删除键即可移除`
+      return `${getFullTextForAuthor(author)} 按退格键或删除键即可移除`
     }
 
     const isError = author.state === 'error'

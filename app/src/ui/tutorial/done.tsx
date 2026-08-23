@@ -65,11 +65,7 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
                 你已经了解了如何使用 Desktop Plus 的基础。以下是一些后续建议。
               </p>
             </div>
-            <img
-              src={ClappingHandsImage}
-              className="image"
-              alt="鼓掌的双手"
-            />
+            <img src={ClappingHandsImage} className="image" alt="鼓掌的双手" />
           </div>
           <SuggestedActionGroup>
             <SuggestedAction
@@ -84,9 +80,7 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
             <SuggestedAction
               title="创建新的仓库"
               description="开始一个全新的项目"
-              buttonText={
-                __DARWIN__ ? '创建仓库' : '创建仓库'
-              }
+              buttonText={__DARWIN__ ? '创建仓库' : '创建仓库'}
               icon={octicons.repo}
               onClick={this.onCreateNewRepository}
               type="normal"

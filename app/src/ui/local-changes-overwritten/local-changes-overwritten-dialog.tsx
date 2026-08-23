@@ -49,9 +49,7 @@ export class LocalChangesOverwrittenDialog extends React.Component<
 
   public render() {
     const overwrittenText =
-      this.props.files.length > 0
-      ? ' 以下文件将被覆盖：'
-      : null
+      this.props.files.length > 0 ? ' 以下文件将被覆盖：' : null
 
     return (
       <Dialog
@@ -68,7 +66,8 @@ export class LocalChangesOverwrittenDialog extends React.Component<
         <DialogContent>
           <div id="local-changes-error-description">
             <p>
-              当你的分支上存在更改时，无法 {this.getRetryActionName()}。{overwrittenText}
+              当你的分支上存在更改时，无法 {this.getRetryActionName()}。
+              {overwrittenText}
             </p>
             {this.renderFiles()}
             {this.renderStashText()}
@@ -122,9 +121,7 @@ export class LocalChangesOverwrittenDialog extends React.Component<
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText={
-            __DARWIN__ ? '暂存更改并继续' : '暂存更改并继续'
-          }
+          okButtonText={__DARWIN__ ? '暂存更改并继续' : '暂存更改并继续'}
           okButtonTitle="这将使用你当前的更改创建一个暂存。你可以通过之后恢复暂存来取回它们。"
           cancelButtonText="关闭"
         />

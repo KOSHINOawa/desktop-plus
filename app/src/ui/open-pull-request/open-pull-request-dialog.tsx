@@ -301,9 +301,7 @@ export class OpenPullRequestDialog extends React.Component<IOpenPullRequestDialo
         {currentBranchHasPullRequest && (
           <Octicon symbol={octicons.linkExternal} />
         )}
-        {__DARWIN__
-          ? `${viewCreate} 拉取请求`
-          : `${viewCreate} 拉取请求`}
+        {__DARWIN__ ? `${viewCreate} 拉取请求` : `${viewCreate} 拉取请求`}
       </>
     )
 

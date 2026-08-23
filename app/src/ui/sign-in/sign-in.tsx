@@ -39,16 +39,14 @@ interface ISignInState {
   readonly token: string
 }
 
-const SignInWithBrowserTitle = __DARWIN__
-  ? '使用浏览器登录'
-  : '使用浏览器登录'
+const SignInWithBrowserTitle = __DARWIN__ ? '使用浏览器登录' : '使用浏览器登录'
 
 const DefaultTitle = '登录'
 
 const browserSignInInfoContent = (
   <p>
-    登录后，你的浏览器会将你重定向回 Desktop Plus。
-    如果你的浏览器请求允许启动 Desktop Plus，请允许。
+    登录后，你的浏览器会将你重定向回 Desktop Plus。 如果你的浏览器请求允许启动
+    Desktop Plus，请允许。
   </p>
 )
 
@@ -177,9 +175,9 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     return (
       <DialogContent>
         <p className="existing-account-warning">
-          你已使用账户{' '}
-          <Ref>{state.existingAccount.login}</Ref> 登录到{' '}
-          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref>。如果继续，你将先被登出。
+          你已使用账户 <Ref>{state.existingAccount.login}</Ref> 登录到{' '}
+          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref>
+          。如果继续，你将先被登出。
         </p>
         {browserSignInInfoContent}
       </DialogContent>
@@ -242,7 +240,8 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
               {friendlySelfHostedName(apiType)} 设置
             </LinkButton>
             中创建一个具有{' '}
-            <Ref>{selfHostedTokenScopes[apiType].join(', ')}</Ref> 权限范围的令牌。
+            <Ref>{selfHostedTokenScopes[apiType].join(', ')}</Ref>{' '}
+            权限范围的令牌。
           </div>
         </Row>
       </DialogContent>
@@ -253,8 +252,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     const credentialHelperInfo =
       this.props.isCredentialHelperSignIn && this.props.credentialHelperUrl ? (
         <p>
-          Git 正在请求访问{' '}
-          <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
+          Git 正在请求访问 <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
         </p>
       ) : undefined
 
@@ -271,8 +269,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     return this.props.isCredentialHelperSignIn &&
       this.props.credentialHelperUrl ? (
       <p>
-        Git 正在请求访问{' '}
-          <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
+        Git 正在请求访问 <Ref>{this.props.credentialHelperUrl}</Ref> 的凭据。
       </p>
     ) : undefined
   }

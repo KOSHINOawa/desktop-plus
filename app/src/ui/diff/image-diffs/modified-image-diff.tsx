@@ -197,11 +197,11 @@ export class ModifiedImageDiff extends React.Component<
           onTabClicked={this.onSvgTabClicked}
           type={TabBarType.Switch}
         >
-            <span>代码</span>
-            <span>并排</span>
-            <span>滑动</span>
-            <span>洋葱皮</span>
-            <span>差异</span>
+          <span>代码</span>
+          <span>并排</span>
+          <span>滑动</span>
+          <span>洋葱皮</span>
+          <span>差异</span>
         </TabBar>
         {this.renderCurrentDiffType()}
       </div>
@@ -216,10 +216,10 @@ export class ModifiedImageDiff extends React.Component<
           onTabClicked={this.props.onChangeDiffType}
           type={TabBarType.Switch}
         >
-            <span>并排</span>
-            <span>滑动</span>
-            <span>洋葱皮</span>
-            <span>差异</span>
+          <span>并排</span>
+          <span>滑动</span>
+          <span>洋葱皮</span>
+          <span>差异</span>
         </TabBar>
 
         {this.renderCurrentDiffType()}

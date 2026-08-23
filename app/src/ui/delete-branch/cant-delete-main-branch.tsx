@@ -21,12 +21,10 @@ export class CantDeleteMainBranch extends React.Component<ICantDeleteMainBranchP
       >
         <DialogContent>
           <p>
-            你无法删除默认分支{' '}
-            <Ref>{branchToDelete.name}</Ref>，因为它当前已被检出。
+            你无法删除默认分支 <Ref>{branchToDelete.name}</Ref>
+            ，因为它当前已被检出。
           </p>
-          <p>
-            在移除该分支之前，你需要先切换到一个不同的分支。
-          </p>
+          <p>在移除该分支之前，你需要先切换到一个不同的分支。</p>
           <div className="secondary-text">
             提示：你可以右键点击某个分支并选择"设为默认分支"来更改仓库的默认分支。
           </div>

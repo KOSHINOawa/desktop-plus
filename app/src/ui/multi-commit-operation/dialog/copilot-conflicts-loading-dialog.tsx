@@ -131,10 +131,7 @@ function buildAnalyzingPool(
   filePaths: ReadonlyArray<string>
 ): ReadonlyArray<string> {
   const fileNames = filePaths.map(p => p.split('/').pop() ?? p)
-  const pool: string[] = [
-    '正在交叉引用相关文件',
-    '正在考虑每个冲突的双方',
-  ]
+  const pool: string[] = ['正在交叉引用相关文件', '正在考虑每个冲突的双方']
   for (const name of fileNames.slice(0, 6)) {
     pool.push(`正在分析 ${name}`)
   }

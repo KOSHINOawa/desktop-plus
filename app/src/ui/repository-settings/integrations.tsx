@@ -223,9 +223,7 @@ export class Integrations extends React.Component<
       <DialogContent>
         <fieldset className="advanced-section">
           <legend>
-            <h2>
-              {__DARWIN__ ? '自定义外部编辑器' : '自定义外部编辑器'}
-            </h2>
+            <h2>{__DARWIN__ ? '自定义外部编辑器' : '自定义外部编辑器'}</h2>
           </legend>
           <Row>{this.renderExternalEditor()}</Row>
           {this.state.useCustomEditor && this.renderCustomExternalEditor()}

@@ -205,9 +205,7 @@ export class PullRequestFilesChanged extends React.Component<
     if (!fileExistsOnDisk) {
       showContextualMenu([
         {
-          label: __DARWIN__
-            ? '磁盘上不存在该文件'
-            : '磁盘上不存在该文件',
+          label: __DARWIN__ ? '磁盘上不存在该文件' : '磁盘上不存在该文件',
           enabled: false,
         },
       ])
@@ -292,9 +290,7 @@ export class PullRequestFilesChanged extends React.Component<
     const { showSideBySideDiff } = this.state
     return (
       <div className="files-changed-header">
-          <div className="commits-displayed">
-            显示所有提交中的更改
-          </div>
+        <div className="commits-displayed">显示所有提交中的更改</div>
         <DiffOptions
           isInteractiveDiff={false}
           hideWhitespaceChanges={hideWhitespaceInDiff}

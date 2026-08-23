@@ -88,10 +88,10 @@ class ModelRow extends React.Component<IModelRowProps> {
           </span>
         </div>
         <div className="copilot-byok-entry-actions">
-           <Button onClick={this.onEdit} ariaLabel={`编辑 ${heading}`}>
-             <Octicon symbol={octicons.pencil} />
-           </Button>
-           <Button onClick={this.onRemove} ariaLabel={`移除 ${heading}`}>
+          <Button onClick={this.onEdit} ariaLabel={`编辑 ${heading}`}>
+            <Octicon symbol={octicons.pencil} />
+          </Button>
+          <Button onClick={this.onRemove} ariaLabel={`移除 ${heading}`}>
             <Octicon symbol={octicons.trash} />
           </Button>
         </div>
@@ -174,7 +174,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
       <fieldset className="copilot-byok-fieldset">
         <legend>提供商</legend>
         <Row>
-            <TextBox
+          <TextBox
             label="名称"
             value={this.state.name}
             onValueChanged={this.onNameChanged}
@@ -184,7 +184,7 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
           />
         </Row>
         <Row>
-           <Select
+          <Select
             label="类型"
             value={this.state.type}
             onChange={this.onTypeChanged}
@@ -206,19 +206,19 @@ export class EditCopilotBYOKProviderDialog extends React.Component<
         {this.state.type === 'openai' && (
           <Row>
             <Select
-               label={__DARWIN__ ? 'API 格式' : 'API 格式'}
+              label={__DARWIN__ ? 'API 格式' : 'API 格式'}
               value={this.state.wireApi}
               onChange={this.onWireApiChanged}
             >
-               <option value="completions">Chat completions（默认）</option>
-               <option value="responses">Responses（GPT-5 系列）</option>
+              <option value="completions">Chat completions（默认）</option>
+              <option value="responses">Responses（GPT-5 系列）</option>
             </Select>
           </Row>
         )}
         {this.state.type === 'azure' && (
           <Row>
             <TextBox
-               label={__DARWIN__ ? 'Azure API 版本' : 'Azure API 版本'}
+              label={__DARWIN__ ? 'Azure API 版本' : 'Azure API 版本'}
               value={this.state.azureApiVersion}
               onValueChanged={this.onAzureApiVersionChanged}
               placeholder="2024-10-21"

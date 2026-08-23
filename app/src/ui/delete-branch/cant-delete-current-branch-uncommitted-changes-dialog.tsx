@@ -21,7 +21,8 @@ export class CantDeleteCurrentBranchUncommittedChanges extends React.Component<I
       >
         <DialogContent>
           <p>
-            你无法移除 <Ref>{branchToDelete.name}</Ref>，因为你有正在进行的更改。
+            你无法移除 <Ref>{branchToDelete.name}</Ref>
+            ，因为你有正在进行的更改。
           </p>
           <p>你需要执行以下操作之一：</p>
           <ul>

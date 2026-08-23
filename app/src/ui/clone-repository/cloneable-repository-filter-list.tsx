@@ -288,7 +288,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
       return (
         <div className="no-items no-results-found">
           <div>
-             抱歉，我找不到与 <Ref>{this.props.filterText}</Ref> 匹配的任何仓库
+            抱歉，我找不到与 <Ref>{this.props.filterText}</Ref> 匹配的任何仓库
           </div>
         </div>
       )

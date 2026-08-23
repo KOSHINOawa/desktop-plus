@@ -427,7 +427,7 @@ jobs:
     name: Publish AUR package
     needs: [release_github, compute_version]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
+    if: ${{ startsWith(github.ref, 'refs/tags/') && github.repository_owner == 'desktop-plus' }}
     permissions:
       contents: read
     env:

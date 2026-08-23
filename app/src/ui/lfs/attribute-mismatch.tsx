@@ -38,9 +38,7 @@ export class AttributeMismatch extends React.Component<IAttributeMismatchProps> 
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? '更新现有过滤器' : '更新现有过滤器'
-            }
+            okButtonText={__DARWIN__ ? '更新现有过滤器' : '更新现有过滤器'}
             cancelButtonText={__DARWIN__ ? '暂不' : '暂不'}
           />
         </DialogFooter>
