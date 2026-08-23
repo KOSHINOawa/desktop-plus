@@ -209,6 +209,7 @@ export class About extends React.Component<IAboutProps> {
             </span>{' '}
             ({releaseNotesLink})
           </p>
+          由 KOSHINO 制作的中文化改版，并增加了“交流式提交”支持。
           {this.renderUpdateDetails()}
           {this.renderUpdateButton()}
           {this.renderBetaLink()}
